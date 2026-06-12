@@ -1,0 +1,21 @@
+{
+  "name": "nero-remotion-short-video-template",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "tokens": "node ../../scripts/build-tokens.mjs",
+    "start": "remotion studio src/index.ts",
+    "still": "remotion still src/index.ts NEROSignalVideo out/nero-signal-frame.png --frame=30",
+    "render": "remotion render src/index.ts NEROSignalVideo out/nero-signal-video.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "remotion": "^4.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}

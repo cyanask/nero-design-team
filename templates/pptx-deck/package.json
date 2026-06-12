@@ -1,0 +1,13 @@
+{
+  "name": "nero-pptx-deck-template",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "tokens": "node ../../scripts/build-tokens.mjs",
+    "build": "node src/build.mjs"
+  },
+  "dependencies": {
+    "pptxgenjs": "^3.12.0"
+  }
+}

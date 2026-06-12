@@ -1,0 +1,32 @@
+{
+  "color": {
+    "brand": {
+      "primary": "#1f4e5f",
+      "secondary": "#6f4e37",
+      "accent": "#c6a15b",
+      "critical": "#9b2c2c"
+    },
+    "surface": {
+      "canvas": "#f5f7f8",
+      "paper": "#ffffff",
+      "muted": "#eef2f3",
+      "inverse": "#16212b"
+    },
+    "text": {
+      "primary": "#1d252c",
+      "secondary": "#53616b",
+      "muted": "#667680",
+      "inverse": "#f4f8fa"
+    },
+    "border": {
+      "subtle": "#dce4e8",
+      "strong": "#aebbc3"
+    },
+    "status": {
+      "positive": "#087f5b",
+      "warning": "#b7791f",
+      "negative": "#b42318",
+      "neutral": "#596a75"
+    }
+  }
+}

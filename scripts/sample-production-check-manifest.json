@@ -1,0 +1,10 @@
+{
+  "artifact": "sample production check",
+  "route": "image-report",
+  "project_manifest": "$NERO_DESIGN_TEAM_HOME/scripts/sample-production-project-manifest.json",
+  "visual_qa_manifest": "$NERO_DESIGN_TEAM_HOME/scripts/sample-visual-qa-manifest.json",
+  "visual_score_manifest": "$NERO_DESIGN_TEAM_HOME/scorecards/sample-score-manifest.json",
+  "expected_outputs": [],
+  "case_library_record": "$NERO_DESIGN_TEAM_HOME/case-library/image-report.json",
+  "gpt_image_2_used": false
+}

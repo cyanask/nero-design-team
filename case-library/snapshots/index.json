@@ -1,0 +1,37 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2026-06-12",
+  "purpose": "Lightweight local snapshots for GitHub design references. No full repository clones, no copied source files.",
+  "snapshots": [
+    {
+      "repo": "op7418/guizang-ppt-skill",
+      "route": "ppt",
+      "source_url": "https://github.com/op7418/guizang-ppt-skill",
+      "snapshot_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/op7418__guizang-ppt-skill/snapshot.json",
+      "license_status": "restricted",
+      "token_budget_hint": "Read summary.md first, then snapshot.json; asset pack is restricted-reference and should not be used in client-facing deliverables without license review.",
+      "updated_at": "2026-06-10",
+      "status": "ready"
+    },
+    {
+      "repo": "plannotator/effective-html",
+      "route": "frontend-ui",
+      "source_url": "https://github.com/plannotator/effective-html",
+      "snapshot_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/plannotator__effective-html/snapshot.json",
+      "license_status": "permissive",
+      "token_budget_hint": "Read summary.md first, then snapshot.json; open file-index.json only when paths are needed.",
+      "updated_at": "2026-06-12",
+      "status": "ready"
+    },
+    {
+      "repo": "vercel/satori",
+      "route": "image-report",
+      "source_url": "https://github.com/vercel/satori",
+      "snapshot_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/vercel__satori/snapshot.json",
+      "license_status": "permissive",
+      "token_budget_hint": "Read summary.md first, then snapshot.json; open file-index.json only when paths are needed.",
+      "updated_at": "2026-06-07",
+      "status": "ready"
+    }
+  ]
+}

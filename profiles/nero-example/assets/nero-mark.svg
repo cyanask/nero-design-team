@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="303" height="96" viewBox="0 0 303 96" role="img" aria-label="AIpha Research Desk">
+  <title>AIpha Research Desk</title>
+  <g fill="none" fill-rule="evenodd">
+    <rect x="20.5" y="15.5" width="67" height="67" fill="#16212b" stroke="#c6a15b" stroke-width="2"/>
+    <text x="54" y="50" text-anchor="middle" dominant-baseline="middle" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Arial, sans-serif" font-size="37" font-weight="800" letter-spacing="0">N</text>
+    <rect x="34.5" y="67.5" width="38" height="3" fill="#c6a15b"/>
+    <text x="104.5" y="18.5" dominant-baseline="text-before-edge" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Arial, sans-serif" font-size="31" font-weight="800" letter-spacing="0">AIpha</text>
+    <text x="104.5" y="55.5" dominant-baseline="text-before-edge" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Arial, sans-serif" font-size="17" font-weight="800" letter-spacing="0">RESEARCH DESK</text>
+  </g>
+</svg>

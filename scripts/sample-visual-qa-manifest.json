@@ -1,0 +1,55 @@
+{
+  "width": 1080,
+  "height": 1440,
+  "colors": [
+    "#1f4e5f",
+    "#c6a15b",
+    "#ffffff",
+    "#1d252c"
+  ],
+  "textBlocks": [
+    {
+      "id": "headline",
+      "text": "AI 产业链周度信号",
+      "x": 72,
+      "y": 120,
+      "w": 760,
+      "h": 92,
+      "fontSize": 58,
+      "lineHeight": 1.18
+    },
+    {
+      "id": "source-note",
+      "text": "口径：公开资料、公司公告、产业链跟踪；示例模板不含真实投资结论。",
+      "x": 72,
+      "y": 260,
+      "w": 880,
+      "h": 72,
+      "fontSize": 24,
+      "lineHeight": 1.35
+    }
+  ],
+  "contrastPairs": [
+    {
+      "id": "body-on-paper",
+      "foreground": "#1d252c",
+      "background": "#ffffff"
+    },
+    {
+      "id": "accent-on-paper",
+      "foreground": "#1f4e5f",
+      "background": "#ffffff",
+      "largeText": true
+    }
+  ],
+  "charts": [
+    {
+      "id": "signal-count",
+      "title": "产业链信号数量",
+      "xLabel": "链条",
+      "yLabel": "信号数",
+      "unit": "条",
+      "minFontSize": 12
+    }
+  ]
+}

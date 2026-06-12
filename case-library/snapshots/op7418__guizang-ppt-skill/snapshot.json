@@ -1,0 +1,50 @@
+{
+  "status": "ready",
+  "repo": "op7418/guizang-ppt-skill",
+  "route": "ppt",
+  "source_url": "https://github.com/op7418/guizang-ppt-skill",
+  "candidate_id": "github-ppt-003-guizang-ppt-skill",
+  "purpose": "Reference HTML web PPT design system for editorial-magazine and Swiss-style horizontal decks, screenshot handling, image-slot discipline, and browser-based presentation QA.",
+  "style": "single-file HTML deck, editorial magazine, Swiss International Style, screenshot backgrounds, strict layout rhythm",
+  "tokens": [
+    "color.surface.canvas",
+    "color.text.primary",
+    "space.slide.marginX",
+    "font.cn.display",
+    "motion.duration.base"
+  ],
+  "template": "web-ppt-html",
+  "license_status": "restricted",
+  "applies_to": [
+    "web PPT",
+    "horizontal swipe deck",
+    "Swiss-style presentation",
+    "magazine-style presentation",
+    "screenshot-led visual talk",
+    "gpt-image-2 deck素材 brief"
+  ],
+  "disabled_when": [
+    "editable banker PPTX is required",
+    "formal client deliverable requires permissive assets",
+    "copying AGPL templates or scripts into NERO production",
+    "exact financial tables or regulatory wording would be embedded in generated images"
+  ],
+  "notes": "AGPL-3.0 upstream. Use as restricted design reference and NERO-native rule source only; do not clone or copy full templates/assets by default.",
+  "readme_summary": "Guizang PPT Skill is a web PPT skill for Claude Code/Codex agent environments. It creates single-file HTML horizontal slide decks, PPT visuals, and cover-style assets. It includes two visual systems: Style A, editorial magazine x e-ink, for narrative, views, sharing, and personal expression; Style B, Swiss International Style, for facts, products, analysis, and methodology. The repository emphasizes theme presets, strict layout rhythm, screenshot handling, image-slot planning, optional GPT-Image/GPT-M visual generation, browser review, and Swiss-style validation.",
+  "key_patterns": [
+    "single-file HTML horizontal deck",
+    "editorial-magazine and Swiss-style visual systems",
+    "locked Swiss S01-S22 layout discipline",
+    "screenshot background and ratio adaptation",
+    "image slot binding before visual generation",
+    "browser/contact-sheet QA"
+  ],
+  "image_refs": [
+    "https://github.com/user-attachments/assets/5dc316a2-401c-4e37-9123-ea081b6ae470",
+    "https://github.com/user-attachments/assets/8960e78c-69bb-4b7e-aa95-6fad64b70314",
+    "https://github.com/user-attachments/assets/df21dbcb-5fe4-4852-a91a-a9cf00aceeb4",
+    "https://github.com/user-attachments/assets/c02d02f7-ce6f-4e16-b8a6-778c96851f94"
+  ],
+  "asset_pack_path": "not-bundled-restricted-reference: guizang-ppt-skill",
+  "file_index_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/op7418__guizang-ppt-skill/file-index.json"
+}

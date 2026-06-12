@@ -1,0 +1,30 @@
+{
+  "version": "1.5.0",
+  "routes": {
+    "frontend-ui": {
+      "template": "frontend-dashboard",
+      "default_name": "nero-frontend-ui",
+      "description": "Frontend dashboard or internal analytical UI using NERO tokens."
+    },
+    "image-report": {
+      "template": "report-card-image",
+      "default_name": "nero-image-report",
+      "description": "Satori/Sharp image report or long-image project using NERO report theme."
+    },
+    "ppt": {
+      "template": "pptx-deck",
+      "default_name": "nero-pptx-deck",
+      "description": "Native PPTX deck project using NERO PPTX theme."
+    },
+    "short-video": {
+      "template": "remotion-short-video",
+      "default_name": "nero-short-video",
+      "description": "Remotion short-video project using NERO video theme."
+    },
+    "ai-image-generation": {
+      "template": "gpt-image-brief",
+      "default_name": "nero-image-brief",
+      "description": "gpt-image-2 brief project for cover/background/concept visual素材."
+    }
+  }
+}

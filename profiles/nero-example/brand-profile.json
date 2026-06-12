@@ -1,0 +1,40 @@
+{
+  "name": "NERO",
+  "version": "0.7.0",
+  "updated_at": "2026-06-07",
+  "positioning": "Investment-banking grade design system for AI industry research, financial analysis, and internal analytical tools.",
+  "tone": [
+    "restrained",
+    "professional",
+    "evidence-first",
+    "high information density",
+    "precise Chinese typography"
+  ],
+  "brand_assets": {
+    "wordmark": "$NERO_DESIGN_TEAM_HOME/profiles/nero-example/assets/nero-wordmark.svg",
+    "mark": "$NERO_DESIGN_TEAM_HOME/profiles/nero-example/assets/nero-mark.svg",
+    "usage_note": "Current SVG assets are local system placeholders. Replace with official NERO assets if a formal logo exists."
+  },
+  "design_tokens": {
+    "primary": "color.brand.primary",
+    "accent": "color.brand.accent",
+    "canvas": "color.surface.canvas",
+    "paper": "color.surface.paper",
+    "body_font": "font.cn.body",
+    "chart_palette": "chart.palette.categorical"
+  },
+  "voice": {
+    "preferred": [
+      "fact-first",
+      "source-aware",
+      "clear conclusion before evidence",
+      "no decorative filler"
+    ],
+    "avoid": [
+      "marketing slogans",
+      "exaggerated praise",
+      "fake precision",
+      "unverified claims"
+    ]
+  }
+}

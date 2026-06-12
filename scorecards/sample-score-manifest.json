@@ -1,0 +1,17 @@
+{
+  "artifact": "sample report card",
+  "route": "image-report",
+  "scores": {
+    "route_fit": 11,
+    "brand_tokens": 13,
+    "layout_typography": 12,
+    "information_hierarchy": 13,
+    "data_integrity": 14,
+    "chart_quality": 10,
+    "output_qa": 11,
+    "ai_image_boundary": 6
+  },
+  "notes": [
+    "Sample only. Replace with real reviewer notes for production artifacts."
+  ]
+}

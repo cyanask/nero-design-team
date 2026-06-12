@@ -1,0 +1,36 @@
+{
+  "route": "image-report",
+  "version": "1.7.0",
+  "cases": [
+    {
+      "id": "image-report-001-oss-research-card",
+      "name": "Source-Aware Research Card",
+      "purpose": "Reference image-style report cards or long images with exact text and chart overlays.",
+      "style": "source-aware header, clear headline, key number block, 2-4 evidence blocks, boundary footer",
+      "tokens": [
+        "color.brand.primary",
+        "color.brand.accent",
+        "color.surface.canvas",
+        "font.cn.body",
+        "space.report.pagePadding"
+      ],
+      "template": "report-card-image",
+      "score": {
+        "value": 88,
+        "rating": "reference",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "research card",
+        "long image",
+        "social card with traceable metrics"
+      ],
+      "disabled_when": [
+        "unverified numbers",
+        "complex interactive dashboard",
+        "editable PPTX requirement"
+      ],
+      "notes": "AI-generated backgrounds may be used only as visual material behind exact Satori/Sharp text and charts."
+    }
+  ]
+}

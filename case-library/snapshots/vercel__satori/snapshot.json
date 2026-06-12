@@ -1,0 +1,40 @@
+{
+  "status": "ready",
+  "repo": "vercel/satori",
+  "route": "image-report",
+  "source_url": "https://github.com/vercel/satori",
+  "candidate_id": "github-image-001-satori",
+  "purpose": "Reference JSX/HTML-to-SVG static rendering patterns for report cards, OG images, and long-image components.",
+  "style": "programmatic static image rendering, precise layout, font-aware SVG output",
+  "tokens": [
+    "font.cn.body",
+    "color.surface.canvas",
+    "space.report.pagePadding",
+    "color.text.primary"
+  ],
+  "template": "report-card-image",
+  "license_status": "permissive",
+  "applies_to": [
+    "image report",
+    "research card",
+    "social card",
+    "static long-image layout"
+  ],
+  "disabled_when": [
+    "complex browser CSS required",
+    "interactive dashboard",
+    "generated visual contains evidence text"
+  ],
+  "notes": "Reference rendering workflow and constraints, not a final design style.",
+  "readme_summary": "Satori : Enlightened library to convert HTML and CSS to SVG. Note To use Satori in your project to generate PNG images like Open Graph images and social cards, check out our https://vercel.com/blog/introducing vercel og image generation fast dynamic social card images and https://vercel.com/docs/concepts/functions/edge functions/og image generation To use it in Next.js, take a look at the https://vercel.com/templates/next.js/og image generation Overview Satori supports the JSX syntax, which makes it very straightforward to use. Here’s an overview of the basic usage: Satori will render the element into a 600×400 SVG, and return the SVG string: Under the hood, it handles layout calculation, font, typography and more, to generate a SVG that matches the exact same HTML and CSS in a browser. Documentation JSX Satori only accepts JSX elements that are pure and stateless. You can use a subset of HTML elements (see section below), or custom React components, but React APIs such as useState , useEffect , dangerouslySetInnerHTML are not supported. Experimental: builtin JSX support Satori has an experimental JSX runtime that you can use without having to install React. You can enable it on a...",
+  "key_patterns": [
+    "reusable component taxonomy",
+    "programmatic static image rendering, precise layout, font-aware SVG output"
+  ],
+  "image_refs": [
+    "https://raw.githubusercontent.com/vercel/satori/main/.github/card.png",
+    "https://picsum.photos/200/300",
+    "https://badgen.net/badge/icon/Made%20by%20Vercel?icon=zeit&label&color=black&labelColor=black"
+  ],
+  "file_index_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/vercel__satori/file-index.json"
+}

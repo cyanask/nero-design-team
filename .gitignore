@@ -1,0 +1,17 @@
+.DS_Store
+node_modules/
+.env
+.env.*
+!.env.example
+dist/
+out/
+coverage/
+tmp/
+temp/
+*.log
+*.tmp
+*.local.json
+validation/private/
+case-library/assets/
+assets/private/
+assets/external/

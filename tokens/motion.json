@@ -1,0 +1,15 @@
+{
+  "motion": {
+    "duration": {
+      "fast": "120ms",
+      "base": "180ms",
+      "slow": "320ms",
+      "scene": 24
+    },
+    "easing": {
+      "standard": "cubic-bezier(0.2, 0, 0, 1)",
+      "enter": "cubic-bezier(0.16, 1, 0.3, 1)",
+      "exit": "cubic-bezier(0.7, 0, 0.84, 0)"
+    }
+  }
+}

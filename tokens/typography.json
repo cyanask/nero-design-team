@@ -1,0 +1,44 @@
+{
+  "font": {
+    "cn": {
+      "body": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", system-ui, sans-serif",
+      "display": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", system-ui, sans-serif"
+    },
+    "en": {
+      "body": "Inter, Aptos, system-ui, sans-serif",
+      "mono": "\"SFMono-Regular\", Consolas, \"Liberation Mono\", monospace"
+    }
+  },
+  "type": {
+    "display": {
+      "size": "32px",
+      "lineHeight": 1.16,
+      "weight": 700
+    },
+    "title": {
+      "size": "22px",
+      "lineHeight": 1.22,
+      "weight": 700
+    },
+    "subtitle": {
+      "size": "16px",
+      "lineHeight": 1.38,
+      "weight": 600
+    },
+    "body": {
+      "size": "14px",
+      "lineHeight": 1.5,
+      "weight": 400
+    },
+    "caption": {
+      "size": "12px",
+      "lineHeight": 1.45,
+      "weight": 400
+    },
+    "metric": {
+      "size": "34px",
+      "lineHeight": 1.05,
+      "weight": 700
+    }
+  }
+}

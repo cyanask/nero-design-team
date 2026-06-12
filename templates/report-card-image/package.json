@@ -1,0 +1,15 @@
+{
+  "name": "nero-report-card-image-template",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "tokens": "node ../../scripts/build-tokens.mjs",
+    "render": "node src/render.mjs"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "satori": "^0.12.0",
+    "sharp": "^0.34.0"
+  }
+}

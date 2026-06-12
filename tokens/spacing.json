@@ -1,0 +1,28 @@
+{
+  "space": {
+    "xs": "4px",
+    "sm": "8px",
+    "md": "12px",
+    "lg": "16px",
+    "xl": "24px",
+    "xxl": "32px",
+    "section": "48px",
+    "card": {
+      "padding": "16px",
+      "gap": "12px"
+    },
+    "report": {
+      "pagePadding": "72px",
+      "blockGap": "28px"
+    },
+    "slide": {
+      "marginX": 0.55,
+      "marginY": 0.38,
+      "footerY": 6.86
+    },
+    "video": {
+      "safeInset": "88px",
+      "blockGap": "52px"
+    }
+  }
+}

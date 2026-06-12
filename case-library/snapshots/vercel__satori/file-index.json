@@ -1,0 +1,209 @@
+{
+  "repo": "vercel/satori",
+  "source_url": "https://github.com/vercel/satori",
+  "default_branch": "main",
+  "truncated_by_github": false,
+  "max_files": 40,
+  "files": [
+    {
+      "path": "README.md",
+      "type": "readme",
+      "relevance": 100
+    },
+    {
+      "path": "LICENSE",
+      "type": "license",
+      "relevance": 98
+    },
+    {
+      "path": "playground/LICENSE",
+      "type": "license",
+      "relevance": 98
+    },
+    {
+      "path": "src/vendor/parse-css-dimension/LICENSE",
+      "type": "license",
+      "relevance": 98
+    },
+    {
+      "path": "package.json",
+      "type": "package",
+      "relevance": 94
+    },
+    {
+      "path": "playground/package.json",
+      "type": "package",
+      "relevance": 94
+    },
+    {
+      "path": "src/vendor/parse-css-dimension/package.json",
+      "type": "package",
+      "relevance": 94
+    },
+    {
+      "path": "playground/components/introduction.module.css",
+      "type": "component",
+      "relevance": 88
+    },
+    {
+      "path": "playground/components/introduction.tsx",
+      "type": "component",
+      "relevance": 88
+    },
+    {
+      "path": "playground/components/panel-resize-handle.module.css",
+      "type": "component",
+      "relevance": 88
+    },
+    {
+      "path": "playground/components/panel-resize-handle.tsx",
+      "type": "component",
+      "relevance": 88
+    },
+    {
+      "path": "playground/components/resvg_worker.ts",
+      "type": "component",
+      "relevance": 88
+    },
+    {
+      "path": "playground/pages/_app.tsx",
+      "type": "path",
+      "relevance": 64
+    },
+    {
+      "path": "src/builder/background-image.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/builder/border-radius.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/builder/border.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/builder/clip-path.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/builder/content-mask.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/builder/gradient/linear.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/builder/gradient/radial.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/builder/gradient/utils.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/builder/mask-image.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/builder/overflow.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/builder/rect.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/builder/shadow.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/builder/svg.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/builder/text-decoration.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/builder/text.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/builder/transform.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/font.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/handler/compute.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/handler/expand.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/handler/image.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/handler/inheritable.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/handler/preprocess.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/handler/presets.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/handler/tailwind.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/handler/variables.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/index.ts",
+      "type": "path",
+      "relevance": 60
+    },
+    {
+      "path": "src/jsx/index.ts",
+      "type": "path",
+      "relevance": 60
+    }
+  ]
+}

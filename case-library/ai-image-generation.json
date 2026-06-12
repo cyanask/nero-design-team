@@ -1,0 +1,35 @@
+{
+  "route": "ai-image-generation",
+  "version": "1.7.0",
+  "cases": [
+    {
+      "id": "ai-image-001-oss-brief",
+      "name": "AI Image Brief",
+      "purpose": "Reference a safe brief for generated cover, background, or concept visuals.",
+      "style": "art-directed visual material with explicit no-text, no-number, and safe-overlay constraints",
+      "tokens": [
+        "color.brand.primary",
+        "color.surface.canvas",
+        "color.text.primary"
+      ],
+      "template": "gpt-image-brief",
+      "score": {
+        "value": 84,
+        "rating": "reference",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "cover visual",
+        "long-image background",
+        "PPT section visual",
+        "video scene background"
+      ],
+      "disabled_when": [
+        "exact text is required inside the generated image",
+        "financial figures or tables must be represented",
+        "source notes or formal conclusions are needed"
+      ],
+      "notes": "Use image generation for visual material only. Exact text, charts, figures, and source notes are layered later."
+    }
+  ]
+}

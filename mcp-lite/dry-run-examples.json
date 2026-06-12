@@ -1,0 +1,140 @@
+{
+  "version": "1.7.0",
+  "updated_at": "2026-06-12",
+  "examples": [
+    {
+      "tool": "nero_design_route",
+      "args": {
+        "task": "把这个项目接入 NERO Design Team 作为后台设计系统"
+      }
+    },
+    {
+      "tool": "nero_design_route",
+      "args": {
+        "task": "帮我审查一个前端 dashboard 是否有 AI 味",
+        "preferred_route": "frontend-ui"
+      }
+    },
+    {
+      "tool": "nero_design_route",
+      "args": {
+        "task": "做一个前端界面的视觉审查，重点看模板化和可读性",
+        "preferred_route": "visual-audit"
+      }
+    },
+    {
+      "tool": "nero_design_route",
+      "args": {
+        "task": "用设计团队做一个 self-contained HTML 架构图解释页"
+      }
+    },
+    {
+      "tool": "nero_design_route",
+      "args": {
+        "task": "Create an image-style research report card using the Satori template."
+      }
+    },
+    {
+      "tool": "nero_design_route",
+      "args": {
+        "task": "做正式投行 PPTX 路演材料"
+      }
+    },
+    {
+      "tool": "nero_design_route",
+      "args": {
+        "task": "帮我做瑞士风网页 PPT"
+      }
+    },
+    {
+      "tool": "nero_design_route",
+      "args": {
+        "task": "帮我审美升级这份商业 deck"
+      }
+    },
+    {
+      "tool": "nero_design_get_tokens",
+      "args": {
+        "token_sets": [
+          "colors",
+          "typography"
+        ],
+        "include_build_outputs": true
+      }
+    },
+    {
+      "tool": "nero_design_list_templates",
+      "args": {}
+    },
+    {
+      "tool": "nero_design_get_case_snapshot",
+      "args": {
+        "repo": "vercel/satori",
+        "include_summary": true,
+        "include_file_index": false
+      }
+    },
+    {
+      "tool": "nero_design_get_case_snapshot",
+      "args": {
+        "repo": "op7418/guizang-ppt-skill",
+        "include_summary": true,
+        "include_file_index": false
+      }
+    },
+    {
+      "tool": "nero_design_import_github_case",
+      "args": {
+        "repo": "vercel/satori",
+        "route": "image-report",
+        "candidate_id": "github-image-001-satori",
+        "execute": false
+      }
+    },
+    {
+      "tool": "nero_design_build_tokens",
+      "args": {
+        "execute": false
+      }
+    },
+    {
+      "tool": "nero_design_generate_project",
+      "args": {
+        "route": "image-report",
+        "name": "sample-image-report",
+        "out": "/private/tmp",
+        "execute": false
+      }
+    },
+    {
+      "tool": "nero_design_generate_project",
+      "args": {
+        "mode": "init",
+        "route": "frontend-ui",
+        "project_root": "/private/tmp/existing-project",
+        "execute": false
+      }
+    },
+    {
+      "tool": "nero_design_visual_qa",
+      "args": {
+        "manifest_path": "$NERO_DESIGN_TEAM_HOME/scripts/sample-visual-qa-manifest.json",
+        "execute": false
+      }
+    },
+    {
+      "tool": "nero_design_score",
+      "args": {
+        "manifest_path": "$NERO_DESIGN_TEAM_HOME/scorecards/sample-score-manifest.json",
+        "execute": false
+      }
+    },
+    {
+      "tool": "nero_design_production_check",
+      "args": {
+        "manifest_path": "$NERO_DESIGN_TEAM_HOME/scripts/sample-production-check-manifest.json",
+        "execute": false
+      }
+    }
+  ]
+}

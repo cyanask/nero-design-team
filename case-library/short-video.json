@@ -1,0 +1,35 @@
+{
+  "route": "short-video",
+  "version": "1.7.0",
+  "cases": [
+    {
+      "id": "short-video-001-oss-signal-explainer",
+      "name": "Signal Explainer Video",
+      "purpose": "Reference a short vertical data explainer with captions, metric reveal, evidence card, and chart motion.",
+      "style": "clean mobile-safe composition, restrained motion, exact text overlays, visible source boundary",
+      "tokens": [
+        "color.brand.primary",
+        "color.surface.canvas",
+        "font.cn.body",
+        "motion.duration.standard"
+      ],
+      "template": "remotion-short-video",
+      "score": {
+        "value": 84,
+        "rating": "reference",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "short data explainer",
+        "vertical research teaser",
+        "animated chart narrative"
+      ],
+      "disabled_when": [
+        "formal video editing timeline is required",
+        "source data is not verified",
+        "AI image output contains exact text or numbers"
+      ],
+      "notes": "AI-generated scenes are backgrounds only. Captions, figures, and chart overlays must be rendered by code."
+    }
+  ]
+}

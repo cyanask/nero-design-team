@@ -1,0 +1,60 @@
+@import "../../../build/css/nero-tokens.css";
+
+.video-shell {
+  background: var(--nero-color-surface-canvas, #f7f6f2);
+  color: var(--nero-color-text-primary, #1d252c);
+  font-family: Inter, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  padding: 88px;
+}
+
+.video-header,
+.video-footer {
+  display: flex;
+  justify-content: space-between;
+  color: var(--nero-color-text-muted, #667680);
+  font-size: 28px;
+  letter-spacing: 0;
+}
+
+.video-body {
+  margin-top: 260px;
+}
+
+h1 {
+  font-size: 72px;
+  line-height: 1.12;
+  margin: 0 0 92px;
+}
+
+.metric-line {
+  align-items: baseline;
+  display: flex;
+  gap: 24px;
+  margin-bottom: 52px;
+}
+
+.metric-line strong {
+  color: var(--nero-color-brand-primary, #1f4e5f);
+  font-size: 190px;
+  line-height: 1;
+}
+
+.metric-line span {
+  color: var(--nero-color-text-secondary, #53616b);
+  font-size: 34px;
+}
+
+p {
+  color: var(--nero-color-text-primary, #32424d);
+  font-size: 42px;
+  line-height: 1.32;
+  margin: 0;
+  max-width: 860px;
+}
+
+.video-footer {
+  bottom: 78px;
+  left: 88px;
+  position: absolute;
+  right: 88px;
+}

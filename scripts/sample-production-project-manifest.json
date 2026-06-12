@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "project_name": "sample-production-check",
+  "route": "image-report",
+  "template": "report-card-image",
+  "created_at": "2026-06-07T00:00:00.000Z",
+  "updated_at": "2026-06-11T00:00:00.000Z",
+  "mode": "sample-project-integration",
+  "design_team": {
+    "role": "background-support-design-system",
+    "root": "$NERO_DESIGN_TEAM_HOME",
+    "version": "1.7.0",
+    "build_outputs": {
+      "css_variables": "$NERO_DESIGN_TEAM_HOME/build/css/nero-tokens.css",
+      "report_theme": "$NERO_DESIGN_TEAM_HOME/build/themes/report-theme.mjs"
+    }
+  },
+  "brand_assets": {
+    "profile": "$NERO_DESIGN_TEAM_HOME/brand/brand-profile.json",
+    "layouts": "$NERO_DESIGN_TEAM_HOME/brand/master-layouts.json"
+  },
+  "project_local": {
+    "manifest": "$NERO_DESIGN_TEAM_HOME/scripts/sample-production-project-manifest.json",
+    "output_root": "$NERO_DESIGN_TEAM_HOME/scripts",
+    "exports_root": "$NERO_DESIGN_TEAM_HOME/scripts",
+    "screenshots_root": "$NERO_DESIGN_TEAM_HOME/scripts"
+  }
+}

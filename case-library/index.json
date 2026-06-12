@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2026-06-12",
+  "purpose": "Reusable case library for NERO Design Team. Store lightweight references, not full client materials.",
+  "case_indexes": {
+    "frontend-ui": "$NERO_DESIGN_TEAM_HOME/case-library/frontend-ui.json",
+    "image-report": "$NERO_DESIGN_TEAM_HOME/case-library/image-report.json",
+    "ai-image-generation": "$NERO_DESIGN_TEAM_HOME/case-library/ai-image-generation.json",
+    "ppt": "$NERO_DESIGN_TEAM_HOME/case-library/ppt.json",
+    "short-video": "$NERO_DESIGN_TEAM_HOME/case-library/short-video.json",
+    "github-candidates": "$NERO_DESIGN_TEAM_HOME/case-library/github-candidates.json",
+    "snapshots": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/index.json"
+  },
+  "rules": [
+    "Do not store client secrets, customer-sensitive evidence, API keys, or private contact/payment identifiers.",
+    "Store case summaries, design decisions, token usage, template names, scores, and QA outcomes.",
+    "Use cases as reference patterns, not as factual evidence for new deliverables.",
+    "When a case is based on a real external artifact, record source boundary and licensing status.",
+    "For GitHub references, prefer lightweight snapshots over full repository reads; snapshots store summaries, paths, license notes, and image URLs only."
+  ]
+}

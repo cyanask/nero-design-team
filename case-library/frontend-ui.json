@@ -1,0 +1,36 @@
+{
+  "route": "frontend-ui",
+  "version": "1.7.0",
+  "cases": [
+    {
+      "id": "frontend-ui-001-oss-dashboard",
+      "name": "Dense Analytical Dashboard",
+      "purpose": "Reference a compact, evidence-first analytical dashboard pattern for internal tools.",
+      "style": "left navigation, metric strip, filter toolbar, evidence table, restrained professional tone",
+      "tokens": [
+        "color.brand.primary",
+        "color.surface.canvas",
+        "color.text.primary",
+        "radius.card",
+        "chart.palette.categorical"
+      ],
+      "template": "frontend-dashboard",
+      "score": {
+        "value": 86,
+        "rating": "reference",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "internal analytical tools",
+        "financial review dashboards",
+        "research workflow queues"
+      ],
+      "disabled_when": [
+        "marketing landing page",
+        "consumer app",
+        "single static image output"
+      ],
+      "notes": "Open-source-safe example. Replace sample content and run visual QA before delivery."
+    }
+  ]
+}

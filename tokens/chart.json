@@ -1,0 +1,36 @@
+{
+  "chart": {
+    "palette": {
+      "categorical": [
+        "#1f4e5f",
+        "#c6a15b",
+        "#6f4e37",
+        "#087f5b",
+        "#596a75",
+        "#9b2c2c"
+      ],
+      "sequential": [
+        "#e8f1f3",
+        "#b8d1d8",
+        "#78a7b4",
+        "#3f7585",
+        "#1f4e5f"
+      ],
+      "risk": [
+        "#087f5b",
+        "#b7791f",
+        "#b42318"
+      ]
+    },
+    "axis": {
+      "label": "#53616b",
+      "line": "#dce4e8",
+      "grid": "#e8edf0"
+    },
+    "annotation": {
+      "fill": "#fff8e7",
+      "stroke": "#c6a15b",
+      "text": "#1d252c"
+    }
+  }
+}

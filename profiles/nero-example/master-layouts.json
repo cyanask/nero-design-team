@@ -1,0 +1,62 @@
+{
+  "version": "0.7.0",
+  "frontend_dashboard": {
+    "shell": "left navigation + topbar + dense workspace",
+    "grid": "sidebar 248px, workspace flexible",
+    "density": "high but scan-friendly",
+    "primary_components": [
+      "metric strip",
+      "filter toolbar",
+      "evidence table",
+      "status queue"
+    ],
+    "avoid": [
+      "marketing hero",
+      "card inside card",
+      "oversized decorative empty state"
+    ]
+  },
+  "report_card_image": {
+    "size": {
+      "width": 1080,
+      "height": 1440
+    },
+    "structure": [
+      "source-aware eyebrow",
+      "clear headline",
+      "key number or conclusion block",
+      "2-4 evidence blocks",
+      "source and boundary footer"
+    ],
+    "safe_margins_px": 72,
+    "ai_image_safe_area": "Use generated imagery only behind or beside exact overlays, never as evidence text."
+  },
+  "pptx_deck": {
+    "layout": "16:9 native PPTX",
+    "slide_system": [
+      "cover",
+      "section divider",
+      "data slide",
+      "matrix slide",
+      "conclusion slide"
+    ],
+    "grid": {
+      "margin_x_in": 0.55,
+      "title_y_in": 0.38,
+      "footer_y_in": 6.86
+    },
+    "ai_image_safe_area": "Generated imagery can support cover and dividers; exact titles, footers, figures, and charts remain PPTX objects."
+  },
+  "short_video": {
+    "default_aspect_ratio": "9:16",
+    "safe_inset_px": 88,
+    "scene_system": [
+      "opening claim",
+      "key metric reveal",
+      "evidence card",
+      "chart motion",
+      "closing boundary note"
+    ],
+    "ai_image_safe_area": "Generated scenes are backgrounds; captions and data are rendered in Remotion."
+  }
+}

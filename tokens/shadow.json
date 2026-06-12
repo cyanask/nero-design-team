@@ -1,0 +1,8 @@
+{
+  "shadow": {
+    "none": "none",
+    "hairline": "0 0 0 1px rgba(22, 33, 43, 0.06)",
+    "panel": "0 10px 28px rgba(22, 33, 43, 0.08)",
+    "focus": "0 0 0 3px rgba(31, 78, 95, 0.22)"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "route": "ai-image-generation",
+  "model_role": "AI Image Art Director",
+  "model": "gpt-image-2",
+  "purpose": "",
+  "audience": "investment banking, AI industry research, financial analysis",
+  "final_format": {
+    "type": "report-cover | long-image-background | ppt-cover | ppt-section | video-scene | style-exploration",
+    "aspect_ratio": "16:9 | 9:16 | 1:1 | 3:4 | custom",
+    "width_px": 1920,
+    "height_px": 1080
+  },
+  "visual_style": {
+    "tone": "restrained, professional, evidence-first, high information density",
+    "references": [
+      "NERO token color.brand.primary",
+      "NERO token color.brand.accent",
+      "NERO token color.surface.canvas"
+    ],
+    "lighting": "clean editorial lighting, not cinematic darkness",
+    "composition": "clear focal area with reserved whitespace for post-production text"
+  },
+  "safe_areas": {
+    "text_overlay_area": "left third or upper-left quadrant, low visual noise",
+    "chart_overlay_area": "lower third if needed, plain surface behind chart",
+    "do_not_cover": "future source notes, captions, chart labels, and key figures"
+  },
+  "forbidden_elements": [
+    "readable generated Chinese text",
+    "financial figures",
+    "tables",
+    "chart axes or labels",
+    "company logos unless supplied and licensed",
+    "regulatory wording",
+    "private customer evidence",
+    "API keys or credentials"
+  ],
+  "negative_constraints": [
+    "no random purple-blue gradient",
+    "no over-rounded SaaS card look",
+    "no fake dashboard screenshots",
+    "no tiny unreadable glyphs pretending to be data",
+    "no decorative elements competing with exact overlays"
+  ],
+  "post_production": {
+    "exact_text_tool": "Satori/Sharp | PptxGenJS | Remotion",
+    "charts_tool": "ECharts | G2 | SVG",
+    "qa_required": true
+  },
+  "verification_checklist": [
+    "asset matches requested dimensions",
+    "reserved overlay area is clean",
+    "no generated text or numbers are treated as evidence",
+    "contrast allows later overlays",
+    "style follows NERO tokens"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "route": "ppt",
+  "version": "1.7.0",
+  "cases": [
+    {
+      "id": "ppt-001-oss-business-deck",
+      "name": "Business Deck System",
+      "purpose": "Reference formal business deck structure with cover, section divider, data slide, matrix slide, and conclusion slide.",
+      "style": "restrained banker-style layout, consistent grid, source-aware charts, clear title hierarchy",
+      "tokens": [
+        "color.brand.primary",
+        "color.text.primary",
+        "font.cn.body",
+        "chart.palette.categorical"
+      ],
+      "template": "pptx-deck",
+      "score": {
+        "value": 86,
+        "rating": "reference",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "formal PPTX",
+        "business review deck",
+        "research presentation"
+      ],
+      "disabled_when": [
+        "web PPT is required",
+        "template-following requires a supplied source deck",
+        "figures or conclusions are unverified"
+      ],
+      "notes": "Use the Presentations route for formal editable PPTX when available; local PptxGenJS remains a fallback."
+    }
+  ]
+}

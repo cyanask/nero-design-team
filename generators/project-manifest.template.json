@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "project_name": "<project-name>",
+  "route": "<frontend-ui|image-report|ppt|short-video|ai-image-generation>",
+  "template": "<template-name>",
+  "created_at": "<iso-datetime>",
+  "updated_at": "<iso-datetime>",
+  "mode": "<generated-template-project|existing-project-integration>",
+  "design_team": {
+    "role": "background-support-design-system",
+    "root": "$NERO_DESIGN_TEAM_HOME",
+    "version": "<design-team-version>",
+    "token_root": "$NERO_DESIGN_TEAM_HOME/tokens",
+    "template_root": "$NERO_DESIGN_TEAM_HOME/templates",
+    "case_library_root": "$NERO_DESIGN_TEAM_HOME/case-library",
+    "build_outputs": {
+      "css_variables": "$NERO_DESIGN_TEAM_HOME/build/css/nero-tokens.css",
+      "tailwind": "$NERO_DESIGN_TEAM_HOME/build/tailwind/nero-tailwind.cjs",
+      "report_theme": "$NERO_DESIGN_TEAM_HOME/build/themes/report-theme.mjs",
+      "pptx_theme": "$NERO_DESIGN_TEAM_HOME/build/themes/pptx-theme.mjs",
+      "remotion_theme": "$NERO_DESIGN_TEAM_HOME/build/themes/remotion-theme.ts"
+    }
+  },
+  "project_local": {
+    "manifest": "<project>/.nero-design/manifest.json",
+    "output_root": "<project>/design-output",
+    "exports_root": "<project>/exports",
+    "screenshots_root": "<project>/screenshots"
+  },
+  "brand_assets": {
+    "profile": "$NERO_DESIGN_TEAM_HOME/brand/brand-profile.json",
+    "layouts": "$NERO_DESIGN_TEAM_HOME/brand/master-layouts.json",
+    "mark": "$NERO_DESIGN_TEAM_HOME/brand/assets/nero-mark.svg",
+    "wordmark": "$NERO_DESIGN_TEAM_HOME/brand/assets/nero-wordmark.svg"
+  },
+  "case_references": [],
+  "qa": {
+    "visual_qa_manifest": null,
+    "visual_score_manifest": null,
+    "production_check_manifest": null,
+    "latest_status": "not_run"
+  },
+  "gpt_image_2": {
+    "used": false,
+    "brief_path": null,
+    "boundary": "Use only for visual素材. Exact text, financial figures, charts, tables, and regulatory conclusions must be layered or verified outside gpt-image-2."
+  },
+  "asset_boundary": [
+    "Do not copy restricted external assets into public or client deliverables without license review.",
+    "Project outputs stay in the project directory; reusable patterns can be promoted back to NERO Design Team after review.",
+    "This manifest records design-system usage. It is not a factual source, disclosure record, or license opinion."
+  ],
+  "next_steps": [
+    "Replace sample content with project-specific source-backed content.",
+    "Run visual QA and visual score before delivery.",
+    "If the output becomes reusable, archive a lightweight case snapshot or promote the pattern to templates/rules/tokens."
+  ]
+}

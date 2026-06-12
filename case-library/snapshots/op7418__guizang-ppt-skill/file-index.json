@@ -1,0 +1,123 @@
+{
+  "repo": "op7418/guizang-ppt-skill",
+  "source_url": "https://github.com/op7418/guizang-ppt-skill",
+  "default_branch": "main",
+  "max_files": 40,
+  "files": [
+    {
+      "path": "README.md",
+      "type": "readme",
+      "relevance": 100
+    },
+    {
+      "path": "LICENSE",
+      "type": "license",
+      "relevance": 98
+    },
+    {
+      "path": "SKILL.md",
+      "type": "skill",
+      "relevance": 96
+    },
+    {
+      "path": "assets/template.html",
+      "type": "template",
+      "relevance": 90
+    },
+    {
+      "path": "assets/template-swiss.html",
+      "type": "template",
+      "relevance": 90
+    },
+    {
+      "path": "references/swiss-layout-lock.md",
+      "type": "rule",
+      "relevance": 88
+    },
+    {
+      "path": "references/layouts-swiss.md",
+      "type": "layout",
+      "relevance": 86
+    },
+    {
+      "path": "references/screenshot-framing.md",
+      "type": "rule",
+      "relevance": 86
+    },
+    {
+      "path": "references/image-prompts.md",
+      "type": "rule",
+      "relevance": 84
+    },
+    {
+      "path": "references/swiss-map-component.md",
+      "type": "component",
+      "relevance": 82
+    },
+    {
+      "path": "references/themes.md",
+      "type": "theme",
+      "relevance": 80
+    },
+    {
+      "path": "references/themes-swiss.md",
+      "type": "theme",
+      "relevance": 80
+    },
+    {
+      "path": "references/checklist.md",
+      "type": "qa",
+      "relevance": 78
+    },
+    {
+      "path": "scripts/validate-swiss-deck.mjs",
+      "type": "validator",
+      "relevance": 72
+    },
+    {
+      "path": "assets/screenshot-backgrounds/style-a/monocle-classic.webp",
+      "type": "image",
+      "relevance": 70
+    },
+    {
+      "path": "assets/screenshot-backgrounds/style-a/indigo-porcelain.webp",
+      "type": "image",
+      "relevance": 70
+    },
+    {
+      "path": "assets/screenshot-backgrounds/style-a/forest-ink.webp",
+      "type": "image",
+      "relevance": 70
+    },
+    {
+      "path": "assets/screenshot-backgrounds/style-a/kraft-paper.webp",
+      "type": "image",
+      "relevance": 70
+    },
+    {
+      "path": "assets/screenshot-backgrounds/style-a/dune.webp",
+      "type": "image",
+      "relevance": 70
+    },
+    {
+      "path": "assets/screenshot-backgrounds/style-b/ikb-dot-gradient.webp",
+      "type": "image",
+      "relevance": 70
+    },
+    {
+      "path": "assets/screenshot-backgrounds/style-b/lemon-grid.webp",
+      "type": "image",
+      "relevance": 70
+    },
+    {
+      "path": "assets/screenshot-backgrounds/style-b/lemon-green-dot-shadow.webp",
+      "type": "image",
+      "relevance": 70
+    },
+    {
+      "path": "assets/screenshot-backgrounds/style-b/safety-orange-halftone.webp",
+      "type": "image",
+      "relevance": 70
+    }
+  ]
+}

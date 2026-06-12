@@ -1,0 +1,64 @@
+{
+  "repo": "plannotator/effective-html",
+  "source_url": "https://github.com/plannotator/effective-html",
+  "default_branch": "main",
+  "truncated_by_github": false,
+  "max_files": 40,
+  "files": [
+    {
+      "path": "README.md",
+      "type": "readme",
+      "relevance": 100
+    },
+    {
+      "path": "skills/html-diagram/references/html-effectiveness/README.md",
+      "type": "readme",
+      "relevance": 100
+    },
+    {
+      "path": "skills/html-plan/references/html-effectiveness/README.md",
+      "type": "readme",
+      "relevance": 100
+    },
+    {
+      "path": "skills/html/references/html-effectiveness/README.md",
+      "type": "readme",
+      "relevance": 100
+    },
+    {
+      "path": "LICENSE",
+      "type": "license",
+      "relevance": 98
+    },
+    {
+      "path": "skills/html-diagram/references/html-effectiveness/LICENSE",
+      "type": "license",
+      "relevance": 98
+    },
+    {
+      "path": "skills/html-plan/references/html-effectiveness/LICENSE",
+      "type": "license",
+      "relevance": 98
+    },
+    {
+      "path": "skills/html/references/html-effectiveness/LICENSE",
+      "type": "license",
+      "relevance": 98
+    },
+    {
+      "path": "skills/html-diagram/references/html-effectiveness/01-exploration-code-approaches.html",
+      "type": "path",
+      "relevance": 64
+    },
+    {
+      "path": "skills/html-plan/references/html-effectiveness/01-exploration-code-approaches.html",
+      "type": "path",
+      "relevance": 64
+    },
+    {
+      "path": "skills/html/references/html-effectiveness/01-exploration-code-approaches.html",
+      "type": "path",
+      "relevance": 64
+    }
+  ]
+}

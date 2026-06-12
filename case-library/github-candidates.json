@@ -1,0 +1,413 @@
+{
+  "route": "case-library",
+  "version": "1.0.0",
+  "updated_at": "2026-06-12",
+  "source": "GitHub public repository search and official GitHub repository pages",
+  "policy": [
+    "These entries are design references, not factual evidence.",
+    "Do not clone large repositories by default.",
+    "Do not copy visual identity, logos, proprietary copy, or paid template assets.",
+    "Use only layout, component taxonomy, interaction pattern, motion pattern, and export workflow ideas.",
+    "Promote a candidate into a route-specific case only after visual review and license check."
+  ],
+  "candidates": [
+    {
+      "id": "github-frontend-001-twenty",
+      "name": "twentyhq/twenty",
+      "repository": "twentyhq/twenty",
+      "source_url": "https://github.com/twentyhq/twenty",
+      "route": "frontend-ui",
+      "purpose": "Reference polished CRM/workflow product UI for dense business objects, views, lists, and operational workspaces.",
+      "style": "modern CRM, object views, workflow surfaces, professional SaaS with high interaction density",
+      "tokens": [
+        "color.surface.paper",
+        "color.text.primary",
+        "space.card.gap",
+        "radius.panel"
+      ],
+      "template": "frontend-dashboard",
+      "score": {
+        "value": 88,
+        "rating": "candidate",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "CRM-like workflow tools",
+        "portfolio/company tracking",
+        "relationship or pipeline screens",
+        "object-detail and list-detail UI"
+      ],
+      "disabled_when": [
+        "static image report",
+        "formal PPTX",
+        "copying product-specific brand or copy"
+      ],
+      "notes": "Strong candidate for business-workflow information architecture. Use as layout and interaction reference only."
+    },
+    {
+      "id": "github-frontend-002-ant-design-pro",
+      "name": "ant-design/ant-design-pro",
+      "repository": "ant-design/ant-design-pro",
+      "source_url": "https://github.com/ant-design/ant-design-pro",
+      "route": "frontend-ui",
+      "purpose": "Reference enterprise admin dashboard structure, responsive layouts, page templates, tables, forms, and Ant Design workflow density.",
+      "style": "enterprise admin, Ant Design, structured page templates, dense but orderly business UI",
+      "tokens": [
+        "color.brand.primary",
+        "color.border.subtle",
+        "font.cn.body",
+        "chart.palette.categorical"
+      ],
+      "template": "frontend-dashboard",
+      "score": {
+        "value": 86,
+        "rating": "candidate",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "enterprise admin screens",
+        "filter-heavy pages",
+        "forms and tables",
+        "A-share internal workflow tools"
+      ],
+      "disabled_when": [
+        "bespoke editorial visual",
+        "single research card",
+        "blindly adopting Ant Design default theme"
+      ],
+      "notes": "Best used for enterprise structure and component taxonomy, then restyled through NERO tokens."
+    },
+    {
+      "id": "github-frontend-003-tremor",
+      "name": "tremorlabs/tremor",
+      "repository": "tremorlabs/tremor",
+      "source_url": "https://github.com/tremorlabs/tremor",
+      "route": "frontend-ui",
+      "purpose": "Reference data-rich dashboard components, metric cards, charts, and analytics interface patterns.",
+      "style": "analytics dashboard components, chart-forward, Tailwind-compatible, data-heavy UI",
+      "tokens": [
+        "chart.palette.categorical",
+        "color.text.secondary",
+        "color.surface.canvas",
+        "space.card.padding"
+      ],
+      "template": "frontend-dashboard",
+      "score": {
+        "value": 84,
+        "rating": "candidate",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "analytics dashboards",
+        "KPI panels",
+        "metric cards",
+        "financial or operating data screens"
+      ],
+      "disabled_when": [
+        "complex CRUD workflow",
+        "formal PPTX",
+        "using chart components without source/unit/period labels"
+      ],
+      "notes": "Good dashboard component reference. NERO chart evidence rules still override visual convenience."
+    },
+    {
+      "id": "github-frontend-004-next-shadcn-admin",
+      "name": "arhamkhnz/next-shadcn-admin-dashboard",
+      "repository": "arhamkhnz/next-shadcn-admin-dashboard",
+      "source_url": "https://github.com/arhamkhnz/next-shadcn-admin-dashboard",
+      "route": "frontend-ui",
+      "purpose": "Reference shadcn admin layouts, prebuilt dashboard variants, theme presets, and flexible sidebar/content structures.",
+      "style": "modern shadcn dashboard, configurable layouts, CRM/finance/analytics dashboard variants",
+      "tokens": [
+        "color.brand.primary",
+        "color.surface.paper",
+        "radius.card",
+        "shadow.hairline"
+      ],
+      "template": "frontend-dashboard",
+      "score": {
+        "value": 82,
+        "rating": "candidate",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "shadcn dashboard starters",
+        "admin layout inspiration",
+        "theme preset comparison",
+        "responsive sidebar design"
+      ],
+      "disabled_when": [
+        "copying decorative theme presets directly",
+        "needs strict Carbon or Ant Design enterprise controls"
+      ],
+      "notes": "Useful as a shadcn dashboard pattern source; strip decorative themes before NERO use."
+    },
+    {
+      "id": "github-frontend-005-effective-html",
+      "name": "plannotator/effective-html",
+      "repository": "plannotator/effective-html",
+      "source_url": "https://github.com/plannotator/effective-html",
+      "route": "frontend-ui",
+      "purpose": "Reference self-contained HTML artifacts, SVG-first architecture diagrams, visual plan pages, and single-file HTML explainers that can improve NERO frontend prototypes and web PPT drafts.",
+      "style": "self-contained HTML artifact, pragmatic visual plan, SVG-first architecture diagram, dark-mode aware single-file deliverable",
+      "tokens": [
+        "color.surface.canvas",
+        "color.text.primary",
+        "color.border.subtle",
+        "font.cn.body",
+        "space.section.gap"
+      ],
+      "template": "frontend-dashboard",
+      "score": {
+        "value": 84,
+        "rating": "candidate",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "single-file HTML explainers",
+        "architecture diagrams",
+        "visual plan pages",
+        "web PPT drafts",
+        "design-review artifacts",
+        "interactive concept prototypes"
+      ],
+      "disabled_when": [
+        "formal editable PPTX is required",
+        "enterprise component system is the primary need",
+        "copying upstream example pages or bundled sample data directly",
+        "exact financial facts, source notes, or regulatory conclusions have not been verified"
+      ],
+      "notes": "Use as a lightweight rule and example reference. Main repo is MIT; bundled html-effectiveness examples are Apache-2.0. Do not install as an independent default Skill.",
+      "snapshot_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/plannotator__effective-html/snapshot.json"
+    },
+    {
+      "id": "github-image-001-satori",
+      "name": "vercel/satori",
+      "repository": "vercel/satori",
+      "source_url": "https://github.com/vercel/satori",
+      "route": "image-report",
+      "purpose": "Reference JSX/HTML-to-SVG static rendering patterns for report cards, OG images, and long-image components.",
+      "style": "programmatic static image rendering, precise layout, font-aware SVG output",
+      "tokens": [
+        "font.cn.body",
+        "color.surface.canvas",
+        "space.report.pagePadding",
+        "color.text.primary"
+      ],
+      "template": "report-card-image",
+      "score": {
+        "value": 88,
+        "rating": "candidate",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "image report",
+        "research card",
+        "social card",
+        "static long-image layout"
+      ],
+      "disabled_when": [
+        "complex browser CSS required",
+        "interactive dashboard",
+        "generated visual contains evidence text"
+      ],
+      "notes": "Reference rendering workflow and constraints, not a final design style.",
+      "snapshot_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/vercel__satori/snapshot.json"
+    },
+    {
+      "id": "github-image-002-workers-og",
+      "name": "kvnang/workers-og",
+      "repository": "kvnang/workers-og",
+      "source_url": "https://github.com/kvnang/workers-og",
+      "route": "image-report",
+      "purpose": "Reference edge-style social card generation and browser-less image generation workflow.",
+      "style": "fast OG image generation, simple API, HTML-like authoring",
+      "tokens": [
+        "color.brand.primary",
+        "font.cn.body",
+        "space.report.blockGap"
+      ],
+      "template": "report-card-image",
+      "score": {
+        "value": 78,
+        "rating": "candidate",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "social cards",
+        "fast image generation workflow",
+        "lightweight rendering pipeline"
+      ],
+      "disabled_when": [
+        "formal long research image with complex chart composition",
+        "font-sensitive Chinese final output without QA"
+      ],
+      "notes": "Secondary candidate behind Satori for NERO; useful for API shape and rendering architecture."
+    },
+    {
+      "id": "github-ppt-001-pptxgenjs",
+      "name": "gitbrent/PptxGenJS",
+      "repository": "gitbrent/PptxGenJS",
+      "source_url": "https://github.com/gitbrent/PptxGenJS",
+      "route": "ppt",
+      "purpose": "Reference native PPTX generation patterns, slide masters, tables, charts, images, and editable output.",
+      "style": "programmatic PPTX, OOXML-compatible, editable business slides",
+      "tokens": [
+        "color.brand.primary",
+        "space.slide.marginX",
+        "font.cn.body",
+        "chart.palette.categorical"
+      ],
+      "template": "pptx-deck",
+      "score": {
+        "value": 90,
+        "rating": "candidate",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "native PPTX",
+        "banker decks",
+        "editable tables and charts",
+        "slide master systems"
+      ],
+      "disabled_when": [
+        "web-only presentation",
+        "video-first deliverable",
+        "using generated images as final text"
+      ],
+      "notes": "Primary PPT production reference for NERO."
+    },
+    {
+      "id": "github-ppt-002-slidev-themes",
+      "name": "slidevjs/themes",
+      "repository": "slidevjs/themes",
+      "source_url": "https://github.com/slidevjs/themes",
+      "route": "ppt",
+      "purpose": "Reference theme packaging and visual system structure for Slidev/web decks.",
+      "style": "themeable developer presentations, reusable theme packages, screenshots and packages",
+      "tokens": [
+        "color.brand.primary",
+        "font.en.body",
+        "motion.duration.base"
+      ],
+      "template": "pptx-deck",
+      "score": {
+        "value": 76,
+        "rating": "candidate",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "web-based slide themes",
+        "technical decks",
+        "theme packaging ideas"
+      ],
+      "disabled_when": [
+        "formal banker PPTX editing fidelity is required",
+        "Chinese financial tables dominate the deck"
+      ],
+      "notes": "Use for theme-system inspiration, not as default formal PPTX path."
+    },
+    {
+      "id": "github-ppt-003-guizang-ppt-skill",
+      "name": "op7418/guizang-ppt-skill",
+      "repository": "op7418/guizang-ppt-skill",
+      "source_url": "https://github.com/op7418/guizang-ppt-skill",
+      "route": "ppt",
+      "purpose": "Reference HTML web PPT design system for editorial-magazine and Swiss-style horizontal decks, screenshot handling, image-slot discipline, and browser-based presentation QA.",
+      "style": "single-file HTML deck, editorial magazine, Swiss International Style, screenshot backgrounds, strict layout rhythm",
+      "tokens": [
+        "color.surface.canvas",
+        "color.text.primary",
+        "space.slide.marginX",
+        "font.cn.display",
+        "motion.duration.base"
+      ],
+      "template": "web-ppt-html",
+      "score": {
+        "value": 88,
+        "rating": "candidate",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "web PPT",
+        "horizontal swipe deck",
+        "Swiss-style presentation",
+        "magazine-style presentation",
+        "screenshot-led visual talk",
+        "gpt-image-2 deck素材 brief"
+      ],
+      "disabled_when": [
+        "editable banker PPTX is required",
+        "formal client deliverable requires permissive assets",
+        "copying AGPL templates or scripts into NERO production",
+        "exact financial tables or regulatory wording would be embedded in generated images"
+      ],
+      "notes": "AGPL-3.0 upstream. Use as restricted design reference and NERO-native rule source only; do not clone or copy full templates/assets by default.",
+      "snapshot_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/op7418__guizang-ppt-skill/snapshot.json"
+    },
+    {
+      "id": "github-video-001-remotion",
+      "name": "remotion-dev/remotion",
+      "repository": "remotion-dev/remotion",
+      "source_url": "https://github.com/remotion-dev/remotion",
+      "route": "short-video",
+      "purpose": "Reference programmatic React video architecture, composition patterns, templates, showcase examples, and licensing boundary.",
+      "style": "React-based video generation, reusable components, CSS/SVG/Canvas/WebGL motion",
+      "tokens": [
+        "motion.duration.scene",
+        "color.brand.primary",
+        "font.cn.body",
+        "chart.palette.categorical"
+      ],
+      "template": "remotion-short-video",
+      "score": {
+        "value": 88,
+        "rating": "candidate",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "programmatic short videos",
+        "data explainers",
+        "animated report scenes",
+        "React motion components"
+      ],
+      "disabled_when": [
+        "commercial use before license check",
+        "unverified data",
+        "static PPTX is sufficient"
+      ],
+      "notes": "Primary short-video production reference. License check remains mandatory."
+    },
+    {
+      "id": "github-video-002-remotion-templates",
+      "name": "reactvideoeditor/remotion-templates",
+      "repository": "reactvideoeditor/remotion-templates",
+      "source_url": "https://github.com/reactvideoeditor/remotion-templates",
+      "route": "short-video",
+      "purpose": "Reference reusable Remotion components for effects, chart/data animations, and scene-level motion patterns.",
+      "style": "self-contained Remotion components, chart/data animations, reusable motion snippets",
+      "tokens": [
+        "motion.easing.enter",
+        "motion.duration.scene",
+        "chart.palette.categorical"
+      ],
+      "template": "remotion-short-video",
+      "score": {
+        "value": 80,
+        "rating": "candidate",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "scene-level motion patterns",
+        "animated chart examples",
+        "short-video visual effects"
+      ],
+      "disabled_when": [
+        "motion distracts from evidence",
+        "template animation makes chart unreadable",
+        "commercial/licensing status unclear"
+      ],
+      "notes": "Use only after frame-level readability checks."
+    }
+  ]
+}

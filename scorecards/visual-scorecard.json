@@ -1,0 +1,93 @@
+{
+  "version": "0.7.0",
+  "total_points": 100,
+  "pass_threshold": 82,
+  "review_threshold": 68,
+  "criteria": [
+    {
+      "id": "route_fit",
+      "label": "Route and deliverable fit",
+      "weight": 12,
+      "checks": [
+        "Correct route selected",
+        "Primary deliverable matches user request",
+        "Template choice is justified"
+      ]
+    },
+    {
+      "id": "brand_tokens",
+      "label": "Brand and token consistency",
+      "weight": 14,
+      "checks": [
+        "NERO design tokens applied or deliberate override stated",
+        "Brand tone is restrained, professional, and evidence-first",
+        "Palette is not a random one-hue look"
+      ]
+    },
+    {
+      "id": "layout_typography",
+      "label": "Layout and typography",
+      "weight": 14,
+      "checks": [
+        "Text does not overflow or collide",
+        "Chinese typography has adequate line-height",
+        "Grid, spacing, radius, and hierarchy are consistent"
+      ]
+    },
+    {
+      "id": "information_hierarchy",
+      "label": "Information hierarchy",
+      "weight": 14,
+      "checks": [
+        "Conclusion or key number appears early",
+        "Evidence blocks are scannable",
+        "Dense information remains readable"
+      ]
+    },
+    {
+      "id": "data_integrity",
+      "label": "Data and evidence integrity",
+      "weight": 16,
+      "checks": [
+        "Numbers include unit, period, denominator where relevant",
+        "Sources are visible or traceable",
+        "Placeholders and assumptions are clearly separated from verified facts"
+      ]
+    },
+    {
+      "id": "chart_quality",
+      "label": "Chart quality",
+      "weight": 12,
+      "checks": [
+        "Chart labels are readable at final size",
+        "Color palette supports comparison",
+        "Chart geometry does not distort data"
+      ]
+    },
+    {
+      "id": "output_qa",
+      "label": "Output QA",
+      "weight": 12,
+      "checks": [
+        "Output dimensions or slide/video geometry are explicit",
+        "Generated file exists when applicable",
+        "Desktop/mobile/frame/slide checks are documented where relevant"
+      ]
+    },
+    {
+      "id": "ai_image_boundary",
+      "label": "gpt-image-2 boundary",
+      "weight": 6,
+      "checks": [
+        "Generated imagery is visual素材 only",
+        "Exact text, numbers, charts, and source notes are overlaid by code",
+        "No generated text or figures are treated as evidence"
+      ]
+    }
+  ],
+  "ratings": {
+    "pass": "Ready or close to ready after normal final review.",
+    "review": "Usable direction, but requires design or evidence cleanup.",
+    "fail": "Do not deliver; fix core design or evidence issues first."
+  }
+}
