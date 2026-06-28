@@ -35,7 +35,7 @@ Use this rule when selecting examples, saving good outputs, or asking Codex to f
 - Prefer local snapshots over opening complete GitHub repositories. Read `snapshots/index.json`, then the matching `summary.md`, then `snapshot.json`; open `file-index.json` only when path-level context is needed.
 - Snapshots are lightweight references. They store README summaries, license notes, key file paths, and image URLs only. They must not contain cloned `.git` directories, `node_modules`, copied source files, or downloaded assets by default.
 - Snapshot image URLs are references for later visual review, not local assets and not evidence.
-- If NERO explicitly asks to save design assets, store them outside snapshots under `not-bundled-external-assets/<source>/` with a `manifest.json`, `usage.md`, source URL, license status, and allowed/disabled usage boundaries.
+- If NERO explicitly asks to save design assets, store them outside snapshots under `$NERO_DESIGN_TEAM_HOME/assets/external/<source>/` with a `manifest.json`, `usage.md`, source URL, license status, and allowed/disabled usage boundaries.
 - Restricted asset packs can support local reference, private drafts, and gpt-image-2 briefs, but must not become NERO brand assets or public/client-facing deliverable assets without separate license review.
 - If a snapshot is `blocked`, use its `blocked_reason` and `license-summary.md` to decide whether to retry, choose another candidate, or request a narrower source.
 - Do not treat a case as evidence for facts, figures, market claims, or regulatory conclusions.
@@ -69,3 +69,13 @@ Import boundaries:
 - Do not copy full source code.
 - Do not download images unless NERO explicitly asks for saved thumbnails.
 - Use the snapshot as design reference only; license review still controls copying or reuse.
+
+## v1.8 Presentation Harness Snapshots
+
+The following snapshots strengthen the presentation harness layer:
+
+- `alchaincyf/huashu-design`: HTML-native variants, brand asset protocol, visual QA, and motion/video pipeline reference.
+- `zarazhangrui/frontend-slides`: fixed 1920x1080 HTML deck style discovery and web PPT preview reference.
+- `hugohe3/ppt-master`: design spec/spec lock, PPT production pipeline, SVG QA, native editability, and AI image style-lock reference.
+
+Use these through `external-design-reference-boundaries.md`. They are not default runtimes, not NERO-owned asset packs, and not replacements for the Presentations plugin.

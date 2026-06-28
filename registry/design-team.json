@@ -1,9 +1,9 @@
 {
   "name": "NERO Design Team",
-  "version": "1.7.0",
+  "version": "2.0.0",
   "owner": "NERO",
-  "updated_at": "2026-06-12",
-  "purpose": "Reusable local design operating system for frontend UI, image reports, PPTX decks, web PPT/HTML decks, short videos, and AI-generated visual素材. It routes work through brand assets, design tokens, local templates, repository references, restricted local design assets, fused frontend/PPT/effective-html taste rules, project generators, project-local integration manifests, case library references, export validation, gpt-image-2 briefs, visual QA, visual scoring, production checks, and the global AGENTS.md 设计团队 strong-route rule.",
+  "updated_at": "2026-06-28",
+  "purpose": "Reusable local design operating system for frontend UI, image reports, PPTX decks, web PPT/HTML decks, short videos, AI-generated visual素材, and KAT x NDT presentation production chains. It routes work through brand assets, design tokens, local templates, repository references, restricted local design assets, fused frontend/PPT/effective-html taste rules, presentation harness references, KAT-to-NERO handoff contracts, presentation production packets, design specs, style locks, visual exploration, project generators, project-local integration manifests, case library references, export validation, gpt-image-2 briefs, visual QA, visual scoring, production checks, and the global AGENTS.md 设计团队 strong-route rule.",
   "global_trigger_route": {
     "status": "enabled",
     "source": "$CODEX_HOME/AGENTS.md",
@@ -11,7 +11,9 @@
     "trigger_phrases": [
       "设计团队",
       "NERO Design Team",
-      "NERO design team"
+      "NERO design team",
+      "ndt",
+      "NDT"
     ],
     "target_skill": "$CODEX_HOME/skills/nero-design-team/SKILL.md",
     "target_system_root": "$NERO_DESIGN_TEAM_HOME",
@@ -32,7 +34,7 @@
       "The phrase 设计团队 is used in a non-design context.",
       "The task is purely factual, legal, financial, database, evidence, or code-only work with no visual design surface."
     ],
-    "routing_rule": "When NERO mentions 设计团队 in a design-related request, Codex must prioritize $CODEX_HOME/skills/nero-design-team/SKILL.md and handle the task through NERO Design Team routing.",
+    "routing_rule": "When NERO mentions 设计团队 or standalone ndt/NDT in a design-related request, Codex must prioritize $CODEX_HOME/skills/nero-design-team/SKILL.md and handle the task through NERO Design Team routing.",
     "boundary": "This is a global Codex cooperation rule, not an OS-level keyword listener. Skill and MCP remain model/tool-mediated."
   },
   "brand_root": "$NERO_DESIGN_TEAM_HOME/brand",
@@ -42,7 +44,7 @@
   "generator_registry": "$NERO_DESIGN_TEAM_HOME/generators/templates.json",
   "project_integration": {
     "rule": "$NERO_DESIGN_TEAM_HOME/rules/project-integration.md",
-    "skill_reference": "$NERO_DESIGN_TEAM_HOME/skills/nero-design-team/references/project-integration.md",
+    "skill_reference": "$NERO_DESIGN_TEAM_HOME/skill-source/nero-design-team/references/project-integration.md",
     "manifest_template": "$NERO_DESIGN_TEAM_HOME/generators/project-manifest.template.json",
     "standard_manifest_path": ".nero-design/manifest.json",
     "project_local_dirs": [
@@ -53,8 +55,27 @@
     "init_command": "node $NERO_DESIGN_TEAM_HOME/scripts/nero-design.mjs init <route> --project-root <existing-project-dir>",
     "boundary": "NERO Design Team is the central design-system backend. Project-specific deliverables stay in each target project."
   },
+  "presentation_handoff_contract": {
+    "status": "enabled",
+    "version": "1.9.0",
+    "kat_role": "Content Director",
+    "nero_role": "Visual Director",
+    "formal_output_engine": "Presentations",
+    "kat_schema": "$KAT_HOME/src/schemas/json/presentation_handoff_contract.schema.json",
+    "kat_sample": "$KAT_HOME/templates/sample-project/design/pitch-deck.presentation_handoff_contract.json",
+    "kat_docs": "$KAT_HOME/docs/PRESENTATION_HANDOFF_CONTRACT.md",
+    "nero_rule": "$NERO_DESIGN_TEAM_HOME/rules/presentation-handoff-contract.md",
+    "skill_reference": "$NERO_DESIGN_TEAM_HOME/skill-source/nero-design-team/references/presentation-handoff-contract.md",
+    "routing_rule": "When a PPT task includes KAT, deck brief, slide plan, story spine, evidence-to-slide map, or presentation_handoff_contract, NERO Design Team reads the handoff rule before visual production and chooses the downstream PPT subroute from the contract output lane.",
+    "boundary": [
+      "KAT owns story, evidence, claims, slide intent, exact data/text boundaries, and return-to-KAT conditions.",
+      "NERO owns visual route, layout system, typography, chart treatment, image direction, visual QA, visual score, and production-check readiness.",
+      "NERO must return content issues to KAT instead of silently changing conclusions, exact figures, source notes, regulatory wording, or must-preserve action titles.",
+      "Presentations remains the default formal editable PPTX engine."
+    ]
+  },
   "case_library_root": "$NERO_DESIGN_TEAM_HOME/case-library",
-  "external_asset_root": "not-bundled-external-assets",
+  "external_asset_root": "$NERO_DESIGN_TEAM_HOME/assets/external",
   "scorecard_root": "$NERO_DESIGN_TEAM_HOME/scorecards",
   "validation_root": "$NERO_DESIGN_TEAM_HOME/validation",
   "production_check": "$NERO_DESIGN_TEAM_HOME/scripts/production-check.mjs",
@@ -78,6 +99,19 @@
       "nero_design_production_check"
     ]
   },
+  "oss_distribution": {
+    "version": "2.0.0",
+    "status": "local_package_ready",
+    "repository": "cyanask/nero-design-team",
+    "url": "https://github.com/cyanask/nero-design-team",
+    "local_package": "$NERO_DESIGN_TEAM_HOME",
+    "commit": "current checkout; set after commit",
+    "boundary": [
+      "Public package contains portable rules, tokens, templates, scripts, MCP-lite, Skill source, and lightweight snapshots.",
+      "Private/client assets, restricted external assets, local validation history, and real project deliverables stay outside the public repository.",
+      "Installers rewrite $NERO_DESIGN_TEAM_HOME and $CODEX_HOME placeholders at install time."
+    ]
+  },
   "fused_reference_skills": [
     {
       "name": "impeccable",
@@ -86,9 +120,9 @@
       "source_url": "https://github.com/pbakaus/impeccable",
       "license": "Apache-2.0",
       "fused_rules": [
-        "$NERO_DESIGN_TEAM_HOME/skills/nero-design-team/references/frontend-ui.md",
-        "$NERO_DESIGN_TEAM_HOME/skills/nero-design-team/references/visual-qa.md",
-        "$NERO_DESIGN_TEAM_HOME/skills/nero-design-team/references/repo-registry.md"
+        "$NERO_DESIGN_TEAM_HOME/skill-source/nero-design-team/references/frontend-ui.md",
+        "$NERO_DESIGN_TEAM_HOME/skill-source/nero-design-team/references/visual-qa.md",
+        "$NERO_DESIGN_TEAM_HOME/skill-source/nero-design-team/references/repo-registry.md"
       ],
       "use_for": "Detector-style frontend design review, anti-pattern checklist, deterministic UI QA, and final polish.",
       "avoid_for": "Default npm install, hooks, live mode, browser injection, or replacing NERO visual judgment.",
@@ -101,9 +135,9 @@
       "source_url": "https://github.com/Leonxlnx/taste-skill",
       "license": "MIT",
       "fused_rules": [
-        "$NERO_DESIGN_TEAM_HOME/skills/nero-design-team/references/frontend-ui.md",
-        "$NERO_DESIGN_TEAM_HOME/skills/nero-design-team/references/visual-qa.md",
-        "$NERO_DESIGN_TEAM_HOME/skills/nero-design-team/references/repo-registry.md"
+        "$NERO_DESIGN_TEAM_HOME/skill-source/nero-design-team/references/frontend-ui.md",
+        "$NERO_DESIGN_TEAM_HOME/skill-source/nero-design-team/references/visual-qa.md",
+        "$NERO_DESIGN_TEAM_HOME/skill-source/nero-design-team/references/repo-registry.md"
       ],
       "use_for": "Brief inference, anti-default discipline, visual-strength calibration, and redesign pre-flight checks.",
       "avoid_for": "Standalone default routing, full skill transplant, or pushing NERO dashboards toward marketing or portfolio aesthetics by default.",
@@ -123,15 +157,79 @@
         "$NERO_DESIGN_TEAM_HOME/rules/web-ppt.md"
       ],
       "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/plannotator__effective-html/snapshot.json",
-      "local_asset_pack": "not-bundled-reference: effective-html",
+      "local_asset_pack": "$NERO_DESIGN_TEAM_HOME/assets/external/effective-html/manifest.json",
       "use_for": "Self-contained HTML artifacts, SVG-first architecture diagrams, visual plan pages, single-file explainers, and HTML web PPT diagram pages.",
       "avoid_for": "Independent default routing, full skill installation by default, direct upstream example copying, or replacing NERO tokens and QA gates.",
       "deletion_policy": "No standalone skill install is created in v1.6. Keep as an attributed fused reference only."
     },
     {
+      "name": "huashu-design",
+      "status": "fused_into_nero_presentation_harness_rules_v1_8",
+      "source_repo": "alchaincyf/huashu-design",
+      "source_url": "https://github.com/alchaincyf/huashu-design",
+      "license": "MIT",
+      "license_status": "permissive",
+      "fused_rules": [
+        "$NERO_DESIGN_TEAM_HOME/rules/html-native-harness.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/motion-video-harness.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/external-design-reference-boundaries.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/web-ppt.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/short-video.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/visual-qa.md"
+      ],
+      "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/alchaincyf__huashu-design/snapshot.json",
+      "use_for": "HTML-native multi-format design harness ideas, design variants, brand asset protocol, visual QA, editable deck thinking, and motion/video pipeline planning.",
+      "avoid_for": "Default TTS, audio asset copying, watermarks, provider/API key setup, full upstream asset migration, or replacing NERO route control.",
+      "gpt_image_2_boundary": "May inform visual素材 briefs and style exploration; generated images cannot carry exact text, figures, tables, chart labels, source notes, or regulatory conclusions.",
+      "formal_ppt_boundary": "Does not replace Presentations. Formal editable PPTX remains Presentations-first.",
+      "deletion_policy": "No standalone skill install or upstream asset migration is created in v1.8. Keep as an attributed fused reference only."
+    },
+    {
+      "name": "frontend-slides",
+      "status": "fused_into_nero_web_ppt_style_discovery_rules_v1_8",
+      "source_repo": "zarazhangrui/frontend-slides",
+      "source_url": "https://github.com/zarazhangrui/frontend-slides",
+      "license": "MIT",
+      "license_status": "permissive",
+      "fused_rules": [
+        "$NERO_DESIGN_TEAM_HOME/rules/html-deck-style-discovery.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/web-ppt.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/ppt.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/visual-qa.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/external-design-reference-boundaries.md"
+      ],
+      "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/zarazhangrui__frontend-slides/snapshot.json",
+      "use_for": "1920x1080 fixed-stage HTML deck production, three-style previews, web PPT style discovery, lightweight template indexing, and browser-first QA.",
+      "avoid_for": "Formal PPTX replacement, default Vercel/GitHub Pages deployment, copying bold-template code wholesale, or dense banker appendix production.",
+      "gpt_image_2_boundary": "Can provide art-direction context for web deck imagery only; exact slide text and data remain HTML/PPT layers.",
+      "formal_ppt_boundary": "Style-discovery output can inform a formal deck, but final formal PPTX still routes to Presentations.",
+      "deletion_policy": "No full template pack copy or deployment configuration is created in v1.8. Keep as an attributed fused reference only."
+    },
+    {
+      "name": "ppt-master",
+      "status": "fused_into_nero_ppt_production_harness_rules_v1_8",
+      "source_repo": "hugohe3/ppt-master",
+      "source_url": "https://github.com/hugohe3/ppt-master",
+      "license": "MIT",
+      "license_status": "permissive",
+      "fused_rules": [
+        "$NERO_DESIGN_TEAM_HOME/rules/ppt-production-harness.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/ppt.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/ai-image-generation.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/visual-qa.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/external-design-reference-boundaries.md"
+      ],
+      "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/hugohe3__ppt-master/snapshot.json",
+      "use_for": "Design spec/spec lock discipline, PPT production pipeline, SVG QA, native editability checks, and AI image style-lock boundaries.",
+      "avoid_for": "Replacing Presentations as formal PPTX primary route, installing heavy dependencies, running image generation/TTS/image search/watermark removal by default, or copying large SVG/PPTX examples.",
+      "gpt_image_2_boundary": "May inform style-lock briefs for covers, sections, and scene素材 only; generated images cannot contain final text, numbers, tables, chart labels, or conclusions.",
+      "formal_ppt_boundary": "Formal editable PPTX remains Presentations-first; PptxGenJS remains legacy fallback only.",
+      "deletion_policy": "No standalone runtime install, dependency install, or example pack copy is created in v1.8. Keep as an attributed fused reference only."
+    },
+    {
       "name": "ppt-design-reference",
       "status": "fused_into_nero_rules",
-      "source_path": "$CODEX_HOME/skills/ppt-design-reference",
+      "source_path": "not-bundled-legacy-skill: ppt-design-reference",
       "fused_rules": [
         "$NERO_DESIGN_TEAM_HOME/rules/ppt-business-design.md"
       ],
@@ -140,7 +238,7 @@
     {
       "name": "guizang-ppt-skill",
       "status": "fused_into_nero_web_ppt_rules_v1_4",
-      "source_path": "$CODEX_HOME/skills/guizang-ppt-skill",
+      "source_path": "not-bundled-legacy-skill: guizang-ppt-skill",
       "source_repo": "op7418/guizang-ppt-skill",
       "source_url": "https://github.com/op7418/guizang-ppt-skill",
       "license": "AGPL-3.0",
@@ -150,7 +248,7 @@
         "$NERO_DESIGN_TEAM_HOME/scripts/validate-web-ppt.mjs"
       ],
       "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/op7418__guizang-ppt-skill/snapshot.json",
-      "local_asset_pack": "not-bundled-restricted-reference: guizang-ppt-skill",
+      "local_asset_pack": "$NERO_DESIGN_TEAM_HOME/assets/external/guizang-ppt-skill/manifest.json",
       "use_for": "Fused web PPT HTML rules for magazine-style and Swiss-style horizontal swipe decks, screenshot adaptation, image-slot discipline, map/location slides, and NERO-native browser QA.",
       "avoid_for": "Formal editable PPTX, dense banker appendix, copying AGPL templates/scripts into NERO production, or using restricted assets in client-facing deliverables without license review.",
       "deletion_policy": "Do not delete old skill automatically. Keep as read-only reference; NERO Design Team remains the entrypoint."
@@ -249,7 +347,7 @@
           "license": "MIT",
           "bundled_examples_license": "Apache-2.0",
           "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/plannotator__effective-html/snapshot.json",
-          "local_asset_pack": "not-bundled-reference: effective-html"
+          "local_asset_pack": "$NERO_DESIGN_TEAM_HOME/assets/external/effective-html/manifest.json"
         }
       ],
       "applies_to": [
@@ -410,7 +508,7 @@
           "avoid_for": "Formal editable PPTX, dense banker appendix, direct template/script copying, or restricted asset use in client-facing deliverables without license review.",
           "license": "AGPL-3.0",
           "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/op7418__guizang-ppt-skill/snapshot.json",
-          "local_asset_pack": "not-bundled-restricted-reference: guizang-ppt-skill"
+          "local_asset_pack": "$NERO_DESIGN_TEAM_HOME/assets/external/guizang-ppt-skill/manifest.json"
         },
         {
           "name": "plannotator/effective-html",
@@ -420,7 +518,7 @@
           "license": "MIT",
           "bundled_examples_license": "Apache-2.0",
           "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/plannotator__effective-html/snapshot.json",
-          "local_asset_pack": "not-bundled-reference: effective-html"
+          "local_asset_pack": "$NERO_DESIGN_TEAM_HOME/assets/external/effective-html/manifest.json"
         },
         {
           "name": "gitbrent/PptxGenJS",
@@ -447,17 +545,17 @@
         "single static image is enough",
         "short video is primary"
       ],
-    "call_rules": [
-      "NERO Design Team is the PPT entrypoint and controller.",
-      "Choose one PPT subroute before production: formal-pptx, template-following, ppt-design-audit, web-ppt-html, or legacy-local-pptx.",
-      "Default formal PPTX to Presentations artifact-tool.",
-      "Use `ppt-business-design.md` for commercial deck direction and quality gates.",
-      "Use `web-ppt.md` for HTML/web PPT decks, especially Guizang-inspired editorial and Swiss-style decks.",
-      "Use `effective-html.md` when an HTML/web PPT deck needs a self-contained diagram, visual plan, SVG-first architecture page, or no-build single-file artifact.",
-      "For Swiss-style web PPT, run `scripts/validate-web-ppt.mjs <index.html> --mode swiss` before delivery.",
-      "Read external asset manifest before using any local third-party design asset.",
-      "Use PptxGenJS only as a legacy local fallback.",
-      "Place exact text, figures, charts, tables, and source notes by code."
+      "call_rules": [
+        "NERO Design Team is the PPT entrypoint and controller.",
+        "Choose one PPT subroute before production: formal-pptx, template-following, ppt-design-audit, web-ppt-html, or legacy-local-pptx.",
+        "Default formal PPTX to Presentations artifact-tool.",
+        "Use `ppt-business-design.md` for commercial deck direction and quality gates.",
+        "Use `web-ppt.md` for HTML/web PPT decks, especially Guizang-inspired editorial and Swiss-style decks.",
+        "Use `effective-html.md` when an HTML/web PPT deck needs a self-contained diagram, visual plan, SVG-first architecture page, or no-build single-file artifact.",
+        "For Swiss-style web PPT, run `scripts/validate-web-ppt.mjs <index.html> --mode swiss` before delivery.",
+        "Read external asset manifest before using any local third-party design asset.",
+        "Use PptxGenJS only as a legacy local fallback.",
+        "Place exact text, figures, charts, tables, and source notes by code."
       ],
       "gpt_image_2_boundary": "Generated visuals can support covers and section dividers but never replace PPTX text, tables, charts, or financial figures."
     },
@@ -581,5 +679,40 @@
     "Run production-check.mjs before calling a complete artifact delivery-ready.",
     "Archive or reference the case-library record when a reusable pattern is created.",
     "Report brand, tokens, template, gpt-image-2 usage, export files, QA, score, and case-library status."
-  ]
+  ],
+  "presentation_production_chain": {
+    "status": "enabled",
+    "version": "2.0.0",
+    "name": "KAT x NDT Presentation Production Chain",
+    "kat_role": "Content Director",
+    "nero_role": "Visual Director",
+    "formal_output_engine": "Presentations",
+    "kat_artifacts": {
+      "presentation_handoff_contract": "$KAT_HOME/src/schemas/json/presentation_handoff_contract.schema.json",
+      "slide_claim_map": "$KAT_HOME/src/schemas/json/slide_claim_map.schema.json",
+      "narrative_variants": "$KAT_HOME/src/schemas/json/narrative_variants.schema.json",
+      "content_freeze_gate": "$KAT_HOME/src/schemas/json/content_freeze_gate.schema.json",
+      "return_to_kat_request": "$KAT_HOME/src/schemas/json/return_to_kat_request.schema.json",
+      "presentation_production_packet": "$KAT_HOME/src/schemas/json/presentation_production_packet.schema.json"
+    },
+    "ndt_artifacts": {
+      "design_spec_template": "$NERO_DESIGN_TEAM_HOME/templates/presentation-production-chain/design_spec.json",
+      "style_lock_template": "$NERO_DESIGN_TEAM_HOME/templates/presentation-production-chain/style_lock.json",
+      "visual_exploration_template": "$NERO_DESIGN_TEAM_HOME/templates/presentation-production-chain/visual_exploration.json",
+      "production_check_manifest_template": "$NERO_DESIGN_TEAM_HOME/templates/presentation-production-chain/production-check-manifest.json"
+    },
+    "rules": [
+      "$NERO_DESIGN_TEAM_HOME/rules/presentation-production-chain.md",
+      "$NERO_DESIGN_TEAM_HOME/rules/presentation-design-spec.md",
+      "$NERO_DESIGN_TEAM_HOME/rules/presentation-handoff-contract.md",
+      "$NERO_DESIGN_TEAM_HOME/rules/ppt-production-harness.md"
+    ],
+    "routing_rule": "When a task mentions KAT x NDT production chain, production packet, slide claim map, narrative variants, content freeze gate, return-to-KAT, design spec, style lock, three-direction exploration, or formal PPTX production readiness, use the presentation-production-chain route before final output.",
+    "boundary": [
+      "KAT owns content, claims, evidence, exact text/data, source notes, and freeze gates.",
+      "NERO Design Team owns visual route, design spec, style lock, image direction, QA, scoring, production-check, and case archive readiness.",
+      "Presentations remains the formal editable PPTX output engine.",
+      "gpt-image-2 may create visual素材 only and cannot carry exact text, numbers, tables, chart labels, source notes, or regulatory conclusions."
+    ]
+  }
 }

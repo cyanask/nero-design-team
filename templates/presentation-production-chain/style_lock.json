@@ -1,0 +1,33 @@
+{
+  "schema_version": "2.0.0",
+  "artifact_id": "pitch-deck",
+  "style_lock_id": "pitch-deck-style-lock",
+  "status": "draft",
+  "locked_after": "visual direction selection",
+  "tokens": {
+    "brand_primary": "color.brand.primary",
+    "text_primary": "color.text.primary",
+    "chart_palette": "chart.palette.categorical",
+    "slide_margin": "space.slide.marginX"
+  },
+  "typography_lock": {
+    "action_title": "short, evidence-bearing, no decorative line breaks that change meaning",
+    "body": "dense but readable Chinese body text",
+    "source_note": "visible or traceable, never generated inside an image"
+  },
+  "layout_lock": {
+    "max_nested_panels": 1,
+    "chart_label_min_size": 12,
+    "appendix_density": "D4 allowed only with source and unit clarity"
+  },
+  "image_lock": {
+    "allowed": ["cover background", "chapter visual", "industry concept scene"],
+    "forbidden": ["exact Chinese text", "numbers", "tables", "chart labels", "source notes", "regulatory conclusions"]
+  },
+  "requires_return_to_kat": [
+    "change conclusion",
+    "change exact number",
+    "remove source note",
+    "rewrite regulatory wording"
+  ]
+}

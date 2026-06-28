@@ -37,6 +37,18 @@ Use this gate for self-contained HTML explainers, architecture diagrams, visual 
 - Upstream sample data, product names, copywriting, and visual identity are removed.
 - Exact facts, figures, source notes, and regulatory conclusions remain verified HTML text, not raster images.
 
+## Presentation Harness Checks
+
+Use this gate when `html-native-harness.md`, `html-deck-style-discovery.md`, or `ppt-production-harness.md` materially influenced an output.
+
+- External references are reported as reference-only, snapshot, or restricted asset, not as NERO-owned material.
+- Substantial decks have a spec lock or a stated reason for skipping it.
+- Fixed-stage HTML decks use a 16:9 stage such as 1920x1080 and scale the full stage as one unit.
+- Style-discovery previews compare the same content skeleton across directions.
+- Formal PPTX outputs preserve required native editability for titles, body text, figures, tables, chart labels, and source notes where feasible.
+- SVGs do not hide exact financial numbers, regulatory conclusions, source notes, or body text as uneditable paths unless explicitly accepted.
+- No upstream template pack, audio/video media, watermark, demo asset, or provider config was copied into the deliverable by default.
+
 ## Frontend Taste Pre-Flight
 
 Use this gate for `frontend-ui` and frontend-oriented `visual-audit` tasks. It fuses NERO-calibrated Impeccable/Taste checks without installing or invoking those external tools.
@@ -98,3 +110,13 @@ Acceptance guidance:
 - Body text, transaction fields, table cells, and workflow notes should target 13-15px or larger.
 - Company names, key amounts, and regulatory status should be 16px+ when feasible.
 - If typography fails, reduce repeated fields, split pages, or switch from sparse tables to tombstones/ledgers instead of shrinking text.
+
+## HTML Deck Contact Sheet And Publish QA
+
+- Render high-risk slides and a full contact sheet before declaring an HTML deck ready.
+- High-risk pages include cover, management conclusion, table-heavy case pages, evidence maps, path-judgment matrices, work-plan pages, chapter dividers, dark statement pages, and closing pages.
+- Check title wrapping, especially one-character second lines in Chinese headings.
+- Check body-bottom pressure, table readability, footer/source overlap, logo collision, and background-image interference.
+- For fixed-stage decks, verify the stage scales as one unit and does not reflow body cards independently.
+- For published GitHub Pages or public HTML, run an online assertion after deployment: HTTP 200, expected title text, expected CSS markers, expected asset paths, and no stale pre-update markers.
+- Keep screenshots/contact sheets as project-local QA evidence, not global reusable content unless anonymized.

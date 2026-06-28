@@ -1,0 +1,36 @@
+{
+  "schema_version": "2.0.0",
+  "artifact_id": "pitch-deck",
+  "design_spec_id": "pitch-deck-design-spec",
+  "route": "ppt",
+  "ppt_subroute": "formal-pptx",
+  "formal_output_engine": "Presentations",
+  "visual_owner": "NERO Design Team",
+  "content_owner": "KAT",
+  "audience": "投资人 / 董事会 / 投行业务复核",
+  "visual_posture": "restrained banker deck with high information density",
+  "page_system": {
+    "slide_size": "16:9",
+    "layout_families": ["cover", "section", "evidence-summary", "chart-analysis", "appendix"],
+    "density": "D3",
+    "grid": "12-column presentation grid with stable margins"
+  },
+  "typography": {
+    "action_title": "font.cn.display",
+    "body": "font.cn.body",
+    "number": "font.number.tabular"
+  },
+  "tokens": {
+    "color": ["color.brand.primary", "color.text.primary", "chart.palette.categorical"],
+    "space": ["space.slide.marginX", "space.card.padding"],
+    "radius": ["radius.card.sm"]
+  },
+  "chart_treatment": "Readable labels, explicit units, restrained categorical palette, no decorative distortion.",
+  "image_treatment": "gpt-image-2 may create cover/section visuals only; exact text and data remain editable PPT/HTML layers.",
+  "content_boundaries": {
+    "must_read": ["slide_claim_map", "content_freeze_gate"],
+    "must_not_change": ["conclusions", "exact numbers", "source notes", "regulatory wording"]
+  },
+  "qa_requirements": ["visual-qa", "visual-score", "production-check", "pptx-preview-check"],
+  "notes": ["Template file. Replace placeholder audience and route with the real packet context."]
+}

@@ -14,8 +14,16 @@ Use this rule before treating a generated design artifact as production-ready or
 - `visual_qa_manifest`: path to a visual QA manifest.
 - `visual_score_manifest`: path to a visual score manifest.
 - `expected_outputs`: optional list of generated files with `path`, `label`, and `min_bytes`.
+- `office_outputs`: optional list of formal Office files to inspect with the local OfficeCLI adapter. Each item may include `path`, `label`, `qa_dir`, `required_preview`, and `block_on_officecli`.
 - `case_library_record`: optional route case index used or updated.
 - `gpt_image_2_used`: boolean.
+- `presentation_chain_required`: boolean. Use for KAT x NDT PPT production-chain checks.
+- `presentation_production_packet`: required for PPT production-chain readiness.
+- `design_spec`: required for PPT production-chain readiness.
+- `style_lock`: required for PPT production-chain readiness.
+- `visual_exploration`: required for PPT production-chain readiness.
+
+Relative path fields are resolved from the production manifest file's directory. Absolute paths are used as-is.
 
 ## Checks
 
@@ -26,6 +34,8 @@ Use this rule before treating a generated design artifact as production-ready or
 - Visual QA script passes.
 - Visual score script passes and returns pass/review/fail.
 - Expected output files exist and meet minimum size when declared.
+- Office output files exist when declared. OfficeCLI QA and preview reports are attached when the local adapter is available; missing OfficeCLI is nonblocking unless `block_on_officecli` is true.
+- For PPT production-chain work, production packet, design spec, style lock, and visual exploration files exist and parse as JSON.
 - Case library record exists when declared.
 
 ## Delivery Boundary
@@ -35,5 +45,7 @@ Use this rule before treating a generated design artifact as production-ready or
 - `fail`: blocked until failed checks are fixed.
 
 High visual score never overrides unverified facts, figures, sources, or regulatory wording.
+
+For KAT x NDT presentation production, high visual score also never overrides missing content freeze, missing style lock, or unresolved return-to-KAT issues.
 
 Project production outputs should remain in the project directory. Only lightweight case summaries or reusable patterns should be promoted back to `design-team/`.

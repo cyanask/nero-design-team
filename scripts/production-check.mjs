@@ -4,7 +4,7 @@ import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const codexHome = process.env.CODEX_HOME || path.join(process.env.HOME || "~", ".codex");
+const officeCliAdapter = process.env.NERO_OFFICECLI_ADAPTER || "";
 
 const requiredTokenOutputs = [
   "build/css/nero-tokens.css",
@@ -34,17 +34,8 @@ async function readJson(filePath) {
   return JSON.parse(await fs.readFile(filePath, "utf8"));
 }
 
-function expandPortablePath(filePath) {
-  if (!filePath) return filePath;
-  return filePath
-    .replaceAll("$NERO_DESIGN_TEAM_HOME", root)
-    .replaceAll("${NERO_DESIGN_TEAM_HOME}", root)
-    .replaceAll("$CODEX_HOME", codexHome)
-    .replaceAll("${CODEX_HOME}", codexHome);
-}
-
-function resolvePortablePath(filePath) {
-  return path.resolve(expandPortablePath(filePath));
+function resolveFrom(baseDir, filePath) {
+  return path.isAbsolute(filePath) ? filePath : path.resolve(baseDir, filePath);
 }
 
 function runNode(script, args) {
@@ -57,6 +48,72 @@ function runNode(script, args) {
     status: result.status,
     stdout: result.stdout.trim(),
     stderr: result.stderr.trim()
+  };
+}
+
+function slug(value) {
+  return String(value || "office-output")
+    .replace(/[^a-z0-9._-]+/gi, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80) || "office-output";
+}
+
+async function jsonExistsAndParses(filePath) {
+  if (!(await exists(filePath))) {
+    return { ok: false, detail: filePath };
+  }
+  try {
+    await readJson(filePath);
+    return { ok: true, detail: filePath };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    return { ok: false, detail: `${filePath}: ${message}` };
+  }
+}
+
+async function runOfficeCliAdapter(action, filePath, outDir) {
+  if (!officeCliAdapter) {
+    return {
+      ok: true,
+      status: "unavailable",
+      detail: "OfficeCLI adapter unavailable: set NERO_OFFICECLI_ADAPTER to enable Office output QA."
+    };
+  }
+
+  if (!(await exists(officeCliAdapter))) {
+    return {
+      ok: true,
+      status: "unavailable",
+      detail: `OfficeCLI adapter unavailable: ${officeCliAdapter}`
+    };
+  }
+
+  await fs.mkdir(outDir, { recursive: true });
+  const result = spawnSync(process.execPath, [officeCliAdapter, action, filePath, "--out", outDir], {
+    cwd: root,
+    encoding: "utf8",
+    env: { ...process.env, OFFICECLI_SKIP_UPDATE: "1" }
+  });
+  const stdout = result.stdout.trim();
+  const stderr = result.stderr.trim();
+
+  let parsed = null;
+  try {
+    parsed = stdout ? JSON.parse(stdout) : null;
+  } catch {
+    return {
+      ok: false,
+      status: "failed",
+      detail: stderr || stdout || "OfficeCLI adapter did not return JSON"
+    };
+  }
+
+  const status = parsed?.status || (result.status === 0 ? "pass" : "failed");
+  return {
+    ok: result.status === 0 && status !== "failed",
+    status,
+    detail: `${status}; report ${path.join(outDir, `officecli_${action}_report.json`)}`,
+    report: parsed
   };
 }
 
@@ -97,7 +154,9 @@ async function main() {
     throw new Error(usage());
   }
 
-  const manifest = await readJson(resolvePortablePath(manifestPath));
+  const resolvedManifestPath = path.resolve(manifestPath);
+  const manifestDir = path.dirname(resolvedManifestPath);
+  const manifest = await readJson(resolvedManifestPath);
   const checks = [];
   const push = (ok, label, detail = "") => checks.push({ ok, label, detail });
 
@@ -112,7 +171,7 @@ async function main() {
   if (!manifest.project_manifest) {
     push(false, "project manifest is declared");
   } else {
-    const projectManifestPath = resolvePortablePath(manifest.project_manifest);
+    const projectManifestPath = resolveFrom(manifestDir, manifest.project_manifest);
     const projectManifestExists = await exists(projectManifestPath);
     push(projectManifestExists, "project manifest exists", projectManifestPath);
     if (projectManifestExists) {
@@ -132,10 +191,31 @@ async function main() {
     }
   }
 
+  const presentationChainRequired =
+    manifest.presentation_chain_required === true ||
+    ["ppt", "formal-pptx", "template-following", "pitchbook-client-material"].includes(manifest.route);
+
+  if (presentationChainRequired) {
+    const chainFields = [
+      ["presentation_production_packet", "presentation production packet"],
+      ["design_spec", "presentation design spec"],
+      ["style_lock", "presentation style lock"],
+      ["visual_exploration", "presentation visual exploration"]
+    ];
+    for (const [field, label] of chainFields) {
+      if (!manifest[field]) {
+        push(false, `${label} is declared`);
+        continue;
+      }
+      const result = await jsonExistsAndParses(resolveFrom(manifestDir, manifest[field]));
+      push(result.ok, `${label} exists and parses`, result.detail);
+    }
+  }
+
   if (!manifest.visual_qa_manifest) {
     push(false, "visual QA manifest is declared");
   } else {
-    const qaManifestPath = resolvePortablePath(manifest.visual_qa_manifest);
+    const qaManifestPath = resolveFrom(manifestDir, manifest.visual_qa_manifest);
     const qaResult = runNode(path.join(root, "scripts", "visual-qa.mjs"), [qaManifestPath]);
     push(qaResult.ok, "visual QA passes", qaResult.ok ? qaResult.stdout.split("\n")[0] : qaResult.stderr || qaResult.stdout);
   }
@@ -144,7 +224,7 @@ async function main() {
   if (!manifest.visual_score_manifest) {
     push(false, "visual score manifest is declared");
   } else {
-    const scoreManifestPath = resolvePortablePath(manifest.visual_score_manifest);
+    const scoreManifestPath = resolveFrom(manifestDir, manifest.visual_score_manifest);
     const scoreResult = runNode(path.join(root, "scripts", "score-visual.mjs"), [scoreManifestPath]);
     const summary = await scoreSummary(scoreManifestPath);
     rating = summary.rating;
@@ -152,7 +232,7 @@ async function main() {
   }
 
   for (const output of manifest.expected_outputs || []) {
-    const outputPath = resolvePortablePath(output.path);
+    const outputPath = resolveFrom(manifestDir, output.path);
     const outputExists = await exists(outputPath);
     push(outputExists, `expected output exists: ${output.label || path.basename(outputPath)}`, outputPath);
     if (outputExists && output.min_bytes) {
@@ -161,8 +241,34 @@ async function main() {
     }
   }
 
+  for (const output of manifest.office_outputs || []) {
+    const outputPath = resolveFrom(manifestDir, output.path);
+    const label = output.label || path.basename(outputPath);
+    const outputExists = await exists(outputPath);
+    push(outputExists, `office output exists: ${label}`, outputPath);
+    if (!outputExists) continue;
+
+    const qaDir = output.qa_dir
+      ? resolveFrom(manifestDir, output.qa_dir)
+      : path.join(manifestDir, "officecli-qa", slug(label));
+    const qaResult = await runOfficeCliAdapter("qa", outputPath, qaDir);
+    const qaOk = output.block_on_officecli
+      ? qaResult.status === "pass"
+      : qaResult.ok || qaResult.status === "unavailable";
+    push(qaOk, `office output QA: ${label}`, qaResult.detail);
+
+    if (output.required_preview) {
+      const previewResult = await runOfficeCliAdapter("preview", outputPath, qaDir);
+      const previewOk = output.block_on_officecli
+        ? previewResult.status === "pass"
+        : previewResult.ok || previewResult.status === "unavailable";
+      push(previewOk, `office output preview: ${label}`, previewResult.detail);
+    }
+  }
+
   if (manifest.case_library_record) {
-    push(await exists(resolvePortablePath(manifest.case_library_record)), "case library record exists", manifest.case_library_record);
+    const caseLibraryPath = resolveFrom(manifestDir, manifest.case_library_record);
+    push(await exists(caseLibraryPath), "case library record exists", caseLibraryPath);
   }
 
   const failed = checks.filter((check) => !check.ok);

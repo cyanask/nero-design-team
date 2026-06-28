@@ -1,0 +1,15 @@
+{
+  "artifact": "sample presentation production chain",
+  "route": "ppt",
+  "presentation_chain_required": true,
+  "project_manifest": "$NERO_DESIGN_TEAM_HOME/templates/presentation-production-chain/project-manifest.json",
+  "visual_qa_manifest": "$NERO_DESIGN_TEAM_HOME/scripts/sample-visual-qa-manifest.json",
+  "visual_score_manifest": "$NERO_DESIGN_TEAM_HOME/scorecards/sample-score-manifest.json",
+  "presentation_production_packet": "$KAT_HOME/templates/sample-project/final/pitch-deck.presentation_production_packet.json",
+  "design_spec": "$NERO_DESIGN_TEAM_HOME/templates/presentation-production-chain/design_spec.json",
+  "style_lock": "$NERO_DESIGN_TEAM_HOME/templates/presentation-production-chain/style_lock.json",
+  "visual_exploration": "$NERO_DESIGN_TEAM_HOME/templates/presentation-production-chain/visual_exploration.json",
+  "expected_outputs": [],
+  "case_library_record": "$NERO_DESIGN_TEAM_HOME/case-library/ppt.json",
+  "gpt_image_2_used": false
+}

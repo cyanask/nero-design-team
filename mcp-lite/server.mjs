@@ -14,7 +14,7 @@ const snapshotsIndexPath = path.join(caseLibraryRoot, "snapshots", "index.json")
 const candidatesPath = path.join(caseLibraryRoot, "github-candidates.json");
 const templateRegistryPath = path.join(root, "generators", "templates.json");
 
-const version = "1.7.0";
+const version = "2.0.0";
 const allowedRoutes = [
   "frontend-ui",
   "image-report",
@@ -29,7 +29,7 @@ const allowedRoutes = [
   "production-check"
 ];
 
-const artifactRoutes = ["frontend-ui", "image-report", "ppt", "short-video", "ai-image-generation"];
+const artifactRoutes = ["frontend-ui", "image-report", "ppt", "presentation-production-chain", "short-video", "ai-image-generation"];
 const tokenFiles = {
   colors: "colors.json",
   typography: "typography.json",
@@ -228,6 +228,13 @@ function commandPreview(scriptName, args = []) {
 function inferRoute(task, preferredRoute) {
   if (preferredRoute && allowedRoutes.includes(preferredRoute)) return preferredRoute;
   const text = String(task || "").toLowerCase();
+  const hasAny = (keywords) => keywords.some((keyword) => text.includes(keyword));
+  if (hasAny(["ppt", "pptx", "deck", "slide", "slides", "html deck", "web deck", "网页ppt", "网页 ppt", "幻灯片", "横向翻页", "spec lock", "design_spec", "style_lock", "production packet", "slide_claim_map", "narrative_variants", "content_freeze_gate", "return_to_kat", "svg qa", "风格预览", "固定舞台", "规格锁定", "生产包", "内容冻结", "叙事路线"])) {
+    return "ppt";
+  }
+  if (hasAny(["remotion", "video", "short video", "motion pipeline", "storyboard", "frame qa", "短视频", "动效", "分镜", "关键帧", "帧检查"])) {
+    return "short-video";
+  }
   const checks = [
     ["production-check", ["production", "pass/review/fail", "final check", "交付检查"]],
     ["project-integration", [".nero-design", "manifest", "integrate", "integration", "接入", "集成", "后台支持", "设计系统"]],
@@ -235,10 +242,10 @@ function inferRoute(task, preferredRoute) {
     ["visual-audit", ["audit", "qa", "review", "检查", "审查"]],
     ["case-library", ["case", "snapshot", "github", "案例", "快照"]],
     ["ai-image-generation", ["gpt-image", "image brief", "cover", "background", "视觉素材"]],
-    ["short-video", ["remotion", "video", "short video", "短视频", "动效"]],
-    ["ppt", ["ppt", "pptx", "deck", "slide", "slides", "演示", "幻灯片", "web deck", "网页ppt", "网页 ppt", "横向翻页"]],
+    ["short-video", ["remotion", "video", "short video", "motion pipeline", "storyboard", "frame qa", "短视频", "动效", "分镜", "帧检查"]],
+    ["ppt", ["ppt", "pptx", "deck", "slide", "slides", "html deck", "style preview", "style discovery", "fixed stage", "1920x1080", "spec lock", "design_spec", "style_lock", "production packet", "slide_claim_map", "narrative_variants", "content_freeze_gate", "return_to_kat", "svg qa", "production harness", "演示", "幻灯片", "web deck", "网页ppt", "网页 ppt", "横向翻页", "风格预览", "固定舞台", "规格锁定", "生产纪律", "生产包", "内容冻结", "叙事路线"]],
     ["image-report", ["satori", "sharp", "long image", "report card", "长图", "研报图"]],
-    ["frontend-ui", ["frontend", "dashboard", "ui", "react", "shadcn", "html", "diagram", "architecture", "single-file", "前端", "界面", "架构图", "图解", "计划页"]]
+    ["frontend-ui", ["frontend", "dashboard", "ui", "react", "shadcn", "html", "html-native", "diagram", "architecture", "single-file", "variant", "brand asset protocol", "前端", "界面", "架构图", "图解", "计划页", "设计变体", "多方案", "品牌资产协议"]]
   ];
   for (const [route, keywords] of checks) {
     if (keywords.some((keyword) => text.includes(keyword))) return route;
@@ -265,26 +272,44 @@ function inferPptSubroute(task) {
 }
 
 function pptRoutingMetadata(task) {
+  const text = String(task || "").toLowerCase();
+  const hasAny = (keywords) => keywords.some((keyword) => text.includes(keyword));
+  const productionChainRequired = hasAny([
+    "production packet",
+    "presentation production",
+    "slide_claim_map",
+    "narrative_variants",
+    "content_freeze_gate",
+    "return_to_kat",
+    "style_lock",
+    "three-direction",
+    "三方案",
+    "生产包",
+    "内容冻结",
+    "叙事路线",
+    "打回 kat",
+    "打回kat"
+  ]);
   const pptSubroute = inferPptSubroute(task);
   const map = {
     "formal-pptx": {
       primary_engine: "Presentations",
-      secondary_rules: ["references/ppt-business-design.md", "references/visual-qa.md"],
+      secondary_rules: ["references/ppt-business-design.md", "references/ppt-production-harness.md", "references/visual-qa.md"],
       legacy_fallback: "PptxGenJS local template only when Presentations is unavailable or a lightweight local sample is requested."
     },
     "template-following": {
       primary_engine: "Presentations template-following",
-      secondary_rules: ["references/ppt-business-design.md", "references/visual-qa.md"],
+      secondary_rules: ["references/ppt-business-design.md", "references/ppt-production-harness.md", "references/visual-qa.md"],
       legacy_fallback: "No local PptxGenJS fallback unless the user explicitly abandons template fidelity."
     },
     "ppt-design-audit": {
       primary_engine: "NERO design review",
-      secondary_rules: ["references/ppt-business-design.md", "references/visual-qa.md"],
+      secondary_rules: ["references/ppt-business-design.md", "references/ppt-production-harness.md", "references/visual-qa.md"],
       legacy_fallback: "No generation engine required unless the audit becomes a production task."
     },
     "web-ppt-html": {
       primary_engine: "NERO web PPT HTML route",
-      secondary_rules: ["references/web-ppt.md", "references/effective-html.md", "references/ppt-business-design.md", "references/visual-qa.md"],
+      secondary_rules: ["references/web-ppt.md", "references/html-deck-style-discovery.md", "references/html-native-harness.md", "references/effective-html.md", "references/ppt-business-design.md", "references/visual-qa.md"],
       guizang_refresh: {
         source_repo: "op7418/guizang-ppt-skill",
         source_url: "https://github.com/op7418/guizang-ppt-skill",
@@ -312,9 +337,18 @@ function pptRoutingMetadata(task) {
   return {
     ppt_subroute: pptSubroute,
     ...map[pptSubroute],
+    presentation_production_chain: {
+      required: productionChainRequired,
+      rules: productionChainRequired
+        ? ["references/presentation-production-chain.md", "references/presentation-design-spec.md", "references/presentation-handoff-contract.md"]
+        : [],
+      required_artifacts: productionChainRequired
+        ? ["presentation_handoff_contract", "slide_claim_map", "narrative_variants", "content_freeze_gate", "presentation_production_packet", "design_spec", "style_lock", "visual_exploration"]
+        : []
+    },
     fused_reference_skills: pptSubroute === "web-ppt-html"
-      ? ["ppt-design-reference", "guizang-ppt-skill", "effective-html"]
-      : ["ppt-design-reference", "guizang-ppt-skill"],
+      ? ["ppt-design-reference", "guizang-ppt-skill", "effective-html", "frontend-slides", "huashu-design", "ppt-master"]
+      : ["ppt-design-reference", "guizang-ppt-skill", "ppt-master"],
     deletion_policy: "Do not delete old PPT skills automatically; treat them as read-only references under NERO routing."
   };
 }
@@ -361,10 +395,43 @@ function effectiveHtmlFusionMetadata() {
   };
 }
 
+function presentationHarnessFusionMetadata() {
+  return {
+    presentation_harness_fusion_v1_8: {
+      boundary: "Fused references only. NERO Design Team remains the entrypoint; Presentations remains primary for formal PPTX.",
+      references: [
+        {
+          name: "huashu-design",
+          repo: "alchaincyf/huashu-design",
+          snapshot: path.join(caseLibraryRoot, "snapshots", "alchaincyf__huashu-design", "snapshot.json"),
+          use_for: ["HTML-native prototypes", "design variants", "brand asset protocol", "motion/video pipeline planning"],
+          avoid_for: ["default TTS/audio", "watermarks", "provider config", "full asset migration"]
+        },
+        {
+          name: "frontend-slides",
+          repo: "zarazhangrui/frontend-slides",
+          snapshot: path.join(caseLibraryRoot, "snapshots", "zarazhangrui__frontend-slides", "snapshot.json"),
+          use_for: ["fixed 1920x1080 HTML deck", "style discovery", "contact-sheet preview"],
+          avoid_for: ["formal PPTX replacement", "default deployment", "copying bold templates"]
+        },
+        {
+          name: "ppt-master",
+          repo: "hugohe3/ppt-master",
+          snapshot: path.join(caseLibraryRoot, "snapshots", "hugohe3__ppt-master", "snapshot.json"),
+          use_for: ["design_spec/spec_lock", "PPT production discipline", "SVG QA", "native editability", "AI image style lock"],
+          avoid_for: ["Presentations replacement", "heavy dependency install", "image search/TTS/watermark removal", "large example copy"]
+        }
+      ],
+      required_boundary_rule: "references/external-design-reference-boundaries.md"
+    }
+  };
+}
+
 async function routeTool(args) {
   const route = inferRoute(args.task, args.preferred_route);
   const templateRegistry = await readJson(templateRegistryPath);
   const template = templateRegistry.routes?.[route]?.template || null;
+  const pptMetadata = route === "ppt" ? pptRoutingMetadata(args.task) : null;
   const ruleMap = {
     "frontend-ui": "references/frontend-ui.md",
     "image-report": "references/image-report.md",
@@ -383,10 +450,18 @@ async function routeTool(args) {
     template,
     rules: [...new Set([
       ruleMap[route],
+      pptMetadata?.presentation_production_chain?.required ? "references/presentation-production-chain.md" : null,
+      pptMetadata?.presentation_production_chain?.required ? "references/presentation-design-spec.md" : null,
+      pptMetadata?.presentation_production_chain?.required ? "references/presentation-handoff-contract.md" : null,
       route === "ppt" ? "references/ppt-business-design.md" : null,
+      route === "ppt" ? "references/ppt-production-harness.md" : null,
       route === "ppt" ? "references/web-ppt.md" : null,
+      route === "ppt" ? "references/html-deck-style-discovery.md" : null,
+      route === "frontend-ui" ? "references/html-native-harness.md" : null,
+      route === "short-video" ? "references/motion-video-harness.md" : null,
       route === "frontend-ui" || route === "ppt" ? "references/effective-html.md" : null,
       route === "project-integration" ? "references/generator.md" : null,
+      ["frontend-ui", "ppt", "short-video", "case-library", "visual-audit"].includes(route) ? "references/external-design-reference-boundaries.md" : null,
       "references/visual-qa.md"
     ].filter(Boolean))],
     recommended_tools: recommendTools(route),
@@ -398,8 +473,11 @@ async function routeTool(args) {
   if (route === "frontend-ui" || route === "visual-audit" || route === "ppt") {
     Object.assign(result, effectiveHtmlFusionMetadata());
   }
+  if (["frontend-ui", "ppt", "short-video", "visual-audit", "case-library"].includes(route)) {
+    Object.assign(result, presentationHarnessFusionMetadata());
+  }
   if (route === "ppt") {
-    Object.assign(result, pptRoutingMetadata(args.task));
+    Object.assign(result, pptMetadata);
   }
   return result;
 }

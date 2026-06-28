@@ -1,5 +1,5 @@
 {
-  "version": "0.7.0",
+  "version": "0.8.0",
   "total_points": 100,
   "pass_threshold": 82,
   "review_threshold": 68,
@@ -7,7 +7,7 @@
     {
       "id": "route_fit",
       "label": "Route and deliverable fit",
-      "weight": 12,
+      "weight": 9,
       "checks": [
         "Correct route selected",
         "Primary deliverable matches user request",
@@ -17,7 +17,7 @@
     {
       "id": "brand_tokens",
       "label": "Brand and token consistency",
-      "weight": 14,
+      "weight": 11,
       "checks": [
         "NERO design tokens applied or deliberate override stated",
         "Brand tone is restrained, professional, and evidence-first",
@@ -27,7 +27,7 @@
     {
       "id": "layout_typography",
       "label": "Layout and typography",
-      "weight": 14,
+      "weight": 12,
       "checks": [
         "Text does not overflow or collide",
         "Chinese typography has adequate line-height",
@@ -37,7 +37,7 @@
     {
       "id": "information_hierarchy",
       "label": "Information hierarchy",
-      "weight": 14,
+      "weight": 12,
       "checks": [
         "Conclusion or key number appears early",
         "Evidence blocks are scannable",
@@ -47,7 +47,7 @@
     {
       "id": "data_integrity",
       "label": "Data and evidence integrity",
-      "weight": 16,
+      "weight": 14,
       "checks": [
         "Numbers include unit, period, denominator where relevant",
         "Sources are visible or traceable",
@@ -57,7 +57,7 @@
     {
       "id": "chart_quality",
       "label": "Chart quality",
-      "weight": 12,
+      "weight": 10,
       "checks": [
         "Chart labels are readable at final size",
         "Color palette supports comparison",
@@ -67,7 +67,7 @@
     {
       "id": "output_qa",
       "label": "Output QA",
-      "weight": 12,
+      "weight": 10,
       "checks": [
         "Output dimensions or slide/video geometry are explicit",
         "Generated file exists when applicable",
@@ -77,11 +77,32 @@
     {
       "id": "ai_image_boundary",
       "label": "gpt-image-2 boundary",
-      "weight": 6,
+      "weight": 5,
       "checks": [
         "Generated imagery is visual素材 only",
         "Exact text, numbers, charts, and source notes are overlaid by code",
         "No generated text or figures are treated as evidence"
+      ]
+    },
+    {
+      "id": "handoff_boundary",
+      "label": "KAT/NERO handoff boundary",
+      "weight": 8,
+      "checks": [
+        "KAT content constraints are honored when a handoff exists",
+        "Must-preserve text, figures, source notes, and regulatory wording are unchanged",
+        "Content gaps are returned to KAT instead of being patched visually"
+      ]
+    },
+    {
+      "id": "presentation_chain_readiness",
+      "label": "Presentation production chain readiness",
+      "weight": 9,
+      "checks": [
+        "Presentation production packet links KAT, NDT, output, QA, and archive layers when relevant",
+        "Design spec and style lock exist before final PPT production",
+        "Three-direction visual exploration is present or deliberately waived",
+        "PPTX editability, preview, overflow, and chart readability checks are recorded or marked unverified"
       ]
     }
   ],

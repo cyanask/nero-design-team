@@ -5,6 +5,7 @@ Use this rule for future short videos, animated research cards, data explainers,
 ## Routing
 
 - Primary engine: Remotion.
+- Use `motion-video-harness.md` when a task needs storyboard discipline, visual-to-motion conversion, or frame-level production planning.
 - Reuse React components, chart components, and report-card visual tokens where possible.
 - Use Magic UI or motion libraries only when motion communicates structure or emphasis.
 - Convert chart scenes into video using rendered components, SVG, Canvas, or image frames.
@@ -23,6 +24,7 @@ Use this rule for future short videos, animated research cards, data explainers,
 ## Hard Bans
 
 - No commercial Remotion use before license requirements are checked.
+- No default TTS, voiceover, BGM, sound effects, upstream audio/video assets, or watermarks.
 - No generated image text, numbers, subtitles, chart labels, or source notes as final video content.
 - No data video without source and metric definitions.
 - No fast transitions that make charts unreadable.
@@ -35,6 +37,7 @@ Use this rule for future short videos, animated research cards, data explainers,
 - Define frame rate and duration.
 - Verify at least one rendered frame or short sample where feasible.
 - Keep source data and storyboard traceable.
+- Report whether the output is storyboard-only, frame-verified, sample-rendered, or fully rendered.
 
 ## Prompt Snippet
 

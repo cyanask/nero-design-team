@@ -1,6 +1,6 @@
 {
-  "version": "1.7.0",
-  "updated_at": "2026-06-12",
+  "version": "2.0.0",
+  "updated_at": "2026-06-28",
   "examples": [
     {
       "tool": "nero_design_route",
@@ -53,6 +53,30 @@
       }
     },
     {
+      "tool": "nero_design_route",
+      "args": {
+        "task": "用设计团队做三个风格预览的 1920x1080 HTML deck"
+      }
+    },
+    {
+      "tool": "nero_design_route",
+      "args": {
+        "task": "给这份正式 PPT 做 design_spec 和 spec lock，再检查 SVG QA"
+      }
+    },
+    {
+      "tool": "nero_design_route",
+      "args": {
+        "task": "kat 生成 slide_claim_map 和 content_freeze_gate，ndt 生成 design_spec、style_lock 和三方案视觉探索，形成 presentation production packet"
+      }
+    },
+    {
+      "tool": "nero_design_route",
+      "args": {
+        "task": "把这个视觉长图转成短视频分镜和关键帧 QA"
+      }
+    },
+    {
       "tool": "nero_design_get_tokens",
       "args": {
         "token_sets": [
@@ -78,6 +102,14 @@
       "tool": "nero_design_get_case_snapshot",
       "args": {
         "repo": "op7418/guizang-ppt-skill",
+        "include_summary": true,
+        "include_file_index": false
+      }
+    },
+    {
+      "tool": "nero_design_get_case_snapshot",
+      "args": {
+        "repo": "zarazhangrui/frontend-slides",
         "include_summary": true,
         "include_file_index": false
       }
@@ -133,6 +165,13 @@
       "tool": "nero_design_production_check",
       "args": {
         "manifest_path": "$NERO_DESIGN_TEAM_HOME/scripts/sample-production-check-manifest.json",
+        "execute": false
+      }
+    },
+    {
+      "tool": "nero_design_production_check",
+      "args": {
+        "manifest_path": "$NERO_DESIGN_TEAM_HOME/templates/presentation-production-chain/production-check-manifest.json",
         "execute": false
       }
     }

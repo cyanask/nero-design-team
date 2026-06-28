@@ -1,0 +1,37 @@
+{
+  "schema_version": "2.0.0",
+  "artifact_id": "pitch-deck",
+  "exploration_id": "pitch-deck-three-direction-exploration",
+  "status": "draft",
+  "directions": [
+    {
+      "direction_id": "conservative-banker",
+      "label": "Conservative banker",
+      "use_when": "正式路演、董事会、监管敏感场景",
+      "avoid_when": "需要强传播或品牌发布感",
+      "visual_posture": "restrained, dense, evidence-first",
+      "token_bias": ["color.brand.primary", "color.text.primary"],
+      "risk": "可能偏稳，视觉记忆点弱"
+    },
+    {
+      "direction_id": "editorial-strategy",
+      "label": "Editorial strategy",
+      "use_when": "需要把复杂故事讲清楚，并强化章节节奏",
+      "avoid_when": "超密集附录或纯数据复核",
+      "visual_posture": "strong hierarchy, editorial rhythm, controlled contrast",
+      "token_bias": ["color.brand.primary", "color.accent.gold"],
+      "risk": "过度 editorial 会削弱投行材料严肃感"
+    },
+    {
+      "direction_id": "modern-technical",
+      "label": "Modern technical",
+      "use_when": "AI、半导体、产品架构或产业链主题",
+      "avoid_when": "传统财务汇报或监管问询回复",
+      "visual_posture": "architecture/data/product-forward",
+      "token_bias": ["color.brand.primary", "chart.palette.categorical"],
+      "risk": "技术图过多会遮蔽商业结论"
+    }
+  ],
+  "selected_direction_id": "",
+  "notes": ["Early exploration can be text-only; important decks should add a visual contact sheet."]
+}

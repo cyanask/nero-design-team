@@ -22,6 +22,8 @@ Run:
 - Chart quality.
 - Output QA.
 - gpt-image-2 boundary.
+- KAT/NERO handoff boundary when a presentation handoff exists.
+- Presentation production chain readiness when PPT / PitchBook production is in scope.
 
 ## Interpretation
 
@@ -32,3 +34,7 @@ Run:
 ## Hard Rule
 
 Even a high score does not override evidence problems. If facts, figures, sources, or regulatory wording are unverified, mark the artifact as not final.
+
+For KAT-sourced PPT work, a high score also does not override the handoff contract. If NERO changed must-preserve content or patched content gaps visually instead of returning them to KAT, mark the artifact as not final.
+
+For production-chain PPT work, a high score also does not override missing production structure. If `presentation_production_packet`, `design_spec`, `style_lock`, or required visual exploration records are missing, mark readiness as `review` or `fail` even when the page visuals look strong.
