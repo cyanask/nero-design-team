@@ -9,7 +9,7 @@
   "design_team": {
     "role": "background-support-design-system",
     "root": "$NERO_DESIGN_TEAM_HOME",
-    "version": "1.7.0",
+    "version": "2.0.0",
     "build_outputs": {
       "css_variables": "$NERO_DESIGN_TEAM_HOME/build/css/nero-tokens.css",
       "report_theme": "$NERO_DESIGN_TEAM_HOME/build/themes/report-theme.mjs"

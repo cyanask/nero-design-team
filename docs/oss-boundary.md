@@ -10,8 +10,10 @@ The public package should stay portable, reusable, and free of private material.
 - design tokens
 - minimal templates
 - generator and validation scripts
+- deterministic local runtimes and source-free examples
 - lightweight case snapshots
 - open-source-safe profile examples
+- NERO-native style contracts without external fonts, identity assets, or project facts
 
 ## Private Overlay
 
@@ -34,3 +36,5 @@ node release-check.mjs
 ```
 
 The check scans for absolute local paths, common credential patterns, private environment files, dependency folders, JSON parse errors, and accidental restricted asset directories.
+
+Run the gate against a clean tracked export or release candidate. A private overlay may coexist beside the source checkout, but it must not be copied into the publish candidate.

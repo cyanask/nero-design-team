@@ -24,9 +24,13 @@ const requiredFiles = [
   "LICENSE-NOTES.md",
   "skills/nero-design-team/SKILL.md",
   "registry/design-team.json",
+  "registry/design-assets.json",
   "scripts/build-tokens.mjs",
   "scripts/nero-design.mjs",
+  "scripts/validate-registry.mjs",
+  "scripts/test-production-check-readiness.mjs",
   "mcp-lite/server.mjs",
+  "mcp-lite/smoke-test.mjs",
   "case-library/snapshots/index.json",
 ];
 
@@ -58,6 +62,18 @@ async function main() {
     cwd: root,
     encoding: "utf8",
   });
+  const mcpSmoke = spawnSync(process.execPath, ["mcp-lite/smoke-test.mjs"], {
+    cwd: root,
+    encoding: "utf8",
+  });
+  const productionGate = spawnSync(process.execPath, ["scripts/test-production-check-readiness.mjs"], {
+    cwd: root,
+    encoding: "utf8",
+  });
+  const registryCheck = spawnSync(process.execPath, ["scripts/validate-registry.mjs"], {
+    cwd: root,
+    encoding: "utf8",
+  });
 
   const report = {
     root,
@@ -71,10 +87,22 @@ async function main() {
       status: mcp.status === 0 ? "pass" : "fail",
       stderr: mcp.status === 0 ? "" : mcp.stderr.trim(),
     },
+    mcpProtocolSmoke: {
+      status: mcpSmoke.status === 0 ? "pass" : "fail",
+      stderr: mcpSmoke.status === 0 ? "" : mcpSmoke.stderr.trim(),
+    },
+    productionReadinessGate: {
+      status: productionGate.status === 0 ? "pass" : "fail",
+      stderr: productionGate.status === 0 ? "" : productionGate.stderr.trim(),
+    },
+    registryContract: {
+      status: registryCheck.status === 0 ? "pass" : "fail",
+      stderr: registryCheck.status === 0 ? "" : registryCheck.stderr.trim(),
+    },
   };
 
   console.log(JSON.stringify(report, null, 2));
-  if (missingDirs.length || missingFiles.length || build.status !== 0 || mcp.status !== 0) {
+  if (missingDirs.length || missingFiles.length || build.status !== 0 || mcp.status !== 0 || mcpSmoke.status !== 0 || productionGate.status !== 0 || registryCheck.status !== 0) {
     process.exit(1);
   }
 }

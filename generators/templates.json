@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.3.0",
   "routes": {
     "frontend-ui": {
       "template": "frontend-dashboard",
@@ -9,7 +9,21 @@
     "image-report": {
       "template": "report-card-image",
       "default_name": "nero-image-report",
-      "description": "Satori/Sharp image report or long-image project using NERO report theme."
+      "description": "Image report, long-image, or embedded report-figure project using an explicitly selected rendering mode.",
+      "presets": {
+        "high-resolution-raster-report-figure": {
+          "display_name": "高分辨率PNG报告图",
+          "aliases": ["高分辨率PNG报告图", "PNG报告图", "Pillow报告图"],
+          "description": "Optional Python/Pillow canvas for dense explanatory figures embedded in Word or PDF, with fail-closed typography and overflow QA.",
+          "rule_reference": "rules/report-figure-rendering.md"
+        },
+        "report-figure-compiler": {
+          "display_name": "NDT Figure Compiler",
+          "aliases": ["报告图编译器", "Figure Compiler"],
+          "description": "Compile nine types of structured, evidence-bearing report figures through the central NDT v0.2 runtime for report-a4, wechat-inline, and ppt-16x9 profiles, with renderer selection inferred by NDT routing or set explicitly at compile time.",
+          "rule_reference": "rules/report-figure-rendering.md"
+        }
+      }
     },
     "ppt": {
       "template": "pptx-deck",
@@ -29,7 +43,21 @@
     "ai-image-generation": {
       "template": "gpt-image-brief",
       "default_name": "nero-image-brief",
-      "description": "gpt-image-2 brief project for cover/background/concept visual素材."
+      "description": "gpt-image-2 brief project for cover/background/concept visual素材.",
+      "presets": {
+        "minimal-zine-editorial": {
+          "display_name": "留白杂志风",
+          "aliases": ["留白杂志风"],
+          "description": "Quiet paper-zine visual preset with quantitative composition, one-retry thumbnail QA, and deterministic exact-text overlays.",
+          "style_reference": "assets/style-references/minimal-zine-editorial/manifest.json"
+        },
+        "photo-derived-editorial-diptych": {
+          "display_name": "摄影抽象双联画",
+          "aliases": ["摄影抽象双联画", "照片抽象双联画"],
+          "description": "Photo-preserving editorial diptych with relation-trace mapping, panel-only generation, adaptive photo/panel geometry, and deterministic exact-text overlays.",
+          "style_reference": "assets/style-references/photo-derived-editorial-diptych/manifest.json"
+        }
+      }
     }
   }
 }

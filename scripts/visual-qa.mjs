@@ -37,6 +37,50 @@ function estimateTextCapacity(block) {
   return charsPerLine * lines;
 }
 
+function within(value, min, max) {
+  return Number.isFinite(value) && value >= min && value <= max;
+}
+
+function evaluateMinimalZine(manifest, push) {
+  if (manifest.stylePreset !== "minimal-zine-editorial") return;
+
+  const spec = manifest.minimalZine || {};
+  const formats = {
+    "poster-3x5": 3 / 5,
+    "social-4x5": 4 / 5,
+    "social-1x1": 1,
+    "slide-16x9": 16 / 9
+  };
+  const expectedRatio = formats[spec.format];
+  const actualRatio = manifest.width / manifest.height;
+  push(Boolean(expectedRatio), "minimal-zine format is registered", spec.format || "missing");
+  push(Boolean(expectedRatio) && Math.abs(actualRatio - expectedRatio) <= 0.01, "minimal-zine aspect ratio matches format", `${manifest.width || "?"}x${manifest.height || "?"}`);
+  push(within(spec.negativeSpaceRatio, 0.70, 0.90), "minimal-zine negative space", String(spec.negativeSpaceRatio ?? "missing"));
+  push(within(spec.subjectClusterRatio, 0.08, 0.25), "minimal-zine subject cluster", String(spec.subjectClusterRatio ?? "missing"));
+
+  const recipe = spec.recipe || {};
+  for (const field of ["layout", "anchor", "typography", "texture", "mood", "accent"]) {
+    push(Boolean(recipe[field]), `minimal-zine recipe field: ${field}`, recipe[field] || "missing");
+  }
+  push(recipe.duplicateOfRecent === false, "minimal-zine recipe differs from recent outputs");
+
+  const colorAnchor = spec.colorAnchor || {};
+  const colorSharePass = within(colorAnchor.canvasShareRatio, 0.008, 0.025)
+    || within(colorAnchor.clusterShareRatio, 0.15, 0.35);
+  push(colorSharePass, "minimal-zine color anchor share", `canvas=${colorAnchor.canvasShareRatio ?? "?"}; cluster=${colorAnchor.clusterShareRatio ?? "?"}`);
+
+  const thumbnail = spec.thumbnailReview || {};
+  push(thumbnail.anchorVisible === true, "minimal-zine anchor visible at thumbnail scale");
+  push(thumbnail.colorWashedOut === false, "minimal-zine color anchor is not washed out");
+  push(thumbnail.safeZoneContaminated === false, "minimal-zine safe zone remains clean");
+
+  const regeneration = spec.regeneration || {};
+  const attemptsValid = Number.isInteger(regeneration.attempts) && regeneration.attempts >= 0 && regeneration.attempts <= 1;
+  push(attemptsValid, "minimal-zine automatic regeneration limit", String(regeneration.attempts ?? "missing"));
+  push(regeneration.required !== true || (regeneration.attempts === 1 && regeneration.outcome === "pass"), "minimal-zine retry outcome", regeneration.outcome || "not-required");
+  push(spec.generatedExactTextUsed === false, "minimal-zine exact text stays outside generated raster");
+}
+
 function evaluate(manifest) {
   const results = [];
   const push = (ok, label, detail = "") => results.push({ ok, label, detail });
@@ -72,6 +116,8 @@ function evaluate(manifest) {
     push(Boolean(chart.unit || chart.denominator), `chart unit or denominator present: ${chart.id || "chart"}`);
     push((chart.minFontSize || 0) >= 10, `chart readable font size: ${chart.id || "chart"}`, `${chart.minFontSize || "?"}px`);
   }
+
+  evaluateMinimalZine(manifest, push);
 
   return results;
 }

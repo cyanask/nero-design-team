@@ -5,7 +5,7 @@ Use this rule when NERO Design Team needs stricter PPT production discipline: sp
 ## Fused Reference
 
 - Source: `hugohe3/ppt-master`
-- Local snapshot: `$NERO_DESIGN_TEAM_HOME/case-library/snapshots/hugohe3__ppt-master/snapshot.json`
+- Public snapshot status: not bundled (`not-bundled-snapshots/hugohe3__ppt-master`).
 - License status: permissive, but upstream examples, SVGs, and PPTX files remain reference-only.
 
 ## Boundary

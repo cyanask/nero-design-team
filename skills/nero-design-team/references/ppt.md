@@ -2,7 +2,7 @@
 
 Use this rule for formal PPTX decks, research slide decks, roadshow-style decks, internal presentations, design audits, and web-based HTML decks.
 
-NERO Design Team is the default PPT entrypoint and controller. PPT-related reference skills are fused into NERO rules; do not route to `ppt-design-reference` or `guizang-ppt-skill` as default independent entrypoints. If NERO rules are missing or the user explicitly names those older skills, read them as reference only.
+NERO Design Team is the default PPT visual entrypoint and visual controller. GPT Work remains the cross-system controller and invokes Presentations after the visual gate. PPT-related reference skills are fused into NERO rules; do not route to `ppt-design-reference` or `guizang-ppt-skill` as default independent entrypoints. If NERO rules are missing or the user explicitly names those older skills, read them as reference only.
 
 ## Subroutes
 

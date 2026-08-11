@@ -1,0 +1,47 @@
+{
+  "version": "2.0",
+  "updated_at": "2026-08-12",
+  "style_reference_packs": [
+    {
+      "id": "minimal-zine-editorial",
+      "name": "留白杂志风",
+      "path": "$NERO_DESIGN_TEAM_HOME/assets/style-references/minimal-zine-editorial/manifest.json",
+      "status": "nero_native_adaptation",
+      "rights_status": "MIT rule reference; upstream examples remain remote references only",
+      "use_for": [
+        "WeChat and essay covers",
+        "research-report covers and dividers",
+        "PPT and web-PPT chapter visuals",
+        "quiet editorial social cards",
+        "AI image style briefs with deterministic overlays"
+      ],
+      "avoid_for": [
+        "evidence-dense report-card bodies",
+        "dashboards, forms, tables, charts, banker appendices, or regulatory pages",
+        "exact text, figures, labels, logos, or sources inside generated raster",
+        "direct public or client reuse of upstream examples",
+        "parallel installation of the upstream Skill"
+      ]
+    },
+    {
+      "id": "photo-derived-editorial-diptych",
+      "name": "摄影抽象双联画",
+      "path": "$NERO_DESIGN_TEAM_HOME/assets/style-references/photo-derived-editorial-diptych/manifest.json",
+      "status": "nero_native_reusable",
+      "rights_status": "NERO-native method-only adaptation; upstream license unknown; no upstream assets copied",
+      "use_for": [
+        "photo-led editorial covers",
+        "research-report covers and dividers without evidence-bearing body content",
+        "quiet social cards",
+        "source-derived visual memory studies"
+      ],
+      "avoid_for": [
+        "evidence-dense report-card bodies",
+        "dashboards, forms, tables, charts, banker appendices, or regulatory pages",
+        "exact financial, source, compliance, or legal text inside generated imagery",
+        "unauthorized source photos or personal likenesses",
+        "direct public or client reuse of upstream examples"
+      ]
+    }
+  ]
+}

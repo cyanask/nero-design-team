@@ -1,0 +1,63 @@
+{
+  "contract_id": "cold-white-business-editorial-layout-v1",
+  "version": "1.0.0",
+  "route": "image-report",
+  "canvases": {
+    "xiaohongshu-3x4": {"width": 1080, "height": 1440, "safe_inset": 76},
+    "wechat-4x5": {"width": 1080, "height": 1350, "safe_inset": 72}
+  },
+  "persistent_regions": {
+    "masthead": {"height_min": 42, "single_line": true},
+    "headline": {"font_px_min": 80, "line_count_max": 3},
+    "body": {"font_px_min": 35, "line_height_min": 1.28},
+    "source_footer": {"font_px_min": 20, "separated_by_hairline": true}
+  },
+  "layouts": [
+    {
+      "id": "cover-conflict",
+      "job": "state the conflict and identify both protagonists",
+      "portrait_cluster": {"anchor": "bottom-right", "canvas_share_max": 0.32},
+      "required": ["headline", "subhead-or-deck", "two-identity-labels"],
+      "forbidden": ["full-page portrait", "media logo", "more than three headline claims"]
+    },
+    {
+      "id": "biography-mirror",
+      "job": "connect a person's background to one strategic capability",
+      "grid": "portrait-5-columns / timeline-7-columns; mirror for the second person",
+      "required": ["maximum-three-career-facts", "one-sentence-capability"],
+      "forbidden": ["encyclopedic biography", "cover portrait reuse"]
+    },
+    {
+      "id": "strategy-map",
+      "job": "show resource allocation or product breadth",
+      "required": ["one-center-or-spine", "three-to-six-destinations", "one-judgment"],
+      "forbidden": ["portrait", "decorative card grid", "unsupported causal conclusion"]
+    },
+    {
+      "id": "workflow-chain",
+      "job": "show a concentrated workflow or value chain",
+      "required": ["ordered-stages", "business-outcome", "adoption-or-revenue-evidence"],
+      "forbidden": ["generic arrows without labels", "unverified metrics"]
+    },
+    {
+      "id": "number-comparison",
+      "job": "compare two like-for-like figures",
+      "required": ["same-denominator", "dates", "difference-or-direction", "boundary"],
+      "forbidden": ["market-cap wording for financing valuation", "mixed units"]
+    },
+    {
+      "id": "countermove-conclusion",
+      "job": "close the current analysis with a response and one remaining business test",
+      "required": ["one-dominant-metric", "one-response-path", "one-conclusion"],
+      "forbidden": ["next issue", "observation checklist", "forced engagement prompt"]
+    }
+  ],
+  "qa": {
+    "thumbnail_review_required": true,
+    "contact_sheet_required": true,
+    "top_wrap_fail": true,
+    "overflow_fail": true,
+    "repeated_portrait_fail": true,
+    "generated_exact_text_fail": true
+  }
+}

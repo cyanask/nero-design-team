@@ -35,7 +35,7 @@ Use this rule when selecting examples, saving good outputs, or asking Codex to f
 - Prefer local snapshots over opening complete GitHub repositories. Read `snapshots/index.json`, then the matching `summary.md`, then `snapshot.json`; open `file-index.json` only when path-level context is needed.
 - Snapshots are lightweight references. They store README summaries, license notes, key file paths, and image URLs only. They must not contain cloned `.git` directories, `node_modules`, copied source files, or downloaded assets by default.
 - Snapshot image URLs are references for later visual review, not local assets and not evidence.
-- If NERO explicitly asks to save design assets, store them outside snapshots under `$NERO_DESIGN_TEAM_HOME/assets/external/<source>/` with a `manifest.json`, `usage.md`, source URL, license status, and allowed/disabled usage boundaries.
+- If a user explicitly asks to save restricted design assets, store them outside this public package under `<private-overlay>/assets/external/<source>/` with a `manifest.json`, `usage.md`, source URL, license status, and allowed/disabled usage boundaries.
 - Restricted asset packs can support local reference, private drafts, and gpt-image-2 briefs, but must not become NERO brand assets or public/client-facing deliverable assets without separate license review.
 - If a snapshot is `blocked`, use its `blocked_reason` and `license-summary.md` to decide whether to retry, choose another candidate, or request a narrower source.
 - Do not treat a case as evidence for facts, figures, market claims, or regulatory conclusions.

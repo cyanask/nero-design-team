@@ -1,6 +1,6 @@
 ---
 name: nero-design-team
-description: Use whenever NERO mentions "设计团队", "NERO Design Team", "NERO design team", or the standalone shorthand "ndt"/"NDT" in a design-related request, and when creating, revising, generating, scoring, production-checking, case-library referencing, or auditing frontend UI, image-style research reports, PPT/PPTX decks, web PPT/HTML decks, 架构脉络图 / dark SVG architecture-map templates, short videos, or AI-generated visual素材 for NERO. Routes design work through NERO brand assets, design tokens, project generators, case library, export validation, shadcn/ui, Carbon, Ant Design, ECharts/G2, Satori/Sharp, Presentations, legacy PptxGenJS, Slidev, Remotion, fused PPT business-design/web-PPT rules, gpt-image-2 briefs, visual QA, visual scoring, and production checks with professional investment-banking and AI-industry standards.
+description: Use whenever NERO mentions "设计团队", "NERO Design Team", "NERO design team", the standalone shorthand "ndt"/"NDT", or the user-facing style alias "手写风格" in a design-related request, and when creating, revising, generating, scoring, production-checking, case-library referencing, or auditing frontend UI and interaction motion, image-style research reports, embedded Word/PDF report figures and PNG/SVG/Office rendering choices, PPT/PPTX decks, web PPT/HTML decks, 架构脉络图 / dark SVG architecture-map templates, short videos, or AI-generated visual素材 for NERO. Routes design work through NERO brand assets, design tokens, project generators, case library, export validation, shadcn/ui, Carbon, Ant Design, ECharts/G2, Satori/Sharp, Presentations, legacy PptxGenJS, Slidev, Remotion, fused frontend-motion/PPT business-design/web-PPT rules, gpt-image-2 briefs, visual QA, visual scoring, and production checks with professional investment-banking and AI-industry standards.
 ---
 
 # NERO Design Team
@@ -11,7 +11,15 @@ When NERO says `设计团队` in any project and the task involves UI, images, r
 
 When NERO says standalone `ndt` or `NDT` in a design-related request, treat it as the shorthand alias for NERO Design Team. Do not trigger on `ndt` when it appears as part of another word or in a non-design context.
 
-When NERO says `架构脉络图`, `用架构脉络图`, `深色节点网络架构图`, or asks to turn a system/workflow into a projector-ready dark HTML/SVG architecture map, treat it as NERO Design Team `frontend-ui` + `effective-html` route and load `$NERO_DESIGN_TEAM_HOME/prompts/effective-html/architecture-map.md`.
+When NERO says `留白杂志风` or `留白杂志风格`, route to `ai-image-generation` and select the canonical preset `minimal-zine-editorial`. `留白杂志风` is the user-facing name; do not require NERO to remember the internal preset id.
+
+When NERO says `摄影抽象双联画` or `照片抽象双联画`, route to `ai-image-generation` and select the registered canonical preset `photo-derived-editorial-diptych`. Keep the uploaded photograph as an independent original-photo layer, derive the abstract panel from a recorded `relation_trace`, and place exact text through the deterministic overlay contract. Reusable contracts are registered in the NDT asset system; user photos remain project-local.
+
+When NERO says `手写风格`, route to the registered cross-format style preset `editorial-handwritten-research-note`. Load `references/handwritten-research-note.md` and the style pack contract. Apply the response adapter to assistant replies and the appropriate image-report, frontend-ui, web-ppt-html, or PPT adapter to visual deliverables. Exact text, figures, chart labels, sources, compliance wording, and formal output ownership remain governed by the target route; the strict visual master applies handwriting treatment to text, numerals, and chart geometry, while annotation marks never act as evidence. The reusable contracts are registered in the NDT asset system, including the strict horizontal master template.
+
+When NERO says `架构脉络图`, `用架构脉络图`, `深色节点网络架构图`, or asks to turn a system/workflow into a projector-ready dark HTML/SVG architecture map, treat it as NERO Design Team `frontend-ui` + `effective-html` route. The private prompt pack is not bundled in the OSS package; use `not-bundled-prompts/effective-html/architecture-map.md` only as a boundary marker and build a public-safe NDT-native equivalent from the bundled rules.
+
+When NERO asks `NDT，把这段内容画成报告图`、`调用 NDT，画成公众号图`、`把这段内容画成 PPT 图`, or uses equivalent natural language for one explanatory figure, first decide whether it belongs to Figure Compiler v0.2. Do not ask for a CLI command, figure type, profile, renderer, or other technical parameter unless the single focused question defined in `references/report-figure-rendering.md` is necessary.
 
 Do not require NERO to say the full phrase `NERO Design Team`, `nero-design-team`, `.nero-design`, or `manifest`. Those are implementation details.
 
@@ -23,8 +31,14 @@ Examples:
 - `用设计团队做一版 PPT`
 - `设计团队帮我把这个长图做高级一点`
 - `这个项目后续都按设计团队的标准来`
+- `手写风格：帮我做一张研究图`
+- `手写风格：把这份 PPT 做成编辑式研究笔记`
 - `架构脉络图：把这个系统画成入口、事实底座、工作台、门禁、产物`
 - `用架构脉络图画一下这个业务流程`
+- `NDT，用留白杂志风做一张公众号封面`
+- `NDT，把这段内容画成报告图`
+- `调用 NDT，把这段内容画成公众号图`
+- `NDT，把这一页的逻辑画成 PPT 解释图`
 
 Use this skill for design work that must be professional, dense, verifiable, and reusable across:
 
@@ -38,9 +52,21 @@ Use this skill for design work that must be professional, dense, verifiable, and
 - visual scoring and readiness review
 - case-library references and production checks
 
+## Controller Boundary
+
+NERO Design Team is the visual director and the only default entrypoint for visual design work. It is not the cross-system orchestrator.
+
+GPT Work is the only cross-system controller. GPT Work routes Skills first, invokes KAT for content work, invokes NERO Design Team for visual work, invokes Presentations for formal editable PPTX, and maintains the project-level production ledger.
+
+NERO Design Team must not autonomously call KAT or Presentations. It returns structured visual outputs, QA evidence, and the next-owner recommendation to GPT Work. KAT and NERO Design Team may refer work back to each other only through GPT Work.
+
+### Machine-readable collaboration declaration
+
+`collaboration.json` is NDT's source-owned, recommendation-only collaboration declaration. After NDT's own visual and production gates pass, `handoff_state: visual_ready` recommends the `design_spec` to the stable Presentations host identity. `handoff_state: returned_for_content_repair` recommends the existing `return_to_kat_request` to KAT. Both routes return control to the caller. The declaration does not implement gates, call another Skill or plugin, update a production ledger, grant permission, or broaden material scope.
+
 ## First Step
 
-Classify the task before designing:
+Use this Skill to classify the task before calling any MCP tool or designing:
 
 1. `frontend-ui`
 2. `image-report`
@@ -57,6 +83,22 @@ Classify the task before designing:
 13. `presentation-production-chain`
 
 If the task mixes formats, choose the primary deliverable first and reuse assets across formats.
+
+`nero_design_route` may confirm or serialize the route after this Skill has classified it. It must not replace Skill-first judgment.
+
+## Figure Compiler v0.2 natural-language contract
+
+NERO only needs to identify the content that should become a report, WeChat, or PPT explanatory figure. NDT decides whether it is an evidence-bounded structural figure, then selects the figure type, profile, and renderer.
+
+| Use case | Default output | Exception |
+|---|---|---|
+| Reports, Word, PDF, diligence materials | `report-a4` + PNG | True editability routes to `office-native` / Presentations handoff |
+| WeChat inline figures | `wechat-inline` + PNG | Use vector output only when the target medium requires it |
+| A single PPT explanatory figure | `ppt-16x9` + SVG | True editability routes to `office-native` / Presentations handoff |
+
+Figure Compiler handles one structural explanatory figure at a time. It supports `flow`, `hierarchy`, `timeline`, `funnel`, `bar`, `line`, `participant_map`, `matrix`, and `value_chain`. Covers, photography, concept illustration, and scene imagery route to `ai-image-generation`. A complete article, report, Word file, or deck is not one figure, though one bounded explanatory figure inside it may use the Compiler.
+
+Ask one focused question only when missing evidence basis, period, unit, denominator, project root, or the stable-layout-versus-true-editability choice would change the result. Compiler outputs remain candidates; evidence, QA, promote, embed, and commit boundaries stay explicit in `references/report-figure-rendering.md`.
 
 ## Subroute Matrix
 
@@ -75,42 +117,48 @@ Choose the subroute before loading detailed references. If multiple rows match, 
 | `presentation-handoff-contract` | KAT hands over a `presentation_handoff_contract`, deck brief, slide plan, story spine, evidence-to-slide map, or content/visual boundary for PPT | NERO Design Team visual intake; KAT remains content owner | `references/presentation-handoff-contract.md`, `references/ppt.md`, `references/ppt-business-design.md`, `references/visual-qa.md` | Contract completeness, output lane fit, must-preserve check, exact data/text boundary, return-to-KAT decision |
 | `presentation-production-chain` | KAT x NDT production packet, slide claim map, narrative variants, content freeze, return-to-KAT, design spec, style lock, three-direction exploration, or formal presentation production readiness | KAT owns content; NERO Design Team owns visual production; Presentations owns formal PPTX output | `references/presentation-production-chain.md`, `references/presentation-design-spec.md`, `references/presentation-handoff-contract.md`, `references/ppt-production-harness.md`, `references/visual-qa.md`, `references/visual-score.md` | Packet completeness, content freeze compliance, design spec/style lock, visual exploration, PPTX QA readiness, production-check |
 | `web-ppt-html` | Web PPT, horizontal swipe deck, magazine-style PPT, Swiss deck, demo/share HTML deck, HTML style preview | NERO-native HTML; Guizang/Frontend Slides/Huashu only as fused references | `references/web-ppt.md`, `references/html-deck-style-discovery.md`, `references/web-ppt-multidevice-qa.md`, `references/visual-qa.md` | Browser QA, desktop/mobile screenshots, contact sheet, navigation, image slots, PDF pagination if exported |
-| `image-card-report` | Long image, research card, visual report card, cover/thumbnail, information graphic | Image-report route; image generation only for suitable visual素材 | `references/image-report.md`, `references/ai-image-generation.md` when generating images, `references/visual-qa.md` | Dimensions, text fit, export size, no generated exact financial text |
-| `frontend-ui` | Dashboard, web app UI, admin/workbench screen, frontend prototype, HTML-native prototype, design variants | Frontend UI route | `references/frontend-ui.md`, `references/html-native-harness.md`, `references/effective-html.md` when self-contained HTML is needed | Responsive QA, accessibility basics, overflow checks, browser verification |
+| `image-card-report` | Long image, research card, embedded Word/PDF figure, visual report card, cover/thumbnail, information graphic | Image-report route; for a single explanatory figure, decide whether Figure Compiler v0.2 applies and select its type/profile/renderer | `references/image-report.md`, `references/report-figure-rendering.md`, `references/ai-image-generation.md` when generating images, `references/visual-qa.md` | Evidence boundary, candidate/receipt state, dimensions, text fit, export size, no generated exact financial text |
+| `frontend-ui` | Dashboard, web app UI, admin/workbench screen, frontend prototype, interaction motion, HTML-native prototype, design variants | Frontend UI route | `references/frontend-ui.md`; `references/frontend-motion.md` for press/popover/drawer/drag/swipe/momentum or motion audit; `references/html-native-harness.md`; `references/effective-html.md` when self-contained HTML is needed | Responsive QA, accessibility basics, overflow checks, motion/reduced-motion checks when applicable, browser verification |
 | `visual-audit-score` | Review, diagnose, score, production check, readiness check without new artifact | Design Team QA route | `references/visual-qa.md`, `references/visual-score.md`, `references/production-check.md` | Findings first, severity, screenshots/evidence when available, no unasked generation |
-| `ai-image-generation` | Cover/background/concept visual素材, style exploration, image prompt/brief | AI image art-direction route | `references/ai-image-generation.md` | Exact text/numbers stay outside generated image, usage boundaries reported |
+| `ai-image-generation` | Cover/background/concept visual素材, style exploration, image prompt/brief | AI image art-direction route | `references/ai-image-generation.md`; `references/minimal-zine-editorial.md` when the preset is selected | Exact text/numbers stay outside generated image, usage boundaries reported |
 | `short-video` | Short video, animated explainer, Remotion-style visual narrative, still-to-motion pipeline | Short-video route | `references/short-video.md`, `references/motion-video-harness.md` | Script/storyboard, render path, duration/aspect checks, frame QA |
 | `project-integration` | Existing project should adopt NERO Design Team as background design system | Project integration route | `references/project-integration.md`, `references/generator.md` only if manifest is needed | `.nero-design/manifest.json` read/created, outputs remain in target project |
 
 ## Routing
 
-- If `nero-design-team-mcp-lite` tools are available in the current Codex session, prefer them for structured reads and script execution:
+- Route through this Skill first. After the route, constraints, and required references are known, use `nero-design-team-mcp-lite` tools for structured reads and script execution when they are available:
   - `nero_design_route`
+  - `nero_design_get_registry`
   - `nero_design_get_tokens`
   - `nero_design_list_templates`
   - `nero_design_get_case_snapshot`
   - `nero_design_import_github_case`
   - `nero_design_build_tokens`
   - `nero_design_generate_project`
+  - `nero_design_compile_report_figure`
   - `nero_design_visual_qa`
   - `nero_design_score`
   - `nero_design_production_check`
-- If MCP-lite is unavailable or not registered, fall back to the local files and scripts listed below.
+- Treat `nero_design_route` as a structured confirmation/diagnostic tool, not as the primary router.
+- If MCP-lite is unavailable or not registered, fall back to the local files and scripts listed below without changing the selected Skill route.
 - Canonical design-system rules live under `$NERO_DESIGN_TEAM_HOME/rules/`. This Skill's `references/` files are a runtime mirror for Codex Skill packaging. When editing rules, keep the source rule and Skill reference mirror aligned.
 - For new artifacts or brand/style refreshes: read `references/brand-system.md`.
-- If the user says `架构脉络图` or asks for a dark projector-ready node-network architecture map: read `references/frontend-ui.md`, `references/effective-html.md`, `references/visual-qa.md`, then use `$NERO_DESIGN_TEAM_HOME/prompts/effective-html/architecture-map.md` and the case asset `$NERO_DESIGN_TEAM_HOME/case-library/assets/frontend-ui/hermes-workbench-architecture-map/`.
-- `frontend-ui`: read `references/frontend-ui.md`; also read `references/html-native-harness.md` for HTML-native prototypes, design variants, brand-asset protocol, or multi-format visual exploration; also read `references/effective-html.md` when the deliverable is a self-contained HTML explainer, architecture diagram, visual plan, design-review page, or single-file prototype. This route includes fused Impeccable/Taste frontend taste rules for design read, anti-slop checks, deterministic UI review, and final polish.
-- `image-report`: read `references/image-report.md`.
+- If the user says `架构脉络图` or asks for a dark projector-ready node-network architecture map: read `references/frontend-ui.md`, `references/effective-html.md`, and `references/visual-qa.md`. The private prompt and case-asset packs are represented only by `not-bundled-prompts/effective-html/architecture-map.md` and `not-bundled-case-assets/frontend-ui/architecture-map` boundary markers.
+- `frontend-ui`: read `references/frontend-ui.md`; read `references/frontend-motion.md` when the task includes meaningful press, popover, drawer, sheet, drag, swipe, carousel, momentum, interruptible motion, motion opportunity search, or motion audit; also read `references/html-native-harness.md` for HTML-native prototypes, design variants, brand-asset protocol, or multi-format visual exploration; also read `references/effective-html.md` when the deliverable is a self-contained HTML explainer, architecture diagram, visual plan, design-review page, or single-file prototype. This route includes fused Impeccable/Taste frontend taste rules plus NERO-calibrated interaction-motion rules for design read, anti-slop checks, deterministic UI review, and final polish.
+- `image-report`: read `references/image-report.md`. For one explanatory figure embedded in Word, PDF, WeChat, or PPT, also read `references/report-figure-rendering.md`; first make the semantic Figure Compiler v0.2 judgment, then let `nero_design_route` serialize the recommendation. When `recommended=true` and the project-local content and evidence boundary are sufficient, NDT may call `nero_design_compile_report_figure` to generate a candidate within the current task authorization. This does not promote, embed, commit, or alter evidence.
 - `ppt`: read `references/ppt.md`, then read `references/presentation-handoff-contract.md` when KAT, a deck brief, slide plan, story spine, evidence-to-slide map, or `presentation_handoff_contract` is involved; then read `references/ppt-business-design.md` for formal/business decks or audits, `references/ppt-production-harness.md` for spec lock, native editability, SVG QA, or substantial PPT production discipline, `references/web-ppt.md` and `references/html-deck-style-discovery.md` for HTML/web PPT decks, and `references/effective-html.md` when the deck needs a self-contained HTML diagram or visual plan page.
 - `presentation-production-chain`: read `references/presentation-production-chain.md`, `references/presentation-design-spec.md`, `references/presentation-handoff-contract.md`, `references/ppt-production-harness.md`, `references/visual-qa.md`, and `references/visual-score.md`. Use when the task mentions production packet, slide claim map, narrative variants, content freeze, return-to-KAT, design spec, style lock, three-direction exploration, or PPTX production readiness.
 - `short-video`: read `references/short-video.md`; also read `references/motion-video-harness.md` for storyboard discipline, still-to-motion conversion, or frame-level production planning.
-- `ai-image-generation`: read `references/ai-image-generation.md`.
+- `ai-image-generation`: read `references/ai-image-generation.md`; also read `references/minimal-zine-editorial.md` when the task needs a quiet paper-zine cover, article opener, social card, report divider, PPT chapter visual, large negative space, risograph/xerox texture, a Variation Engine recipe, or thumbnail color-anchor review.
+- `photo-derived-editorial-diptych`: read `references/photo-derived-editorial-diptych.md`, `references/ai-image-generation.md`, and `references/visual-qa.md`; use the registered preset only for photo-led editorial covers, dividers, and non-evidence social cards.
 - `new-project`: read `references/generator.md`.
 - `project-integration`: read `references/project-integration.md`, then `references/generator.md` only if a manifest must be created.
 - `case-library`: read `references/case-library.md`.
+- `handwritten-research-note`: read `references/handwritten-research-note.md` for the cross-format response, image-report, HTML, frontend, and editable-PPT adapters; combine it with the target route's required references.
 - `presentation-handoff-contract`: read `references/presentation-handoff-contract.md`, then choose the downstream PPT subroute from the contract's `deck_brief.output_lane`.
 - For KAT x NDT presentation production packets: use the `presentation-production-chain` route before final PPTX, web PPT, image, or video output.
 - For any third-party repo, template, screenshot, sample, skill, or asset reference: read `references/external-design-reference-boundaries.md`.
+- For `photo-derived-editorial-diptych`, keep the upstream repository as a method-only reference with unknown license; do not copy its Prompt, examples, or source into NDT.
 - `visual-score`: read `references/visual-score.md`.
 - `production-check`: read `references/production-check.md`.
 - Always read `references/visual-qa.md` before finalizing design work.
@@ -134,26 +182,57 @@ NERO Design Team is the default frontend design-quality entrypoint and controlle
 
 `plannotator/effective-html` is a fused reference for self-contained HTML artifacts, SVG-first architecture diagrams, and visual plan pages. It is not an independent default entrypoint and must not be installed as a standalone Skill by default.
 
+`emilkowalski/skills` is a fused reference for responsive and interruptible interaction motion, gesture physics, restraint-first motion decisions, animation audits, implementation-plan structure, and motion vocabulary. Its six upstream Skills must not be installed as parallel NDT entrypoints by default.
+
 Use the fused rules only as NERO-calibrated design guidance:
 
 - Start with NERO audience, evidence hierarchy, data density, and brand tokens.
 - Use Taste-style design read before styling: page type, audience, brand assets, regulatory or business constraints, and desired visual strength.
+- Use Taste v2 only for four targeted upgrades: anti-slop checks, controllable visual dials, brief inference before code, and shared configuration discipline.
+- For frontend work, infer or honor `DESIGN_VARIANCE`, `MOTION_INTENSITY`, and `VISUAL_DENSITY`; keep dashboards and analytical tools dense, restrained, and low-motion by default.
 - Use Impeccable-style deterministic review before finalizing: typography hierarchy, contrast, overflow, touch targets, headings, responsive behavior, motion fallback, and obvious AI-default patterns.
+- Use `frontend-motion.md` when interaction motion matters: name the purpose, keep frequent work-tool actions immediate, preserve direct manipulation and interruptibility, distinguish physics-based velocity handoff from duration-based spring timing, and verify reduced-motion behavior.
 - Preserve professional work-tool readability over novelty. Do not push dashboards, disclosure tools, financial analysis screens, or internal workflows toward marketing-site or Awwwards-style aesthetics unless NERO explicitly asks for that direction.
+- Keep NERO Design Team as the shared source of truth. Do not copy divergent frontend taste rules into Claude Code, Cursor, or project prompts; reference the NDT rule path or map any upstream `taste-skill` output back into NDT dials and QA gates.
 - Report `fused_reference_skills: impeccable, taste-skill` when these rules materially influenced a frontend UI or visual-audit result.
 - Report `fused_reference_skills: effective-html` when the local effective-html snapshot or reference pack materially influenced a self-contained HTML artifact, visual plan, or architecture diagram.
+- Report `fused_reference_skills: emilkowalski/apple-design, review-animations, improve-animations` when the frontend-motion reference materially influenced implementation or audit findings.
 
 Effective HTML local references:
 
 - Source repo: `https://github.com/plannotator/effective-html`
 - License: MIT for the main repo; Apache-2.0 for bundled `html-effectiveness` examples.
 - Local snapshot: `$NERO_DESIGN_TEAM_HOME/case-library/snapshots/plannotator__effective-html/snapshot.json`
-- Local reference pack: `$NERO_DESIGN_TEAM_HOME/assets/external/effective-html/manifest.json`
+- Public package status: the local reference pack is not bundled (`not-bundled-external/effective-html`).
 - Use as reference only. Build NERO-native HTML/CSS/JS with NERO tokens and verified task content.
+
+Frontend motion local reference:
+
+- Source repo: `https://github.com/emilkowalski/skills`
+- License: MIT for the repository; Apple and other third-party identity/design resources are not bundled.
+- Local snapshot: `$NERO_DESIGN_TEAM_HOME/case-library/snapshots/emilkowalski__skills/snapshot.json`
+- NERO rule: `references/frontend-motion.md`
+- Use as a fused reference only. Do not install upstream Skills as independent NDT controllers or treat duration/performance heuristics as universal without stack and browser verification.
+
+## 留白杂志风（Minimal Zine Editorial）Fusion v2.3
+
+`LiamGvchi/gc-minimal-zine-poster` is a fused reference for quiet paper-zine prompt grammar. It is not an independent NDT route or installed Skill.
+
+- User-facing name and invocation alias: `留白杂志风`.
+- Canonical preset id for manifests, paths, and backward compatibility: `minimal-zine-editorial`.
+- NERO rule: `references/minimal-zine-editorial.md`.
+- Local snapshot: `$NERO_DESIGN_TEAM_HOME/case-library/snapshots/liamgvchi__gc-minimal-zine-poster/snapshot.json`.
+- NERO-native style pack: `$NERO_DESIGN_TEAM_HOME/assets/style-references/minimal-zine-editorial/manifest.json`.
+- Generator preset: `node $NERO_DESIGN_TEAM_HOME/scripts/nero-design.mjs new ai-image-generation --preset 留白杂志风 --name <project-name> --out <target-parent-dir>`; the legacy `--preset minimal-zine-editorial` form remains supported.
+- Use for article/WeChat covers, report dividers, PPT/web-PPT chapter visuals, social cards, quantitative negative-space composition, Variation Engine recipes, thumbnail anchor review, and one targeted regeneration.
+- Do not use for evidence-dense report bodies, dashboards, tables, charts, banker appendices, or regulatory pages.
+- Exact titles, dates, names, figures, labels, logos, captions, source notes, and compliance wording stay in the deterministic overlay layer.
+- The six upstream JPEG examples remain remote snapshot references. They are not bundled, not NERO-owned assets, and not client-delivery material.
+- Report `fused_reference_skills: gc-minimal-zine-poster` when this preset materially influences an output.
 
 ## Presentation Harness Fusion v1.8
 
-NERO Design Team is the only entrypoint and controller for presentation harness work.
+NERO Design Team is the only default visual entrypoint and visual controller for presentation harness work. GPT Work remains the cross-system controller.
 
 The following projects are fused references, not standalone default routes:
 
@@ -170,17 +249,17 @@ The following projects are fused references, not standalone default routes:
   - Read `references/ppt-production-harness.md`, `references/ppt.md`, and `references/ai-image-generation.md`.
   - Do not replace Presentations as the formal PPTX primary route, install heavy dependencies, run image search/TTS/watermark removal, or copy large SVG/PPTX examples.
 
-Local lightweight snapshots:
+Public snapshot status:
 
-- `$NERO_DESIGN_TEAM_HOME/case-library/snapshots/alchaincyf__huashu-design/snapshot.json`
-- `$NERO_DESIGN_TEAM_HOME/case-library/snapshots/zarazhangrui__frontend-slides/snapshot.json`
-- `$NERO_DESIGN_TEAM_HOME/case-library/snapshots/hugohe3__ppt-master/snapshot.json`
+- `not-bundled-snapshots/alchaincyf__huashu-design`
+- `not-bundled-snapshots/zarazhangrui__frontend-slides`
+- `not-bundled-snapshots/hugohe3__ppt-master`
 
 Always pair external project references with `references/external-design-reference-boundaries.md`.
 
 ## PPT Fusion
 
-NERO Design Team is the default PPT entrypoint and controller.
+NERO Design Team is the default PPT visual entrypoint and visual controller. GPT Work owns cross-system progression and invokes Presentations after NDT returns a passed visual gate.
 
 PPT subroutes:
 
@@ -197,7 +276,7 @@ Guizang Refresh v1.4:
 - Source repo: `https://github.com/op7418/guizang-ppt-skill`
 - License: `AGPL-3.0`
 - Local snapshot: `$NERO_DESIGN_TEAM_HOME/case-library/snapshots/op7418__guizang-ppt-skill/snapshot.json`
-- Local restricted asset pack: `$NERO_DESIGN_TEAM_HOME/assets/external/guizang-ppt-skill/manifest.json`
+- Public package status: the restricted asset pack is not bundled (`not-bundled-external/guizang-ppt-skill`).
 - NERO validator: `$NERO_DESIGN_TEAM_HOME/scripts/validate-web-ppt.mjs`
 - Use the asset pack as `restricted-reference` only. Do not treat downloaded assets as NERO-owned brand assets or public/client deliverable assets without separate license review.
 - For Swiss-style HTML decks, enforce registered layout ids, image slots, screenshot preservation, and exact text/data layering in HTML.
@@ -208,6 +287,8 @@ For PPT completion, report the chosen `ppt_subroute`, primary engine, whether le
 
 KAT is the content director and NERO Design Team is the visual director. If a PPT task arrives from KAT or includes a `presentation_handoff_contract`, deck brief, slide plan, story spine, evidence-to-slide map, or explicit content/visual boundary, read `references/presentation-handoff-contract.md` before visual production.
 
+GPT Work owns the handoff sequence. NERO Design Team consumes KAT-owned references supplied by GPT Work, then returns an accepted visual package or a structured `return_to_kat` request to GPT Work. NERO Design Team does not call KAT directly.
+
 NERO may choose the visual route, layout system, image direction, chart treatment, visual QA, visual score, and production-check path. NERO must return to KAT instead of silently changing conclusions, financial figures, source notes, regulatory wording, claim meaning, or must-preserve action titles.
 
 Formal editable PPTX still defaults to Presentations. The handoff contract controls content and visual boundaries; it is not a local PPTX renderer.
@@ -217,6 +298,8 @@ Formal editable PPTX still defaults to Presentations. The handoff contract contr
 Use this when NERO asks for a full presentation chain, production packet, slide claim map, narrative variants, content freeze gate, return-to-KAT mechanism, design spec, style lock, or three-direction PPT visual exploration.
 
 KAT remains the content director. NERO Design Team remains the visual director. Presentations remains the formal editable PPTX engine.
+
+GPT Work remains the only production-chain controller. It updates `control/production-ledger.json`, invokes each owner separately, and prevents KAT or NDT from treating their local manifests as the cross-system source of truth.
 
 Required production-chain artifacts:
 
@@ -233,17 +316,18 @@ Local MCP-lite server:
 
 `$NERO_DESIGN_TEAM_HOME/mcp-lite/server.mjs`
 
-Use MCP-lite as a tool layer only. It can read tokens, list templates, read case snapshots, import lightweight GitHub snapshots, run token builds, generate projects, run visual QA, run visual scoring, and run production checks.
+Use MCP-lite as a tool layer only. It can read tokens, list templates, read case snapshots, import lightweight GitHub snapshots, run token builds, generate projects, compile a candidate report figure when the Skill recommendation permits it, run visual QA, run visual scoring, and run production checks.
 
-MCP-lite must not replace design judgment, investment-banking wording review, factual evidence review, license/legal review, or gpt-image-2 usage boundaries.
+MCP-lite must not replace Skill-first route judgment, GPT Work cross-system control, design judgment, investment-banking wording review, factual evidence review, license/legal review, or gpt-image-2 usage boundaries.
 
 MCP-lite is not assumed to be registered in every Codex session. When it is unavailable, use:
 
 - Token files under `$NERO_DESIGN_TEAM_HOME/tokens/`
 - Templates under `$NERO_DESIGN_TEAM_HOME/templates/`
 - Case snapshots under `$NERO_DESIGN_TEAM_HOME/case-library/snapshots/`
-- External restricted assets under `$NERO_DESIGN_TEAM_HOME/assets/external/`
-- Effective HTML reference pack under `$NERO_DESIGN_TEAM_HOME/assets/external/effective-html/`
+- Style reference assets under `$NERO_DESIGN_TEAM_HOME/assets/style-references/`
+- External restricted assets are not bundled; keep them in an explicitly private overlay.
+- The Effective HTML reference pack is not bundled; use the bundled NDT rule and attributed upstream link.
 - Scripts under `$NERO_DESIGN_TEAM_HOME/scripts/`
 
 ## Default Standards
@@ -254,16 +338,18 @@ MCP-lite is not assumed to be registered in every Codex session. When it is unav
 - Default system positioning: `$NERO_DESIGN_TEAM_HOME/` is the central design system and background support layer, not a catch-all project workspace.
 - Default brand root: `$NERO_DESIGN_TEAM_HOME/brand/`.
 - Default token root: `$NERO_DESIGN_TEAM_HOME/tokens/`.
+- Default style reference root: `$NERO_DESIGN_TEAM_HOME/assets/style-references/`.
 - Default token build command: `node $NERO_DESIGN_TEAM_HOME/scripts/build-tokens.mjs`.
 - Default generator command: `node $NERO_DESIGN_TEAM_HOME/scripts/nero-design.mjs new <route> --name <project-name> --out <target-parent-dir>`.
 - Default project integration command: `node $NERO_DESIGN_TEAM_HOME/scripts/nero-design.mjs init <route> --project-root <existing-project-dir>`.
 - Default scoring command: `node $NERO_DESIGN_TEAM_HOME/scripts/score-visual.mjs <score-manifest.json>`.
 - Default production-check command: `node $NERO_DESIGN_TEAM_HOME/scripts/production-check.mjs <production-manifest.json>`.
 - Do not make a marketing landing page unless explicitly requested.
-- Do not use random purple-blue gradients, oversized rounded cards, card-inside-card structures, or decorative images that do not carry information.
+- Default-ban random purple-blue gradients, oversized rounded cards, card-inside-card structures, decorative images, and default glassmorphism; allow them only when they pass the NDT Exception Gate and improve the actual deliverable.
 - Distinguish verified facts, assumptions, and placeholders in design outputs.
 - Treat gpt-image-2 as an AI Image Art Director for visual素材 only.
 - Never rely on gpt-image-2 for exact Chinese body text, financial figures, tables, chart axis labels, source notes, regulatory wording, or formal conclusions.
+- For `留白杂志风` (canonical preset `minimal-zine-editorial`), record the selected recipe, geometry, thumbnail review, recent-recipe comparison, and at most one automatic regeneration in the project-local QA manifest.
 
 ## Template Root
 
@@ -275,6 +361,7 @@ Use these as starting points when creating new artifacts:
 
 - `frontend-dashboard`
 - `report-card-image`
+- `report-card-image/presets/high-resolution-raster-report-figure`
 - `pptx-deck`
 - `remotion-short-video`
 - `gpt-image-brief`
@@ -286,7 +373,8 @@ Do not install dependencies globally. For each real project, use the local proje
 
 For existing projects, NERO Design Team should be used as a background design system:
 
-- create or read `<project>/.nero-design/manifest.json`;
+- exclusively create or read `<project>/.nero-design/manifest.json`; KAT and other systems may reference it but must not write it;
+- read `<project>/control/production-ledger.json` when GPT Work provides it, but do not treat it as NDT-owned state or update it autonomously;
 - keep project outputs in the target project, usually `design-output/`, `exports/`, and `screenshots/`;
 - reference NERO tokens, brand assets, templates, case snapshots, QA scripts, and scoring scripts from `$NERO_DESIGN_TEAM_HOME/`;
 - do not move client data, final delivery files, or project evidence into `design-team/`;
@@ -316,9 +404,7 @@ Case library lives at:
 
 `$NERO_DESIGN_TEAM_HOME/case-library/`
 
-Export validation reports live at:
-
-`$NERO_DESIGN_TEAM_HOME/validation/`
+Machine-local validation history is not bundled in the public package. Run the public checks in the current checkout and keep any generated reports outside the publishable tree.
 
 Treat current NERO SVG logo/wordmark assets as local placeholders unless official assets are supplied.
 
@@ -332,6 +418,7 @@ Before final response:
 - Report which template or repository references were used.
 - Report whether the generator was used.
 - Report whether `.nero-design/manifest.json` was created or read for project integration tasks.
+- Report the cross-system next owner to GPT Work; do not call KAT or Presentations directly.
 - Report whether gpt-image-2 was used, briefed, or deliberately avoided.
 - Report visual QA and visual score when performed.
 - Report production-check status when performed.

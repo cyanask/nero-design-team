@@ -2,7 +2,7 @@
 
 Agent-native design system for Codex-style coding agents.
 
-NERO Design Team is a lightweight design operating system for frontend UI, image-style reports, PPT/PPTX decks, web PPT/HTML decks, short videos, AI-image briefs, visual QA, visual scoring, and production checks.
+NERO Design Team is a lightweight design operating system for frontend UI, image-style reports, deterministic report figures, PPT/PPTX decks, web PPT/HTML decks, short videos, AI-image briefs, visual QA, visual scoring, and production checks.
 
 It is not a component library alone. It combines:
 
@@ -46,6 +46,8 @@ node doctor.mjs
 node scripts/build-tokens.mjs
 node scripts/nero-design.mjs list
 node mcp-lite/server.mjs --list-tools
+node mcp-lite/smoke-test.mjs
+node mcp-lite/report-figure-compiler-test.mjs
 node release-check.mjs
 ```
 
@@ -61,6 +63,18 @@ node release-check.mjs
 - `visual-score`
 - `production-check`
 
+## Figure Compiler v0.2
+
+The `image-report` route includes a deterministic Figure Compiler for one evidence-bearing explanatory figure. It supports:
+
+- nine figure types: flow, hierarchy, timeline, funnel, bar, line, participant map, matrix, and value chain;
+- `report-a4`, `wechat-inline`, and `ppt-16x9` profiles;
+- SVG output without Pillow;
+- high-resolution PNG output when Python and Pillow are available;
+- project-local Figure Specs and compile receipts, without a database or job service.
+
+The compiler creates a candidate only. It does not promote, embed, commit, or publish a figure, and it does not replace native Office objects when true editability is required.
+
 ## Repository Layout
 
 ```text
@@ -70,6 +84,7 @@ rules/                        route rules and QA rules
 tokens/                       design-token source files
 templates/                    minimal project templates
 scripts/                      generator, importer, QA, score, checks
+tools/runtime/                deterministic local runtimes, including Figure Compiler
 registry/                     machine-readable role and route index
 case-library/snapshots/       lightweight GitHub reference snapshots
 brand/                        open-source-safe default profile assets
@@ -91,7 +106,7 @@ nero-design-team-private/
   validation/private/
 ```
 
-Public snapshots should store summaries, license notes, file paths, and image URLs only. Do not store full cloned repositories, client evidence, credentials, private screenshots, or third-party restricted assets.
+Public snapshots should store summaries, license notes, file paths, and image URLs only. Do not store full cloned repositories, client evidence, credentials, private screenshots, private identity references, or third-party restricted assets.
 
 ## AI Image Boundary
 

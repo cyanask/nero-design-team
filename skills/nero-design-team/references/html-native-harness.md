@@ -5,7 +5,7 @@ Use this rule when NERO Design Team needs HTML-native visual production, multi-f
 ## Fused Reference
 
 - Source: `alchaincyf/huashu-design`
-- Local snapshot: `$NERO_DESIGN_TEAM_HOME/case-library/snapshots/alchaincyf__huashu-design/snapshot.json`
+- Public snapshot status: not bundled (`not-bundled-snapshots/alchaincyf__huashu-design`).
 - License status: permissive, but upstream assets are still external references and are not NERO-owned brand assets.
 
 ## Use For

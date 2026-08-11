@@ -13,7 +13,7 @@ function usage() {
   return [
     "Usage:",
     "  node scripts/nero-design.mjs list",
-    "  node scripts/nero-design.mjs new <route> --name <project-name> --out <target-parent-dir>",
+    "  node scripts/nero-design.mjs new <route> [--preset <preset-name>] --name <project-name> --out <target-parent-dir>",
     "  node scripts/nero-design.mjs init <route> --project-root <existing-project-dir> [--name <project-name>]",
     "",
     "Routes: frontend-ui, image-report, ppt, short-video, ai-image-generation"
@@ -34,6 +34,9 @@ function parseArgs(argv) {
       index += 1;
     } else if (key === "--project-root") {
       options.projectRoot = value;
+      index += 1;
+    } else if (key === "--preset") {
+      options.preset = value;
       index += 1;
     } else if (key === "--help" || key === "-h") {
       options.help = true;
@@ -80,6 +83,36 @@ async function replaceIfExists(filePath, replacements) {
   await fs.writeFile(filePath, text, "utf8");
 }
 
+function resolvePreset(config, presetName) {
+  if (!presetName) return null;
+  const presets = config.presets || {};
+  const canonicalName = presets[presetName]
+    ? presetName
+    : Object.entries(presets).find(([, preset]) => preset.aliases?.includes(presetName))?.[0];
+  if (!canonicalName) {
+    const available = Object.entries(presets).map(([name, preset]) =>
+      preset.aliases?.length ? `${name} (aliases: ${preset.aliases.join(", ")})` : name
+    );
+    throw new Error(`Unsupported preset: ${presetName}${available.length ? `; available: ${available.join(", ")}` : ""}`);
+  }
+  return { canonicalName, preset: presets[canonicalName] };
+}
+
+async function applyPreset(targetDir, config, presetName) {
+  if (!presetName) return;
+  const sourceDir = path.join(templatesRoot, config.template, "presets", presetName);
+  if (!(await pathExists(sourceDir))) {
+    throw new Error(`Preset source is missing: ${sourceDir}`);
+  }
+  const entries = await fs.readdir(sourceDir, { withFileTypes: true });
+  for (const entry of entries) {
+    await fs.cp(path.join(sourceDir, entry.name), path.join(targetDir, entry.name), {
+      recursive: entry.isDirectory(),
+      force: true
+    });
+  }
+}
+
 async function copyThemeAssets(targetDir) {
   const themeDir = path.join(targetDir, "theme");
   await fs.mkdir(themeDir, { recursive: true });
@@ -110,7 +143,10 @@ async function localizeTemplateImports(targetDir) {
 async function listRoutes() {
   const registry = await readRegistry();
   for (const [route, config] of Object.entries(registry.routes)) {
-    console.log(`${route}\t${config.template}\t${config.description}`);
+    const presets = Object.entries(config.presets || {}).map(([name, preset]) =>
+      preset.aliases?.length ? `${name} (aliases: ${preset.aliases.join(", ")})` : name
+    );
+    console.log(`${route}\t${config.template}\t${config.description}${presets.length ? `\tpresets=${presets.join(",")}` : ""}`);
   }
 }
 
@@ -121,7 +157,7 @@ async function createProjectLocalDirs(projectRoot) {
   await fs.mkdir(path.join(projectRoot, "screenshots"), { recursive: true });
 }
 
-async function writeProjectManifest({ projectRoot, projectName, route, config, registry, mode }) {
+async function writeProjectManifest({ projectRoot, projectName, route, config, registry, mode, preset }) {
   await createProjectLocalDirs(projectRoot);
   const manifestPath = path.join(projectRoot, ".nero-design", "manifest.json");
   if (await pathExists(manifestPath)) {
@@ -134,6 +170,7 @@ async function writeProjectManifest({ projectRoot, projectName, route, config, r
     project_name: projectName,
     route,
     template: config.template,
+    preset: preset || null,
     created_at: now,
     updated_at: now,
     mode,
@@ -198,6 +235,7 @@ async function createProject(options) {
   if (!config) {
     throw new Error(`Unsupported route: ${options.route}\n${usage()}`);
   }
+  const resolvedPreset = resolvePreset(config, options.preset);
 
   const projectName = options.name || config.default_name;
   const outParent = path.resolve(options.out || process.cwd());
@@ -214,6 +252,7 @@ async function createProject(options) {
     force: false,
     errorOnExist: true
   });
+  await applyPreset(targetDir, config, resolvedPreset?.canonicalName);
   await copyThemeAssets(targetDir);
   await localizeTemplateImports(targetDir);
 
@@ -223,13 +262,17 @@ async function createProject(options) {
     route: options.route,
     config,
     registry,
-    mode: "generated-template-project"
+    mode: "generated-template-project",
+    preset: resolvedPreset?.canonicalName
   });
   console.log(`Created ${options.route} project at ${targetDir}`);
   console.log(`NERO design manifest: ${manifestPath}`);
 }
 
 async function initExistingProject(options) {
+  if (options.preset) {
+    throw new Error("--preset is only supported by the new command because init does not copy template files");
+  }
   const registry = await readRegistry();
   const config = registry.routes[options.route];
   if (!config) {
@@ -251,7 +294,8 @@ async function initExistingProject(options) {
     route: options.route,
     config,
     registry,
-    mode: "existing-project-integration"
+    mode: "existing-project-integration",
+    preset: null
   });
   console.log(`Initialized NERO design integration at ${projectRoot}`);
   console.log(`NERO design manifest: ${manifestPath}`);

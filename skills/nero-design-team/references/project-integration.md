@@ -14,12 +14,16 @@ Each integrated project may create:
 
 ```text
 <project>/
+  control/
+    production-ledger.json
   .nero-design/
     manifest.json
   design-output/
   exports/
   screenshots/
 ```
+
+`control/production-ledger.json` is optional for standalone design work and required for GPT Work cross-system production. GPT Work owns it. NERO Design Team may read it for current gate and artifact references, but it must not become a second workflow controller.
 
 The project manifest records:
 
@@ -45,8 +49,14 @@ Generate a new local project from a NERO template:
 
 Both commands create `.nero-design/manifest.json` in the project directory.
 
+NERO Design Team is the exclusive writer of `.nero-design/manifest.json`. KAT and other backend systems may record its expected path but must not create, overwrite, or maintain it.
+
 ## Boundary Rules
 
+- GPT Work is the only cross-system controller; NERO Design Team controls the visual route only.
+- Route through the NERO Design Team Skill before using MCP-lite or local scripts.
+- NERO Design Team must return control to GPT Work after visual generation, QA, score, or production-check instead of calling KAT or Presentations directly.
+- Treat `control/production-ledger.json` as GPT Work owned and `.nero-design/manifest.json` as NERO Design Team owned. Neither file replaces the other.
 - Keep generated project artifacts in the project directory.
 - Keep reusable system rules, tokens, and templates in `design-team/`.
 - Do not move client data, project evidence, or final delivery packages into `design-team/`.
@@ -66,3 +76,4 @@ When using this rule, report:
 - where outputs should be written
 - whether QA, visual score, or production-check ran
 - whether any pattern should be promoted back to the central design system
+- next owner returned to GPT Work

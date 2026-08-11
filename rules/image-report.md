@@ -2,6 +2,12 @@
 
 Use this rule for research cards, WeChat long images, industry-report visuals, financial summaries, social cards, and exportable PNG/JPEG/WebP report assets.
 
+## Rendering Choice
+
+- For explanatory figures embedded in Word, PDF, or other long-form reports, read `report-figure-rendering.md` before production.
+- If the user has not selected a renderer, surface `raster-canvas-png`, `vector-svg`, and `office-native` at the start of the new figure-generation task, recommend one with a reason, and let the choice apply only to the current figure family or batch.
+- Do not make high-resolution PNG, SVG, or Office-native output a permanent route default merely because it worked in a prior project.
+
 ## Routing
 
 - Layout and design direction: Carbon-style information density plus NERO report tone.
@@ -10,6 +16,8 @@ Use this rule for research cards, WeChat long images, industry-report visuals, f
 - Browser rendering: Puppeteer when CSS fidelity, complex layout, or real browser screenshots matter.
 - Post-processing: Sharp for resize, crop, compression, compositing, and final export variants.
 - Use `ai-image-generation.md` only for cover/background/concept visuals; exact text, numbers, tables, and charts stay in Satori/Sharp or browser-rendered code.
+- Use `留白杂志风` (`minimal-zine-editorial.md`) only for sparse covers or section dividers. Do not apply its poster density to evidence-bearing report-card bodies.
+- Use `photo-derived-editorial-diptych.md` only for photo-led covers, section dividers, social cards, or other non-evidence editorial visuals. Keep the source photo independent, require a `relation_trace`, and layer exact text deterministically.
 - Use NERO design tokens for report theme, chart palette, typography, and export geometry.
 
 ## Design Standard

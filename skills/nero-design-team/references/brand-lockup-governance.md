@@ -23,7 +23,7 @@ Brand work is not screenshot tracing. First identify the source-of-truth geometr
 ## Lockup Composition
 
 - If the asset contains the full lockup, remove duplicated HTML/CSS wordmark text.
-- Preserve `alt` or `aria-label` such as `AIpha Research Desk` so accessibility and validation still have text.
+- Preserve `alt` or `aria-label` such as `NERO Design Team placeholder mark` so accessibility and validation still have text.
 - On dark nav bars, do not wrap the mark in a white tile unless the brand system explicitly requires it.
 - Avoid over-tracking compact uppercase subtitles; NERO research tools should feel precise, not decorative.
 
@@ -33,7 +33,7 @@ Brand work is not screenshot tracing. First identify the source-of-truth geometr
 - Report covers, cards, and editorial lead images can use larger lockups.
 - Dense repeat-use tools, dashboards, and news radars should treat the logo as system chrome; it should be smaller than the data and status controls.
 - When borrowing from a stronger/editorial product, start at 70-80% of that product's rendered lockup size. If it still competes with the interface, reduce to about 60-70%.
-- Do not universalize one pixel size. Record the ratio and the reason. For the AIpha case study, Serenity Lens can carry a larger lockup, while AIpha-Radar settled on a smaller tool-nav size of roughly `112x36` desktop and `90x29` mobile for the same lockup aspect ratio.
+- Do not universalize one pixel size. Record the ratio and the reason. A report cover may carry a larger lockup, while a repeat-use analytical tool should use a smaller nav lockup for the same aspect ratio.
 
 ## Public Package Boundaries
 
@@ -45,7 +45,7 @@ Brand work is not screenshot tracing. First identify the source-of-truth geometr
 
 - Render the real output, not just the source asset.
 - Confirm exactly one visible logo instance unless the layout intentionally needs more.
-- Confirm no duplicated `.wordmark`, `.aipha-word`, or equivalent text appears beside a full lockup asset.
+- Confirm no duplicated `.wordmark`, `.brand-wordmark`, or equivalent text appears beside a full lockup asset.
 - Confirm desktop and mobile dimensions are explicit and do not overlap status chips, toggles, or primary controls.
 - Search generated HTML/CSS for old dimensions after resizing.
 - Compare visual weight against the nearest approved sibling product.

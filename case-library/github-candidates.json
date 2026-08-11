@@ -1,7 +1,7 @@
 {
   "route": "case-library",
-  "version": "1.0.0",
-  "updated_at": "2026-06-12",
+  "version": "1.1.0",
+  "updated_at": "2026-07-28",
   "source": "GitHub public repository search and official GitHub repository pages",
   "policy": [
     "These entries are design references, not factual evidence.",
@@ -181,6 +181,44 @@
       "snapshot_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/plannotator__effective-html/snapshot.json"
     },
     {
+      "id": "github-frontend-006-emilkowalski-skills",
+      "name": "emilkowalski/skills",
+      "repository": "emilkowalski/skills",
+      "source_url": "https://github.com/emilkowalski/skills",
+      "route": "frontend-ui",
+      "purpose": "Reference fluid interaction design, gesture physics, restrained motion decisions, animation review standards, codebase-wide motion audits, implementation-plan structure, and precise animation vocabulary.",
+      "style": "responsive and interruptible interaction motion, gesture physics, restrained design engineering, animation audit discipline",
+      "tokens": [
+        "motion.duration.press",
+        "motion.duration.control",
+        "motion.easing.enter",
+        "motion.spring.critical",
+        "motion.gesture.hysteresisPx"
+      ],
+      "template": "frontend-dashboard",
+      "score": {
+        "value": 90,
+        "rating": "candidate",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "gesture-driven frontend interactions",
+        "drawers, sheets, carousels, drag and swipe behavior",
+        "frontend motion review and codebase-wide audits",
+        "interaction QA, reduced-motion review, and motion terminology",
+        "NERO work-tool interfaces that need responsive feedback without decorative over-animation"
+      ],
+      "disabled_when": [
+        "installing the upstream skills as independent NDT entrypoints",
+        "copying Apple identity, SF Symbols, WWDC slides, course content, or third-party design resources",
+        "treating upstream duration and performance heuristics as universal rules without stack and browser verification",
+        "using translucency, bounce, sound, or haptics as decoration in dense financial and disclosure workflows",
+        "the task has no interactive frontend surface"
+      ],
+      "notes": "MIT repository. Fuse selected rules into NDT frontend-motion and visual QA; do not install the six upstream skills as parallel controllers. The repository contains text knowledge/process assets rather than a visual media or component asset pack.",
+      "snapshot_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/emilkowalski__skills/snapshot.json"
+    },
+    {
       "id": "github-image-001-satori",
       "name": "vercel/satori",
       "repository": "vercel/satori",
@@ -243,6 +281,22 @@
         "font-sensitive Chinese final output without QA"
       ],
       "notes": "Secondary candidate behind Satori for NERO; useful for API shape and rendering architecture."
+    },
+    {
+      "id": "github-image-003-minimal-zine-poster",
+      "name": "LiamGvchi/gc-minimal-zine-poster",
+      "repository": "LiamGvchi/gc-minimal-zine-poster",
+      "source_url": "https://github.com/LiamGvchi/gc-minimal-zine-poster",
+      "route": "image-report",
+      "purpose": "Reference minimal paper-zine prompt grammar, quantitative negative-space composition, variation recipes, thumbnail anchor review, and one-retry color correction for NERO-native cover and chapter visuals.",
+      "style": "aged paper, large negative space, one compact subject cluster, sparse editorial typography, one high-chroma anchor, xerox/risograph/halftone defects",
+      "tokens": ["color.surface.paper", "color.text.primary", "color.brand.primary", "color.brand.accent", "font.cn.body", "space.report.pagePadding"],
+      "template": "gpt-image-brief --preset minimal-zine-editorial",
+      "score": { "value": null, "rating": "candidate", "scorecard": "formal visual score not run; six upstream examples reviewed manually" },
+      "applies_to": ["WeChat and essay covers", "research-report covers and dividers", "PPT and web-PPT chapter visuals", "quiet editorial social cards", "AI image style exploration with deterministic overlays"],
+      "disabled_when": ["evidence-dense report-card body, dashboard, form, table, chart, banker appendix, or regulatory page", "exact text or figures would be accepted from generated raster", "copying upstream JPEG examples into public or client deliverables", "installing the upstream Skill as a parallel NDT entrypoint", "overriding an approved mature artifact or brand system"],
+      "notes": "Use the NERO-native rule, preset, overlay template, and QA gate. Upstream JPEGs remain remote references only.",
+      "snapshot_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/liamgvchi__gc-minimal-zine-poster/snapshot.json"
     },
     {
       "id": "github-ppt-001-pptxgenjs",

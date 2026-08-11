@@ -1,15 +1,19 @@
 {
   "name": "nero-design-team",
-  "version": "1.7.0",
+  "version": "2.0.0",
   "private": false,
   "type": "module",
-  "description": "Agent-native design system for Codex-style design routing, tokens, templates, QA, scoring, and MCP-lite tools.",
+  "description": "Agent-native design system for Codex-style routing, deterministic report figures, tokens, templates, QA, scoring, and MCP-lite tools.",
   "license": "Apache-2.0",
   "scripts": {
     "doctor": "node doctor.mjs",
     "build:tokens": "node scripts/build-tokens.mjs",
     "list": "node scripts/nero-design.mjs list",
     "mcp:list": "node mcp-lite/server.mjs --list-tools",
+    "test:mcp": "node mcp-lite/smoke-test.mjs",
+    "test:figure-compiler": "node mcp-lite/report-figure-compiler-test.mjs",
+    "registry:check": "node scripts/validate-registry.mjs",
+    "test:production-gate": "node scripts/test-production-check-readiness.mjs",
     "release:check": "node release-check.mjs"
   },
   "keywords": [

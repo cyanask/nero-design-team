@@ -21,8 +21,8 @@ default Skill.
 - Main repository license: MIT
 - Bundled `html-effectiveness` examples license: Apache-2.0
 - Local snapshot: `$NERO_DESIGN_TEAM_HOME/case-library/snapshots/plannotator__effective-html/snapshot.json`
-- Local reference pack: `$NERO_DESIGN_TEAM_HOME/assets/external/effective-html/manifest.json`
-- Local prompt pack: `$NERO_DESIGN_TEAM_HOME/prompts/effective-html/`
+- Public package status: the local reference and prompt packs are not bundled.
+- Use the bundled NDT rule, the lightweight snapshot, and the attributed upstream repository.
 
 Use the source as reference only. Build NERO-native HTML/CSS/JS with NERO
 tokens, NERO brand constraints, and task-specific content.
@@ -30,9 +30,8 @@ tokens, NERO brand constraints, and task-specific content.
 ## Router Model
 
 NERO Design Team remains the only entrypoint. When an artifact may benefit from
-effective-html, first use the local router prompt:
-
-`$NERO_DESIGN_TEAM_HOME/prompts/effective-html/router.md`
+effective-html, route from this bundled rule. The private router prompt is not
+part of the public package.
 
 Valid outcomes:
 

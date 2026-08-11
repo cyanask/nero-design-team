@@ -1,6 +1,10 @@
 # Repository Registry
 
-Use this registry to choose references without loading entire external repositories. The full machine-readable registry lives at `$NERO_DESIGN_TEAM_HOME/registry/design-team.json`.
+This page is only the external-repository selection view. The authoritative machine-readable NERO Design Team Registry lives at `$NERO_DESIGN_TEAM_HOME/registry/design-team.json`; its asset subregistry lives at `$NERO_DESIGN_TEAM_HOME/registry/design-assets.json`.
+
+Use `nero_design_get_registry` or run `node $NERO_DESIGN_TEAM_HOME/scripts/validate-registry.mjs` when the question is about NDT truth domains, source/runtime/OSS boundaries, asset coverage, or Registry integrity. Do not infer runtime or production maturity from Registry completeness.
+
+Use the repository list below only to choose references without loading entire external repositories.
 
 ## Design Direction
 
@@ -15,8 +19,9 @@ Use this registry to choose references without loading entire external repositor
 - `birobirobiro/awesome-shadcn-ui`: shadcn ecosystem index for blocks, registries, dashboards, and extensions.
 - `magicuidesign/magicui`: restrained accent only; do not use for dense core workflows.
 - `pbakaus/impeccable`: fused reference for detector-style frontend design review, anti-pattern checks, and final UI polish. Do not install hooks, live mode, or npm packages by default.
-- `Leonxlnx/taste-skill`: fused reference for brief inference, anti-default discipline, design dials, and redesign pre-flight. Use only NERO-calibrated excerpts, not a standalone default route.
+- `Leonxlnx/taste-skill`: fused reference for four targeted frontend upgrades: anti-slop rules, `DESIGN_VARIANCE` / `MOTION_INTENSITY` / `VISUAL_DENSITY`, brief inference before code, and shared configuration discipline. Use only NERO-calibrated excerpts, not a standalone default route.
 - `plannotator/effective-html`: fused reference for self-contained HTML artifacts, SVG-first architecture diagrams, visual plan pages, and single-file HTML explainers. Do not install as an independent default Skill or copy upstream examples directly.
+- `emilkowalski/skills`: fused reference for responsive and interruptible interaction motion, gesture physics, restraint-first motion decisions, animation audits, repair-plan structure, and motion vocabulary. Use `frontend-motion.md`; do not install the upstream skills as parallel NDT entrypoints or copy Apple/third-party identity assets.
 
 ## Charts
 
@@ -41,5 +46,6 @@ Use this registry to choose references without loading entire external repositor
 ## AI Image Generation
 
 - `OpenAI gpt-image-2`: generate high-quality visual素材 for covers, backgrounds, chapter visuals, video scenes, and style exploration.
+- `LiamGvchi/gc-minimal-zine-poster`: fused reference for minimal paper-zine prompt grammar, quantitative negative-space composition, variation recipes, thumbnail review, and one-retry color-anchor correction. Use the NERO-native `留白杂志风` alias backed by canonical preset `minimal-zine-editorial`; do not install the upstream Skill as a parallel entrypoint or copy its JPEG examples into NDT.
 - Boundary: never use generated text, numbers, tables, chart labels, regulatory wording, or source notes as final evidence.
 - Required handoff: create a brief first, then add exact content through Satori/Sharp, PptxGenJS, or Remotion, then run visual QA.

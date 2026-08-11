@@ -1,8 +1,8 @@
 interface:
   display_name: "NERO Design Team"
-  short_description: "Routes NERO design work through brand, tokens, generators, cases, QA, scoring, and production checks. Alias: ndt."
+  short_description: "Routes NERO design work through brand, tokens, interaction motion, cases, QA, scoring, and production checks. Aliases: ndt, 手写风格."
   brand_color: "#1F4E5F"
-  default_prompt: "Use $nero-design-team to create or audit a professional NERO artifact. Classify the route, load brand guidance and case references, build/load tokens, use the generator or template, brief gpt-image-2 only for visual素材 when needed, then run visual QA, scoring, and production check."
+  default_prompt: "Use $nero-design-team to create or audit a professional NERO artifact. Classify the route, load brand guidance and case references, use frontend-motion rules when interaction behavior is material, build/load tokens, use the generator or template, brief gpt-image-2 only for visual素材 when needed, then run visual QA, scoring, and production check."
 
 policy:
   allow_implicit_invocation: true

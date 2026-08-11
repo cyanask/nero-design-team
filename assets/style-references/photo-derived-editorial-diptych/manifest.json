@@ -1,0 +1,24 @@
+{
+  "id": "photo-derived-editorial-diptych",
+  "name": "摄影抽象双联画",
+  "name_en": "Photo Derived Editorial Diptych",
+  "version": "1.0.0",
+  "route": "ai-image-generation",
+  "secondary_routes": ["image-report"],
+  "asset_type": "NERO-native reusable style pack",
+  "status": "registered",
+  "rights_status": "NERO-native method-only adaptation; upstream license unknown; no upstream assets copied",
+  "source": {
+    "repository": "ZzzLc0405/photo-abstract-editorial",
+    "url": "https://github.com/ZzzLc0405/photo-abstract-editorial",
+    "license": "unknown",
+    "copied_upstream_assets": false,
+    "copied_upstream_prompt": false
+  },
+  "style_positioning": "Original photo remains the principal layer; a sparse source-derived relationship panel and deterministic exact-text overlay complete the editorial composition.",
+  "registration": {
+    "asset_ids": ["NDT-TPL-008", "NDT-PRM-004", "NDT-STY-006", "NDT-CAS-018"],
+    "reused_rule_id": "NDT-RUL-003",
+    "source_rasters_bundled": false
+  }
+}

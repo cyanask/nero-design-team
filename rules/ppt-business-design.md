@@ -17,6 +17,16 @@ Use this rule for commercial deck design, critique, redesign, quality gates, and
 - Write a claim spine for substantial decks: every slide title should state a conclusion, not merely name a topic.
 - Plan page types before production: cover, agenda, section divider, data page, comparison page, roadmap/pipeline, image/proof page, closing page, appendix.
 - Apply contact-sheet thinking: at thumbnail size the deck should show a coherent system, varied rhythm, and no generic template look.
+- When KAT provides a `presentation_handoff_contract`, preserve its content-owner boundary. NERO may reshape visual form, hierarchy, and proof-object presentation, but must return to KAT for changes to conclusions, exact figures, source notes, regulatory wording, or must-preserve action titles.
+
+## Mature Baseline Inheritance
+
+- When revising a mature deck, current human-approved pages and manually adjusted deliverables outrank generic templates, newly named CSS families, and abstract style descriptions.
+- Before styling each page, register `content intent -> physical page -> approved benchmark page(s) -> layout family -> expected proof object/node count`. Resolve page reordering and runtime mapping before writing CSS.
+- Reuse the benchmark family's grid, title axis, claim band, visual mass, information density, footer system, and bottom closure. Introduce a new body-page family only when the approved families cannot express the content and the user has accepted the new direction.
+- KAT may specify semantic relationships, hierarchy, locks, and return conditions. It must not select the exact composition, component family, or visual treatment; NERO Design Team makes those decisions.
+- Do not call a page mature because its CSS class, manifest, or audit record uses words such as `approved`, `premium`, or `mature`. Maturity must be visible in the final runtime artifact beside the approved benchmark pages.
+- After a page or wave is rejected, do not propagate its layout family to later pages. Repair and obtain human approval on the rejected scope first.
 
 ## Slide System
 
@@ -28,6 +38,15 @@ Use this rule for commercial deck design, critique, redesign, quality gates, and
 - Cards are for repeated comparable items, not every paragraph.
 - Use one neutral base, one primary accent, and at most one alert/highlight color.
 - Use color semantically for status, category, emphasis, risk, or action.
+
+## Executive Cover And Divider Discipline
+
+- Covers and section dividers for executive clients should look like finished meeting pages, not design drafts, brand slates, or internal team pages.
+- For full-bleed background visuals, expose the meaningful visual subject. Do not put large opaque or translucent rectangles, UI frames, or logo blocks over the image subject.
+- Use minimal global dimming only for contrast. If text needs support, use local text-side contrast or place text in a naturally dark region; avoid full-slide dark masks around 60% opacity on chapter imagery.
+- Logos on covers and dividers are optional, not decoration. Default to no repeated team logo on chapter dividers; when a logo is required, use a small frameless corner mark away from the subject and never a boxed plaque competing with the title.
+- Section divider hierarchy should be: section number, chapter label, thesis title, one-line implication, quiet rule and page number. Do not add process notes, reading instructions, internal tags, or design-language residue.
+
 
 ## Proof Objects
 
@@ -52,6 +71,7 @@ Use this rule for commercial deck design, critique, redesign, quality gates, and
 - Visual direction selected and consistent.
 - Each slide has one dominant conclusion.
 - Each proof object directly supports the conclusion.
+- KAT handoff constraints, if present, are honored or explicitly returned for content repair.
 - Labels, legends, notes, page markers, and footers are readable and stable.
 - The deck alternates density; not every page is a text/table page.
 - The final result feels restrained, credible, and commercially useful.

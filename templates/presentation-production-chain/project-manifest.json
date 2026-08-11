@@ -20,9 +20,9 @@
     "layouts": "$NERO_DESIGN_TEAM_HOME/brand/master-layouts.json"
   },
   "project_local": {
-    "manifest": "$NERO_DESIGN_TEAM_HOME/templates/presentation-production-chain/project-manifest.json",
-    "output_root": "$NERO_DESIGN_TEAM_HOME/templates/presentation-production-chain",
-    "exports_root": "$NERO_DESIGN_TEAM_HOME/templates/presentation-production-chain/exports",
-    "screenshots_root": "$NERO_DESIGN_TEAM_HOME/templates/presentation-production-chain/screenshots"
+    "manifest": "<project>/.nero-design/manifest.json",
+    "output_root": "<project>/design-output",
+    "exports_root": "<project>/exports",
+    "screenshots_root": "<project>/screenshots"
   }
 }

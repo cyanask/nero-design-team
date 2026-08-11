@@ -1,6 +1,6 @@
 {
   "route": "image-report",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "cases": [
     {
       "id": "image-report-001-oss-research-card",
@@ -31,6 +31,20 @@
         "editable PPTX requirement"
       ],
       "notes": "AI-generated backgrounds may be used only as visual material behind exact Satori/Sharp text and charts."
+    },
+    {
+      "id": "image-report-006-photo-derived-editorial-diptych",
+      "name": "Photo Derived Editorial Diptych",
+      "purpose": "A photo-preserving editorial composition with a sparse relation-derived abstract panel and deterministic exact-text overlay.",
+      "style": "source-aware photo layer, uniform ivory panel, restrained relation marks, deterministic editorial title, and adaptive photo/panel geometry",
+      "tokens": ["color.surface.paper", "color.text.primary", "font.cn.body", "space.report.pagePadding"],
+      "template": "photo-derived-editorial-diptych",
+      "score": {"value": 100, "rating": "approved-reference", "scorecard": "scripts/visual-qa.mjs", "qa": "three representative source categories passed visual QA"},
+      "applies_to": ["photo-led editorial covers", "research-report covers and dividers without evidence-bearing body content", "quiet social cards", "source-derived visual memory studies"],
+      "disabled_when": ["evidence-dense report-card bodies, dashboards, tables, charts, banker appendices, or regulatory pages", "exact financial, source, compliance, or legal text inside generated imagery", "unauthorized source photo or personal likeness", "full-bleed cinematic portrait or photorealistic identity replacement"],
+      "notes": "Reuse the relation-trace, geometry, panel-only generation, deterministic overlay, and QA contracts only. Personal photos, generated portrait panels, and project composites are not bundled.",
+      "style_contract": "case-library/assets/image-report/photo-derived-editorial-diptych/style_contract.json",
+      "source_boundary": "The upstream repository is a method-only reference with unknown license; no upstream code, prompt, example, or asset is bundled."
     }
   ]
 }
