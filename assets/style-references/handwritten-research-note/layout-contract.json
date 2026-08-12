@@ -1,0 +1,100 @@
+{
+  "contract_id": "editorial-handwritten-research-note-layout-v1",
+  "version": "1.1.0",
+  "route": "shared",
+  "strict_master": {
+    "id": "strict-handwritten-horizontal-master-v2",
+    "source": "not-bundled-templates/strict-handwritten-horizontal-master",
+    "orientation": "landscape",
+    "ratio": "16:9",
+    "font_resolution": "fail-closed",
+    "printed_cjk_fallback_allowed": false,
+    "approved_cjk_families": ["Hannotate SC", "HanziPen SC"],
+    "font_assets_bundled": false,
+    "prohibited_cjk_families": ["Kaiti", "Songti", "Xingkai", "PingFang", "generic serif"]
+  },
+  "principles": [
+    "One view carries one conclusion.",
+    "Text, numerals, and chart geometry use the handwriting treatment; annotation marks explain attention and never carry unsupported facts.",
+    "Exact text, numbers, source notes, and chart labels stay deterministic.",
+    "Paper space and line rhythm matter more than decorative density.",
+    "The style can be quiet and professional; it must not become childish doodling."
+  ],
+  "regions": {
+    "prompt_or_context": {
+      "position": "top-right-or-top-center",
+      "treatment": "small neutral capsule or metadata line",
+      "required": false
+    },
+    "conclusion": {
+      "position": "upper-left",
+      "width_ratio": { "min": 0.62, "max": 0.86 },
+      "line_count_max": 5,
+      "required": true
+    },
+    "evidence_chart": {
+      "position": "lower-half-or-right-half",
+      "required": true,
+      "axis": "black deterministic hand-drawn vector path with generous whitespace",
+      "series": "green deterministic hand-drawn line or mark",
+      "labels": "deterministic handwritten text layer"
+    },
+    "source_boundary": {
+      "position": "bottom-edge-or-side-note",
+      "required_for_evidence": true,
+      "treatment": "small readable neutral text, never hidden by marker"
+    }
+  },
+  "annotation_primitives": {
+    "marker": {
+      "color": "#F2D36B",
+      "opacity": { "min": 0.52, "max": 0.78 },
+      "shape": "rounded irregular horizontal stroke",
+      "under_text": true
+    },
+    "ink": {
+      "color": "#171715",
+      "stroke_width_px": { "min": 1.4, "max": 3.2 },
+      "roughness": "subtle deterministic jitter only"
+    },
+    "circle": {
+      "use_for": "one key number or phrase",
+      "maximum_per_view": 2
+    },
+    "strike_through": {
+      "use_for": "visible correction or abandoned wording",
+      "maximum_per_view": 1
+    },
+    "underline": {
+      "use_for": "one causal or directional phrase",
+      "maximum_per_view": 2
+    }
+  },
+  "typography": {
+    "display": ["Hannotate SC", "HanziPen SC", "Noteworthy", "Bradley Hand"],
+    "body": ["Hannotate SC", "HanziPen SC", "Noteworthy", "Bradley Hand"],
+    "numbers": ["Bradley Hand", "Noteworthy", "Chalkboard SE"],
+    "font_resolution_required": true,
+    "body_min_px_image": 28,
+    "body_min_px_slide": 20,
+    "source_min_px_image": 18,
+    "source_min_px_slide": 14
+  },
+  "route_adapters": {
+    "response": "Use short clauses, sparse visual punctuation, and explicit boundary lines; no font claim.",
+    "image-report": "Use deterministic handwritten text/numeral layers and hand-drawn vector chart geometry; marker and ink remain separate vector overlays.",
+    "web-ppt-html": "Use CSS variables and inline SVG; preserve a mobile conclusion-first order.",
+    "ppt": "Use native text, chart, and vector objects; no screenshot-only slide for editable delivery.",
+    "frontend-ui": "Use annotation layer only around explanations, empty states, or guided evidence reading."
+  },
+  "qa": {
+    "text_overflow_fail": true,
+    "chart_label_overlap_fail": true,
+    "source_note_obscured_fail": true,
+    "generated_exact_text_fail": true,
+    "font_fallback_must_be_reported": true,
+    "mobile_recomposition_required_for_html": true,
+    "editable_objects_required_for_formal_pptx": true,
+    "visual_baseline_status": "pending representative samples"
+  }
+}

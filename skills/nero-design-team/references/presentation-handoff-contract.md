@@ -27,6 +27,8 @@ NERO owns:
 
 Presentations remains the default formal editable PPTX production engine.
 
+GPT Work is the only cross-system controller. It supplies KAT-owned handoff references to NERO Design Team, receives NDT visual outputs or repair requests, and invokes Presentations only after the visual gate passes. KAT and NERO Design Team do not invoke each other directly.
+
 ## Intake Checklist
 
 Before visual production, confirm the handoff includes:
@@ -55,12 +57,14 @@ If these are missing on a substantial PPT / PitchBook task, the deck can still b
 
 ## Visual Response
 
-NERO may update the contract's `nero_response` with:
+NERO Design Team returns a structured visual response to GPT Work with:
 
 - `status`: `accepted`, `returned_for_content_repair`, or `blocked_by_visual_risk`;
 - `visual_route`: `formal-pptx`, `template-following`, `web-ppt-html`, `image-first-pptx`, or `review-only`;
 - `requested_content_repairs`: precise content issues that KAT must resolve;
 - `visual_risks`: visual or delivery risks NERO can see before production.
+
+The KAT-owned `presentation_handoff_contract` has a single writer: KAT. NERO Design Team must not edit it directly. GPT Work routes the NDT response back to KAT when a content-side durable update is needed; NDT-owned files stay under `design-output/`.
 
 NERO must not silently change:
 
@@ -70,6 +74,8 @@ NERO must not silently change:
 - source notes;
 - regulatory wording;
 - claim meaning.
+
+After updating the response, NERO Design Team returns control to GPT Work with `next_owner=KAT`, `next_owner=Presentations`, or `next_owner=human_review`. It must not execute that next owner's work itself.
 
 ## Output Lane Mapping
 

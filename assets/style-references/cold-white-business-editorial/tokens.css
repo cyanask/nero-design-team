@@ -1,0 +1,98 @@
+:root {
+  --cwe-paper: #fafbfc;
+  --cwe-ink: #111214;
+  --cwe-muted: #69717b;
+  --cwe-navy: #13243a;
+  --cwe-green: #1c5a4b;
+  --cwe-red: #c93b35;
+  --cwe-hairline: #d6dbe0;
+  --cwe-headline-font: "Songti SC", STSong, "Noto Serif CJK SC", serif;
+  --cwe-body-font: "PingFang SC", "Noto Sans CJK SC", sans-serif;
+  --cwe-number-font: "Arial Narrow", "DIN Condensed", sans-serif;
+  --cwe-headline-min: 80px;
+  --cwe-body-min: 35px;
+  --cwe-concept-min: 42px;
+  --cwe-meta-min: 20px;
+  --cwe-page-padding-xhs: 76px;
+  --cwe-page-padding-wechat: 72px;
+  --cwe-line: 1px solid var(--cwe-hairline);
+}
+
+.cwe-page {
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  color: var(--cwe-ink);
+  background: var(--cwe-paper);
+  font-family: var(--cwe-body-font);
+}
+
+.cwe-page[data-platform="xiaohongshu"] {
+  --cwe-page-padding: var(--cwe-page-padding-xhs);
+  width: 1080px;
+  height: 1440px;
+  padding: 58px var(--cwe-page-padding) 64px;
+}
+
+.cwe-page[data-platform="wechat"] {
+  --cwe-page-padding: var(--cwe-page-padding-wechat);
+  width: 1080px;
+  height: 1350px;
+  padding: 54px var(--cwe-page-padding) 60px;
+}
+
+.cwe-masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 42px;
+  border-bottom: var(--cwe-line);
+  color: var(--cwe-muted);
+  font-size: var(--cwe-meta-min);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.cwe-headline {
+  margin: 42px 0 0;
+  max-width: 900px;
+  font-family: var(--cwe-headline-font);
+  font-size: var(--cwe-headline-min);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+.cwe-body {
+  font-size: var(--cwe-body-min);
+  line-height: 1.36;
+}
+
+.cwe-concept {
+  font-family: var(--cwe-headline-font);
+  font-size: var(--cwe-concept-min);
+  line-height: 1.2;
+}
+
+.cwe-number {
+  font-family: var(--cwe-number-font);
+  font-variant-numeric: tabular-nums;
+}
+
+.cwe-hairline {
+  border-color: var(--cwe-hairline);
+  border-style: solid;
+  border-width: 1px 0 0;
+}
+
+.cwe-source {
+  position: absolute;
+  right: var(--cwe-page-padding);
+  bottom: 44px;
+  left: var(--cwe-page-padding);
+  padding-top: 14px;
+  border-top: var(--cwe-line);
+  color: var(--cwe-muted);
+  font-size: var(--cwe-meta-min);
+  line-height: 1.3;
+}

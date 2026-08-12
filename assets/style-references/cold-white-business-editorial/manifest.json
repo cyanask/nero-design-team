@@ -1,0 +1,115 @@
+{
+  "id": "cold-white-business-editorial",
+  "name": "冷白商业杂志风",
+  "name_en": "Cold White Business Editorial",
+  "invocation_aliases": [
+    "冷白商业杂志风",
+    "白底财经杂志风",
+    "CEO商业分析风"
+  ],
+  "version": "1.0.0",
+  "created_at": "2026-08-01",
+  "updated_at": "2026-08-01",
+  "route": "image-report",
+  "secondary_routes": [
+    "ppt",
+    "web-ppt-html"
+  ],
+  "asset_type": "NERO-native deterministic style preset",
+  "status": "nero_native_reusable",
+  "rights_status": "NERO-native layout and token system; source-project portraits and article facts are not bundled",
+  "source": {
+    "source_project": "not-bundled-source-project/cold-white-business-editorial",
+    "public_note": "The public pack includes only NDT-native tokens, layout contracts, and usage rules; source-project identities, facts, portraits, screenshots, and delivery files are not bundled.",
+    "approved_by": "NERO",
+    "approved_at": "2026-08-01",
+    "visual_score": 96,
+    "production_check": "pass",
+    "published_observation": "not asserted by the public derivative"
+  },
+  "style_positioning": "cold-white business editorial system with high-contrast Chinese serif headlines, quiet grid lines, restrained navy-green-red accents, editorial portrait crops, and deterministic evidence layouts",
+  "token_references": [
+    "color.surface.paper",
+    "color.text.primary",
+    "color.brand.primary",
+    "color.brand.accent",
+    "font.cn.body",
+    "space.report.pagePadding"
+  ],
+  "local_files": {
+    "css_tokens": "assets/style-references/cold-white-business-editorial/tokens.css",
+    "layout_contract": "assets/style-references/cold-white-business-editorial/layout-contract.json",
+    "usage": "assets/style-references/cold-white-business-editorial/usage.md"
+  },
+  "formats": {
+    "xiaohongshu-3x4": {
+      "width_px": 1080,
+      "height_px": 1440,
+      "page_padding_px": 76
+    },
+    "wechat-4x5": {
+      "width_px": 1080,
+      "height_px": 1350,
+      "page_padding_px": 72
+    }
+  },
+  "palette": {
+    "paper": "#FAFBFC",
+    "ink": "#111214",
+    "muted": "#69717B",
+    "navy": "#13243A",
+    "green": "#1C5A4B",
+    "signal_red": "#C93B35",
+    "hairline": "#D6DBE0"
+  },
+  "typography": {
+    "headline": "Songti SC, STSong, Noto Serif CJK SC, serif",
+    "body": "PingFang SC, Noto Sans CJK SC, sans-serif",
+    "numbers": "Arial Narrow, DIN Condensed, sans-serif",
+    "minimum_px": {
+      "headline": 80,
+      "body": 35,
+      "concept": 42,
+      "metadata": 20
+    }
+  },
+  "layout_families": [
+    "conflict-cover-with-small-right-bottom-portrait-cluster",
+    "mirrored-biography-and-timeline",
+    "strategy-map-without-portrait-repetition",
+    "vertical-workflow-or-value-chain",
+    "two-number-comparison-with-date-and-denominator",
+    "countermove-or-conclusion-with-one-dominant-metric"
+  ],
+  "sequence_contract": {
+    "one_page_one_job": true,
+    "shared_visual_tokens_across_platforms": true,
+    "platform_specific_cover_allowed": true,
+    "portrait_cluster_canvas_share_max": 0.32,
+    "cover_portraits_must_differ_from_biography_pages": true,
+    "deterministic_text_and_data_required": true,
+    "conclusive_last_page_required": true
+  },
+  "use_for": [
+    "CEO and founder strategy comparisons",
+    "company business-model divergence",
+    "earnings and valuation comparisons with human protagonists",
+    "AI-industry commercial analysis carousels",
+    "white-background editorial report cards"
+  ],
+  "avoid_for": [
+    "breaking news that needs loud color and minute-by-minute urgency",
+    "dense regulatory tables or banker appendices",
+    "lifestyle, travel, or emotional storytelling",
+    "full-bleed cinematic imagery",
+    "unlicensed portraits or repeated portrait pages",
+    "media-logo imitation or copied magazine mastheads"
+  ],
+  "asset_boundary": {
+    "bundled_project_photos": false,
+    "bundled_article_facts": false,
+    "media_logos_allowed": false,
+    "generated_exact_text_allowed": false,
+    "rule": "Replace all people, facts, figures, titles, and source notes with the target project's verified content."
+  }
+}

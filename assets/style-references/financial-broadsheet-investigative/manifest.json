@@ -1,0 +1,127 @@
+{
+  "id": "financial-broadsheet-investigative",
+  "name": "财经报纸调查风",
+  "name_en": "Financial Broadsheet Investigative",
+  "invocation_aliases": [
+    "财经报纸调查风",
+    "金融事件报纸风",
+    "Financial Broadsheet Investigative",
+    "financial-broadsheet-editorial"
+  ],
+  "version": "1.0.0",
+  "created_at": "2026-08-01",
+  "updated_at": "2026-08-01",
+  "route": "image-report",
+  "secondary_routes": [
+    "ppt",
+    "web-ppt-html"
+  ],
+  "asset_type": "NERO-native deterministic investigative editorial style preset",
+  "status": "nero_native_reusable",
+  "rights_status": "NERO-native layout and token system; source-project people, facts, photos, and media branding are not bundled",
+  "source": {
+    "source_project": "not-bundled-source-project/financial-broadsheet-investigative",
+    "source_visual_manifest": "not-bundled-source-project/financial-broadsheet-investigative/visual-manifest.md",
+    "public_note": "The public pack includes only NDT-native tokens, layout contracts, and usage rules; source-project identities, facts, people, photos, screenshots, and delivery files are not bundled.",
+    "approved_by": "NERO",
+    "approved_at": "2026-08-01",
+    "visual_score": 98,
+    "production_check": "pass",
+    "published_observation": "not asserted by the public derivative"
+  },
+  "style_positioning": "warm paper financial-broadsheet system for reconstructing people, capital, chronology, leverage, liquidity, and counterparty power without copying a media brand",
+  "token_references": [
+    "financial-broadsheet-investigative.palette",
+    "financial-broadsheet-investigative.typography",
+    "financial-broadsheet-investigative.layout-contract",
+    "color.surface.paper",
+    "space.report.pagePadding"
+  ],
+  "local_files": {
+    "css_tokens": "assets/style-references/financial-broadsheet-investigative/tokens.css",
+    "layout_contract": "assets/style-references/financial-broadsheet-investigative/layout-contract.json",
+    "usage": "assets/style-references/financial-broadsheet-investigative/usage.md"
+  },
+  "formats": {
+    "xiaohongshu-3x4": {
+      "width_px": 1080,
+      "height_px": 1440,
+      "page_padding_px": 76
+    },
+    "wechat-4x5": {
+      "width_px": 1080,
+      "height_px": 1350,
+      "page_padding_px": 72
+    }
+  },
+  "palette": {
+    "paper": "#F7F4ED",
+    "ink": "#121212",
+    "muted": "#68645D",
+    "wine_red": "#8F1F1F",
+    "financial_blue": "#233F62",
+    "secondary_paper": "#EBE7DE",
+    "hairline": "#C8C3B8",
+    "negative_fill": "#D9C5BC",
+    "positive_fill": "#C7D2D0"
+  },
+  "typography": {
+    "headline": "Songti SC, STSong, Noto Serif CJK SC, serif",
+    "body": "PingFang SC, Noto Sans CJK SC, sans-serif",
+    "numbers": "Arial Narrow, DIN Condensed, sans-serif",
+    "minimum_px": {
+      "headline": 80,
+      "body": 35,
+      "concept": 42,
+      "metadata": 20
+    }
+  },
+  "layout_families": [
+    "dual-portrait-conflict-cover",
+    "research-cover-profile",
+    "counterparty-risk-desk",
+    "event-timeline",
+    "leveraged-mechanism",
+    "liquidity-power-close"
+  ],
+  "sequence_contract": {
+    "one_page_one_job": true,
+    "shared_visual_tokens_across_platforms": true,
+    "platform_specific_cover_allowed": true,
+    "portrait_cluster_canvas_share_max": 0.32,
+    "cover_portraits_only_by_default": true,
+    "timeline_must_name_event_subject": true,
+    "deterministic_text_and_data_required": true,
+    "causal_closure_last_page_required": true,
+    "prohibited_unqualified_accusation_words": [
+      "收割",
+      "操纵",
+      "内幕",
+      "诈骗"
+    ]
+  },
+  "use_for": [
+    "人物与资本冲突",
+    "基金或公司危机事件",
+    "金融事件时间轴",
+    "杠杆、保证金与流动性机制",
+    "买卖双方能力对照",
+    "财经新闻式多图调查"
+  ],
+  "avoid_for": [
+    "需要分钟级实时更新的快讯",
+    "没有一手证据支撑的指控或归因",
+    "密集监管表格或投行附录",
+    "生活方式和情绪化叙事",
+    "全幅电影感人物海报",
+    "未经许可的人物照片",
+    "复制WSJ、Forbes或其他媒体Logo、版头和专有字体"
+  ],
+  "asset_boundary": {
+    "bundled_project_photos": false,
+    "bundled_article_facts": false,
+    "media_logos_allowed": false,
+    "generated_exact_text_allowed": false,
+    "rule": "Replace all people, facts, figures, dates, titles, source notes, and photo assets with the target project's verified material. Keep chronology, mechanism, and counterparty capability as reusable structure only."
+  }
+}

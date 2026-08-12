@@ -5,7 +5,7 @@ Use this rule for HTML web PPT style exploration, fixed-stage slide prototypes, 
 ## Fused Reference
 
 - Source: `zarazhangrui/frontend-slides`
-- Local snapshot: `$NERO_DESIGN_TEAM_HOME/case-library/snapshots/zarazhangrui__frontend-slides/snapshot.json`
+- Public snapshot status: not bundled (`not-bundled-snapshots/zarazhangrui__frontend-slides`).
 - License status: permissive, but upstream templates and screenshots remain external references.
 
 ## Route

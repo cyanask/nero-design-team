@@ -1,8 +1,28 @@
 {
-  "version": "1.0.0",
-  "updated_at": "2026-06-12",
+  "version": "1.1.0",
+  "updated_at": "2026-07-28",
   "purpose": "Lightweight local snapshots for GitHub design references. No full repository clones, no copied source files.",
   "snapshots": [
+    {
+      "repo": "emilkowalski/skills",
+      "route": "frontend-ui",
+      "source_url": "https://github.com/emilkowalski/skills",
+      "snapshot_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/emilkowalski__skills/snapshot.json",
+      "license_status": "permissive",
+      "token_budget_hint": "Read summary.md first, then snapshot.json; open file-index.json only when paths are needed.",
+      "updated_at": "2026-07-17",
+      "status": "ready"
+    },
+    {
+      "repo": "LiamGvchi/gc-minimal-zine-poster",
+      "route": "image-report",
+      "source_url": "https://github.com/LiamGvchi/gc-minimal-zine-poster",
+      "snapshot_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/liamgvchi__gc-minimal-zine-poster/snapshot.json",
+      "license_status": "permissive",
+      "token_budget_hint": "Read summary.md first, then snapshot.json; image_refs are remote visual references and are not local NERO assets.",
+      "updated_at": "2026-07-28",
+      "status": "ready"
+    },
     {
       "repo": "op7418/guizang-ppt-skill",
       "route": "ppt",

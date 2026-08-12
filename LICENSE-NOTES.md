@@ -5,8 +5,10 @@ This repository is intended to contain only open-source-safe design-system logic
 ## Included
 
 - NERO Design Team code, rules, docs, and templates: Apache-2.0.
+- NERO Figure Compiler source, schemas, source-free examples, and deterministic SVG runtime: Apache-2.0.
 - Lightweight GitHub case snapshots: summaries, source URLs, license summaries, file-path indexes, and image URLs only.
 - Default brand/profile assets: example placeholders for local use.
+- Public frontend source and its synthetic demo fixture: Apache-2.0.
 
 ## Not Included
 
@@ -15,6 +17,7 @@ This repository is intended to contain only open-source-safe design-system logic
 - API keys, tokens, cookies, passwords, or private credentials.
 - Client-sensitive documents, project evidence, confidential screenshots, or private delivery artifacts.
 - Restricted third-party visual assets unless explicitly reviewed and licensed for redistribution.
+- External fonts and Python Pillow binaries. PNG compilation may use a separately installed Pillow runtime; SVG compilation does not require Pillow.
 
 ## Third-Party References
 

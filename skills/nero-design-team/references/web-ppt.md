@@ -50,9 +50,8 @@ Reference repository:
 
 `https://github.com/op7418/guizang-ppt-skill`
 
-Local restricted asset pack:
-
-`$NERO_DESIGN_TEAM_HOME/assets/external/guizang-ppt-skill/`
+The restricted Guizang asset pack is not bundled in the public package. Treat
+`not-bundled-external/guizang-ppt-skill` as a boundary marker only.
 
 License boundary:
 

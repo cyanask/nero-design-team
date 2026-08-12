@@ -1,0 +1,426 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nero.local/schemas/report-figure-compiler/0.2.0",
+  "title": "NDT Report Figure Specification",
+  "$comment": "JSON Schema validates expressible structure and scalar constraints. The public CLI runtime validator and profile-aware layout QA are authoritative for cross-field relations, ordered-series length, monotonicity, totals, identity/coordinate uniqueness, and rendered collision acceptance.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "figure_id",
+    "figure_type",
+    "title",
+    "source",
+    "profile",
+    "renderer",
+    "content"
+  ],
+  "properties": {
+    "schema_version": { "enum": ["0.1.0", "0.2.0"] },
+    "figure_id": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "figure_type": { "enum": ["flow", "timeline", "hierarchy", "matrix", "bar", "funnel", "line", "participant_map", "value_chain"] },
+    "title": { "type": "string", "minLength": 1, "maxLength": 300 },
+    "subtitle": { "type": "string", "maxLength": 500 },
+    "source": {
+      "type": "object",
+      "required": ["label"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "locator": { "type": "string", "maxLength": 1000 }
+      },
+      "additionalProperties": false
+    },
+    "profile": { "enum": ["report-a4", "wechat-inline", "ppt-16x9"] },
+    "renderer": { "enum": ["vector-svg", "raster-canvas-png"] },
+    "content": { "type": "object" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "figure_type": { "const": "flow" } } },
+      "then": { "properties": { "content": { "$ref": "#/$defs/flow" } } }
+    },
+    {
+      "if": { "properties": { "figure_type": { "const": "timeline" } } },
+      "then": { "properties": { "content": { "$ref": "#/$defs/timeline" } } }
+    },
+    {
+      "if": { "properties": { "figure_type": { "const": "hierarchy" } } },
+      "then": { "properties": { "content": { "$ref": "#/$defs/hierarchy" } } }
+    },
+    {
+      "if": { "properties": { "figure_type": { "const": "matrix" } } },
+      "then": { "properties": { "content": { "$ref": "#/$defs/matrix" } } }
+    },
+    {
+      "if": { "properties": { "figure_type": { "const": "bar" } } },
+      "then": { "properties": { "content": { "$ref": "#/$defs/bar" } } }
+    },
+    {
+      "if": { "properties": { "figure_type": { "const": "funnel" } } },
+      "then": {
+        "properties": {
+          "schema_version": { "const": "0.2.0" },
+          "content": { "$ref": "#/$defs/funnel" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "figure_type": { "const": "line" } } },
+      "then": {
+        "properties": {
+          "schema_version": { "const": "0.2.0" },
+          "content": { "$ref": "#/$defs/line" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "figure_type": { "const": "participant_map" } } },
+      "then": {
+        "properties": {
+          "schema_version": { "const": "0.2.0" },
+          "content": { "$ref": "#/$defs/participantMap" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "figure_type": { "const": "value_chain" } } },
+      "then": {
+        "properties": {
+          "schema_version": { "const": "0.2.0" },
+          "content": { "$ref": "#/$defs/valueChain" }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "flow": {
+      "type": "object",
+      "required": ["nodes", "edges"],
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "required": ["id", "label"],
+            "properties": {
+              "id": { "type": "string", "minLength": 1, "maxLength": 80 },
+              "label": { "type": "string", "minLength": 1, "maxLength": 240 },
+              "detail": { "type": "string", "maxLength": 1200 }
+            },
+            "additionalProperties": false
+          }
+        },
+        "edges": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "required": ["from", "to"],
+            "properties": {
+              "from": { "type": "string", "minLength": 1, "maxLength": 80 },
+              "to": { "type": "string", "minLength": 1, "maxLength": 80 }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "timeline": {
+      "type": "object",
+      "required": ["events"],
+      "properties": {
+        "events": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "required": ["period", "label"],
+            "properties": {
+              "period": { "type": "string", "minLength": 1, "maxLength": 80 },
+              "label": { "type": "string", "minLength": 1, "maxLength": 240 },
+              "detail": { "type": "string", "maxLength": 1200 }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "hierarchyNode": {
+      "type": "object",
+      "required": ["label"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1, "maxLength": 300 },
+        "children": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/hierarchyNode" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "hierarchy": {
+      "type": "object",
+      "required": ["root"],
+      "properties": { "root": { "$ref": "#/$defs/hierarchyNode" } },
+      "additionalProperties": false
+    },
+    "matrix": {
+      "type": "object",
+      "required": ["value_kind", "rows", "columns", "cells"],
+      "properties": {
+        "value_kind": { "enum": ["qualitative", "quantitative"] },
+        "rows": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 12,
+          "items": { "type": "string", "minLength": 1, "maxLength": 180 }
+        },
+        "columns": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": { "type": "string", "minLength": 1, "maxLength": 180 }
+        },
+        "cells": { "type": "array" },
+        "period": { "type": "string", "minLength": 1 },
+        "unit": { "type": "string", "minLength": 1 },
+        "denominator": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "value_kind": { "const": "qualitative" } }, "required": ["value_kind"] },
+          "then": {
+            "properties": {
+              "cells": {
+                "items": {
+                  "type": "array",
+                  "items": { "type": "string", "minLength": 1 }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "value_kind": { "const": "quantitative" } }, "required": ["value_kind"] },
+          "then": {
+            "required": ["period", "unit", "denominator"],
+            "properties": {
+              "cells": {
+                "items": {
+                  "type": "array",
+                  "items": { "type": "number" }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "bar": {
+      "type": "object",
+      "required": ["period", "unit", "denominator", "categories", "series"],
+      "properties": {
+        "period": { "type": "string", "minLength": 1 },
+        "unit": { "type": "string", "minLength": 1 },
+        "denominator": { "type": "string", "minLength": 1 },
+        "categories": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 12,
+          "items": { "type": "string", "minLength": 1, "maxLength": 120 }
+        },
+        "series": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["name", "values"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+              "values": {
+                "type": "array",
+                "items": { "type": "number", "minimum": 0 }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "funnelStage": {
+      "type": "object",
+      "required": ["id", "label"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "label": { "type": "string", "minLength": 1, "maxLength": 180 },
+        "detail": { "type": "string", "maxLength": 400 },
+        "value": { "type": "number", "minimum": 0 },
+        "gate": { "enum": ["passed", "in_progress", "blocked", "pending"] }
+      },
+      "additionalProperties": false
+    },
+    "funnel": {
+      "type": "object",
+      "description": "Quantitative funnel or stage-gate snapshot. stage_gate values are current stage statuses, not state-machine transitions.",
+      "$comment": "Runtime validation is authoritative for non-increasing quantitative values and unique stage ids. Quantitative polygon widths use a documented non-linear readability transform; exact labels are authoritative.",
+      "required": ["mode", "stages"],
+      "properties": {
+        "mode": { "enum": ["quantitative", "stage_gate"] },
+        "period": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "unit": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "denominator": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "stages": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 7,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/funnelStage" }
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "mode": { "const": "quantitative" } }, "required": ["mode"] },
+          "then": {
+            "required": ["period", "unit", "denominator"],
+            "properties": {
+              "stages": {
+                "items": {
+                  "required": ["value"],
+                  "not": { "required": ["gate"] }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "mode": { "const": "stage_gate" } }, "required": ["mode"] },
+          "then": {
+            "not": { "anyOf": [{ "required": ["period"] }, { "required": ["unit"] }, { "required": ["denominator"] }] },
+            "properties": {
+              "stages": {
+                "items": {
+                  "required": ["gate"],
+                  "not": { "required": ["value"] }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "line": {
+      "type": "object",
+      "description": "Trend series. x_labels are rendered in the exact input order; the compiler does not infer or sort chronology.",
+      "$comment": "Runtime validation is authoritative for each values array matching x_labels length and for unique series names.",
+      "required": ["period", "unit", "denominator", "x_labels", "series"],
+      "properties": {
+        "period": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "unit": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "denominator": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "x_labels": {
+          "type": "array",
+          "description": "Ordered labels preserved exactly as supplied.",
+          "minItems": 2,
+          "maxItems": 10,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1, "maxLength": 80 }
+        },
+        "series": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "required": ["name", "values"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+              "values": { "type": "array", "items": { "type": "number" } }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "participantAxis": {
+      "type": "object",
+      "required": ["label", "low", "high"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "low": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "high": { "type": "string", "minLength": 1, "maxLength": 100 }
+      },
+      "additionalProperties": false
+    },
+    "participantMap": {
+      "type": "object",
+      "description": "Two-axis competitive positioning map. Coordinates express position; ecosystem relationship lines are not part of schema v0.2.",
+      "$comment": "Runtime validation is authoritative for unique participant ids/coordinate pairs. Profile-aware layout QA rejects circles that overlap after normalized coordinates are mapped to the final canvas and radius.",
+      "required": ["basis", "x_axis", "y_axis", "participants"],
+      "properties": {
+        "basis": { "type": "string", "minLength": 1, "maxLength": 400 },
+        "x_axis": { "$ref": "#/$defs/participantAxis" },
+        "y_axis": { "$ref": "#/$defs/participantAxis" },
+        "participants": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "required": ["id", "label", "x", "y"],
+            "properties": {
+              "id": { "type": "string", "minLength": 1, "maxLength": 80 },
+              "label": { "type": "string", "minLength": 1, "maxLength": 80 },
+              "x": { "type": "number", "minimum": 0, "maximum": 100 },
+              "y": { "type": "number", "minimum": 0, "maximum": 100 },
+              "category": { "type": "string", "maxLength": 80 }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "valueChain": {
+      "type": "object",
+      "description": "Ordered non-negative value-chain metrics. Schema v0.2 does not represent negative gross margin or loss stages.",
+      "$comment": "Runtime validation is authoritative for unique stage ids and value_share totals summing to 100 within tolerance.",
+      "required": ["metric", "period", "unit", "denominator", "stages"],
+      "properties": {
+        "metric": { "enum": ["value_share", "gross_margin", "profit_pool"] },
+        "period": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "unit": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "denominator": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "stages": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 7,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "required": ["id", "label", "value"],
+            "properties": {
+              "id": { "type": "string", "minLength": 1, "maxLength": 80 },
+              "label": { "type": "string", "minLength": 1, "maxLength": 160 },
+              "value": { "type": "number", "minimum": 0 },
+              "detail": { "type": "string", "maxLength": 300 }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

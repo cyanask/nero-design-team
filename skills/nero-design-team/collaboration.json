@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "skill_id": "nero-design-team",
+  "control": {
+    "controller": "caller",
+    "effect": "recommendation_only",
+    "execution": "none"
+  },
+  "routes": [
+    {
+      "route_id": "visual-ready-to-presentations",
+      "handoff_artifact": "design_spec",
+      "return_control_to": "caller",
+      "when": {
+        "handoff_state": "visual_ready",
+        "formal_output_engine": "presentations"
+      },
+      "target": {
+        "skill_id": "presentations",
+        "resolution": "host_plugin"
+      }
+    },
+    {
+      "route_id": "content-conflict-to-kat",
+      "handoff_artifact": "return_to_kat_request",
+      "return_control_to": "caller",
+      "when": {
+        "handoff_state": "returned_for_content_repair"
+      },
+      "target": {
+        "skill_id": "knowledge-artifact-team",
+        "resolution": "caller_catalog"
+      }
+    }
+  ]
+}

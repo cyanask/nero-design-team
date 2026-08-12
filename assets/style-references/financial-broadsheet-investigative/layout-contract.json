@@ -1,0 +1,70 @@
+{
+  "contract_id": "financial-broadsheet-investigative-layout-v1",
+  "version": "1.0.0",
+  "route": "image-report",
+  "canvases": {
+    "xiaohongshu-3x4": {"width": 1080, "height": 1440, "safe_inset": 76},
+    "wechat-4x5": {"width": 1080, "height": 1350, "safe_inset": 72}
+  },
+  "persistent_regions": {
+    "masthead": {"height_min": 42, "single_line": true, "brand_imitation_forbidden": true},
+    "headline": {"font_px_min": 80, "line_count_max": 3},
+    "body": {"font_px_min": 35, "line_height_min": 1.28},
+    "concept": {"font_px_min": 42, "line_height_min": 1.16},
+    "source_footer": {"font_px_min": 20, "separated_by_hairline": true}
+  },
+  "layouts": [
+    {
+      "id": "cover-conflict",
+      "job": "用一个人物冲突和一个硬数字提出事件问题",
+      "portrait_cluster": {"anchor": "bottom-right", "canvas_share_max": 0.32, "treatment": "black-and-white high contrast"},
+      "required": ["headline", "one-deck", "two-identity-labels", "one-verified-metric"],
+      "forbidden": ["full-page portrait", "media logo", "more than three headline claims", "unqualified accusation"]
+    },
+    {
+      "id": "research-cover-profile",
+      "job": "介绍卖方或研究对象如何形成判断与资金规模",
+      "visual_anchor": "deterministic article-cover, report, or filing object",
+      "required": ["maximum-three-profile-facts", "one-capability-sentence", "metric-strip", "source-footer"],
+      "forbidden": ["encyclopedic biography", "cover portrait reuse", "generated exact text inside raster"]
+    },
+    {
+      "id": "counterparty-risk-desk",
+      "job": "说明买方的风险定价能力与历史承接能力",
+      "visual_anchor": "risk-desk diagram or transaction ledger",
+      "required": ["counterparty-name", "up-to-three-crisis-nodes", "one-capability-sentence"],
+      "forbidden": ["repeated cover portrait", "unsupported performance claim", "generic decorative cards"]
+    },
+    {
+      "id": "event-timeline",
+      "job": "按时间顺序还原事件全貌",
+      "grid": "one vertical spine with four-to-six dated nodes",
+      "required": ["explicit-event-subject", "dates-or-relative-time", "event-action", "source-boundary"],
+      "forbidden": ["unnamed timeline", "mixed chronology", "turning inference into fact"]
+    },
+    {
+      "id": "leveraged-mechanism",
+      "job": "把暴跌、杠杆、债务和被迫卖出连接成可读机制",
+      "grid": "three columns: long exposure / short or offsetting position / leverage and debt",
+      "required": ["same-denominator-figures", "directional-arrows", "mechanism-caption", "boundary"],
+      "forbidden": ["single-number sensationalism", "mixed units", "unverified forced-liquidation wording"]
+    },
+    {
+      "id": "liquidity-power-close",
+      "job": "用卖方约束与买方能力解释结果，不额外制造阴谋论",
+      "grid": "seller constraint versus buyer capacity",
+      "required": ["seller-constraint", "buyer-capacity", "one-causal-conclusion", "source-footer"],
+      "forbidden": ["next-issue prompt", "forced engagement prompt", "unqualified moral verdict", "new fact not established earlier"]
+    }
+  ],
+  "qa": {
+    "thumbnail_review_required": true,
+    "contact_sheet_required": true,
+    "top_wrap_fail": true,
+    "overflow_fail": true,
+    "repeated_portrait_fail": true,
+    "timeline_subject_fail": true,
+    "generated_exact_text_fail": true,
+    "evidence_boundary_review_required": true
+  }
+}

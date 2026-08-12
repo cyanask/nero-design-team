@@ -9,6 +9,7 @@ Use this rule for web apps, dashboards, admin tools, CRM-like workflows, AI tool
 - Add Ant Design when the screen needs complex tables, filters, form validation, modals, date controls, or admin CRUD.
 - Add Magic UI only for restrained visual accents, covers, launch screens, or empty states.
 - Add Effective HTML when the output is a self-contained HTML explainer, architecture diagram, visual plan, or single-file design-review artifact.
+- Add `frontend-motion.md` when the interface includes meaningful press, popover, drawer, sheet, drag, swipe, carousel, momentum, or interruptible motion behavior.
 - Use NERO design tokens for color, typography, spacing, radius, chart palette, and motion before custom styling.
 
 ## Design Standard
@@ -28,6 +29,19 @@ This route fuses NERO-calibrated ideas from `pbakaus/impeccable` and `Leonxlnx/t
 - Treat both projects as design-quality references, not as installed dependencies or independent workflow entrypoints.
 - Do not run `npx impeccable`, `npx skills add`, hooks, live mode, browser injection, or external package installs unless NERO explicitly asks for that in a real project.
 - Apply the extracted rules only when they improve NERO work-tool quality: investment-banking interfaces, AI industry research tools, dashboards, admin systems, and analytical workflows.
+- `Leonxlnx/taste-skill` v2 is used only for four targeted NERO upgrades: anti-slop checks, controllable visual dials, brief inference before code, and shared configuration discipline.
+- Do not import Taste's marketing-site bias into NERO dashboards, data tables, disclosure workbenches, or dense analytical tools.
+
+## Frontend Motion Fusion
+
+Use `frontend-motion.md` for interaction motion that materially affects control confidence, spatial continuity, direct manipulation, or accessibility.
+
+- `emilkowalski/skills` is a fused reference, not an installed dependency or independent NDT route.
+- Apply motion purpose and frequency gates before choosing curves, durations, or springs.
+- Keep banking, disclosure, evidence, table, filter, and keyboard workflows immediate and low-motion.
+- Use physics-based spring or inertia behavior when live gesture velocity must be inherited; do not substitute a duration-based spring that cannot carry velocity.
+- Treat reduced transparency and web haptics as progressive enhancements with functional fallbacks.
+- Report `fused_reference_skills: emilkowalski/apple-design, review-animations, improve-animations` when the rule materially affects implementation or audit findings.
 
 ## Effective HTML Fusion
 
@@ -43,7 +57,7 @@ Do not install `plannotator/effective-html` as an independent default Skill. Use
 
 ## Design Read
 
-Before styling a frontend UI, write a short internal design read and let it govern the implementation:
+Before styling or writing frontend code, write a short internal design read and let it govern the implementation:
 
 - Page kind: dashboard, admin workflow, analytical tool, CRM-like surface, AI tool, landing page, portfolio, or redesign.
 - Audience: banker, analyst, issuer project team, investor, enterprise operator, technical user, or public reader.
@@ -51,15 +65,90 @@ Before styling a frontend UI, write a short internal design read and let it gove
 - Quiet constraints: regulatory seriousness, financial evidence, Chinese long labels, accessibility, repeat use, data density, and source traceability.
 - Visual strength: restrained work-tool by default; only increase expressiveness when the deliverable is explicitly brand, launch, cover, portfolio, or concept oriented.
 
+For substantial frontend work, report this as one compact line before implementation:
+
+`Design Read: <page kind> for <audience>, using <design system / token base>, with <visual language>, dials <DESIGN_VARIANCE>/<MOTION_INTENSITY>/<VISUAL_DENSITY>.`
+
+If the design read could lead to materially different visual directions, ask exactly one clarifying question before generating code. Do not ask a multi-question design interview.
+
+## Taste Dials
+
+Use these dials to make the visual direction explicit and controllable. NERO or the task may override them; otherwise infer them from the design read.
+
+- `DESIGN_VARIANCE` controls layout experimentation. `1` is rigid enterprise symmetry; `10` is experimental editorial composition.
+- `MOTION_INTENSITY` controls animation depth. `1` is static utility; `10` is cinematic motion or scroll storytelling.
+- `VISUAL_DENSITY` controls information per viewport. `1` is airy brand/campaign work; `10` is cockpit-level analytical density.
+
+NERO defaults:
+
+- Dashboards, admin tools, disclosure workbenches, financial analysis UIs: `3 / 1 / 8`.
+- AI research tools, analytical explainers, evidence portals: `4 / 2 / 7`.
+- Public portfolio, launch page, case room, lightweight product site: `6 / 3 / 5`.
+- Brand concept, hero cover, visual exploration, image-first prototype: `7 / 4 / 4`.
+
+Rules:
+
+- Higher `DESIGN_VARIANCE` cannot break information architecture, Chinese label readability, table scanning, source traceability, or form completion.
+- Higher `MOTION_INTENSITY` must have reduced-motion fallback and must never hide data, controls, validation messages, or evidence/source notes.
+- Lower `VISUAL_DENSITY` is allowed only when the deliverable is explicitly brand, launch, cover, portfolio, or conceptual. Dense work tools should not be made sparse just to look premium.
+- If NERO manually sets dials, preserve the numbers and explain any safety adjustment.
+
 ## Anti-Slop Rules
 
-- Do not default to a centered SaaS hero, dark mesh background, purple-blue gradient, three equal feature cards, generic glassmorphism, or decorative AI stock imagery.
+- Treat centered SaaS heroes, dark mesh backgrounds, purple-blue gradients, three equal feature cards, generic glassmorphism, decorative AI stock imagery, fake status tags, and ornamental labels as high-risk default patterns, not permanent bans.
+- Default-ban these patterns when they are used only because the model reached for an AI template.
+- Allow them only through the exception gate below, when they are supported by the brief, brand system, content structure, or high-quality visual assets.
+- Do not use a hero section when the first screen should be an actual dashboard, admin workflow, table, form, evidence room, or workbench. Exception: a product/brand cover, launch page, case room, or PPT-like chapter screen explicitly needs a hero.
+- Do not use three feature cards unless the product truly has three peer-level feature groups. For workflows, prefer task lanes, evidence groups, progressive disclosure, or table-plus-detail layouts.
+- Do not use glassmorphism as a default material. Use it only for covers, launch/brand moments, HUD-style overlays, or clearly separated panels where contrast and accessibility remain intact.
+- Do not use decorative pills, fake status tags, version stamps, section numbers, scroll cues, city/time strips, image labels, or photo-credit captions unless they carry real product meaning.
 - Do not use Inter, Arial, or system font stacks as a lazy default when a project-specific type choice is available. Inter is acceptable only when the product intentionally needs neutral enterprise familiarity.
 - Do not make every surface a rounded card. Use cards only when elevation communicates hierarchy; otherwise use spacing, dividers, section bands, or table structure.
 - Do not nest cards inside cards.
 - Do not make one-note palettes dominated by a single hue family unless it is an explicit brand constraint.
 - Do not add motion that distracts from data, hides controls, breaks reduced-motion expectations, or exists only to make the page look more animated.
+- Do not show duplicate CTA intents in nav, hero, footer, and sticky controls. Pick one label per action intent.
 - Do not replace information architecture, SEO anchors, analytics labels, or existing accessible behavior during a redesign unless the task explicitly includes that change.
+
+## Exception Gate
+
+Default-banned patterns may be used only when all of these are true:
+
+- Task fit: the pattern matches the deliverable type, such as brand page, cover, launch, chapter divider, concept visual, or high-level explainer.
+- Content fit: the pattern expresses real information structure, not filler. For example, three cards map to three actual peer groups; status tags map to real state.
+- Asset fit: gradients, photos, glass, or decorative treatments come from NERO tokens, brand assets, case references, or generated素材 with a clear visual role.
+- Readability fit: Chinese labels, charts, tables, source notes, buttons, and body text remain readable at target desktop and mobile sizes.
+- Evidence fit: the pattern does not invent facts, fake statuses, fake metrics, fake logos, source notes, regulatory language, or financial conclusions.
+- QA fit: contrast, overflow, responsive layout, reduced-motion fallback, and information hierarchy pass visual QA.
+
+If any gate fails, replace the pattern with a simpler NERO-native layout.
+
+## Shared Configuration Discipline
+
+Taste-style rules must be shared from one source, not copied into divergent tool prompts.
+
+- NERO Design Team is the source of truth for NERO-calibrated frontend taste rules.
+- Codex uses this Skill and `$NERO_DESIGN_TEAM_HOME/rules/frontend-ui.md`.
+- Project-local integrations should reference `.nero-design/manifest.json` and the NDT rule path rather than pasting a private fork of the rules.
+- Claude Code, Cursor, or other tools may reference the same NDT prompt snippet or the upstream `taste-skill` install command only when NERO explicitly wants cross-tool sharing.
+- If an external tool installs upstream `taste-skill`, map its output back into NDT dials and QA gates; do not let upstream defaults override NERO tokens, business readability, or formal delivery boundaries.
+
+## Scope-Aware Workflow Graph Pattern
+
+Use this pattern when an interface renders structured workflow dependencies, `dependsOn`, a governance DAG, or a projection of a runtime state machine.
+
+- Read topology, node identity, scope, verifier state, and edge semantics from the authoritative provider contract. Do not infer dependencies from array order, labels, card positions, or screenshots.
+- Use visible group containers only when the graph contains more than one real scope, such as project-level and account-level nodes. The title names the scope in text; color is not the only signal.
+- When every node has the same scope, render one ordinary DAG. Do not add a decorative box, redundant legend, or empty group shell.
+- Preserve stable node IDs, status, verifier/gate identity, and cross-scope handoffs. Grouping must not rename nodes or hide acceptance state.
+- For wide graphs, use adaptive row wrapping or a readable snake/grid layout with stable directional flow. Do not use an unbounded horizontal strip.
+- Route connectors orthogonally around cards and containers. Avoid lines through nodes, ambiguous joins, label collisions, and direction-obscuring crossings.
+- Cycles, rollback, retry, reopen, and OR joins require declared projection semantics. Do not silently convert them into a forward AND chain.
+- Validate at least two fixtures: a mixed-scope graph that groups and a single-scope graph that does not. Inspect the installed/live surface at a realistic minimum width; a static mockup is not final acceptance.
+
+For workflow-graph work, include:
+
+`Graph Read: authority=<source>, projection=<kind>, scopes=<values>, grouping=<mixed-only|none>, compatibility=<stable IDs>, live QA=<surface/viewport>.`
 
 ## Deterministic Review Checklist
 
@@ -72,20 +161,18 @@ Before calling a frontend UI done, check these mechanical issues:
 - Contrast passes for body text, buttons, input placeholders, form labels, helper text, focus rings, and chart labels.
 - Responsive layouts collapse to single-column or task-appropriate stacked views without clipped controls.
 - Loading, empty, error, selected, hover, focus, disabled, and active states exist where the workflow needs them.
-- Motion respects reduced-motion settings and has a static fallback.
+- Meaningful motion has a named purpose, respects the selected `MOTION_INTENSITY`, remains interruptible where needed, and has a verified reduced-motion fallback.
 - Charts include unit, period, denominator, and source where relevant.
 - Self-contained HTML artifacts open without a build step when that is the intended delivery mode.
 - SVG-first diagrams use CSS variables/classes for theme-aware geometry where feasible.
 - The page still feels like a professional NERO work tool, not a generic AI-generated template.
 
-## Hard Bans
+## Default Bans And Exception Gate
 
-- No random purple-blue gradients as a default look.
-- No oversized rounded cards.
-- No card inside card layouts.
-- No decorative images that do not clarify the product, data, or workflow.
-- No in-app text explaining features, keyboard shortcuts, or design decisions unless the product itself requires it.
-- No hero-style type inside dense dashboards or panels.
+- Default-ban random purple-blue gradients, oversized rounded cards, card-inside-card layouts, decorative images, and hero-style type inside dense dashboards or panels.
+- Allow a default-banned pattern only when it passes the Exception Gate above and improves the actual deliverable.
+- Never allow decorative images, generated素材, labels, or visual effects to carry exact facts, financial figures, source notes, regulatory wording, or formal conclusions.
+- Do not put in-app text explaining design decisions, implementation details, keyboard shortcuts, or feature claims unless the product itself requires it.
 
 ## Pre-Flight Gate
 
@@ -94,6 +181,9 @@ Frontend output is not complete until all of these are true or explicitly marked
 - The first viewport is the actual usable interface, unless the user explicitly requested a landing page or cover.
 - Information density is preserved for analytical and business workflows; visual novelty does not remove necessary fields, filters, labels, or source context.
 - The UI has inspected desktop and mobile states when feasible.
+- Style-direction HTML files, mockups, and `design-output/*.html` are exploration artifacts only. They do not count as final UI acceptance for a maintained local app.
+- For local apps, final acceptance must inspect the real running surface at the project URL when feasible, using real or project-native data. Verify vertical page scroll, horizontal table/table-control scroll, desktop width, narrow/mobile width, text overflow, and core controls on the actual app, not only in a static preview.
+- For Streamlit or similar local GUI surfaces, the QA target is the live app URL, such as the project-defined `localhost` port, after style rules have been applied to the actual app code.
 - Core controls have loading, empty, error, selected, hover, and focus states where needed.
 - No generated imagery, placeholder copy, or decorative element carries factual claims, numbers, source notes, or regulatory wording.
 

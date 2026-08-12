@@ -82,12 +82,40 @@ export const remotionTheme = {
       "fast": "120ms",
       "base": "180ms",
       "slow": "320ms",
+      "press": "120ms",
+      "tooltip": "160ms",
+      "control": "180ms",
+      "panel": "280ms",
       "scene": 24
     },
     "easing": {
       "standard": "cubic-bezier(0.2, 0, 0, 1)",
       "enter": "cubic-bezier(0.16, 1, 0.3, 1)",
-      "exit": "cubic-bezier(0.7, 0, 0.84, 0)"
+      "exit": "cubic-bezier(0.7, 0, 0.84, 0)",
+      "move": "cubic-bezier(0.65, 0, 0.35, 1)",
+      "drawer": "cubic-bezier(0.32, 0.72, 0, 1)"
+    },
+    "spring": {
+      "critical": {
+        "mode": "physics-reference",
+        "dampingRatio": 1,
+        "responseSeconds": 0.4
+      },
+      "momentum": {
+        "mode": "physics-reference",
+        "dampingRatio": 0.8,
+        "responseSeconds": 0.35
+      }
+    },
+    "gesture": {
+      "hysteresisPx": 10,
+      "rubberBandConstant": 0.55,
+      "velocityHandoff": "physics-spring-or-inertia"
+    },
+    "accessibility": {
+      "reducedMotion": "static-or-short-opacity-color-feedback",
+      "reducedTransparency": "progressive-enhancement-with-opaque-fallback",
+      "haptics": "optional-never-required"
     }
   },
   "chart": {

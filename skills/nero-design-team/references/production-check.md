@@ -18,10 +18,15 @@ Use this rule before treating a generated design artifact as production-ready or
 - `case_library_record`: optional route case index used or updated.
 - `gpt_image_2_used`: boolean.
 - `presentation_chain_required`: boolean. Use for KAT x NDT PPT production-chain checks.
+- `gpt_work_controlled`: boolean. Set true when GPT Work owns cross-system gate progression.
+- `production_ledger`: path to the GPT Work owned `control/production-ledger.json`; required when `gpt_work_controlled` is true.
 - `presentation_production_packet`: required for PPT production-chain readiness.
 - `design_spec`: required for PPT production-chain readiness.
 - `style_lock`: required for PPT production-chain readiness.
 - `visual_exploration`: required for PPT production-chain readiness.
+- The KAT production packet is an immutable handoff snapshot and may remain `ready_for_ndt`; NDT and GPT Work must not rewrite it to record downstream status.
+- A production-chain check must return `review`, not `pass`, while the KAT content gate is not `pass`, the GPT Work ledger is missing/invalid when required, the style lock is still `draft`, or no visual direction has been selected.
+- `pass` means output-ready visual governance, not merely that JSON files exist and parse.
 
 Relative path fields are resolved from the production manifest file's directory. Absolute paths are used as-is.
 
@@ -36,6 +41,7 @@ Relative path fields are resolved from the production manifest file's directory.
 - Expected output files exist and meet minimum size when declared.
 - Office output files exist when declared. OfficeCLI QA and preview reports are attached when the local adapter is available; missing OfficeCLI is nonblocking unless `block_on_officecli` is true.
 - For PPT production-chain work, production packet, design spec, style lock, and visual exploration files exist and parse as JSON.
+- For GPT Work controlled PPT production, the ledger is GPT Work owned, its content gate passed, and its status reached the NDT stage.
 - Case library record exists when declared.
 
 ## Delivery Boundary

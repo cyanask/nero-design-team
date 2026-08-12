@@ -14,6 +14,12 @@ Create a project:
 
 `node $NERO_DESIGN_TEAM_HOME/scripts/nero-design.mjs new <route> --name <project-name> --out <target-parent-dir>`
 
+Create an AI image brief with a registered preset:
+
+`node $NERO_DESIGN_TEAM_HOME/scripts/nero-design.mjs new ai-image-generation --preset 留白杂志风 --name <project-name> --out <target-parent-dir>`
+
+The legacy `--preset minimal-zine-editorial` form remains supported and resolves to the same canonical preset.
+
 Initialize an existing project without copying a template:
 
 `node $NERO_DESIGN_TEAM_HOME/scripts/nero-design.mjs init <route> --project-root <existing-project-dir>`
@@ -30,12 +36,14 @@ Supported routes:
 
 - Builds NERO tokens before copying a template.
 - Copies one local template into a new project directory.
+- Applies a registered route preset when `--preset` is supplied and records it in `.nero-design/manifest.json`.
 - Copies current token theme assets into the generated project's `theme/` directory.
 - Localizes template imports so generated projects reference their own `theme/` files.
 - Creates `.nero-design/manifest.json`.
 - Creates project-local `design-output/`, `exports/`, and `screenshots/` directories.
 - Refuses to overwrite an existing target directory.
 - Refuses to overwrite an existing `.nero-design/manifest.json`.
+- Refuses unknown presets or presets registered for another route.
 - Does not install dependencies globally or automatically.
 
 ## Handoff

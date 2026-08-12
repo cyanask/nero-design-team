@@ -19,6 +19,15 @@ Use this rule for commercial deck design, critique, redesign, quality gates, and
 - Apply contact-sheet thinking: at thumbnail size the deck should show a coherent system, varied rhythm, and no generic template look.
 - When KAT provides a `presentation_handoff_contract`, preserve its content-owner boundary. NERO may reshape visual form, hierarchy, and proof-object presentation, but must return to KAT for changes to conclusions, exact figures, source notes, regulatory wording, or must-preserve action titles.
 
+## Mature Baseline Inheritance
+
+- When revising a mature deck, current human-approved pages and manually adjusted deliverables outrank generic templates, newly named CSS families, and abstract style descriptions.
+- Before styling each page, register `content intent -> physical page -> approved benchmark page(s) -> layout family -> expected proof object/node count`. Resolve page reordering and runtime mapping before writing CSS.
+- Reuse the benchmark family's grid, title axis, claim band, visual mass, information density, footer system, and bottom closure. Introduce a new body-page family only when the approved families cannot express the content and the user has accepted the new direction.
+- KAT may specify semantic relationships, hierarchy, locks, and return conditions. It must not select the exact composition, component family, or visual treatment; NERO Design Team makes those decisions.
+- Do not call a page mature because its CSS class, manifest, or audit record uses words such as `approved`, `premium`, or `mature`. Maturity must be visible in the final runtime artifact beside the approved benchmark pages.
+- After a page or wave is rejected, do not propagate its layout family to later pages. Repair and obtain human approval on the rejected scope first.
+
 ## Slide System
 
 - Use one primary sans-serif system for Chinese and English body text.

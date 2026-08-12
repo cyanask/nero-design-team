@@ -1,0 +1,35 @@
+{
+  "name": "@nero-design-team/public-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --mode public",
+    "demo": "vite --mode demo",
+    "preview": "vite preview --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build --mode public",
+    "build:demo": "tsc --noEmit && vite build --mode demo",
+    "typecheck": "tsc --noEmit",
+    "snapshot:check": "node scripts/sync-ndt-snapshot.mjs --check",
+    "snapshot:sync": "node scripts/sync-ndt-snapshot.mjs",
+    "test:core": "vitest run tests/core-boundary.test.mjs tests/routes.test.ts tests/snapshot-contract.test.ts",
+    "test:adapter": "vitest run tests/snapshot-adapter.test.mjs tests/react-adapter.test.tsx tests/application-scenarios.test.ts tests/application-scenario-browser.test.tsx",
+    "test:package": "vitest run tests/public-package.test.mjs",
+    "projection:check": "node scripts/check-public-projection.mjs",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0",
+    "vitest": "^3.0.0"
+  }
+}

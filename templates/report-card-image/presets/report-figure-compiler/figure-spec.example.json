@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.2.0",
+  "figure_id": "sample-demand-to-delivery-flow",
+  "figure_type": "flow",
+  "title": "示例：需求如何转化为交付",
+  "subtitle": "虚拟内容，仅用于验证 Figure Spec 与编译链路",
+  "source": {
+    "label": "资料来源：虚拟示例；正式使用时替换为项目已核验来源。"
+  },
+  "profile": "report-a4",
+  "renderer": "vector-svg",
+  "content": {
+    "nodes": [
+      {
+        "id": "demand",
+        "label": "需求变化",
+        "detail": "终端性能与使用场景变化"
+      },
+      {
+        "id": "design",
+        "label": "方案设计",
+        "detail": "结构、规格与关键部件协同"
+      },
+      {
+        "id": "validation",
+        "label": "客户验证",
+        "detail": "样品测试、小批量与量产爬坡"
+      },
+      {
+        "id": "delivery",
+        "label": "交付形成",
+        "detail": "交付、回款与复购"
+      }
+    ],
+    "edges": [
+      { "from": "demand", "to": "design" },
+      { "from": "design", "to": "validation" },
+      { "from": "validation", "to": "delivery" }
+    ]
+  }
+}

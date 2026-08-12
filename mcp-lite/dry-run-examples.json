@@ -1,11 +1,17 @@
 {
-  "version": "2.0.0",
-  "updated_at": "2026-06-28",
+  "version": "2.3.0",
+  "updated_at": "2026-08-11",
   "examples": [
     {
       "tool": "nero_design_route",
       "args": {
         "task": "把这个项目接入 NERO Design Team 作为后台设计系统"
+      }
+    },
+    {
+      "tool": "nero_design_get_registry",
+      "args": {
+        "include_integrity_issues": true
       }
     },
     {
@@ -32,6 +38,24 @@
       "tool": "nero_design_route",
       "args": {
         "task": "Create an image-style research report card using the Satori template."
+      }
+    },
+    {
+      "tool": "nero_design_route",
+      "args": {
+        "task": "NDT，把产业链传导逻辑做成尽调 Word 报告图"
+      }
+    },
+    {
+      "tool": "nero_design_route",
+      "args": {
+        "task": "NDT，把收入趋势做成 PPT 折线图"
+      }
+    },
+    {
+      "tool": "nero_design_route",
+      "args": {
+        "task": "NDT，用摄影和插画做一张微信公众号封面"
       }
     },
     {
@@ -133,8 +157,9 @@
       "tool": "nero_design_generate_project",
       "args": {
         "route": "image-report",
+        "preset": "Figure Compiler",
         "name": "sample-image-report",
-        "out": "/private/tmp",
+        "out": "/tmp",
         "execute": false
       }
     },
@@ -143,7 +168,36 @@
       "args": {
         "mode": "init",
         "route": "frontend-ui",
-        "project_root": "/private/tmp/existing-project",
+        "project_root": "/tmp/existing-project",
+        "execute": false
+      }
+    },
+    {
+      "tool": "nero_design_compile_report_figure",
+      "args": {
+        "action": "list",
+        "execute": false
+      }
+    },
+    {
+      "tool": "nero_design_compile_report_figure",
+      "args": {
+        "action": "validate",
+        "project_root": "/path/to/project",
+        "spec_path": "specs/figure-spec.json",
+        "execute": false
+      }
+    },
+    {
+      "tool": "nero_design_compile_report_figure",
+      "args": {
+        "action": "compile",
+        "project_root": "/path/to/project",
+        "spec_path": "specs/figure-spec.json",
+        "output_path": "exports/figure.svg",
+        "receipt_path": "exports/figure.receipt.json",
+        "profile": "report-a4",
+        "renderer": "vector-svg",
         "execute": false
       }
     },

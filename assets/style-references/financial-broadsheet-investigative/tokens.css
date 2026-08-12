@@ -1,0 +1,98 @@
+:root {
+  --fbi-paper: #f7f4ed;
+  --fbi-ink: #121212;
+  --fbi-muted: #68645d;
+  --fbi-wine-red: #8f1f1f;
+  --fbi-financial-blue: #233f62;
+  --fbi-secondary-paper: #ebe7de;
+  --fbi-hairline: #c8c3b8;
+  --fbi-negative-fill: #d9c5bc;
+  --fbi-positive-fill: #c7d2d0;
+  --fbi-headline-font: "Songti SC", STSong, "Noto Serif CJK SC", serif;
+  --fbi-body-font: "PingFang SC", "Noto Sans CJK SC", sans-serif;
+  --fbi-number-font: "Arial Narrow", "DIN Condensed", sans-serif;
+  --fbi-headline-min: 80px;
+  --fbi-body-min: 35px;
+  --fbi-concept-min: 42px;
+  --fbi-meta-min: 20px;
+  --fbi-page-padding-xhs: 76px;
+  --fbi-page-padding-wechat: 72px;
+  --fbi-line: 1px solid var(--fbi-hairline);
+}
+
+.fbi-page {
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  color: var(--fbi-ink);
+  background: var(--fbi-paper);
+  font-family: var(--fbi-body-font);
+}
+
+.fbi-page[data-platform="xiaohongshu"] {
+  --fbi-page-padding: var(--fbi-page-padding-xhs);
+  width: 1080px;
+  height: 1440px;
+  padding: 58px var(--fbi-page-padding) 64px;
+}
+
+.fbi-page[data-platform="wechat"] {
+  --fbi-page-padding: var(--fbi-page-padding-wechat);
+  width: 1080px;
+  height: 1350px;
+  padding: 54px var(--fbi-page-padding) 60px;
+}
+
+.fbi-masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 42px;
+  border-bottom: var(--fbi-line);
+  color: var(--fbi-muted);
+  font-size: var(--fbi-meta-min);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.fbi-headline {
+  margin: 42px 0 0;
+  max-width: 900px;
+  font-family: var(--fbi-headline-font);
+  font-size: var(--fbi-headline-min);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+.fbi-body {
+  font-size: var(--fbi-body-min);
+  line-height: 1.36;
+}
+
+.fbi-concept {
+  font-family: var(--fbi-headline-font);
+  font-size: var(--fbi-concept-min);
+  line-height: 1.16;
+}
+
+.fbi-number {
+  font-family: var(--fbi-number-font);
+  font-variant-numeric: tabular-nums;
+}
+
+.fbi-signal-red { color: var(--fbi-wine-red); }
+.fbi-financial-blue { color: var(--fbi-financial-blue); }
+.fbi-hairline { border-color: var(--fbi-hairline); border-style: solid; border-width: 1px 0 0; }
+
+.fbi-source {
+  position: absolute;
+  right: var(--fbi-page-padding);
+  bottom: 44px;
+  left: var(--fbi-page-padding);
+  padding-top: 14px;
+  border-top: var(--fbi-line);
+  color: var(--fbi-muted);
+  font-size: var(--fbi-meta-min);
+  line-height: 1.3;
+}

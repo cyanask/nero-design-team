@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "version": "1.0.0",
+  "updated_at": "2026-08-12",
+  "scope": "Metadata-only external design references. No code, media, fonts, prompts or templates are bundled.",
+  "snapshots": [
+    {
+      "id": "public-snapshot-huashu-design",
+      "asset_id": "NDT-SNP-001",
+      "upstream_ref": "alchaincyf/huashu-design",
+      "route": ["frontend-ui", "ppt", "short-video"],
+      "status": "metadata_only",
+      "license_status": "permissive",
+      "rights": "MIT-metadata-reference",
+      "purpose": "Reference HTML-native multi-format workflow, variant exploration, brand-input boundaries and visual QA discipline.",
+      "patterns": ["HTML-native prototypes", "parallel visual directions", "brand-input protocol", "motion planning"],
+      "excluded": ["source code", "media", "audio", "provider configuration", "watermarks", "external services"],
+      "source_boundary": {
+        "metadata_only": true,
+        "external_material_bundled": false,
+        "evidence": "not_evidence"
+      }
+    },
+    {
+      "id": "public-snapshot-ppt-master",
+      "asset_id": "NDT-SNP-002",
+      "upstream_ref": "hugohe3/ppt-master",
+      "route": ["ppt"],
+      "status": "metadata_only",
+      "license_status": "permissive",
+      "rights": "MIT-metadata-reference",
+      "purpose": "Reference design-spec lock, serial production discipline, SVG QA and native editability boundaries.",
+      "patterns": ["design spec", "style lock", "serial production", "editable objects", "SVG QA"],
+      "excluded": ["source code", "presentation files", "large SVG examples", "media", "provider configuration", "external services"],
+      "source_boundary": {
+        "metadata_only": true,
+        "external_material_bundled": false,
+        "evidence": "not_evidence"
+      }
+    },
+    {
+      "id": "public-snapshot-frontend-slides",
+      "asset_id": "NDT-SNP-006",
+      "upstream_ref": "zarazhangrui/frontend-slides",
+      "route": ["ppt"],
+      "status": "metadata_only",
+      "license_status": "permissive",
+      "rights": "MIT-metadata-reference",
+      "purpose": "Reference fixed-stage HTML presentations, same-content style exploration and browser-first QA.",
+      "patterns": ["1920x1080 fixed stage", "same-content style previews", "contact-sheet review", "browser QA"],
+      "excluded": ["source code", "templates", "media", "deployment configuration", "external services"],
+      "source_boundary": {
+        "metadata_only": true,
+        "external_material_bundled": false,
+        "evidence": "not_evidence"
+      }
+    }
+  ]
+}

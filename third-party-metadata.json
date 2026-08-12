@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "policy": "metadata-only for unknown or restricted references",
+  "references": [
+    { "repo": "alchaincyf/huashu-design", "license_status": "permissive", "license": "MIT", "bundling": "metadata-only", "metadata_status": "metadata_only", "rights": "MIT-metadata-reference" },
+    { "repo": "emilkowalski/skills", "license_status": "permissive", "license": "MIT", "bundling": "metadata-only" },
+    { "repo": "LiamGvchi/gc-minimal-zine-poster", "license_status": "permissive", "license": "MIT", "bundling": "metadata-only" },
+    { "repo": "hugohe3/ppt-master", "license_status": "permissive", "license": "MIT", "bundling": "metadata-only", "metadata_status": "metadata_only", "rights": "MIT-metadata-reference" },
+    { "repo": "op7418/guizang-ppt-skill", "license_status": "restricted", "license": "AGPL-3.0", "bundling": "metadata-only" },
+    { "repo": "plannotator/effective-html", "license_status": "permissive", "license": "MIT and Apache-2.0 examples", "bundling": "metadata-only" },
+    { "repo": "vercel/satori", "license_status": "permissive", "license": "MPL-2.0", "bundling": "metadata-only" },
+    { "repo": "ZzzLc0405/photo-abstract-editorial", "license_status": "unknown", "license": "unknown", "bundling": "metadata-only" },
+    { "repo": "zarazhangrui/frontend-slides", "license_status": "permissive", "license": "MIT", "bundling": "metadata-only", "metadata_status": "metadata_only", "rights": "MIT-metadata-reference" }
+  ]
+}

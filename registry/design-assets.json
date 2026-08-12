@@ -1,0 +1,1891 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "nero-design-assets",
+  "registry_profile": "public_derivative",
+  "authoritative": false,
+  "version": "1.10.0",
+  "updated_at": "2026-08-12",
+  "source_root": "$NERO_DESIGN_TEAM_HOME",
+  "scope": "Bundled public-safe NDT reusable design units only; private canonical assets and not-bundled placeholders are excluded from the asset list.",
+  "numbering_rule": "编号按资产类别分配并永久保留；新增资产只追加，不重排既有编号。",
+  "policy": {
+    "bundled_only": true,
+    "client_facts_allowed": false,
+    "private_identity_allowed": false,
+    "source_ref_must_resolve": true,
+    "fragment_ref_must_resolve": true,
+    "public_derivative_authoritative": false
+  },
+  "integrity_issues": [
+    {
+      "id": "brand-mark-identity-mismatch",
+      "severity": "info",
+      "status": "resolved_in_public_derivative",
+      "source_ref": "brand/assets/nero-mark.svg",
+      "detail": "The public mark is now an explicit NERO Design Team placeholder and no longer carries a mismatched prior identity label.",
+      "usage_boundary": "Placeholder only; it is not an official NERO or client logo."
+    }
+  ],
+  "categories": [
+    {
+      "id": "brand",
+      "prefix": "BRD",
+      "label": "品牌基础",
+      "description": "品牌定位、标识、主版式、图表、封面和 PPT 母版规则。"
+    },
+    {
+      "id": "tokens",
+      "prefix": "TOK",
+      "label": "设计令牌",
+      "description": "颜色、字体、间距、圆角、阴影、图表、动效及其构建输出。"
+    },
+    {
+      "id": "templates",
+      "prefix": "TPL",
+      "label": "生产模板",
+      "description": "按 NDT 路由启动真实项目的可复用模板。"
+    },
+    {
+      "id": "rules",
+      "prefix": "RUL",
+      "label": "规则包",
+      "description": "把设计规范按责任和路由打包成稳定引用单元。"
+    },
+    {
+      "id": "prompts",
+      "prefix": "PRM",
+      "label": "Prompt 包",
+      "description": "架构图、HTML 解释器和演示生产的本地 Prompt 资产。"
+    },
+    {
+      "id": "style-packs",
+      "prefix": "STY",
+      "label": "风格参考包",
+      "description": "经过边界标注的 NERO-native 或私有风格系统。"
+    },
+    {
+      "id": "cases",
+      "prefix": "CAS",
+      "label": "公开案例合同",
+      "description": "只含匿名可复用结构、交互、生产和 QA 合同的公开派生案例。"
+    },
+    {
+      "id": "snapshots",
+      "prefix": "SNP",
+      "label": "外部快照",
+      "description": "外部设计仓库的轻量快照，不包含完整仓库。"
+    },
+    {
+      "id": "external-packs",
+      "prefix": "EXT",
+      "label": "外部参考元数据",
+      "description": "仅登记许可、抽象模式和公开边界，不捆绑第三方实现或素材。"
+    },
+    {
+      "id": "tools",
+      "prefix": "QAT",
+      "label": "工具与质量门",
+      "description": "构建、生成、验证、评分、生产检查和发布断言工具。"
+    }
+  ],
+  "recipes": [
+    {
+      "id": "internal-workbench",
+      "name": "Public analytical workbench",
+      "description": "Dense public-safe analytical workbench starter.",
+      "asset_ids": [
+        "NDT-TPL-001",
+        "NDT-TOK-101",
+        "NDT-RUL-002",
+        "NDT-QAT-005"
+      ]
+    },
+    {
+      "id": "research-image",
+      "name": "Research image/card",
+      "description": "Evidence-first public-safe report card and long-image starter.",
+      "asset_ids": [
+        "NDT-TPL-002",
+        "NDT-TOK-103",
+        "NDT-RUL-003",
+        "NDT-QAT-005"
+      ]
+    },
+    {
+      "id": "embedded-report-figure",
+      "name": "NDT Figure Compiler v0.2",
+      "aliases": [
+        "NDT Figure Compiler",
+        "Figure Compiler",
+        "High-resolution PNG report figure"
+      ],
+      "description": "Nine-type structural Figure Compiler with report, WeChat, and PPT profiles.",
+      "asset_ids": [
+        "NDT-TPL-010",
+        "NDT-TPL-011",
+        "NDT-TOK-103",
+        "NDT-RUL-003",
+        "NDT-QAT-015",
+        "NDT-QAT-016",
+        "NDT-QAT-005"
+      ]
+    },
+    {
+      "id": "formal-pptx",
+      "name": "Formal PPTX",
+      "description": "Editable presentation starter with visual quality gates.",
+      "asset_ids": [
+        "NDT-TPL-003",
+        "NDT-TOK-104",
+        "NDT-RUL-004",
+        "NDT-BRD-006",
+        "NDT-QAT-007"
+      ]
+    },
+    {
+      "id": "presentation-chain",
+      "name": "Presentation production chain",
+      "description": "Public-safe visual production packet and design-spec starter; external content-governance schemas are not bundled.",
+      "asset_ids": [
+        "NDT-TPL-004",
+        "NDT-RUL-004",
+        "NDT-QAT-007"
+      ]
+    },
+    {
+      "id": "short-video",
+      "name": "Short-video explainer",
+      "description": "Storyboard, safe-area, subtitle, and frame-QA starter.",
+      "asset_ids": [
+        "NDT-TPL-005",
+        "NDT-TOK-105",
+        "NDT-RUL-005",
+        "NDT-QAT-005"
+      ]
+    },
+    {
+      "id": "ai-image-brief",
+      "name": "AI image brief",
+      "description": "Controlled public-safe brief for non-evidence visual material.",
+      "asset_ids": [
+        "NDT-TPL-006",
+        "NDT-RUL-003",
+        "NDT-QAT-005"
+      ]
+    },
+    {
+      "id": "minimal-zine-editorial",
+      "name": "Minimal zine editorial",
+      "description": "NDT-native adaptation with MIT-attributed method reference and no upstream example images.",
+      "asset_ids": [
+        "NDT-TPL-007",
+        "NDT-PRM-003",
+        "NDT-STY-003",
+        "NDT-RUL-003",
+        "NDT-QAT-005"
+      ]
+    },
+    {
+      "id": "photo-derived-editorial-diptych",
+      "name": "Photo-derived editorial diptych",
+      "description": "Method-only public style contract; upstream license unknown and prompt/template/source photos are not bundled.",
+      "asset_ids": [
+        "NDT-STY-006",
+        "NDT-RUL-003",
+        "NDT-QAT-005"
+      ]
+    },
+    {
+      "id": "editorial-handwritten-research-note",
+      "name": "Editorial handwritten research note",
+      "description": "Public NDT-native text/JSON/CSS style pack; strict master and font files are not bundled.",
+      "asset_ids": [
+        "NDT-TOK-008",
+        "NDT-TPL-002",
+        "NDT-RUL-007",
+        "NDT-STY-007",
+        "NDT-QAT-005"
+      ]
+    },
+    {
+      "id": "cold-white-business-editorial",
+      "name": "Cold white business editorial",
+      "description": "Generic NDT-native style pack without source-project facts, people, portraits, screenshots, or delivery files.",
+      "asset_ids": [
+        "NDT-STY-004",
+        "NDT-RUL-003",
+        "NDT-QAT-005"
+      ]
+    },
+    {
+      "id": "financial-broadsheet-investigative",
+      "name": "Financial broadsheet investigative",
+      "description": "Generic NDT-native style pack without source-project facts, people, photos, media marks, or delivery files.",
+      "asset_ids": [
+        "NDT-STY-005",
+        "NDT-RUL-003",
+        "NDT-QAT-005"
+      ]
+    },
+    {
+      "id": "architecture-map",
+      "name": "Generic system architecture map",
+      "aliases": [
+        "system-architecture-map"
+      ],
+      "description": "Public-safe SVG-first system map using the bundled generic synthetic fixture and deterministic labels.",
+      "asset_ids": [
+        "NDT-RUL-002",
+        "NDT-EXT-001",
+        "NDT-QAT-005",
+        "NDT-QAT-009"
+      ]
+    },
+    {
+      "id": "dual-trajectory-evidence-map",
+      "name": "Dual-trajectory evidence map",
+      "aliases": [
+        "two-track-evidence-map"
+      ],
+      "description": "Compare two synthetic strategic trajectories through a shared phase axis, complete event nodes and one evidence inspector.",
+      "asset_ids": [
+        "NDT-RUL-002",
+        "NDT-CAS-016",
+        "NDT-QAT-005",
+        "NDT-QAT-009"
+      ]
+    },
+    {
+      "id": "research-series-identity-cover",
+      "name": "Research-series identity cover",
+      "aliases": [
+        "series-identity-cover"
+      ],
+      "description": "Generate crop-stable recurring covers from a complete square identity core and a replaceable atmospheric context field.",
+      "asset_ids": [
+        "NDT-BRD-005",
+        "NDT-TPL-002",
+        "NDT-RUL-003",
+        "NDT-CAS-017",
+        "NDT-QAT-005"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "id": "NDT-BRD-001",
+      "key": "brand-profile",
+      "name": "NERO 品牌档案",
+      "category": "brand",
+      "routes": [
+        "shared"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "定义 NERO 的专业定位、语气、基础令牌入口和证据优先表达边界。",
+      "use_for": [
+        "所有 NDT 项目的品牌基准",
+        "检查视觉语气是否克制专业"
+      ],
+      "source_ref": "brand/brand-profile.json",
+      "preview": {
+        "kind": "brand-profile",
+        "src": "/ndt-assets/ndt-brd-001-preview.png",
+        "label": "品牌档案结构示意",
+        "boundary": "结构可直接引用；具体视觉仍以当前品牌令牌为准。"
+      }
+    },
+    {
+      "id": "NDT-BRD-002",
+      "key": "nero-wordmark-placeholder",
+      "name": "NERO Wordmark 占位资产",
+      "category": "brand",
+      "routes": [
+        "shared"
+      ],
+      "status": "占位资产",
+      "rights": "local-placeholder",
+      "purpose": "提供本地 NERO wordmark 占位版本；正式品牌标识到位后应替换。",
+      "use_for": [
+        "内部原型",
+        "非正式 NERO 项目识别"
+      ],
+      "source_ref": "brand/assets/nero-wordmark.svg",
+      "members": [
+        "nero-wordmark.svg"
+      ],
+      "notes": "Public placeholder only. The bundled mark and wordmark must not be represented as an official NERO or client logo.",
+      "preview": {
+        "kind": "image",
+        "src": "/ndt-assets/nero-wordmark-placeholder.svg",
+        "alt": "NERO Design Team wordmark 占位资产",
+        "label": "NERO wordmark 占位预览",
+        "boundary": "占位资产；不是正式 NERO 品牌标识。",
+        "fit": "contain",
+        "theme": "dark"
+      }
+    },
+    {
+      "id": "NDT-BRD-003",
+      "key": "master-layouts",
+      "name": "NERO 主版式合同",
+      "category": "brand",
+      "routes": [
+        "frontend-ui",
+        "image-report",
+        "ppt",
+        "short-video"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "登记工作台、研究卡片、PPTX 和短视频的结构、尺寸与安全区。",
+      "use_for": [
+        "确定交付物骨架",
+        "冻结画布和安全边距"
+      ],
+      "source_ref": "brand/master-layouts.json",
+      "preview": {
+        "kind": "layout-system",
+        "src": "/ndt-assets/ndt-brd-003-preview.jpg",
+        "label": "跨载体主版式示意",
+        "boundary": "结构示意；实际项目仍需按目标载体与真源模板生成。"
+      }
+    },
+    {
+      "id": "NDT-BRD-004",
+      "key": "chart-style",
+      "name": "NERO 图表规范",
+      "category": "brand",
+      "routes": [
+        "frontend-ui",
+        "image-report",
+        "ppt"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "约束单位、期间、来源、调色板、标注和金融图表可读性。",
+      "use_for": [
+        "研究图表",
+        "财务和投行图表"
+      ],
+      "source_ref": "brand/chart-style.md",
+      "preview": {
+        "kind": "chart-system",
+        "src": "/ndt-assets/ndt-brd-004-preview.jpg",
+        "label": "金融图表规范示意",
+        "boundary": "图表语言可复用；样例数值不代表真实业务数据。"
+      }
+    },
+    {
+      "id": "NDT-BRD-005",
+      "key": "cover-system",
+      "name": "NERO 封面系统",
+      "category": "brand",
+      "routes": [
+        "image-report",
+        "ppt",
+        "ai-image-generation"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "规定封面、章节页和概念视觉的文字层、素材层与安全区。",
+      "use_for": [
+        "研究封面",
+        "PPT 章节页",
+        "概念视觉"
+      ],
+      "source_ref": "brand/cover-system.md",
+      "preview": {
+        "kind": "cover-system",
+        "src": "/ndt-assets/ndt-brd-005-preview.jpg",
+        "label": "封面与章节页结构示意",
+        "boundary": "版式规则可直接引用；素材与标题需按项目替换。"
+      }
+    },
+    {
+      "id": "NDT-BRD-006",
+      "key": "ppt-master-guidance",
+      "name": "NERO PPT 母版指导",
+      "category": "brand",
+      "routes": [
+        "ppt"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "提供正式 PPT 的母版、页边距、页脚、标题和重复版式纪律。",
+      "use_for": [
+        "正式可编辑 PPTX",
+        "Banker deck"
+      ],
+      "source_ref": "brand/ppt-master.md",
+      "preview": {
+        "kind": "slide-master",
+        "src": "/ndt-assets/ndt-brd-006-preview.jpg",
+        "label": "PPT 母版结构示意",
+        "boundary": "母版纪律可直接引用；不是可下载的完整项目 Deck。"
+      }
+    },
+    {
+      "id": "NDT-TOK-001",
+      "key": "colors",
+      "name": "颜色令牌源",
+      "category": "tokens",
+      "routes": [
+        "shared"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "品牌色、表面色、文字色、边框色和风险色的唯一源。",
+      "use_for": [
+        "所有视觉输出的颜色基准"
+      ],
+      "source_ref": "tokens/colors.json",
+      "preview": {
+        "kind": "palette",
+        "src": "/ndt-assets/ndt-tok-001-preview.jpg",
+        "label": "NERO 核心色板",
+        "boundary": "色板仅表达令牌关系；生产时以 tokens/colors.json 为准。",
+        "palette": [
+          "#16212b",
+          "#c6a15b",
+          "#f1f2f4",
+          "#2f765f",
+          "#b86f4d"
+        ]
+      }
+    },
+    {
+      "id": "NDT-TOK-002",
+      "key": "typography",
+      "name": "字体令牌源",
+      "category": "tokens",
+      "routes": [
+        "shared"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "中英文字体、字号、字重和行高的结构化定义。",
+      "use_for": [
+        "中文长标签",
+        "投影字号",
+        "正文层级"
+      ],
+      "source_ref": "tokens/typography.json",
+      "preview": {
+        "kind": "typography",
+        "src": "/ndt-assets/ndt-tok-002-preview.jpg",
+        "label": "中英文字体层级",
+        "boundary": "层级关系可复用；具体字体回退以运行环境为准。"
+      }
+    },
+    {
+      "id": "NDT-TOK-003",
+      "key": "spacing",
+      "name": "间距令牌源",
+      "category": "tokens",
+      "routes": [
+        "shared"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "页面、卡片、报告和幻灯片间距尺度。",
+      "use_for": [
+        "版式节奏",
+        "密集工作台"
+      ],
+      "source_ref": "tokens/spacing.json"
+    },
+    {
+      "id": "NDT-TOK-004",
+      "key": "radius",
+      "name": "圆角令牌源",
+      "category": "tokens",
+      "routes": [
+        "shared"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "控制卡片、面板和控件圆角，避免默认大圆角。",
+      "use_for": [
+        "界面组件",
+        "卡片与面板"
+      ],
+      "source_ref": "tokens/radius.json"
+    },
+    {
+      "id": "NDT-TOK-005",
+      "key": "shadow",
+      "name": "阴影令牌源",
+      "category": "tokens",
+      "routes": [
+        "shared"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "提供发丝线、轻阴影和层级边界。",
+      "use_for": [
+        "工作台层级",
+        "悬浮检查器"
+      ],
+      "source_ref": "tokens/shadow.json"
+    },
+    {
+      "id": "NDT-TOK-006",
+      "key": "chart",
+      "name": "图表令牌源",
+      "category": "tokens",
+      "routes": [
+        "frontend-ui",
+        "image-report",
+        "ppt"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "图表分类色、序列色与金融比较色。",
+      "use_for": [
+        "数据图表",
+        "风险热力图"
+      ],
+      "source_ref": "tokens/chart.json",
+      "preview": {
+        "kind": "chart-system",
+        "src": "/ndt-assets/ndt-tok-006-preview.jpg",
+        "label": "图表颜色与比较关系",
+        "boundary": "颜色关系可复用；示意高度不代表真实数据。"
+      }
+    },
+    {
+      "id": "NDT-TOK-007",
+      "key": "motion",
+      "name": "动效令牌源",
+      "category": "tokens",
+      "routes": [
+        "frontend-ui",
+        "ppt",
+        "short-video"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "统一语义化持续时间、缓动、物理参考、手势阈值和 accessibility fallback 边界。",
+      "use_for": [
+        "轻交互",
+        "手势与 momentum",
+        "视频动效",
+        "网页演示"
+      ],
+      "source_ref": "tokens/motion.json"
+    },
+    {
+      "id": "NDT-TOK-008",
+      "key": "editorial-handwritten-research-note",
+      "name": "手写风格专用令牌",
+      "name_en": "Editorial Handwritten Research Note Tokens",
+      "category": "tokens",
+      "routes": [
+        "shared",
+        "image-report",
+        "frontend-ui",
+        "ppt"
+      ],
+      "status": "已注册",
+      "rights": "NERO-native",
+      "purpose": "定义暖纸张、黑色墨线、黄色荧光标记、绿色确定性数据线和跨载体字体回退。",
+      "use_for": [
+        "手写风格回复适配",
+        "研究图和 HTML",
+        "正式 PPTX 的可编辑标注"
+      ],
+      "source_ref": "assets/style-references/handwritten-research-note/tokens.css",
+      "notes": "不捆绑外部字体；具体字体需在目标运行环境解析并记录回退。"
+    },
+    {
+      "id": "NDT-TOK-101",
+      "key": "css-variables",
+      "name": "CSS 变量输出",
+      "category": "tokens",
+      "routes": [
+        "frontend-ui"
+      ],
+      "status": "生成输出",
+      "rights": "NERO-native",
+      "purpose": "由源令牌构建的网页 CSS 变量入口。",
+      "use_for": [
+        "React / HTML / 本地控制台"
+      ],
+      "source_ref": "build/css/nero-tokens.css"
+    },
+    {
+      "id": "NDT-TOK-102",
+      "key": "tailwind-snippet",
+      "name": "Tailwind 令牌输出",
+      "category": "tokens",
+      "routes": [
+        "frontend-ui"
+      ],
+      "status": "生成输出",
+      "rights": "NERO-native",
+      "purpose": "把 NERO 令牌映射成 Tailwind 配置片段。",
+      "use_for": [
+        "Tailwind 项目"
+      ],
+      "source_ref": "build/tailwind/nero-tailwind.cjs"
+    },
+    {
+      "id": "NDT-TOK-103",
+      "key": "report-theme",
+      "name": "研究图主题输出",
+      "category": "tokens",
+      "routes": [
+        "image-report"
+      ],
+      "status": "生成输出",
+      "rights": "NERO-native",
+      "purpose": "供 Satori、Sharp 和研究图渲染器使用的主题。",
+      "use_for": [
+        "研究卡片",
+        "长图"
+      ],
+      "source_ref": "build/themes/report-theme.mjs"
+    },
+    {
+      "id": "NDT-TOK-104",
+      "key": "pptx-theme",
+      "name": "PPTX 主题输出",
+      "category": "tokens",
+      "routes": [
+        "ppt"
+      ],
+      "status": "生成输出",
+      "rights": "NERO-native",
+      "purpose": "供正式 PPTX 生产使用的颜色、字体和版式主题。",
+      "use_for": [
+        "正式可编辑 PPTX"
+      ],
+      "source_ref": "build/themes/pptx-theme.mjs"
+    },
+    {
+      "id": "NDT-TOK-105",
+      "key": "remotion-theme",
+      "name": "Remotion 主题输出",
+      "category": "tokens",
+      "routes": [
+        "short-video"
+      ],
+      "status": "生成输出",
+      "rights": "NERO-native",
+      "purpose": "供 Remotion 视频项目使用的 TS/MJS 主题。",
+      "use_for": [
+        "短视频",
+        "动画解释器"
+      ],
+      "source_ref": "build/themes/remotion-theme.ts",
+      "members": [
+        "remotion-theme.ts",
+        "remotion-theme.mjs"
+      ]
+    },
+    {
+      "id": "NDT-TPL-001",
+      "key": "frontend-dashboard",
+      "name": "Frontend Dashboard 模板",
+      "name_en": "Frontend Dashboard Template",
+      "category": "templates",
+      "routes": [
+        "frontend-ui"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "高密度内部分析工作台的 React 起始模板。",
+      "purpose_en": "A React starter for dense internal analytical workbenches.",
+      "use_for": [
+        "Dashboard",
+        "后台管理",
+        "证据工作台"
+      ],
+      "use_for_en": [
+        "Dashboards",
+        "Administration",
+        "Evidence workbenches"
+      ],
+      "source_ref": "templates/frontend-dashboard",
+      "preview": {
+        "kind": "dashboard",
+        "src": "/ndt-assets/ndt-tpl-001-preview.jpg",
+        "label": "高密度工作台结构",
+        "label_en": "Dense workbench structure",
+        "boundary": "结构示意；字段、数据和操作必须接入目标业务真源。",
+        "boundary_en": "The structure is reusable; fields, data and actions must connect to the target business source of truth."
+      }
+    },
+    {
+      "id": "NDT-TPL-002",
+      "key": "report-card-image",
+      "name": "研究卡片模板",
+      "name_en": "Research Card Template",
+      "category": "templates",
+      "routes": [
+        "image-report"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "Satori/Sharp 研究卡片和长图生产模板。",
+      "purpose_en": "A Satori/Sharp starter for research cards and long images.",
+      "use_for": [
+        "研究长图",
+        "社交卡片"
+      ],
+      "use_for_en": [
+        "Research long images",
+        "Social cards"
+      ],
+      "source_ref": "templates/report-card-image",
+      "preview": {
+        "kind": "report-card",
+        "src": "/ndt-assets/ndt-tpl-002-preview.jpg",
+        "label": "研究卡片结构",
+        "label_en": "Research card structure",
+        "boundary": "版式可复用；标题、事实、来源和数字必须替换。",
+        "boundary_en": "The layout is reusable; titles, facts, sources and figures must be replaced."
+      }
+    },
+    {
+      "id": "NDT-TPL-003",
+      "key": "pptx-deck",
+      "name": "PPTX Deck 模板",
+      "name_en": "PPTX Deck Template",
+      "category": "templates",
+      "routes": [
+        "ppt"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "使用 NERO PPTX 主题的原生可编辑演示模板。",
+      "purpose_en": "A natively editable presentation starter using the NERO PPTX theme.",
+      "use_for": [
+        "正式 PPTX",
+        "投行和研究演示"
+      ],
+      "use_for_en": [
+        "Formal PPTX",
+        "Investment-banking and research decks"
+      ],
+      "source_ref": "templates/pptx-deck",
+      "preview": {
+        "kind": "slide-master",
+        "src": "/ndt-assets/ndt-tpl-003-preview.jpg",
+        "label": "正式 Deck 母版",
+        "label_en": "Formal deck master",
+        "boundary": "母版结构可复用；项目内容与品牌身份必须重新绑定。",
+        "boundary_en": "The master structure is reusable; project content and brand identity must be rebound."
+      }
+    },
+    {
+      "id": "NDT-TPL-004",
+      "key": "presentation-production-chain",
+      "name": "演示生产链模板",
+      "name_en": "Presentation Production Chain Template",
+      "category": "templates",
+      "routes": [
+        "presentation-production-chain"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "包含 design spec、style lock、视觉探索与生产检查清单。",
+      "purpose_en": "Includes a design spec, style lock, visual exploration and production checklist.",
+      "use_for": [
+        "KAT → NDT → Presentations 生产链"
+      ],
+      "use_for_en": [
+        "KAT → NDT → Presentations production chain"
+      ],
+      "source_ref": "templates/presentation-production-chain"
+    },
+    {
+      "id": "NDT-TPL-005",
+      "key": "remotion-short-video",
+      "name": "Remotion 短视频模板",
+      "name_en": "Remotion Short Video Template",
+      "category": "templates",
+      "routes": [
+        "short-video"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "9:16 短视频和数据解释动画模板。",
+      "purpose_en": "A 9:16 starter for short video and animated data explainers.",
+      "use_for": [
+        "短视频",
+        "动态数据解释"
+      ],
+      "use_for_en": [
+        "Short video",
+        "Animated data explanation"
+      ],
+      "source_ref": "templates/remotion-short-video",
+      "preview": {
+        "kind": "video-frame",
+        "src": "/ndt-assets/ndt-tpl-005-preview.jpg",
+        "label": "9:16 数据短视频画面",
+        "label_en": "9:16 data-video frame",
+        "boundary": "画面节奏可复用；动态时序需在真实合成中验证。",
+        "boundary_en": "Visual pacing is reusable; motion timing must be verified in a real composition."
+      }
+    },
+    {
+      "id": "NDT-TPL-006",
+      "key": "gpt-image-brief",
+      "name": "AI 图像 Brief 模板",
+      "name_en": "AI Image Brief Template",
+      "category": "templates",
+      "routes": [
+        "ai-image-generation"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "控制封面、背景和概念素材生成边界的 brief 模板。",
+      "purpose_en": "A brief starter governing cover, background and concept-visual generation boundaries.",
+      "use_for": [
+        "图像生成 Brief",
+        "风格锁"
+      ],
+      "use_for_en": [
+        "Image-generation brief",
+        "Style lock"
+      ],
+      "source_ref": "templates/gpt-image-brief",
+      "preview": {
+        "kind": "image-brief",
+        "src": "/ndt-assets/ndt-tpl-006-preview.jpg",
+        "label": "概念视觉 Brief 结构",
+        "label_en": "Concept-visual brief structure",
+        "boundary": "仅展示控制字段；不是一张可直接交付的生成图。",
+        "boundary_en": "Shows governance fields only; it is not a deliverable generated image."
+      }
+    },
+    {
+      "id": "NDT-TPL-007",
+      "key": "minimal-zine-editorial",
+      "name": "留白杂志风模板",
+      "name_en": "Minimal Zine Editorial Template",
+      "aliases": [
+        "留白杂志风"
+      ],
+      "category": "templates",
+      "routes": [
+        "ai-image-generation",
+        "image-report",
+        "ppt"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native-adaptation",
+      "purpose": "提供结构化 brief、四段式 prompt compiler、四画幅精确文字叠加和 QA manifest。",
+      "purpose_en": "Provides a structured brief, four-paragraph prompt compiler, four-format exact-text overlay, and QA manifest.",
+      "use_for": [
+        "公众号与文章封面",
+        "研究报告封面与章节页",
+        "PPT 章节视觉",
+        "编辑型社交卡片"
+      ],
+      "use_for_en": [
+        "Article covers",
+        "Research covers and dividers",
+        "PPT chapter visuals",
+        "Editorial social cards"
+      ],
+      "source_ref": "templates/gpt-image-brief/presets/minimal-zine-editorial"
+    },
+    {
+      "id": "NDT-TPL-010",
+      "key": "high-resolution-raster-report-figure",
+      "name": "高分辨率 PNG 报告图模板",
+      "name_en": "High Resolution Raster Report Figure Template",
+      "aliases": [
+        "高分辨率PNG报告图",
+        "PNG报告图",
+        "Pillow报告图"
+      ],
+      "category": "templates",
+      "routes": [
+        "image-report"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "提供适合嵌入 Word/PDF 的 Python/Pillow 高分辨率画布、字体层级、智能换行和失败关闭的溢出碰撞检查。",
+      "purpose_en": "Provides a Python/Pillow high-resolution canvas, typography hierarchy, token-aware wrapping, and fail-closed overflow/collision checks for figures embedded in Word or PDF.",
+      "use_for": [
+        "产业链图",
+        "工艺流程图",
+        "研发能力图",
+        "传导链图",
+        "竞争格局图"
+      ],
+      "use_for_en": [
+        "Industry-chain figures",
+        "Process flows",
+        "R&D capability maps",
+        "Transmission chains",
+        "Competitive-position maps"
+      ],
+      "source_ref": "templates/report-card-image/presets/high-resolution-raster-report-figure",
+      "notes": "这是可选渲染方式，不是 image-report 或投行文档的默认；项目数据、标题、来源和交付文件不得进入 NDT。"
+    },
+    {
+      "id": "NDT-TPL-011",
+      "key": "report-figure-compiler",
+      "name": "NDT Figure Compiler 模板",
+      "name_en": "NDT Figure Compiler Preset",
+      "aliases": [
+        "报告图编译器",
+        "Figure Compiler"
+      ],
+      "category": "templates",
+      "routes": [
+        "image-report"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "提供 v0.2 无来源样例 Figure Spec、九图型 QA 说明和只调用中央 NDT CLI 的项目薄 wrapper，不复制 runtime 或布局逻辑。",
+      "purpose_en": "Provides a source-free v0.2 Figure Spec, nine-type QA guidance, and a thin project wrapper that invokes the central NDT CLI without copying runtime or layout logic.",
+      "use_for": [
+        "产业链/业务流程/传导链",
+        "分类层级/产品边界",
+        "时间轴/产能爬坡",
+        "漏斗/阶段门",
+        "市场规模/柱图",
+        "趋势/折线",
+        "参与者地图/竞争格局",
+        "同业画像/指标矩阵",
+        "价值链/利润分布",
+        "Word/PDF 嵌入图",
+        "公众号行内图",
+        "PPT 16:9 图"
+      ],
+      "use_for_en": [
+        "Flow",
+        "Hierarchy",
+        "Timeline",
+        "Funnel",
+        "Bar",
+        "Line",
+        "Participant map",
+        "Matrix",
+        "Value chain",
+        "Word/PDF embedded figures",
+        "WeChat inline figures",
+        "PPT 16:9 figures"
+      ],
+      "source_ref": "templates/report-card-image/presets/report-figure-compiler",
+      "notes": "v0.2 支持九图型与 report-a4、wechat-inline、ppt-16x9 三种 profile；报告和微信默认 PNG，PPT 默认 SVG；office-native 为 handoff-only；封面、摄影、插画与概念视觉不得误用。"
+    },
+    {
+      "id": "NDT-RUL-001",
+      "key": "shared-foundation-rules",
+      "name": "共享基础规则包",
+      "category": "rules",
+      "routes": [
+        "shared",
+        "new-project",
+        "project-integration",
+        "case-library"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "管理品牌、生成器、项目接入、案例库和外部参考边界。",
+      "use_for": [
+        "新项目",
+        "现有项目接入",
+        "案例引用与许可判断"
+      ],
+      "source_ref": "rules/",
+      "members": [
+        "brand-system.md",
+        "generator.md",
+        "project-integration.md",
+        "case-library.md",
+        "external-design-reference-boundaries.md"
+      ]
+    },
+    {
+      "id": "NDT-RUL-002",
+      "key": "frontend-html-rules",
+      "name": "前端与 HTML 规则包",
+      "category": "rules",
+      "routes": [
+        "frontend-ui"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "统一工作台 UI、交互动效、自包含 HTML、SVG 架构图和 HTML-native 生产规则。",
+      "use_for": [
+        "前端 UI",
+        "交互与手势动效",
+        "架构脉络图",
+        "单文件 HTML 解释器"
+      ],
+      "source_ref": "rules/",
+      "members": [
+        "frontend-ui.md",
+        "frontend-motion.md",
+        "effective-html.md",
+        "html-native-harness.md"
+      ]
+    },
+    {
+      "id": "NDT-RUL-003",
+      "key": "image-visual-rules",
+      "name": "研究图与 AI 图像规则包",
+      "category": "rules",
+      "routes": [
+        "image-report",
+        "ai-image-generation"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "规定研究图、长图、嵌入式报告图的渲染选择，以及生成图像只能作为视觉素材的边界。",
+      "use_for": [
+        "研究卡片",
+        "长图",
+        "Word/PDF嵌入图",
+        "封面和概念图"
+      ],
+      "source_ref": "rules/",
+      "members": [
+        "image-report.md",
+        "report-figure-rendering.md",
+        "ai-image-generation.md",
+        "minimal-zine-editorial.md",
+        "photo-derived-editorial-diptych.md"
+      ]
+    },
+    {
+      "id": "NDT-RUL-004",
+      "key": "presentation-rules",
+      "name": "演示文稿规则包",
+      "category": "rules",
+      "routes": [
+        "ppt",
+        "presentation-handoff-contract",
+        "presentation-production-chain"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "覆盖正式 PPTX、Web PPT、投行 PitchBook、交接合同、设计规范和生产链。",
+      "use_for": [
+        "正式 PPTX",
+        "Web PPT",
+        "PitchBook",
+        "KAT → NDT 交接"
+      ],
+      "source_ref": "rules/",
+      "members": [
+        "ppt.md",
+        "ppt-business-design.md",
+        "investment-banking-pitchbook.md",
+        "ppt-production-harness.md",
+        "web-ppt.md",
+        "html-deck-style-discovery.md",
+        "web-ppt-multidevice-qa.md",
+        "presentation-design-spec.md",
+        "presentation-handoff-contract.md",
+        "presentation-production-chain.md"
+      ]
+    },
+    {
+      "id": "NDT-RUL-005",
+      "key": "motion-video-rules",
+      "name": "动效与短视频规则包",
+      "category": "rules",
+      "routes": [
+        "short-video"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "规定短视频脚本、分镜、运动节奏、字幕安全区和关键帧检查。",
+      "use_for": [
+        "短视频",
+        "数据动画",
+        "静帧转动态"
+      ],
+      "source_ref": "rules/",
+      "members": [
+        "short-video.md",
+        "motion-video-harness.md"
+      ]
+    },
+    {
+      "id": "NDT-RUL-006",
+      "key": "quality-delivery-rules",
+      "name": "质量与交付规则包",
+      "category": "rules",
+      "routes": [
+        "visual-audit",
+        "visual-score",
+        "production-check"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "统一视觉 QA、100 分评分和下游生产准备度判断。",
+      "use_for": [
+        "所有正式视觉交付",
+        "发布前检查"
+      ],
+      "source_ref": "rules/",
+      "members": [
+        "visual-qa.md",
+        "visual-score.md",
+        "production-check.md"
+      ]
+    },
+    {
+      "id": "NDT-RUL-007",
+      "key": "handwritten-research-note",
+      "name": "手写风格跨格式规则",
+      "name_en": "Editorial Handwritten Research Note Rules",
+      "category": "rules",
+      "routes": [
+        "shared",
+        "image-report",
+        "frontend-ui",
+        "web-ppt-html",
+        "ppt"
+      ],
+      "status": "已注册",
+      "rights": "NERO-native",
+      "purpose": "统一手写式回复、研究图、HTML 和 PPT 的结论节奏、标注语法、确定性数据层和正式交付边界。",
+      "use_for": [
+        "手写风格触发",
+        "跨载体风格适配",
+        "项目级视觉 QA"
+      ],
+      "source_ref": "rules/handwritten-research-note.md",
+      "members": [
+        "handwritten-research-note.md"
+      ],
+      "notes": "这是跨格式适配规则，不替代目标路由的投行、披露、事实、PPTX 或视觉 QA 规则。"
+    },
+    {
+      "id": "NDT-PRM-003",
+      "key": "minimal-zine-prompt-compiler",
+      "name": "留白杂志风 Prompt Compiler",
+      "category": "prompts",
+      "routes": [
+        "ai-image-generation"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native-adaptation",
+      "purpose": "把内容压缩为画布、单一隐喻、色彩锚点和硬性排除项四段式生成提示。",
+      "use_for": [
+        "留白杂志风图像生成",
+        "封面与章节视觉 brief"
+      ],
+      "source_ref": "templates/gpt-image-brief/presets/minimal-zine-editorial/prompt.md"
+    },
+    {
+      "id": "NDT-STY-003",
+      "key": "minimal-zine-editorial",
+      "name": "留白杂志风",
+      "name_en": "Minimal Zine Editorial",
+      "aliases": [
+        "留白杂志风"
+      ],
+      "category": "style-packs",
+      "routes": [
+        "ai-image-generation",
+        "image-report",
+        "ppt"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native-adaptation-with-MIT-attribution",
+      "purpose": "大留白、单主体簇、单色锚点、纸媒复制缺陷和确定性文字叠加的编辑视觉系统。",
+      "use_for": [
+        "公众号与文章封面",
+        "研究报告封面与章节页",
+        "PPT 章节视觉",
+        "安静的编辑型社交卡片"
+      ],
+      "source_ref": "assets/style-references/minimal-zine-editorial",
+      "notes": "上游六张 JPEG 仅保留远程引用，不属于 NERO 自有资产或默认客户交付素材。"
+    },
+    {
+      "id": "NDT-STY-004",
+      "key": "cold-white-business-editorial",
+      "name": "冷白商业杂志风",
+      "name_en": "Cold White Business Editorial",
+      "aliases": [
+        "冷白商业杂志风",
+        "白底财经杂志风",
+        "CEO商业分析风"
+      ],
+      "category": "style-packs",
+      "routes": [
+        "image-report",
+        "ppt"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "用冷白纸张、高反差中文衬线标题、克制海军蓝/冷绿/财经红、人物小簇和确定性证据版式完成商业人物与战略分析。",
+      "use_for": [
+        "CEO战略对照",
+        "商业模式分叉",
+        "估值与融资比较",
+        "AI产业商业分析组图"
+      ],
+      "source_ref": "assets/style-references/cold-white-business-editorial",
+      "notes": "只复用布局、Token、字体和QA合同；不包含来源项目人物、事实、标题、媒体版头或照片。"
+    },
+    {
+      "id": "NDT-STY-005",
+      "key": "financial-broadsheet-investigative",
+      "name": "财经报纸调查风",
+      "name_en": "Financial Broadsheet Investigative",
+      "aliases": [
+        "财经报纸调查风",
+        "金融事件报纸风",
+        "Financial Broadsheet Investigative"
+      ],
+      "category": "style-packs",
+      "routes": [
+        "image-report",
+        "ppt",
+        "web-ppt-html"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "用暖报纸底、人物冲突、事件时间轴、杠杆机制和买卖双方能力对照完成财经事件调查式组图。",
+      "use_for": [
+        "基金出售与危机交易",
+        "金融事件时间轴",
+        "杠杆与流动性机制",
+        "资本与对手方能力分析"
+      ],
+      "source_ref": "assets/style-references/financial-broadsheet-investigative",
+      "notes": "只复用布局、Token、字体、机制图和QA合同；不包含来源项目人物、事实、标题、照片或外部媒体Logo。"
+    },
+    {
+      "id": "NDT-STY-006",
+      "key": "photo-derived-editorial-diptych",
+      "name": "摄影抽象双联画",
+      "name_en": "Photo Derived Editorial Diptych",
+      "aliases": [
+        "摄影抽象双联画",
+        "照片抽象双联画"
+      ],
+      "category": "style-packs",
+      "routes": [
+        "ai-image-generation",
+        "image-report"
+      ],
+      "status": "method_only_public_contract",
+      "rights": "NERO-native-method-only-adaptation; upstream-license-unknown",
+      "purpose": "以原照片为主层、象牙色关系面板为辅层、确定性标题为文字层的照片主导编辑视觉系统。",
+      "use_for": [
+        "照片主导编辑型封面",
+        "研究报告封面与章节分隔",
+        "安静社交卡片",
+        "非证据型视觉记忆研究"
+      ],
+      "source_ref": "assets/style-references/photo-derived-editorial-diptych",
+      "notes": "公开包仅提供方法和QA合同；不附带生成器preset、Prompt、模板、照片、私有case或视觉基线工件。上游仓库仅作方法参考，许可证未知且未复制任何上游资产。"
+    },
+    {
+      "id": "NDT-STY-007",
+      "key": "editorial-handwritten-research-note",
+      "name": "手写风格",
+      "name_en": "Editorial Handwritten Research Note",
+      "aliases": [
+        "手写风格"
+      ],
+      "category": "style-packs",
+      "routes": [
+        "response",
+        "image-report",
+        "frontend-ui",
+        "web-ppt-html",
+        "ppt"
+      ],
+      "status": "已注册·工作参考",
+      "rights": "NERO-native; user-reference-only; no-external-assets-bundled",
+      "purpose": "以暖纸张、手写文字与数字、手绘图表几何、黄色高亮、绿色确定性数据线和结论先行节奏组成的跨格式研究笔记系统。",
+      "use_for": [
+        "研究回复",
+        "研究图与 HTML",
+        "严格手写横向母版",
+        "PPT 结论页和章节页",
+        "解释型前端空状态"
+      ],
+      "source_ref": "assets/style-references/handwritten-research-note",
+      "notes": "不捆绑外部字体、图片、事实或项目身份；严格横幅母版要求目标环境解析批准的 CJK 手写/书写字体，解析失败不得静默退回印刷体。"
+    },
+    {
+      "id": "NDT-CAS-001",
+      "key": "analytical-signal-workbench",
+      "name": "高密度分析信号工作台",
+      "category": "cases",
+      "routes": ["frontend-ui"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "用指标条、证据账本和显式工作流状态完成高密度信号分诊。",
+      "use_for": ["内部分析工具", "研究工作流"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-001-analytical-signal-workbench",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-002",
+      "key": "source-traceable-research-ledger",
+      "name": "来源状态可追溯研究账本",
+      "category": "cases",
+      "routes": ["frontend-ui"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "用紧凑账本、显式来源状态和移动端压缩呈现研究观察。",
+      "use_for": ["研究雷达", "证据账本"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-002-source-traceable-research-ledger",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-003",
+      "key": "bilingual-evidence-portfolio",
+      "name": "双语证据作品集",
+      "category": "cases",
+      "routes": ["frontend-ui"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "以两个证据入口组织双语专业作品集和案例详情。",
+      "use_for": ["双语履历", "证据型作品集"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-003-bilingual-evidence-portfolio",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-007",
+      "key": "periodic-signal-card",
+      "name": "周期信号研究卡",
+      "category": "cases",
+      "routes": ["image-report"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "以一个主判断、一个有边界的指标和少量证据块解释周期信号。",
+      "use_for": ["研究卡片", "行内长图"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-007-periodic-signal-card",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-008",
+      "key": "horizontal-evidence-memo",
+      "name": "横版证据研究备忘录",
+      "category": "cases",
+      "routes": ["image-report"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "以暗色备忘录栏和浅色证据板完成紧凑横版研究说明。",
+      "use_for": ["横版研究备忘录", "证据型社交卡"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-008-horizontal-evidence-memo",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-010",
+      "key": "editable-research-deck",
+      "name": "可编辑研究演示",
+      "category": "cases",
+      "routes": ["ppt"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "为研究判断、对比和结论提供原生可编辑的演示页族。",
+      "use_for": ["正式研究演示", "内部讨论材料"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-010-editable-research-deck",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-011",
+      "key": "professional-advisory-deck",
+      "name": "专业顾问演示",
+      "category": "cases",
+      "routes": ["ppt"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "为复杂专业材料提供克制、投影可读且移动端可读的演示结构。",
+      "use_for": ["专业顾问材料", "交易与资本市场演示"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-011-professional-advisory-deck",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-012",
+      "key": "regulatory-evidence-webdeck",
+      "name": "监管证据 HTML 演示",
+      "category": "cases",
+      "routes": ["ppt"],
+      "status": "public_sanitized_working_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "围绕监管逻辑、证据矩阵和执行门禁组织固定舞台 HTML 演示。",
+      "use_for": ["监管证据演示", "HTML 专业材料"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-012-regulatory-evidence-webdeck",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-013",
+      "key": "data-signal-explainer",
+      "name": "数据信号短视频解释器",
+      "category": "cases",
+      "routes": ["short-video"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "用判断、指标、证据和边界说明的短序列解释一个信号。",
+      "use_for": ["移动端数据解释", "研究短视频"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-013-data-signal-explainer",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-014",
+      "key": "cold-white-comparison-carousel",
+      "name": "冷白商业比较组图",
+      "category": "cases",
+      "routes": ["image-report"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "用镜像档案、同口径比较和克制编辑网格对照两条策略。",
+      "use_for": ["策略比较", "商业模式对照"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-014-cold-white-comparison-carousel",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-015",
+      "key": "financial-event-carousel",
+      "name": "财经事件调查组图",
+      "category": "cases",
+      "routes": ["image-report"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "通过时间顺序、机制、流动性和对手方能力重建财经事件。",
+      "use_for": ["财经事件解释", "机制与时间轴组图"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-015-financial-event-carousel",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-016",
+      "key": "dual-trajectory-evidence-map",
+      "name": "双轨迹证据图谱",
+      "category": "cases",
+      "routes": ["frontend-ui"],
+      "status": "public_sanitized_working_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "用共享阶段轴、完整事件节点和单一证据检查器比较两条战略轨迹。",
+      "use_for": ["双轨迹比较", "事件证据图谱"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-016-dual-trajectory-evidence-map",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-017",
+      "key": "research-series-identity-cover",
+      "name": "研究系列身份封面",
+      "category": "cases",
+      "routes": ["image-report"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "以独立方形身份核心和可替换情境场生成跨比例系列封面。",
+      "use_for": ["研究系列封面", "跨比例身份卡"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-017-research-series-identity-cover",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-019",
+      "key": "editorial-handwritten-note",
+      "name": "手写编辑式研究笔记",
+      "category": "cases",
+      "routes": ["response", "image-report", "frontend-ui", "web-ppt-html", "ppt"],
+      "status": "public_sanitized_working_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "在解释型输出中复用暖纸张、手写节奏、手绘图表几何和结论先行结构。",
+      "use_for": ["研究说明", "手写式图表", "演示结论页"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-019-editorial-handwritten-note",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external font, external material or machine path."
+    },
+    {
+      "id": "NDT-SNP-004",
+      "key": "effective-html",
+      "name": "Effective HTML 轻量快照",
+      "category": "snapshots",
+      "routes": [
+        "frontend-ui"
+      ],
+      "status": "可直接引用",
+      "rights": "MIT-Apache-reference",
+      "purpose": "单文件 HTML、SVG 架构图和视觉计划参考。",
+      "use_for": [
+        "架构脉络图",
+        "自包含 HTML"
+      ],
+      "source_ref": "case-library/snapshots/plannotator__effective-html"
+    },
+    {
+      "id": "NDT-SNP-005",
+      "key": "satori",
+      "name": "Satori 轻量快照",
+      "category": "snapshots",
+      "routes": [
+        "image-report"
+      ],
+      "status": "可直接引用",
+      "rights": "permissive-reference",
+      "purpose": "JSX/HTML 到 SVG 的程序化研究卡片渲染参考。",
+      "use_for": [
+        "研究卡片",
+        "OG 图"
+      ],
+      "source_ref": "case-library/snapshots/vercel__satori"
+    },
+    {
+      "id": "NDT-SNP-007",
+      "key": "emilkowalski-skills",
+      "name": "Emil Design Engineering 轻量快照",
+      "category": "snapshots",
+      "routes": [
+        "frontend-ui",
+        "visual-audit"
+      ],
+      "status": "可直接引用",
+      "rights": "MIT-reference",
+      "purpose": "流体交互、手势物理、动效克制门禁、审计标准、修复计划和术语参考。",
+      "use_for": [
+        "交互动效",
+        "手势与 momentum",
+        "动效审查",
+        "代码库动效审计"
+      ],
+      "source_ref": "case-library/snapshots/emilkowalski__skills",
+      "notes": "只沉淀文本知识与流程资产；未下载视觉媒体，不包含 Apple 标识、SF Symbols、WWDC 幻灯片或课程内容。"
+    },
+    {
+      "id": "NDT-SNP-008",
+      "key": "gc-minimal-zine-poster",
+      "name": "GC Minimal Zine Poster 轻量快照",
+      "category": "snapshots",
+      "routes": [
+        "image-report",
+        "ai-image-generation"
+      ],
+      "status": "可直接引用",
+      "rights": "MIT-reference",
+      "purpose": "定量构图、Variation Engine、缩略图色锚检查和一次重试机制参考。",
+      "use_for": [
+        "留白杂志风封面",
+        "生成图像 style brief",
+        "上游六样例视觉对照"
+      ],
+      "source_ref": "case-library/snapshots/liamgvchi__gc-minimal-zine-poster",
+      "notes": "未克隆完整仓库、未复制上游 JPEG、未安装上游 Skill。"
+    },
+    {
+      "id": "NDT-SNP-001",
+      "key": "html-native-design-harness-metadata",
+      "name": "HTML-native 多格式设计 Harness 元数据",
+      "category": "snapshots",
+      "routes": ["frontend-ui", "ppt", "short-video"],
+      "status": "metadata_only",
+      "rights": "MIT-metadata-reference",
+      "purpose": "提供 HTML-native 多格式工作流、并行视觉方向、品牌输入边界和视觉 QA 的元数据参考。",
+      "use_for": ["HTML-native 原型", "多方向视觉探索"],
+      "source_ref": "case-library/snapshots/public-metadata.json#public-snapshot-huashu-design",
+      "source_boundary": "Metadata only; no source code, media, font, prompt, template, provider configuration or external service is bundled."
+    },
+    {
+      "id": "NDT-SNP-002",
+      "key": "presentation-production-harness-metadata",
+      "name": "演示生产 Harness 元数据",
+      "category": "snapshots",
+      "routes": ["ppt"],
+      "status": "metadata_only",
+      "rights": "MIT-metadata-reference",
+      "purpose": "提供设计规范锁、串行生产纪律、SVG QA 和原生可编辑边界的元数据参考。",
+      "use_for": ["正式演示生产纪律", "设计规范锁"],
+      "source_ref": "case-library/snapshots/public-metadata.json#public-snapshot-ppt-master",
+      "source_boundary": "Metadata only; no source code, media, font, prompt, template, provider configuration or external service is bundled."
+    },
+    {
+      "id": "NDT-SNP-006",
+      "key": "fixed-stage-html-slides-metadata",
+      "name": "固定舞台 HTML 演示元数据",
+      "category": "snapshots",
+      "routes": ["ppt"],
+      "status": "metadata_only",
+      "rights": "MIT-metadata-reference",
+      "purpose": "提供固定舞台 HTML 演示、同内容风格探索和浏览器优先 QA 的元数据参考。",
+      "use_for": ["Web PPT 风格探索", "固定舞台预览"],
+      "source_ref": "case-library/snapshots/public-metadata.json#public-snapshot-frontend-slides",
+      "source_boundary": "Metadata only; no source code, media, font, prompt, template, deployment configuration or external service is bundled."
+    },
+    {
+      "id": "NDT-EXT-001",
+      "key": "self-contained-html-method-metadata",
+      "name": "自包含 HTML 方法元数据",
+      "category": "external-packs",
+      "routes": ["frontend-ui"],
+      "status": "metadata_only",
+      "rights": "MIT-and-Apache-2.0-metadata-reference",
+      "purpose": "提供单文件 HTML、SVG-first 图示、主题感知标签和简洁视觉计划结构参考。",
+      "use_for": ["系统架构图", "自包含 HTML 解释器"],
+      "source_ref": "assets/reference-metadata/effective-html.json#public-reference-effective-html",
+      "source_boundary": "Metadata and a generic synthetic fixture only; no third-party code, example page, media, font, prompt, template or plugin metadata is bundled."
+    },
+    {
+      "id": "NDT-QAT-001",
+      "key": "design-registry",
+      "name": "NDT 中央注册表",
+      "category": "tools",
+      "routes": [
+        "shared"
+      ],
+      "status": "工具",
+      "rights": "NERO-native",
+      "purpose": "登记设计系统根、MCP 工具、模板、令牌和跨系统边界。",
+      "use_for": [
+        "确认 NDT 当前能力与真源"
+      ],
+      "source_ref": "registry/design-team.json"
+    },
+    {
+      "id": "NDT-QAT-002",
+      "key": "build-tokens",
+      "name": "令牌构建器",
+      "category": "tools",
+      "routes": [
+        "shared"
+      ],
+      "status": "工具",
+      "rights": "NERO-native",
+      "purpose": "把源令牌构建成 CSS、Tailwind 和各生产主题。",
+      "use_for": [
+        "令牌更新后的构建"
+      ],
+      "source_ref": "scripts/build-tokens.mjs"
+    },
+    {
+      "id": "NDT-QAT-003",
+      "key": "nero-design-generator",
+      "name": "项目生成与接入器",
+      "category": "tools",
+      "routes": [
+        "new-project",
+        "project-integration"
+      ],
+      "status": "工具",
+      "rights": "NERO-native",
+      "purpose": "生成新项目或为现有项目建立 NDT 接入 manifest。",
+      "use_for": [
+        "创建视觉项目",
+        "接入已有项目"
+      ],
+      "source_ref": "scripts/nero-design.mjs"
+    },
+    {
+      "id": "NDT-QAT-004",
+      "key": "import-github-case",
+      "name": "GitHub 案例快照导入器",
+      "category": "tools",
+      "routes": [
+        "case-library"
+      ],
+      "status": "工具",
+      "rights": "NERO-native",
+      "purpose": "创建轻量外部仓库快照，不默认克隆完整仓库。",
+      "use_for": [
+        "外部设计参考入库"
+      ],
+      "source_ref": "scripts/import-github-case.mjs"
+    },
+    {
+      "id": "NDT-QAT-005",
+      "key": "visual-qa",
+      "name": "视觉 QA",
+      "category": "tools",
+      "routes": [
+        "visual-audit"
+      ],
+      "status": "工具",
+      "rights": "NERO-native",
+      "purpose": "检查尺寸、文字溢出、来源边界、响应式，以及留白杂志风的构图、色锚、缩略图和一次重试合同。",
+      "use_for": [
+        "所有视觉交付前检查"
+      ],
+      "source_ref": "scripts/visual-qa.mjs"
+    },
+    {
+      "id": "NDT-QAT-006",
+      "key": "visual-score",
+      "name": "视觉评分器",
+      "category": "tools",
+      "routes": [
+        "visual-score"
+      ],
+      "status": "工具",
+      "rights": "NERO-native",
+      "purpose": "按 100 分制汇总路线、品牌、版式、证据和交付准备度。",
+      "use_for": [
+        "视觉方向准备度判断"
+      ],
+      "source_ref": "scripts/score-visual.mjs"
+    },
+    {
+      "id": "NDT-QAT-007",
+      "key": "production-check",
+      "name": "生产准备检查",
+      "category": "tools",
+      "routes": [
+        "production-check"
+      ],
+      "status": "工具",
+      "rights": "NERO-native",
+      "purpose": "返回 pass、review 或 fail，并判断是否可交给下游。",
+      "use_for": [
+        "正式生产链放行"
+      ],
+      "source_ref": "scripts/production-check.mjs"
+    },
+    {
+      "id": "NDT-QAT-008",
+      "key": "validate-web-ppt",
+      "name": "Web PPT 合同验证器",
+      "category": "tools",
+      "routes": [
+        "ppt"
+      ],
+      "status": "工具",
+      "rights": "NERO-native",
+      "purpose": "验证注册版式、image slot、截图保留和页面合同。",
+      "use_for": [
+        "Web PPT"
+      ],
+      "source_ref": "scripts/validate-web-ppt.mjs"
+    },
+    {
+      "id": "NDT-QAT-009",
+      "key": "audit-web-ppt-multidevice",
+      "name": "Web PPT 多设备审计",
+      "category": "tools",
+      "routes": ["ppt"],
+      "status": "bundled_public_tool",
+      "rights": "NDT-native-public",
+      "purpose": "检查桌面、手机和横屏舞台的可读性与溢出。",
+      "use_for": ["Web PPT 响应式 QA"],
+      "source_ref": "scripts/audit-web-ppt-multidevice.mjs",
+      "source_boundary": "Bundled public source; Playwright is optional, never installed automatically, and absence returns an explicit unavailable status with no audit output."
+    },
+    {
+      "id": "NDT-QAT-010",
+      "key": "audit-projection-typography",
+      "name": "投影字号审计",
+      "category": "tools",
+      "routes": [
+        "ppt"
+      ],
+      "status": "工具",
+      "rights": "NERO-native",
+      "purpose": "检查 1920×1080 渲染中的小字号和投影可读性。",
+      "use_for": [
+        "PPT / HTML Deck 投影检查"
+      ],
+      "source_ref": "scripts/audit-projection-typography.mjs"
+    },
+    {
+      "id": "NDT-QAT-011",
+      "key": "assert-published-html",
+      "name": "已发布 HTML 断言",
+      "category": "tools",
+      "routes": ["frontend-ui", "ppt"],
+      "status": "bundled_public_tool",
+      "rights": "NDT-native-public",
+      "purpose": "对显式传入的公开地址检查 HTTP 状态和必需文本标记。",
+      "use_for": ["公开 HTML 发布后验证"],
+      "source_ref": "scripts/assert-published-html.mjs",
+      "source_boundary": "Bundled public source; no fixed endpoint or credential is embedded, and network access occurs only for an explicit invocation argument."
+    },
+    {
+      "id": "NDT-QAT-012",
+      "key": "validate-render-webdeck",
+      "name": "Web Deck 验证与渲染器",
+      "category": "tools",
+      "routes": ["ppt"],
+      "status": "bundled_public_tool",
+      "rights": "NDT-native-public",
+      "purpose": "组合执行 Web Deck 合同验证和投影字号审计。",
+      "use_for": ["HTML 演示生产"],
+      "source_ref": "scripts/validate-and-render-webdeck.mjs",
+      "source_boundary": "Bundled public source; package root is derived from the script location or an explicit absolute NERO_DESIGN_TEAM_HOME value, and missing QA helpers fail closed."
+    },
+    {
+      "id": "NDT-QAT-013",
+      "key": "verify-template-exports",
+      "name": "模板导出验证器",
+      "category": "tools",
+      "routes": [
+        "shared"
+      ],
+      "status": "工具",
+      "rights": "NERO-native",
+      "purpose": "核对模板产物是否满足预期导出合同。",
+      "use_for": [
+        "模板维护",
+        "生成器回归"
+      ],
+      "source_ref": "scripts/verify-template-exports.mjs"
+    },
+    {
+      "id": "NDT-QAT-014",
+      "key": "visual-scorecard",
+      "name": "NDT 视觉评分卡",
+      "category": "tools",
+      "routes": [
+        "visual-score"
+      ],
+      "status": "可直接引用",
+      "rights": "NERO-native",
+      "purpose": "100 分评分合同；82 分通过，68 分进入 review。",
+      "use_for": [
+        "视觉评分",
+        "生产准备度审查"
+      ],
+      "source_ref": "scorecards/visual-scorecard.json"
+    },
+    {
+      "id": "NDT-QAT-015",
+      "key": "test-high-resolution-raster-report-figure",
+      "name": "高分辨率 PNG 报告图聚焦测试",
+      "category": "tools",
+      "routes": ["image-report"],
+      "status": "bundled_public_tool",
+      "rights": "NDT-native-public",
+      "purpose": "通过公开生成器入口验证高分辨率 RGB PNG 输出和溢出失败关闭。",
+      "use_for": ["PNG 报告图模板维护", "文字溢出门禁"],
+      "source_ref": "scripts/test-high-resolution-raster-report-figure.py",
+      "source_boundary": "Bundled public source; Pillow is optional, never installed automatically, and absence returns an explicit unavailable status."
+    },
+    {
+      "id": "NDT-QAT-016",
+      "key": "report-figure-compiler",
+      "name": "NDT Figure Compiler",
+      "name_en": "NDT Figure Compiler",
+      "category": "tools",
+      "routes": [
+        "image-report"
+      ],
+      "status": "工具",
+      "rights": "NERO-native",
+      "purpose": "通过 NDT 自然语言路由和冻结的 list、validate、compile CLI，将九类 v0.2 Figure Spec 编译为 SVG 或高分辨率 PNG，并可输出可审计 receipt。",
+      "purpose_en": "Routes natural-language requests into nine v0.2 Figure Spec types, then compiles them to SVG or high-resolution PNG through the frozen list, validate, and compile CLI with an optional auditable receipt.",
+      "use_for": [
+        "自然语言报告图判断",
+        "九图型与 profile/renderer 选择",
+        "Figure Spec 校验",
+        "证据报告图编译",
+        "可审计编译回执"
+      ],
+      "use_for_en": [
+        "Natural-language report-figure routing",
+        "Nine-type profile and renderer selection",
+        "Figure Spec validation",
+        "Evidence-bearing figure compilation",
+        "Auditable compile receipts"
+      ],
+      "source_ref": "scripts/report-figure-compiler.mjs",
+      "notes": "MCP v2.3.0 的 nero_design_route 返回结构化 figure_compiler；recommended=true 时推荐 nero_design_compile_report_figure。list 与 validate 拒绝 compile-only profile/renderer 覆盖。中央 runtime 位于 tools/runtime/report-figure-compiler；office-native 仅 handoff，不建立 Job 队列、不写 Registry。"
+    }
+  ]
+}

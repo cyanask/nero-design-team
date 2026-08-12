@@ -1,0 +1,26 @@
+{
+  "repo": "LiamGvchi/gc-minimal-zine-poster",
+  "source_url": "https://github.com/LiamGvchi/gc-minimal-zine-poster",
+  "default_branch": "main",
+  "reviewed_head": "4cb0396ad4e834019f753b37e1c4f415f5e02026",
+  "last_reviewed_at": "2026-07-28",
+  "truncated_by_github": false,
+  "max_files": 40,
+  "files": [
+    { "path": "SKILL.md", "type": "skill-rule", "relevance": 100, "usage": "prompt grammar, quantitative composition, variation engine, thumbnail QA, and one-retry reference" },
+    { "path": "README.md", "type": "readme", "relevance": 95, "usage": "repository scope, examples, installation claim, and output contract" },
+    { "path": "LICENSE", "type": "license", "relevance": 98, "usage": "MIT repository license" },
+    { "path": "examples/night-door.jpeg", "type": "remote-image-reference", "relevance": 82, "usage": "private composition and color-anchor reference only" },
+    { "path": "examples/yellow-step.jpeg", "type": "remote-image-reference", "relevance": 82, "usage": "private dual-panel and yellow-anchor reference only" },
+    { "path": "examples/shore-pause.jpeg", "type": "remote-image-reference", "relevance": 82, "usage": "private central-fragment and red-anchor reference only" },
+    { "path": "examples/pause-map.jpeg", "type": "remote-image-reference", "relevance": 82, "usage": "private type-led and map-texture reference only" },
+    { "path": "examples/typhoon-memory.jpeg", "type": "remote-image-reference", "relevance": 82, "usage": "private photo-plus-geometric-anchor reference only" },
+    { "path": "examples/moon-tide.jpeg", "type": "remote-image-reference", "relevance": 82, "usage": "private dual-panel and pale-cyan treatment reference only" }
+  ],
+  "omitted_intentionally": [
+    "complete repository clone",
+    "local copies of upstream JPEG examples",
+    "standalone upstream Skill installation",
+    "upstream example copy as a NERO-owned asset"
+  ]
+}

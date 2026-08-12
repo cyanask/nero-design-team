@@ -5,7 +5,7 @@ Use this rule when a NERO design task needs motion thinking, short video, animat
 ## Fused Reference
 
 - Source: `alchaincyf/huashu-design`
-- Local snapshot: `$NERO_DESIGN_TEAM_HOME/case-library/snapshots/alchaincyf__huashu-design/snapshot.json`
+- Public snapshot status: not bundled (`not-bundled-snapshots/alchaincyf__huashu-design`).
 - Primary NERO production route remains `short-video.md` and Remotion.
 
 ## Use For

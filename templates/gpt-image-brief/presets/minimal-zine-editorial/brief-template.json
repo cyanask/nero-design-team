@@ -1,0 +1,70 @@
+{
+  "route": "ai-image-generation",
+  "style_preset": "minimal-zine-editorial",
+  "style_name": "留白杂志风",
+  "model_role": "AI Image Art Director",
+  "model": "gpt-image-2",
+  "purpose": "",
+  "audience": "investment banking, AI industry research, financial analysis, or editorial public communication",
+  "content_interpretation": {
+    "core_subject": "",
+    "mood": "",
+    "one_imageable_metaphor": "",
+    "exact_overlay_text": ""
+  },
+  "final_format": {
+    "id": "poster-3x5 | social-4x5 | social-1x1 | slide-16x9",
+    "width_px": 1080,
+    "height_px": 1800
+  },
+  "geometry": {
+    "negative_space_ratio": 0.78,
+    "subject_cluster_ratio": 0.16,
+    "cluster_location": "lower-left quadrant",
+    "text_safe_zone": "upper two-thirds, low visual noise",
+    "unsafe_edges": "keep the subject cluster away from trim and overlay margins"
+  },
+  "recipe": {
+    "layout": "lower-left-float",
+    "anchor": "object-specimen",
+    "typography": "almost-textless",
+    "texture": "risograph",
+    "mood": "memory",
+    "accent": "opaque cobalt-blue printed cutout",
+    "duplicate_of_recent": false
+  },
+  "color_anchor": {
+    "hue": "cobalt blue",
+    "material_form": "opaque risograph cutout",
+    "canvas_share_ratio": 0.018,
+    "cluster_share_ratio": 0.24
+  },
+  "generated_layer_boundary": {
+    "allowed": "paper surface, one imageable subject or cluster, print defects, non-evidence typographic texture, mood, and safe whitespace",
+    "forbidden": [
+      "exact Chinese or English title",
+      "financial figures",
+      "tables or chart labels",
+      "dates, coordinates, source notes, or regulatory wording",
+      "company or regulator logos unless supplied and licensed",
+      "private customer evidence, credentials, or payment identifiers"
+    ]
+  },
+  "generation_control": {
+    "recent_recipe_window": 3,
+    "thumbnail_review_required": true,
+    "max_automatic_regenerations": 1,
+    "failure_status_after_retry": "visual_not_ready"
+  },
+  "post_production": {
+    "overlay_template": "overlay-template.html",
+    "exact_text_is_editable": true,
+    "qa_manifest": "qa-manifest.example.json"
+  },
+  "provenance": {
+    "style_manifest": "assets/style-references/minimal-zine-editorial/manifest.json",
+    "upstream": "https://github.com/LiamGvchi/gc-minimal-zine-poster",
+    "upstream_license": "MIT",
+    "upstream_examples_copied": false
+  }
+}

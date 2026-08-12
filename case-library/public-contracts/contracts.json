@@ -1,0 +1,394 @@
+{
+  "schema_version": "1.0.0",
+  "version": "1.0.0",
+  "updated_at": "2026-08-12",
+  "scope": "Anonymous reusable layout, interaction, production and QA contracts with synthetic fixtures only.",
+  "contracts": [
+    {
+      "id": "public-case-001-analytical-signal-workbench",
+      "asset_id": "NDT-CAS-001",
+      "key": "analytical-signal-workbench",
+      "name": "High-density analytical signal workbench",
+      "route": "frontend-ui",
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "Triage compact signals through a metric strip, evidence ledger and explicit workflow states.",
+      "contract": {
+        "layout": ["navigation rail", "metric strip", "filter row", "evidence ledger"],
+        "interaction": ["filter state remains visible", "selected record has one detail surface"],
+        "qa": ["desktop and narrow layouts remain readable", "empty and error states are explicit"]
+      },
+      "synthetic_fixture": {
+        "metrics": ["Signals queued", "Signals reviewed", "Items held"],
+        "rows": [
+          { "label": "Signal Alpha", "state": "review" },
+          { "label": "Signal Beta", "state": "held" }
+        ]
+      },
+      "source_boundary": {
+        "content": "synthetic_only",
+        "media": "none",
+        "external_material": "none",
+        "evidence": "not_evidence",
+        "machine_paths": "none"
+      }
+    },
+    {
+      "id": "public-case-002-source-traceable-research-ledger",
+      "asset_id": "NDT-CAS-002",
+      "key": "source-traceable-research-ledger",
+      "name": "Source-traceable research ledger",
+      "route": "frontend-ui",
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "Present a compact research ledger with visible provenance state and mobile reading compression.",
+      "contract": {
+        "layout": ["compact header", "state rail", "ledger rows", "boundary footer"],
+        "interaction": ["one filter path per viewport", "record expansion does not hide provenance state"],
+        "qa": ["horizontal overflow is intentional or absent", "unavailable provenance fails closed"]
+      },
+      "synthetic_fixture": {
+        "records": [
+          { "label": "Observation One", "provenance_state": "verified" },
+          { "label": "Observation Two", "provenance_state": "pending" }
+        ]
+      },
+      "source_boundary": {
+        "content": "synthetic_only",
+        "media": "none",
+        "external_material": "none",
+        "evidence": "not_evidence",
+        "machine_paths": "none"
+      }
+    },
+    {
+      "id": "public-case-003-bilingual-evidence-portfolio",
+      "asset_id": "NDT-CAS-003",
+      "key": "bilingual-evidence-portfolio",
+      "name": "Bilingual evidence portfolio",
+      "route": "frontend-ui",
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "Organize a bilingual professional portfolio around two evidence-led entry points.",
+      "contract": {
+        "layout": ["summary header", "two entry panels", "case detail region", "language control"],
+        "interaction": ["language state is stable", "mobile exposes one unambiguous control path"],
+        "qa": ["proof modules remain scannable", "print and narrow states retain hierarchy"]
+      },
+      "synthetic_fixture": {
+        "entry_points": ["Analysis", "Delivery"],
+        "cases": ["Project Alpha", "Project Beta"],
+        "languages": ["Language A", "Language B"]
+      },
+      "source_boundary": {
+        "content": "synthetic_only",
+        "media": "none",
+        "external_material": "none",
+        "evidence": "not_evidence",
+        "machine_paths": "none"
+      }
+    },
+    {
+      "id": "public-case-007-periodic-signal-card",
+      "asset_id": "NDT-CAS-007",
+      "key": "periodic-signal-card",
+      "name": "Periodic signal research card",
+      "route": "image-report",
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "Explain one periodic signal through a headline, a bounded key indicator and a small evidence stack.",
+      "contract": {
+        "layout": ["context eyebrow", "main judgment", "key indicator", "two to four evidence blocks", "boundary footer"],
+        "rendering": ["exact text is deterministic", "decorative material never carries evidence"],
+        "qa": ["final display size is readable", "period and unit are explicit when used"]
+      },
+      "synthetic_fixture": {
+        "headline": "Signal direction changed",
+        "indicator": "Synthetic index",
+        "evidence_blocks": ["Demand", "Capacity", "Constraint"]
+      },
+      "source_boundary": {
+        "content": "synthetic_only",
+        "media": "none",
+        "external_material": "none",
+        "evidence": "not_evidence",
+        "machine_paths": "none"
+      }
+    },
+    {
+      "id": "public-case-008-horizontal-evidence-memo",
+      "asset_id": "NDT-CAS-008",
+      "key": "horizontal-evidence-memo",
+      "name": "Horizontal evidence memo",
+      "route": "image-report",
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "Use a dark memo rail and a light evidence board for a concise horizontal research explanation.",
+      "contract": {
+        "layout": ["dark memo rail", "light evidence board", "three modules", "ranked lens"],
+        "rendering": ["fixed horizontal stage", "exact labels stay in the deterministic layer"],
+        "qa": ["no footer collision", "ranked items remain readable at target size"]
+      },
+      "synthetic_fixture": {
+        "memo": "Synthetic observation",
+        "modules": ["Context", "Mechanism", "Boundary"],
+        "ranked_lens": ["Factor A", "Factor B", "Factor C"]
+      },
+      "source_boundary": {
+        "content": "synthetic_only",
+        "media": "none",
+        "external_material": "none",
+        "evidence": "not_evidence",
+        "machine_paths": "none"
+      }
+    },
+    {
+      "id": "public-case-010-editable-research-deck",
+      "asset_id": "NDT-CAS-010",
+      "key": "editable-research-deck",
+      "name": "Editable research presentation",
+      "route": "ppt",
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "Define an editable presentation system for research claims, comparisons and conclusions.",
+      "contract": {
+        "page_families": ["cover", "section", "evidence", "matrix", "conclusion"],
+        "editability": ["titles remain editable", "tables and chart labels remain editable", "notes remain traceable"],
+        "qa": ["repeated page families align", "projection typography passes"]
+      },
+      "synthetic_fixture": {
+        "sections": ["Context", "Evidence", "Implications"],
+        "matrix_axes": ["Impact", "Readiness"]
+      },
+      "source_boundary": {
+        "content": "synthetic_only",
+        "media": "none",
+        "external_material": "none",
+        "evidence": "not_evidence",
+        "machine_paths": "none"
+      }
+    },
+    {
+      "id": "public-case-011-professional-advisory-deck",
+      "asset_id": "NDT-CAS-011",
+      "key": "professional-advisory-deck",
+      "name": "Professional advisory presentation",
+      "route": "ppt",
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "Provide a restrained, projection-readable advisory deck pattern for complex professional material.",
+      "contract": {
+        "layout": ["strong title axis", "dense but bounded matrices", "case grid", "source appendix"],
+        "responsive": ["desktop stage stays fixed", "mobile paging remains one screen at a time"],
+        "qa": ["desktop and mobile states are audited", "exact content remains outside decorative material"]
+      },
+      "synthetic_fixture": {
+        "chapters": ["Situation", "Options", "Execution"],
+        "case_labels": ["Case A", "Case B", "Case C"]
+      },
+      "source_boundary": {
+        "content": "synthetic_only",
+        "media": "none",
+        "external_material": "none",
+        "evidence": "not_evidence",
+        "machine_paths": "none"
+      }
+    },
+    {
+      "id": "public-case-012-regulatory-evidence-webdeck",
+      "asset_id": "NDT-CAS-012",
+      "key": "regulatory-evidence-webdeck",
+      "name": "Regulatory evidence HTML presentation",
+      "route": "ppt",
+      "status": "public_sanitized_working_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "Structure a fixed-stage HTML presentation around regulatory logic, evidence matrices and execution gates.",
+      "contract": {
+        "layout": ["fixed 16:9 stage", "evidence matrix", "path comparison", "execution gate"],
+        "rendering": ["exact statements remain HTML text", "decorative background is non-evidence"],
+        "qa": ["contact sheet is complete", "small text and page pressure are audited"]
+      },
+      "synthetic_fixture": {
+        "paths": ["Path Alpha", "Path Beta"],
+        "evidence_states": ["confirmed", "pending", "not applicable"]
+      },
+      "source_boundary": {
+        "content": "synthetic_only",
+        "media": "none",
+        "external_material": "none",
+        "evidence": "not_evidence",
+        "machine_paths": "none"
+      }
+    },
+    {
+      "id": "public-case-013-data-signal-explainer",
+      "asset_id": "NDT-CAS-013",
+      "key": "data-signal-explainer",
+      "name": "Data signal short-video explainer",
+      "route": "short-video",
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "Explain one bounded signal through a short sequence of claim, indicator, evidence and caveat.",
+      "contract": {
+        "scenes": ["opening claim", "indicator reveal", "evidence card", "chart motion", "boundary close"],
+        "rendering": ["captions and labels are deterministic", "scene material is non-evidence"],
+        "qa": ["mobile safe areas pass", "key frames and reduced motion are inspected"]
+      },
+      "synthetic_fixture": {
+        "claim": "A synthetic signal changed direction",
+        "indicator": "Index A",
+        "evidence_cards": ["Driver One", "Driver Two"]
+      },
+      "source_boundary": {
+        "content": "synthetic_only",
+        "media": "none",
+        "external_material": "none",
+        "evidence": "not_evidence",
+        "machine_paths": "none"
+      }
+    },
+    {
+      "id": "public-case-014-cold-white-comparison-carousel",
+      "asset_id": "NDT-CAS-014",
+      "key": "cold-white-comparison-carousel",
+      "name": "Cold-white business comparison carousel",
+      "route": "image-report",
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "Compare two strategies with mirrored profiles, comparable measures and a restrained editorial grid.",
+      "contract": {
+        "layout": ["conflict cover", "mirrored profiles", "strategy maps", "like-for-like comparison", "bounded close"],
+        "rendering": ["cold-white paper", "restrained navy, green and red accents", "deterministic typography"],
+        "qa": ["comparison denominators match", "platform ratios are checked separately"]
+      },
+      "synthetic_fixture": {
+        "subjects": ["Strategy Alpha", "Strategy Beta"],
+        "dimensions": ["Focus", "Operating model", "Constraint"]
+      },
+      "source_boundary": {
+        "content": "synthetic_only",
+        "media": "none",
+        "external_material": "none",
+        "evidence": "not_evidence",
+        "machine_paths": "none"
+      }
+    },
+    {
+      "id": "public-case-015-financial-event-carousel",
+      "asset_id": "NDT-CAS-015",
+      "key": "financial-event-carousel",
+      "name": "Financial-event investigative carousel",
+      "route": "image-report",
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "Reconstruct a financial event through chronology, mechanism, liquidity and counterparty capability.",
+      "contract": {
+        "layout": ["event cover", "object map", "risk desk", "vertical timeline", "mechanism columns", "capability close"],
+        "rendering": ["warm paper", "restrained monochrome figures", "deterministic evidence text"],
+        "qa": ["causal language is bounded", "timeline order and mechanism labels agree"]
+      },
+      "synthetic_fixture": {
+        "event": "Synthetic restructuring event",
+        "phases": ["Build-up", "Trigger", "Response"],
+        "mechanisms": ["Leverage", "Liquidity", "Execution"]
+      },
+      "source_boundary": {
+        "content": "synthetic_only",
+        "media": "none",
+        "external_material": "none",
+        "evidence": "not_evidence",
+        "machine_paths": "none"
+      }
+    },
+    {
+      "id": "public-case-016-dual-trajectory-evidence-map",
+      "asset_id": "NDT-CAS-016",
+      "key": "dual-trajectory-evidence-map",
+      "name": "Dual-trajectory evidence map",
+      "route": "frontend-ui",
+      "status": "public_sanitized_working_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "Compare two strategic trajectories through phase bands, complete event nodes and one active evidence inspector.",
+      "contract": {
+        "layout": ["dual trajectories", "shared phase axis", "compact event nodes", "single evidence inspector"],
+        "interaction": ["stable deep-link state", "desktop side detail", "mobile inline detail"],
+        "qa": ["coverage claims fail closed", "responsive visual baseline is project-specific"]
+      },
+      "synthetic_fixture": {
+        "tracks": [
+          { "label": "Track Alpha", "events": ["A1", "A2", "A3"] },
+          { "label": "Track Beta", "events": ["B1", "B2", "B3"] }
+        ],
+        "phases": ["Foundation", "Expansion", "Focus"]
+      },
+      "source_boundary": {
+        "content": "synthetic_only",
+        "media": "none",
+        "external_material": "none",
+        "evidence": "not_evidence",
+        "machine_paths": "none"
+      }
+    },
+    {
+      "id": "public-case-017-research-series-identity-cover",
+      "asset_id": "NDT-CAS-017",
+      "key": "research-series-identity-cover",
+      "name": "Research-series identity cover",
+      "route": "image-report",
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "Generate crop-stable recurring covers from an independent square identity core and a replaceable context field.",
+      "contract": {
+        "geometry": {
+          "master": "1080x460",
+          "identity_core": "460x460",
+          "context_field": "620x460",
+          "landscape_output": "900x383",
+          "square_output": "500x500"
+        },
+        "layering": ["identity core is complete on its own", "context field carries atmosphere only", "exact text is deterministic"],
+        "qa": ["crop behavior is deterministic", "mobile title remains readable"]
+      },
+      "synthetic_fixture": {
+        "series_label": "Research Notes",
+        "issue_label": "Issue Alpha",
+        "context": "Abstract paper field"
+      },
+      "source_boundary": {
+        "content": "synthetic_only",
+        "media": "none",
+        "external_material": "none",
+        "evidence": "not_evidence",
+        "machine_paths": "none"
+      }
+    },
+    {
+      "id": "public-case-019-editorial-handwritten-note",
+      "asset_id": "NDT-CAS-019",
+      "key": "editorial-handwritten-note",
+      "name": "Editorial handwritten research note",
+      "route": "cross-format",
+      "status": "public_sanitized_working_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "Apply warm paper, handwritten rhythm, hand-drawn chart geometry and conclusion-first pacing across explanatory formats.",
+      "contract": {
+        "visual_language": ["warm paper", "handwritten rhythm", "yellow highlight", "green data line"],
+        "rendering": ["exact text and charts are deterministic", "font availability fails closed", "annotations never act as evidence"],
+        "qa": ["target environment records font resolution", "each output route receives its own visual QA"]
+      },
+      "synthetic_fixture": {
+        "headline": "Synthetic conclusion",
+        "notes": ["Observation", "Mechanism", "Boundary"],
+        "chart_labels": ["Stage A", "Stage B", "Stage C"]
+      },
+      "source_boundary": {
+        "content": "synthetic_only",
+        "media": "none",
+        "external_material": "none",
+        "external_fonts": "none",
+        "evidence": "not_evidence",
+        "machine_paths": "none"
+      }
+    }
+  ]
+}

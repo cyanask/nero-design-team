@@ -1,0 +1,65 @@
+{
+  "status": "ready",
+  "repo": "LiamGvchi/gc-minimal-zine-poster",
+  "route": "image-report",
+  "secondary_route": "ai-image-generation",
+  "source_url": "https://github.com/LiamGvchi/gc-minimal-zine-poster",
+  "candidate_id": "github-image-003-minimal-zine-poster",
+  "last_reviewed_at": "2026-07-28",
+  "remote_state": {
+    "head": "4cb0396ad4e834019f753b37e1c4f415f5e02026",
+    "latest_commit_at": "2026-07-25T07:47:00Z",
+    "commit_count_observed": 5,
+    "release_status": "no releases observed during review",
+    "readme_sha": "53f21e8efafa9b4243905134fe0fd26ed365d8d7",
+    "skill_sha": "7b6cbbdfcd660e979ea8db6fed57816584170103"
+  },
+  "purpose": "Reference a quiet minimal paper-zine prompt grammar, quantitative negative-space composition, variation recipes, thumbnail review, and one-retry color-anchor correction for NERO-native cover and chapter visuals.",
+  "style": "aged paper, 70%-90% negative space, one compact subject cluster, sparse serif or typewriter composition, one high-chroma anchor, xerox/risograph/halftone defects",
+  "tokens": [
+    "color.surface.paper",
+    "color.text.primary",
+    "color.brand.primary",
+    "color.brand.accent",
+    "font.cn.body",
+    "space.report.pagePadding"
+  ],
+  "template": "gpt-image-brief --preset minimal-zine-editorial",
+  "license_status": "permissive",
+  "license_notes": "Repository is MIT. Example JPEG provenance is not separately manifested; keep them as remote private references and do not treat them as cleared client-delivery assets. This is not a legal opinion.",
+  "applies_to": [
+    "WeChat and essay covers",
+    "research-report covers and dividers",
+    "PPT and web-PPT chapter visuals",
+    "quiet editorial social cards",
+    "AI image style exploration with deterministic overlays"
+  ],
+  "disabled_when": [
+    "evidence-dense report-card body, dashboard, form, table, chart, banker appendix, or regulatory page",
+    "exact text, figures, labels, logos, or source notes would be accepted from the raster generation layer",
+    "copying upstream example JPEGs into public or client deliverables",
+    "installing the upstream Skill as a parallel NDT entrypoint",
+    "overriding an approved brand system or mature manually revised artifact"
+  ],
+  "notes": "Use the NERO-native minimal-zine-editorial rule, preset, overlay template, and QA gate. The snapshot is attribution and reference metadata only.",
+  "readme_summary": "GC Minimal Zine Poster is a single Codex SKILL.md plus six generated JPEG examples. It compiles themes or briefs into sparse 3:5 paper posters using quantitative negative space, a small subject cluster, sparse typography, one high-chroma anchor, print defects, a variation engine, thumbnail inspection, and at most one corrective regeneration. It has no editable PSD, Figma, SVG, HTML, PPTX, component library, dependency runtime, or automated QA system.",
+  "key_patterns": [
+    "quantitative negative-space and subject-cluster geometry",
+    "six-axis variation recipe",
+    "four-paragraph prompt compiler",
+    "thumbnail anchor visibility review",
+    "one-retry color-anchor correction",
+    "strong negative constraints against commercial and glossy layouts"
+  ],
+  "image_refs": [
+    "https://raw.githubusercontent.com/LiamGvchi/gc-minimal-zine-poster/main/examples/night-door.jpeg",
+    "https://raw.githubusercontent.com/LiamGvchi/gc-minimal-zine-poster/main/examples/yellow-step.jpeg",
+    "https://raw.githubusercontent.com/LiamGvchi/gc-minimal-zine-poster/main/examples/shore-pause.jpeg",
+    "https://raw.githubusercontent.com/LiamGvchi/gc-minimal-zine-poster/main/examples/pause-map.jpeg",
+    "https://raw.githubusercontent.com/LiamGvchi/gc-minimal-zine-poster/main/examples/typhoon-memory.jpeg",
+    "https://raw.githubusercontent.com/LiamGvchi/gc-minimal-zine-poster/main/examples/moon-tide.jpeg"
+  ],
+  "file_index_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/liamgvchi__gc-minimal-zine-poster/file-index.json",
+  "style_pack_path": "$NERO_DESIGN_TEAM_HOME/assets/style-references/minimal-zine-editorial/manifest.json",
+  "rule_path": "$NERO_DESIGN_TEAM_HOME/rules/minimal-zine-editorial.md"
+}

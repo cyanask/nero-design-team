@@ -63,8 +63,8 @@ async function jsonExistsAndParses(filePath) {
     return { ok: false, detail: filePath };
   }
   try {
-    await readJson(filePath);
-    return { ok: true, detail: filePath };
+    const value = await readJson(filePath);
+    return { ok: true, detail: filePath, value };
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     return { ok: false, detail: `${filePath}: ${message}` };
@@ -158,7 +158,11 @@ async function main() {
   const manifestDir = path.dirname(resolvedManifestPath);
   const manifest = await readJson(resolvedManifestPath);
   const checks = [];
+  const reviews = [];
   const push = (ok, label, detail = "") => checks.push({ ok, label, detail });
+  const review = (condition, label, detail = "") => {
+    if (!condition) reviews.push({ label, detail });
+  };
 
   for (const rel of requiredTokenOutputs) {
     push(await exists(path.join(root, rel)), `token output exists: ${rel}`);
@@ -196,6 +200,7 @@ async function main() {
     ["ppt", "formal-pptx", "template-following", "pitchbook-client-material"].includes(manifest.route);
 
   if (presentationChainRequired) {
+    const chainArtifacts = {};
     const chainFields = [
       ["presentation_production_packet", "presentation production packet"],
       ["design_spec", "presentation design spec"],
@@ -209,6 +214,49 @@ async function main() {
       }
       const result = await jsonExistsAndParses(resolveFrom(manifestDir, manifest[field]));
       push(result.ok, `${label} exists and parses`, result.detail);
+      if (result.ok) chainArtifacts[field] = result.value;
+    }
+
+    const packet = chainArtifacts.presentation_production_packet;
+    if (packet) {
+      review(
+        ["ready_for_ndt", "ready_for_output", "ready_for_archive"].includes(packet.status),
+        "KAT presentation packet is ready for downstream ownership",
+        `status ${packet.status || "missing"}`
+      );
+      const contentGate = Array.isArray(packet.gates)
+        ? packet.gates.find((gate) => gate.owner === "KAT" || gate.gate_id === "kat-content-freeze")
+        : null;
+      review(contentGate?.status === "pass", "KAT content gate has passed", `status ${contentGate?.status || "missing"}`);
+    }
+
+    if (manifest.production_ledger) {
+      const ledgerResult = await jsonExistsAndParses(resolveFrom(manifestDir, manifest.production_ledger));
+      push(ledgerResult.ok, "GPT Work production ledger exists and parses", ledgerResult.detail);
+      if (ledgerResult.ok) {
+        const ledger = ledgerResult.value;
+        review(ledger.controller === "gpt_work", "production ledger is GPT Work owned", `controller ${ledger.controller || "missing"}`);
+        review(
+          ["waiting_for_ndt", "ready_for_presentations", "waiting_for_presentations", "ready_for_human_review", "approved"].includes(ledger.status),
+          "production ledger is at or beyond the NDT stage",
+          `status ${ledger.status || "missing"}`
+        );
+        const contentGate = Array.isArray(ledger.gates) ? ledger.gates.find((gate) => gate.gate_id === "content") : null;
+        review(contentGate?.status === "pass", "production ledger content gate has passed", `status ${contentGate?.status || "missing"}`);
+      }
+    } else if (manifest.gpt_work_controlled === true) {
+      review(false, "GPT Work production ledger is declared", "production_ledger missing");
+    }
+
+    const styleLock = chainArtifacts.style_lock;
+    if (styleLock) {
+      review(["locked", "approved"].includes(styleLock.status), "presentation style lock is finalized", `status ${styleLock.status || "missing"}`);
+    }
+
+    const exploration = chainArtifacts.visual_exploration;
+    if (exploration) {
+      review(Boolean(exploration.selected_direction_id), "visual exploration has a selected direction", exploration.selected_direction_id || "no direction selected");
+      review(["selected", "locked", "approved", "complete"].includes(exploration.status), "visual exploration is finalized", `status ${exploration.status || "missing"}`);
     }
   }
 
@@ -272,7 +320,7 @@ async function main() {
   }
 
   const failed = checks.filter((check) => !check.ok);
-  const status = failed.length > 0 ? "fail" : rating;
+  const status = failed.length > 0 ? "fail" : reviews.length > 0 || rating === "review" ? "review" : rating;
 
   console.log(`Production status: ${status}`);
   console.log(`Artifact: ${manifest.artifact || "unnamed"}`);
@@ -280,6 +328,9 @@ async function main() {
   console.log(`gpt-image-2: ${manifest.gpt_image_2_used ? "used or briefed" : "not used"}`);
   for (const check of checks) {
     console.log(`${check.ok ? "PASS" : "FAIL"} ${check.label}${check.detail ? ` - ${check.detail}` : ""}`);
+  }
+  for (const item of reviews) {
+    console.log(`REVIEW ${item.label}${item.detail ? ` - ${item.detail}` : ""}`);
   }
 
   if (status === "fail") {

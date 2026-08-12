@@ -3,8 +3,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 
 const PLAYWRIGHT_PATH = process.env.PLAYWRIGHT_PATH || null;
-const DEFAULT_CHROME =
-  process.env.CHROME_EXECUTABLE_PATH || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+const CHROME_EXECUTABLE_PATH = process.env.CHROME_EXECUTABLE_PATH || undefined;
 
 async function loadPlaywright() {
   if (PLAYWRIGHT_PATH) {
@@ -25,18 +24,14 @@ async function loadPlaywright() {
 }
 
 async function launchBrowser(playwright) {
-  try {
-    return await playwright.chromium.launch({
-      headless: true,
-      executablePath: DEFAULT_CHROME,
-      args: ["--no-sandbox", "--disable-gpu"],
-    });
-  } catch {
-    return await playwright.chromium.launch({
-      headless: true,
-      args: ["--no-sandbox", "--disable-gpu"],
-    });
-  }
+  return playwright.chromium.launch({
+    headless: true,
+    handleSIGINT: false,
+    handleSIGTERM: false,
+    handleSIGHUP: false,
+    ...(CHROME_EXECUTABLE_PATH ? { executablePath: CHROME_EXECUTABLE_PATH } : {}),
+    args: ["--no-sandbox", "--disable-gpu"],
+  });
 }
 
 function usage() {

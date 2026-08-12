@@ -1,0 +1,59 @@
+{
+  "width": 1080,
+  "height": 1800,
+  "stylePreset": "minimal-zine-editorial",
+  "colors": [
+    "#F2EBDD",
+    "#1D252C",
+    "#165DFF"
+  ],
+  "textBlocks": [
+    {
+      "id": "headline-overlay",
+      "text": "替换为经核验的准确标题",
+      "x": 96,
+      "y": 1160,
+      "w": 660,
+      "h": 150,
+      "fontSize": 54,
+      "lineHeight": 1.2
+    }
+  ],
+  "contrastPairs": [
+    {
+      "id": "ink-on-paper",
+      "foreground": "#1D252C",
+      "background": "#F2EBDD"
+    }
+  ],
+  "minimalZine": {
+    "format": "poster-3x5",
+    "negativeSpaceRatio": 0.78,
+    "subjectClusterRatio": 0.16,
+    "recipe": {
+      "layout": "lower-left-float",
+      "anchor": "object-specimen",
+      "typography": "almost-textless",
+      "texture": "risograph",
+      "mood": "memory",
+      "accent": "opaque cobalt-blue cutout",
+      "duplicateOfRecent": false
+    },
+    "colorAnchor": {
+      "canvasShareRatio": 0.018,
+      "clusterShareRatio": 0.24
+    },
+    "thumbnailReview": {
+      "anchorVisible": true,
+      "colorWashedOut": false,
+      "safeZoneContaminated": false
+    },
+    "regeneration": {
+      "required": false,
+      "attempts": 0,
+      "reason": "",
+      "outcome": "not-required"
+    },
+    "generatedExactTextUsed": false
+  }
+}
