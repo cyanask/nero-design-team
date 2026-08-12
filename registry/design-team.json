@@ -253,7 +253,7 @@
   },
   "oss_distribution": {
     "version": "2.0.0",
-    "status": "publish_candidate_unreleased",
+    "status": "published",
     "repository": "cyanask/nero-design-team",
     "url": "https://github.com/cyanask/nero-design-team",
     "local_package": "$NERO_DESIGN_TEAM_HOME",
