@@ -20,11 +20,7 @@ Create an AI image brief with a registered preset:
 
 The legacy `--preset minimal-zine-editorial` form remains supported and resolves to the same canonical preset.
 
-Create a registered photo-derived editorial brief:
-
-`node $NERO_DESIGN_TEAM_HOME/scripts/nero-design.mjs new ai-image-generation --preset 摄影抽象双联画 --name <project-name> --out <target-parent-dir>`
-
-The registered alias resolves to `photo-derived-editorial-diptych`; user photos and project composites remain project-local and are not added to the reusable asset registry.
+`photo-derived-editorial-diptych` is a method-only style/QA contract in the public package, not a bundled generator preset. Do not pass it to `nero-design new --preset`; read `photo-derived-editorial-diptych.md` and keep user photos and project composites project-local.
 
 Initialize an existing project without copying a template:
 

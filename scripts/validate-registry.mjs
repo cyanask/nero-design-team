@@ -20,6 +20,46 @@ async function exists(filePath) {
   }
 }
 
+function isContained(basePath, targetPath) {
+  const relativePath = path.relative(basePath, targetPath);
+  return relativePath === "" || (
+    relativePath !== ".." &&
+    !relativePath.startsWith(`..${path.sep}`) &&
+    !path.isAbsolute(relativePath)
+  );
+}
+
+function containsParentTraversal(value) {
+  return String(value).replaceAll("\\", "/").split("/").includes("..");
+}
+
+function resolveContained(basePath, value) {
+  const reference = String(value || "");
+  if (!reference || path.isAbsolute(reference) || path.win32.isAbsolute(reference) || containsParentTraversal(reference)) return null;
+  const resolved = path.resolve(basePath, reference);
+  return isContained(basePath, resolved) ? resolved : null;
+}
+
+function isInsideRoot(filePath) {
+  return isContained(root, filePath);
+}
+
+async function resolveExistingReference(candidate) {
+  const attempts = [candidate];
+  if (!path.extname(candidate)) {
+    for (const extension of [".md", ".json", ".mjs", ".js", ".ts", ".tsx", ".css", ".html", ".py", ".svg"]) {
+      attempts.push(`${candidate}${extension}`);
+    }
+    for (const indexName of ["index.md", "index.json", "index.mjs", "index.js", "index.ts", "index.tsx", "index.html"]) {
+      attempts.push(path.join(candidate, indexName));
+    }
+  }
+  for (const attempt of attempts) {
+    if (isInsideRoot(attempt) && await exists(attempt)) return attempt;
+  }
+  return null;
+}
+
 async function readJson(filePath) {
   return JSON.parse(await fs.readFile(filePath, "utf8"));
 }
@@ -49,6 +89,164 @@ async function walkFiles(dir) {
     else result.push(target);
   }
   return result;
+}
+
+function collectNdtAssetReferences(value, location = "$") {
+  if (typeof value === "string") {
+    return /^NDT-[A-Z]+-[0-9]{3}$/.test(value) ? [{ id: value, location }] : [];
+  }
+  if (Array.isArray(value)) {
+    return value.flatMap((item, index) => collectNdtAssetReferences(item, `${location}[${index}]`));
+  }
+  if (value && typeof value === "object") {
+    return Object.entries(value).flatMap(([key, item]) => collectNdtAssetReferences(item, `${location}.${key}`));
+  }
+  return [];
+}
+
+async function validateEmbeddedAssetReferenceClosure(assetIds) {
+  const roots = [
+    path.join(root, "assets", "style-references"),
+    path.join(root, "assets", "reference-metadata"),
+    path.join(root, "case-library", "public-contracts"),
+    path.join(root, "case-library", "snapshots", "public-metadata.json")
+  ];
+  const jsonFiles = [];
+  for (const target of roots) {
+    if (!(await exists(target))) continue;
+    const stat = await fs.stat(target);
+    if (stat.isDirectory()) jsonFiles.push(...(await walkFiles(target)).filter((filePath) => path.extname(filePath) === ".json"));
+    else if (path.extname(target) === ".json") jsonFiles.push(target);
+  }
+  const missing = [];
+  let references = 0;
+  for (const filePath of new Set(jsonFiles)) {
+    const document = await readJson(filePath);
+    for (const reference of collectNdtAssetReferences(document)) {
+      references += 1;
+      if (!assetIds.has(reference.id)) missing.push({ file: path.relative(root, filePath), ...reference });
+    }
+  }
+  record(!missing.length, "embedded-asset-id-closure", missing.length ? JSON.stringify(missing) : `${references} embedded NDT asset-id references resolve`);
+}
+
+function isNotBundledReference(value) {
+  return /(^|[/:])not-bundled(?:-|\/|:)/i.test(value);
+}
+
+function normalizeReferenceToken(value) {
+  return String(value)
+    .trim()
+    .replace(/^[('"`]+|[)'"`,.;:]+$/g, "")
+    .replace(/#.*$/, "");
+}
+
+function looksLikeLocalReference(value) {
+  if (!value || /[<>*{}\[\]]/.test(value)) return false;
+  if (/^(?:https?:|mailto:|data:|npm:|node:|#)/i.test(value)) return false;
+  if (isNotBundledReference(value)) return false;
+  if (/^\$[A-Z0-9_]+(?:\/|$)/.test(value) && !value.startsWith("$NERO_DESIGN_TEAM_HOME/")) return false;
+  if (/^\//.test(value)) return false;
+  if (/\s/.test(value)) return false;
+  if (/^@[A-Za-z0-9_.-]+\//.test(value)) return false;
+  if (/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(value) && !value.startsWith("./") && !value.startsWith("../")) {
+    const first = value.split("/", 1)[0];
+    if (!new Set(["assets", "brand", "build", "case-library", "docs", "examples", "generators", "mcp-lite", "profiles", "registry", "rules", "scorecards", "scripts", "skills", "templates", "tokens", "tools", "references"]).has(first)) return false;
+  }
+  return value.startsWith("./") || value.startsWith("../") || value.startsWith("$NERO_DESIGN_TEAM_HOME/") || value.startsWith("references/") || /\/[A-Za-z0-9_.-]+\.(?:md|json|mjs|js|ts|tsx|css|html|py|svg|xml|sh|yaml|yml)$/.test(value);
+}
+
+function extractRecognizableReferences(filePath, text) {
+  const references = new Set();
+  const add = (raw) => {
+    const value = normalizeReferenceToken(raw);
+    if (looksLikeLocalReference(value)) references.add(value);
+  };
+  const addExplicit = (raw) => {
+    const value = normalizeReferenceToken(raw);
+    if (!value || isNotBundledReference(value) || /^(?:https?:|mailto:|data:|npm:|node:|#)/i.test(value)) return;
+    if (/^\$[A-Z0-9_]+(?:\/|$)/.test(value) && !value.startsWith("$NERO_DESIGN_TEAM_HOME/")) return;
+    if (/\s|[<>*{}\[\]]/.test(value)) return;
+    references.add(value);
+  };
+  const extension = path.extname(filePath).toLowerCase();
+
+  if (extension === ".md") {
+    for (const match of text.matchAll(/\[[^\]]*\]\(([^)]+)\)/g)) add(match[1]);
+    for (const match of text.matchAll(/`([^`\n]+)`/g)) {
+      for (const token of match[1].split(/\s+/)) add(token);
+    }
+  }
+  if ([".js", ".mjs", ".ts", ".tsx"].includes(extension)) {
+    for (const match of text.matchAll(/(?:from\s+|import\s*\(|require\s*\()\s*["']([^"']+)["']/g)) add(match[1]);
+  }
+  if ([".css", ".html", ".svg", ".xml"].includes(extension)) {
+    for (const match of text.matchAll(/(?:url\(|(?:src|href)=)["']?([^"')\s>]+)/gi)) add(match[1]);
+  }
+  if (extension === ".json") {
+    try {
+      const document = JSON.parse(text);
+      const visit = (value, key = "", parent = null) => {
+        const isExplicitPathField = /(?:^|_)(?:path|file|source_ref|style_contract|scorecard)$/i.test(key);
+        const isRootedReference = typeof value === "string" && (value.startsWith("$NERO_DESIGN_TEAM_HOME/") || /^(?:\.\.?\/|assets\/|brand\/|build\/|case-library\/|docs\/|examples\/|generators\/|mcp-lite\/|profiles\/|registry\/|rules\/|scorecards\/|scripts\/|skills\/|templates\/|tokens\/|tools\/)/.test(value));
+        const projectLocalArgument = parent && typeof parent === "object" && "project_root" in parent && ["spec_path", "output_path", "receipt_path"].includes(key);
+        if (typeof value === "string" && isExplicitPathField && !projectLocalArgument) addExplicit(value);
+        else if (typeof value === "string" && isRootedReference) add(value);
+        else if (Array.isArray(value)) value.forEach((item) => visit(item, key, value));
+        else if (value && typeof value === "object") Object.entries(value).forEach(([childKey, item]) => visit(item, childKey, value));
+      };
+      visit(document);
+    } catch {
+      // JSON parse failures are reported by the subregistry and release gates.
+    }
+  }
+  return [...references];
+}
+
+async function validateLocalReferenceClosure({ allowPrivateOverlayReferences = false } = {}) {
+  const allFiles = await walkFiles(root);
+  const filesByBasename = new Map();
+  for (const filePath of allFiles) {
+    const basename = path.basename(filePath);
+    if (!filesByBasename.has(basename)) filesByBasename.set(basename, []);
+    filesByBasename.get(basename).push(filePath);
+  }
+  const candidates = allFiles.filter((filePath) => {
+    const relativePath = path.relative(root, filePath);
+    const extension = path.extname(filePath).toLowerCase();
+    if (relativePath.startsWith(`case-library${path.sep}snapshots${path.sep}`) && path.basename(filePath) !== "snapshot.json") return false;
+    return extension === ".md" || extension === ".json" || (relativePath.startsWith(`templates${path.sep}`) && [".mjs", ".js", ".ts", ".tsx", ".css", ".html", ".svg", ".xml"].includes(extension));
+  });
+  const missing = [];
+  let recognized = 0;
+  for (const filePath of candidates) {
+    const text = await fs.readFile(filePath, "utf8");
+    for (const reference of extractRecognizableReferences(filePath, text)) {
+      recognized += 1;
+      if (allowPrivateOverlayReferences && (reference.startsWith("case-library/assets/") || reference.startsWith("assets/private/"))) continue;
+      if (reference.startsWith(".nero-design/")) continue;
+      let target;
+      if (reference.startsWith("$NERO_DESIGN_TEAM_HOME/")) {
+        target = path.resolve(root, reference.slice("$NERO_DESIGN_TEAM_HOME/".length));
+      } else if (reference.startsWith("references/") && path.relative(root, filePath).startsWith(`skills${path.sep}nero-design-team${path.sep}`)) {
+        target = path.resolve(root, "skills", "nero-design-team", reference);
+      } else if (/^(?:assets|brand|build|case-library|docs|examples|generators|mcp-lite|profiles|registry|rules|scorecards|scripts|skills|templates|tokens|tools)\//.test(reference)) {
+        target = path.resolve(root, reference);
+      } else {
+        target = path.resolve(path.dirname(filePath), reference);
+      }
+      let resolved = isInsideRoot(target) ? await resolveExistingReference(target) : null;
+      if (!resolved && !reference.includes("/")) {
+        const matches = filesByBasename.get(reference) || [];
+        if (matches.length === 1) resolved = matches[0];
+        if (matches.length > 1) continue;
+      }
+      if (!resolved) {
+        missing.push({ file: path.relative(root, filePath), reference });
+      }
+    }
+  }
+  record(!missing.length, "local-reference-closure", missing.length ? JSON.stringify(missing) : `${recognized} recognizable Markdown, JSON, and template references resolve`);
 }
 
 async function treeDigest(dir) {
@@ -159,6 +357,8 @@ async function main() {
   const unsafeSources = [];
   const notBundledSources = [];
   const missingFragments = [];
+  const missingMembers = [];
+  const unsafeMembers = [];
   for (const asset of assets.assets || []) {
     if (assetIds.has(asset.id)) duplicateIds.push(asset.id);
     assetIds.add(asset.id);
@@ -168,13 +368,18 @@ async function main() {
       notBundledSources.push({ id: asset.id, source_ref: asset.source_ref });
       continue;
     }
-    if (!sourceRef || path.isAbsolute(sourceRef) || sourceRef.startsWith("..")) {
+    const sourcePath = resolveContained(root, sourceRef);
+    if (!sourcePath) {
       unsafeSources.push({ id: asset.id, source_ref: asset.source_ref });
       continue;
     }
-    const sourcePath = path.resolve(root, sourceRef);
     if (!(await exists(sourcePath))) {
       missingSources.push({ id: asset.id, source_ref: asset.source_ref });
+      continue;
+    }
+    const sourceRealPath = await fs.realpath(sourcePath);
+    if (!isContained(root, sourceRealPath)) {
+      unsafeSources.push({ id: asset.id, source_ref: asset.source_ref, reason: "symlink_escape" });
       continue;
     }
     if (fragment) {
@@ -191,12 +396,33 @@ async function main() {
         }
       }
     }
+    if (Array.isArray(asset.members)) {
+      const sourceStat = await fs.stat(sourceRealPath);
+      const memberBase = sourceStat.isDirectory() ? sourceRealPath : path.dirname(sourceRealPath);
+      for (const member of asset.members) {
+        const memberPath = resolveContained(memberBase, member);
+        if (!memberPath) {
+          unsafeMembers.push({ id: asset.id, source_ref: asset.source_ref, member });
+          continue;
+        }
+        if (!(await exists(memberPath))) {
+          missingMembers.push({ id: asset.id, source_ref: asset.source_ref, member, resolved: path.relative(root, memberPath) });
+          continue;
+        }
+        const memberRealPath = await fs.realpath(memberPath);
+        if (!isContained(memberBase, memberRealPath)) {
+          unsafeMembers.push({ id: asset.id, source_ref: asset.source_ref, member, reason: "symlink_escape" });
+        }
+      }
+    }
   }
   record(!duplicateIds.length, "asset-id-uniqueness", duplicateIds.length ? duplicateIds.join(", ") : `${assetIds.size} unique ids`);
   record(!invalidCategories.length, "asset-categories", invalidCategories.length ? JSON.stringify(invalidCategories) : `${categoryIds.size} categories resolve`);
   record(!unsafeSources.length, "asset-source-boundary", unsafeSources.length ? JSON.stringify(unsafeSources) : "All source_ref values are relative and contained");
   record(!missingSources.length, "asset-source-coverage", missingSources.length ? JSON.stringify(missingSources) : `${assetIds.size - notBundledSources.length} bundled source_ref values resolve; ${notBundledSources.length} explicitly not bundled`);
   record(!missingFragments.length, "asset-fragment-closure", missingFragments.length ? JSON.stringify(missingFragments) : "All JSON fragment source_ref values resolve");
+  record(!unsafeMembers.length, "asset-member-boundary", unsafeMembers.length ? JSON.stringify(unsafeMembers) : "All asset members are relative and contained by their source directory or file parent");
+  record(!missingMembers.length, "asset-member-closure", missingMembers.length ? JSON.stringify(missingMembers) : "Directory source_ref members resolve from the directory; file source_ref members resolve from its parent");
 
   const missingRecipeAssets = [];
   for (const recipe of assets.recipes || []) {
@@ -205,6 +431,7 @@ async function main() {
     }
   }
   record(!missingRecipeAssets.length, "recipe-asset-closure", missingRecipeAssets.length ? JSON.stringify(missingRecipeAssets) : `${(assets.recipes || []).length} recipes reference bundled assets only`);
+  await validateEmbeddedAssetReferenceClosure(assetIds);
 
   const issueSources = new Set((assets.integrity_issues || []).filter((issue) => issue.status === "open").map((issue) => issue.source_ref));
   const brandProfile = await readJson(path.join(root, "brand", "brand-profile.json"));
@@ -235,6 +462,7 @@ async function main() {
   }
 
   await validateOssSkill(privateCanonical ? registry.skill_distribution?.oss : canonicalSkill);
+  await validateLocalReferenceClosure({ allowPrivateOverlayReferences: !privateCanonical });
 
   if (privateCanonical) {
     const ossProjectRoot = path.resolve(registry.skill_distribution.oss, "..", "..");
@@ -262,4 +490,31 @@ async function main() {
   if (errors.length) process.exit(1);
 }
 
-await main();
+function runPathBoundarySelfTest() {
+  const fixtureRoot = path.resolve(path.sep, "tmp", "ndt-validator-fixture");
+  const memberBase = path.join(fixtureRoot, "rules");
+  const cases = [
+    {
+      id: "source-parent-traversal",
+      pass: resolveContained(fixtureRoot, "foo/../../../etc/passwd") === null
+    },
+    {
+      id: "member-parent-traversal",
+      pass: resolveContained(memberBase, "../rules/x.md") === null
+    },
+    {
+      id: "source-contained-control",
+      pass: resolveContained(fixtureRoot, "rules/frontend-ui.md") === path.join(fixtureRoot, "rules", "frontend-ui.md")
+    },
+    {
+      id: "member-contained-control",
+      pass: resolveContained(memberBase, "frontend-ui.md") === path.join(memberBase, "frontend-ui.md")
+    }
+  ];
+  const failures = cases.filter((item) => !item.pass);
+  console.log(JSON.stringify({ status: failures.length ? "fail" : "pass", cases }, null, 2));
+  if (failures.length) process.exit(1);
+}
+
+if (process.argv.includes("--self-test-path-boundaries")) runPathBoundarySelfTest();
+else await main();

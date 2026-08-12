@@ -38,12 +38,12 @@
       "purpose": "A photo-preserving editorial composition with a sparse relation-derived abstract panel and deterministic exact-text overlay.",
       "style": "source-aware photo layer, uniform ivory panel, restrained relation marks, deterministic editorial title, and adaptive photo/panel geometry",
       "tokens": ["color.surface.paper", "color.text.primary", "font.cn.body", "space.report.pagePadding"],
-      "template": "photo-derived-editorial-diptych",
-      "score": {"value": 100, "rating": "approved-reference", "scorecard": "scripts/visual-qa.mjs", "qa": "three representative source categories passed visual QA"},
+      "template": "not-bundled-photo-derived-editorial-preset",
+      "score": {"value": 0, "rating": "contract-only", "scorecard": "scripts/visual-qa.mjs", "qa": "No public visual fixture is bundled; run project-local QA before claiming visual readiness."},
       "applies_to": ["photo-led editorial covers", "research-report covers and dividers without evidence-bearing body content", "quiet social cards", "source-derived visual memory studies"],
       "disabled_when": ["evidence-dense report-card bodies, dashboards, tables, charts, banker appendices, or regulatory pages", "exact financial, source, compliance, or legal text inside generated imagery", "unauthorized source photo or personal likeness", "full-bleed cinematic portrait or photorealistic identity replacement"],
       "notes": "Reuse the relation-trace, geometry, panel-only generation, deterministic overlay, and QA contracts only. Personal photos, generated portrait panels, and project composites are not bundled.",
-      "style_contract": "case-library/assets/image-report/photo-derived-editorial-diptych/style_contract.json",
+      "style_contract": "not-bundled-case-assets/image-report/photo-derived-editorial-diptych/style_contract.json",
       "source_boundary": "The upstream repository is a method-only reference with unknown license; no upstream code, prompt, example, or asset is bundled."
     }
   ]

@@ -50,12 +50,6 @@
           "aliases": ["留白杂志风"],
           "description": "Quiet paper-zine visual preset with quantitative composition, one-retry thumbnail QA, and deterministic exact-text overlays.",
           "style_reference": "assets/style-references/minimal-zine-editorial/manifest.json"
-        },
-        "photo-derived-editorial-diptych": {
-          "display_name": "摄影抽象双联画",
-          "aliases": ["摄影抽象双联画", "照片抽象双联画"],
-          "description": "Photo-preserving editorial diptych with relation-trace mapping, panel-only generation, adaptive photo/panel geometry, and deterministic exact-text overlays.",
-          "style_reference": "assets/style-references/photo-derived-editorial-diptych/manifest.json"
         }
       }
     }

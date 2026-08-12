@@ -41,6 +41,50 @@ function within(value, min, max) {
   return Number.isFinite(value) && value >= min && value <= max;
 }
 
+function evaluatePhotoDerivedEditorial(manifest, push) {
+  if (manifest.stylePreset !== "photo-derived-editorial-diptych") return;
+
+  const spec = manifest.photoDerivedEditorial || {};
+  const orientation = spec.sourceOrientation;
+  const photoAreaRatio = spec.photoAreaRatio;
+  const panelAreaRatio = spec.panelAreaRatio;
+  const photoRanges = {
+    landscape: [0.38, 0.60],
+    portrait: [0.55, 0.76],
+    square: [0.48, 0.66]
+  };
+  const [photoMin, photoMax] = photoRanges[orientation] || [NaN, NaN];
+  const trace = Array.isArray(spec.relationTrace) ? spec.relationTrace : [];
+  const retry = spec.regeneration || {};
+  const crop = spec.cropContract || {};
+  const titleBlock = (manifest.textBlocks || []).find((block) => block.id === "main-title");
+  const titleWords = (titleBlock?.text || "").trim().split(/\s+/).filter(Boolean);
+
+  push(Boolean(photoRanges[orientation]), "photo-derived source orientation is registered", orientation || "missing");
+  push(within(photoAreaRatio, photoMin, photoMax), "photo-derived photo area matches source orientation", String(photoAreaRatio ?? "missing"));
+  push(within(panelAreaRatio, 0.24, 0.62), "photo-derived panel area is explicit", String(panelAreaRatio ?? "missing"));
+  push(Number.isFinite(photoAreaRatio) && Number.isFinite(panelAreaRatio) && Math.abs(photoAreaRatio + panelAreaRatio - 1) <= 0.01, "photo-derived photo and panel ratios sum to one", `${photoAreaRatio ?? "?"}+${panelAreaRatio ?? "?"}`);
+  push(within(spec.motifWidthRatio, 0.30, 0.68), "photo-derived motif width is restrained", String(spec.motifWidthRatio ?? "missing"));
+  push(within(spec.cleanSpaceRatio, 0.65, 0.80), "photo-derived clean space", String(spec.cleanSpaceRatio ?? "missing"));
+  push(spec.photoPixelsPreserved === true, "photo-derived original photo layer is preserved");
+  push(spec.generatedPanelOnly === true, "photo-derived generated layer is panel-only");
+  push(spec.generatedExactTextUsed === false, "photo-derived exact text stays outside generated raster");
+  push(spec.exactTextOverlayDeterministic === true, "photo-derived exact text uses deterministic overlay");
+  push(spec.panelBackgroundUniform === true, "photo-derived panel background is uniform");
+  push(spec.paletteSourceOnly === true, "photo-derived palette comes only from source photo");
+  push(Array.isArray(spec.extraElements) && spec.extraElements.length === 0, "photo-derived panel has no extra elements", JSON.stringify(spec.extraElements || []));
+  push(crop.mode === "none" || (crop.mode === "explicit" && Boolean(crop.cropRect)), "photo-derived crop contract is explicit", crop.mode || "missing");
+  push(Boolean(spec.primaryMarkFamily), "photo-derived primary mark family is recorded", spec.primaryMarkFamily || "missing");
+  push(Array.isArray(spec.supportingMarkFamilies) && spec.supportingMarkFamilies.length <= 2, "photo-derived supporting mark family limit", String(spec.supportingMarkFamilies?.length ?? "missing"));
+  push(trace.length >= 3 && trace.length <= 6, "photo-derived relation trace has 3-6 facts", String(trace.length));
+  for (const [index, fact] of trace.entries()) {
+    push(Boolean(fact.id && fact.sourceFact && fact.photoRegion && fact.relationType && fact.preservedAs && fact.markFamily), `photo-derived relation trace is complete: ${fact.id || `fact-${index + 1}`}`);
+  }
+  push(titleWords.length >= 2 && titleWords.length <= 5, "photo-derived title has 2-5 words", String(titleWords.length));
+  push(Number.isInteger(retry.attempts) && retry.attempts >= 0 && retry.attempts <= 1, "photo-derived automatic regeneration limit", String(retry.attempts ?? "missing"));
+  push(retry.outcome === "not-required" || retry.outcome === "pass", "photo-derived regeneration outcome", retry.outcome || "missing");
+}
+
 function evaluateMinimalZine(manifest, push) {
   if (manifest.stylePreset !== "minimal-zine-editorial") return;
 
@@ -117,6 +161,7 @@ function evaluate(manifest) {
     push((chart.minFontSize || 0) >= 10, `chart readable font size: ${chart.id || "chart"}`, `${chart.minFontSize || "?"}px`);
   }
 
+  evaluatePhotoDerivedEditorial(manifest, push);
   evaluateMinimalZine(manifest, push);
 
   return results;

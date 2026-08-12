@@ -1,6 +1,6 @@
 # Photo-Derived Editorial Diptych
 
-This is a registered NERO-native preset, canonical id `photo-derived-editorial-diptych`, user-facing alias `摄影抽象双联画`. Its reusable rule, template, prompt, style-pack, and case contracts are registered as part of the NDT asset system.
+This is a registered NERO-native method/QA contract, canonical id `photo-derived-editorial-diptych`, user-facing alias `摄影抽象双联画`. The public package bundles its rule and method-only style contract, but no generator preset, Prompt, template, source photo, private case asset, or visual-baseline artifact.
 
 ## Routing
 
@@ -42,9 +42,19 @@ Do not make a thumbnail, tracing, filter, complete illustration, generic icon, o
 - Use a subtitle only when it adds meaning; default to 3–7 words.
 - Do not accept generated titles, numbers, locations, legends, swatches, logos, watermarks, or source-like text from raster output.
 
+## Geometry and color
+
+- Landscape photo area: 38%–52% of output height.
+- Portrait architecture/person photo area: 55%–68%.
+- Near-square photo area: 48%–58%.
+- A recorded variance of about eight percentage points is allowed when composition requires it; do not mechanically split 50/50.
+- Default motif width is 30%–42% of the panel; axes, bridges, or crowds may extend to 45%–68%.
+- Clean panel space is 65%–80%.
+- Extract color only from the source photo: one primary, one dark structural, one light/neutral, and at most one or two small accents.
+
 ## QA contract
 
-Record output dimensions, source-photo preservation, crop contract, a 3–6 item `relation_trace`, geometry ratios, mark-family counts, panel uniformity, exact-text boundary, extra elements, thumbnail review, and retry outcome. Automatic regeneration is limited to one panel-only retry; after a second failure return `visual_not_ready`.
+Record output dimensions, source-photo identity and preservation, crop contract, a 3–6 item `relation_trace`, `primary_mark_family`, supporting-family count, `photo_area_ratio`, `panel_area_ratio`, `motif_width_ratio`, `clean_space_ratio`, panel uniformity, generated exact-text boundary, extra elements, thumbnail review, and retry outcome. Every trace entry records the source fact, photo region, relation type, preserved relation, and mark family. Automatic regeneration is limited to one panel-only retry; after a second failure return `visual_not_ready`.
 
 ## Disabled when
 

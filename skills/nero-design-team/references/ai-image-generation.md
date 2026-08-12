@@ -31,7 +31,7 @@ Use `minimal-zine-editorial.md` when NERO asks for `留白杂志风` or `留白�
 
 Use `photo-derived-editorial-diptych.md` when NERO asks for `摄影抽象双联画` or `照片抽象双联画`, or when a photo should remain intact as the principal layer while a restrained relationship-derived abstract panel is added below it.
 
-- Keep `ai-image-generation` as the route; the registered preset id is `photo-derived-editorial-diptych`.
+- Keep `ai-image-generation` as the route; `photo-derived-editorial-diptych` is a registered method-only style/QA contract. The public generator does not bundle preset files for it.
 - Generate only abstract panel material. Preserve the original photo and add exact title/subtitle text through a deterministic overlay.
 - Require a 3–6 item `relation_trace`, explicit crop contract, source-photo preservation flag, adaptive photo/panel ratio, and one-retry maximum.
 - Do not use it for evidence-dense cards, dashboards, tables, charts, banker appendices, regulatory pages, or a frozen manually revised artifact.

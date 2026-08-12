@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "nero-design-team-oss-projection",
+  "canonical_root": ".",
+  "public_root_argument": "--public-root",
+  "fail_closed": true,
+  "modes": {
+    "copy": "The public file must exist and be byte-identical to its canonical source.",
+    "rewrite": "The public file must exist, preserve the canonical contract, and remove private absolute paths or private-only locators.",
+    "derivative": "The public file is maintained from the canonical source but may change implementation or packaging details.",
+    "exclude": "The canonical material is intentionally not projected and must not appear at the declared public destination.",
+    "public_only": "The public package may own packaging or community files that have no canonical design-system source."
+  },
+  "canonical_scopes": [
+    "skill-source/nero-design-team/**",
+    "rules/**",
+    "mcp-lite/**",
+    "tools/runtime/report-figure-compiler/**",
+    "tokens/**",
+    "scripts/**",
+    "registry/oss-sync-policy.json"
+  ],
+  "public_scopes": [
+    "skills/nero-design-team/**",
+    "rules/**",
+    "mcp-lite/**",
+    "tools/runtime/report-figure-compiler/**",
+    "tokens/**",
+    "scripts/**",
+    "docs/**",
+    "registry/oss-sync-policy.json",
+    "README.md",
+    "LICENSE",
+    "LICENSE-NOTES.md",
+    "AGENTS.md",
+    "AGENTS.template.md",
+    "package.json",
+    "release-check.mjs",
+    "release-manifest.json",
+    "third-party-metadata.json",
+    ".gitignore"
+  ],
+  "projections": [
+    {
+      "id": "skill-package",
+      "mode": "rewrite",
+      "source": "skill-source/nero-design-team/**",
+      "destination": "skills/nero-design-team/**",
+      "expected_source_count": 35,
+      "required": true
+    },
+    {
+      "id": "canonical-rules",
+      "mode": "rewrite",
+      "source": "rules/**",
+      "destination": "rules/**",
+      "expected_source_count": 30,
+      "required": true
+    },
+    {
+      "id": "projection-policy",
+      "mode": "copy",
+      "source": "registry/oss-sync-policy.json",
+      "destination": "registry/oss-sync-policy.json",
+      "expected_source_count": 1,
+      "required": true
+    },
+    {
+      "id": "projection-checker",
+      "mode": "copy",
+      "source": "scripts/check-oss-projection.mjs",
+      "destination": "scripts/check-oss-projection.mjs",
+      "expected_source_count": 1,
+      "required": true
+    },
+    {
+      "id": "mcp-lite-runtime",
+      "mode": "derivative",
+      "source": "mcp-lite/**",
+      "destination": "mcp-lite/**",
+      "expected_source_count": 5,
+      "required": true
+    },
+    {
+      "id": "figure-compiler-runtime",
+      "mode": "copy",
+      "source": "tools/runtime/report-figure-compiler/**",
+      "destination": "tools/runtime/report-figure-compiler/**",
+      "expected_source_count": 15,
+      "required": true
+    },
+    {
+      "id": "public-tokens",
+      "mode": "copy",
+      "source": "tokens/**",
+      "destination": "tokens/**",
+      "expected_source_count": 7,
+      "required": true
+    },
+    {
+      "id": "public-scripts",
+      "mode": "derivative",
+      "source": "scripts/**",
+      "destination": "scripts/**",
+      "required": false,
+      "required_destinations": [
+        "scripts/build-tokens.mjs",
+        "scripts/check-oss-projection.mjs",
+        "scripts/report-figure-compiler.mjs",
+        "scripts/validate-registry.mjs"
+      ]
+    },
+    {
+      "id": "private-reference-packs",
+      "mode": "exclude",
+      "source": "assets/external/**",
+      "destination": "assets/external/**",
+      "required": false
+    },
+    {
+      "id": "private-validation-history",
+      "mode": "exclude",
+      "source": "validation/**",
+      "destination": "validation/**",
+      "required": false
+    },
+    { "id": "public-package-files", "mode": "public_only", "destination": "README.md", "required": false },
+    { "id": "public-license", "mode": "public_only", "destination": "LICENSE", "required": false },
+    { "id": "public-license-notes", "mode": "public_only", "destination": "LICENSE-NOTES.md", "required": false },
+    { "id": "public-agents", "mode": "public_only", "destination": "AGENTS.md", "required": false },
+    { "id": "public-agents-template", "mode": "public_only", "destination": "AGENTS.template.md", "required": false },
+    { "id": "public-package-metadata", "mode": "public_only", "destination": "package.json", "required": false },
+    { "id": "public-release-check", "mode": "public_only", "destination": "release-check.mjs", "required": false },
+    { "id": "public-release-manifest", "mode": "public_only", "destination": "release-manifest.json", "required": false },
+    { "id": "public-third-party-metadata", "mode": "public_only", "destination": "third-party-metadata.json", "required": false },
+    { "id": "public-license-gate", "mode": "public_only", "destination": "scripts/check-license-policy.mjs", "required": false },
+    { "id": "public-allowlist-gate", "mode": "public_only", "destination": "scripts/check-release-allowlist.mjs", "required": false },
+    { "id": "public-release-gate-test", "mode": "public_only", "destination": "scripts/test-release-gates.mjs", "required": false },
+    { "id": "public-gitignore", "mode": "public_only", "destination": ".gitignore", "required": false },
+    { "id": "public-docs", "mode": "public_only", "destination": "docs/**", "required": false }
+  ]
+}

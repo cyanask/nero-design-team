@@ -64,10 +64,22 @@
       "description": "经过边界标注的 NERO-native 或私有风格系统。"
     },
     {
+      "id": "cases",
+      "prefix": "CAS",
+      "label": "公开案例合同",
+      "description": "只含匿名可复用结构、交互、生产和 QA 合同的公开派生案例。"
+    },
+    {
       "id": "snapshots",
       "prefix": "SNP",
       "label": "外部快照",
       "description": "外部设计仓库的轻量快照，不包含完整仓库。"
+    },
+    {
+      "id": "external-packs",
+      "prefix": "EXT",
+      "label": "外部参考元数据",
+      "description": "仅登记许可、抽象模式和公开边界，不捆绑第三方实现或素材。"
     },
     {
       "id": "tools",
@@ -113,6 +125,7 @@
         "NDT-TPL-011",
         "NDT-TOK-103",
         "NDT-RUL-003",
+        "NDT-QAT-015",
         "NDT-QAT-016",
         "NDT-QAT-005"
       ]
@@ -211,6 +224,49 @@
       "asset_ids": [
         "NDT-STY-005",
         "NDT-RUL-003",
+        "NDT-QAT-005"
+      ]
+    },
+    {
+      "id": "architecture-map",
+      "name": "Generic system architecture map",
+      "aliases": [
+        "system-architecture-map"
+      ],
+      "description": "Public-safe SVG-first system map using the bundled generic synthetic fixture and deterministic labels.",
+      "asset_ids": [
+        "NDT-RUL-002",
+        "NDT-EXT-001",
+        "NDT-QAT-005",
+        "NDT-QAT-009"
+      ]
+    },
+    {
+      "id": "dual-trajectory-evidence-map",
+      "name": "Dual-trajectory evidence map",
+      "aliases": [
+        "two-track-evidence-map"
+      ],
+      "description": "Compare two synthetic strategic trajectories through a shared phase axis, complete event nodes and one evidence inspector.",
+      "asset_ids": [
+        "NDT-RUL-002",
+        "NDT-CAS-016",
+        "NDT-QAT-005",
+        "NDT-QAT-009"
+      ]
+    },
+    {
+      "id": "research-series-identity-cover",
+      "name": "Research-series identity cover",
+      "aliases": [
+        "series-identity-cover"
+      ],
+      "description": "Generate crop-stable recurring covers from a complete square identity core and a replaceable atmospheric context field.",
+      "asset_ids": [
+        "NDT-BRD-005",
+        "NDT-TPL-002",
+        "NDT-RUL-003",
+        "NDT-CAS-017",
         "NDT-QAT-005"
       ]
     }
@@ -1219,7 +1275,7 @@
         "ai-image-generation",
         "image-report"
       ],
-      "status": "可直接引用",
+      "status": "method_only_public_contract",
       "rights": "NERO-native-method-only-adaptation; upstream-license-unknown",
       "purpose": "以原照片为主层、象牙色关系面板为辅层、确定性标题为文字层的照片主导编辑视觉系统。",
       "use_for": [
@@ -1229,7 +1285,7 @@
         "非证据型视觉记忆研究"
       ],
       "source_ref": "assets/style-references/photo-derived-editorial-diptych",
-      "notes": "三类代表性照片已通过视觉基线；用户照片、生成肖像和项目复合图不进入可复用资产包。上游仓库仅作方法参考，许可证未知且未复制任何上游资产。"
+      "notes": "公开包仅提供方法和QA合同；不附带生成器preset、Prompt、模板、照片、私有case或视觉基线工件。上游仓库仅作方法参考，许可证未知且未复制任何上游资产。"
     },
     {
       "id": "NDT-STY-007",
@@ -1259,6 +1315,188 @@
       ],
       "source_ref": "assets/style-references/handwritten-research-note",
       "notes": "不捆绑外部字体、图片、事实或项目身份；严格横幅母版要求目标环境解析批准的 CJK 手写/书写字体，解析失败不得静默退回印刷体。"
+    },
+    {
+      "id": "NDT-CAS-001",
+      "key": "analytical-signal-workbench",
+      "name": "高密度分析信号工作台",
+      "category": "cases",
+      "routes": ["frontend-ui"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "用指标条、证据账本和显式工作流状态完成高密度信号分诊。",
+      "use_for": ["内部分析工具", "研究工作流"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-001-analytical-signal-workbench",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-002",
+      "key": "source-traceable-research-ledger",
+      "name": "来源状态可追溯研究账本",
+      "category": "cases",
+      "routes": ["frontend-ui"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "用紧凑账本、显式来源状态和移动端压缩呈现研究观察。",
+      "use_for": ["研究雷达", "证据账本"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-002-source-traceable-research-ledger",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-003",
+      "key": "bilingual-evidence-portfolio",
+      "name": "双语证据作品集",
+      "category": "cases",
+      "routes": ["frontend-ui"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "以两个证据入口组织双语专业作品集和案例详情。",
+      "use_for": ["双语履历", "证据型作品集"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-003-bilingual-evidence-portfolio",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-007",
+      "key": "periodic-signal-card",
+      "name": "周期信号研究卡",
+      "category": "cases",
+      "routes": ["image-report"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "以一个主判断、一个有边界的指标和少量证据块解释周期信号。",
+      "use_for": ["研究卡片", "行内长图"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-007-periodic-signal-card",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-008",
+      "key": "horizontal-evidence-memo",
+      "name": "横版证据研究备忘录",
+      "category": "cases",
+      "routes": ["image-report"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "以暗色备忘录栏和浅色证据板完成紧凑横版研究说明。",
+      "use_for": ["横版研究备忘录", "证据型社交卡"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-008-horizontal-evidence-memo",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-010",
+      "key": "editable-research-deck",
+      "name": "可编辑研究演示",
+      "category": "cases",
+      "routes": ["ppt"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "为研究判断、对比和结论提供原生可编辑的演示页族。",
+      "use_for": ["正式研究演示", "内部讨论材料"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-010-editable-research-deck",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-011",
+      "key": "professional-advisory-deck",
+      "name": "专业顾问演示",
+      "category": "cases",
+      "routes": ["ppt"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "为复杂专业材料提供克制、投影可读且移动端可读的演示结构。",
+      "use_for": ["专业顾问材料", "交易与资本市场演示"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-011-professional-advisory-deck",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-012",
+      "key": "regulatory-evidence-webdeck",
+      "name": "监管证据 HTML 演示",
+      "category": "cases",
+      "routes": ["ppt"],
+      "status": "public_sanitized_working_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "围绕监管逻辑、证据矩阵和执行门禁组织固定舞台 HTML 演示。",
+      "use_for": ["监管证据演示", "HTML 专业材料"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-012-regulatory-evidence-webdeck",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-013",
+      "key": "data-signal-explainer",
+      "name": "数据信号短视频解释器",
+      "category": "cases",
+      "routes": ["short-video"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "用判断、指标、证据和边界说明的短序列解释一个信号。",
+      "use_for": ["移动端数据解释", "研究短视频"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-013-data-signal-explainer",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-014",
+      "key": "cold-white-comparison-carousel",
+      "name": "冷白商业比较组图",
+      "category": "cases",
+      "routes": ["image-report"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "用镜像档案、同口径比较和克制编辑网格对照两条策略。",
+      "use_for": ["策略比较", "商业模式对照"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-014-cold-white-comparison-carousel",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-015",
+      "key": "financial-event-carousel",
+      "name": "财经事件调查组图",
+      "category": "cases",
+      "routes": ["image-report"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "通过时间顺序、机制、流动性和对手方能力重建财经事件。",
+      "use_for": ["财经事件解释", "机制与时间轴组图"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-015-financial-event-carousel",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-016",
+      "key": "dual-trajectory-evidence-map",
+      "name": "双轨迹证据图谱",
+      "category": "cases",
+      "routes": ["frontend-ui"],
+      "status": "public_sanitized_working_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "用共享阶段轴、完整事件节点和单一证据检查器比较两条战略轨迹。",
+      "use_for": ["双轨迹比较", "事件证据图谱"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-016-dual-trajectory-evidence-map",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-017",
+      "key": "research-series-identity-cover",
+      "name": "研究系列身份封面",
+      "category": "cases",
+      "routes": ["image-report"],
+      "status": "public_sanitized_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "以独立方形身份核心和可替换情境场生成跨比例系列封面。",
+      "use_for": ["研究系列封面", "跨比例身份卡"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-017-research-series-identity-cover",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external material or machine path."
+    },
+    {
+      "id": "NDT-CAS-019",
+      "key": "editorial-handwritten-note",
+      "name": "手写编辑式研究笔记",
+      "category": "cases",
+      "routes": ["response", "image-report", "frontend-ui", "web-ppt-html", "ppt"],
+      "status": "public_sanitized_working_reference",
+      "rights": "NDT-native-public-derivative",
+      "purpose": "在解释型输出中复用暖纸张、手写节奏、手绘图表几何和结论先行结构。",
+      "use_for": ["研究说明", "手写式图表", "演示结论页"],
+      "source_ref": "case-library/public-contracts/contracts.json#public-case-019-editorial-handwritten-note",
+      "source_boundary": "Synthetic fixture and anonymous reusable contract only; no identity, project fact, media, external font, external material or machine path."
     },
     {
       "id": "NDT-SNP-004",
@@ -1334,6 +1572,58 @@
       ],
       "source_ref": "case-library/snapshots/liamgvchi__gc-minimal-zine-poster",
       "notes": "未克隆完整仓库、未复制上游 JPEG、未安装上游 Skill。"
+    },
+    {
+      "id": "NDT-SNP-001",
+      "key": "html-native-design-harness-metadata",
+      "name": "HTML-native 多格式设计 Harness 元数据",
+      "category": "snapshots",
+      "routes": ["frontend-ui", "ppt", "short-video"],
+      "status": "metadata_only",
+      "rights": "MIT-metadata-reference",
+      "purpose": "提供 HTML-native 多格式工作流、并行视觉方向、品牌输入边界和视觉 QA 的元数据参考。",
+      "use_for": ["HTML-native 原型", "多方向视觉探索"],
+      "source_ref": "case-library/snapshots/public-metadata.json#public-snapshot-huashu-design",
+      "source_boundary": "Metadata only; no source code, media, font, prompt, template, provider configuration or external service is bundled."
+    },
+    {
+      "id": "NDT-SNP-002",
+      "key": "presentation-production-harness-metadata",
+      "name": "演示生产 Harness 元数据",
+      "category": "snapshots",
+      "routes": ["ppt"],
+      "status": "metadata_only",
+      "rights": "MIT-metadata-reference",
+      "purpose": "提供设计规范锁、串行生产纪律、SVG QA 和原生可编辑边界的元数据参考。",
+      "use_for": ["正式演示生产纪律", "设计规范锁"],
+      "source_ref": "case-library/snapshots/public-metadata.json#public-snapshot-ppt-master",
+      "source_boundary": "Metadata only; no source code, media, font, prompt, template, provider configuration or external service is bundled."
+    },
+    {
+      "id": "NDT-SNP-006",
+      "key": "fixed-stage-html-slides-metadata",
+      "name": "固定舞台 HTML 演示元数据",
+      "category": "snapshots",
+      "routes": ["ppt"],
+      "status": "metadata_only",
+      "rights": "MIT-metadata-reference",
+      "purpose": "提供固定舞台 HTML 演示、同内容风格探索和浏览器优先 QA 的元数据参考。",
+      "use_for": ["Web PPT 风格探索", "固定舞台预览"],
+      "source_ref": "case-library/snapshots/public-metadata.json#public-snapshot-frontend-slides",
+      "source_boundary": "Metadata only; no source code, media, font, prompt, template, deployment configuration or external service is bundled."
+    },
+    {
+      "id": "NDT-EXT-001",
+      "key": "self-contained-html-method-metadata",
+      "name": "自包含 HTML 方法元数据",
+      "category": "external-packs",
+      "routes": ["frontend-ui"],
+      "status": "metadata_only",
+      "rights": "MIT-and-Apache-2.0-metadata-reference",
+      "purpose": "提供单文件 HTML、SVG-first 图示、主题感知标签和简洁视觉计划结构参考。",
+      "use_for": ["系统架构图", "自包含 HTML 解释器"],
+      "source_ref": "assets/reference-metadata/effective-html.json#public-reference-effective-html",
+      "source_boundary": "Metadata and a generic synthetic fixture only; no third-party code, example page, media, font, prompt, template or plugin metadata is bundled."
     },
     {
       "id": "NDT-QAT-001",
@@ -1466,6 +1756,19 @@
       "source_ref": "scripts/validate-web-ppt.mjs"
     },
     {
+      "id": "NDT-QAT-009",
+      "key": "audit-web-ppt-multidevice",
+      "name": "Web PPT 多设备审计",
+      "category": "tools",
+      "routes": ["ppt"],
+      "status": "bundled_public_tool",
+      "rights": "NDT-native-public",
+      "purpose": "检查桌面、手机和横屏舞台的可读性与溢出。",
+      "use_for": ["Web PPT 响应式 QA"],
+      "source_ref": "scripts/audit-web-ppt-multidevice.mjs",
+      "source_boundary": "Bundled public source; Playwright is optional, never installed automatically, and absence returns an explicit unavailable status with no audit output."
+    },
+    {
       "id": "NDT-QAT-010",
       "key": "audit-projection-typography",
       "name": "投影字号审计",
@@ -1480,6 +1783,32 @@
         "PPT / HTML Deck 投影检查"
       ],
       "source_ref": "scripts/audit-projection-typography.mjs"
+    },
+    {
+      "id": "NDT-QAT-011",
+      "key": "assert-published-html",
+      "name": "已发布 HTML 断言",
+      "category": "tools",
+      "routes": ["frontend-ui", "ppt"],
+      "status": "bundled_public_tool",
+      "rights": "NDT-native-public",
+      "purpose": "对显式传入的公开地址检查 HTTP 状态和必需文本标记。",
+      "use_for": ["公开 HTML 发布后验证"],
+      "source_ref": "scripts/assert-published-html.mjs",
+      "source_boundary": "Bundled public source; no fixed endpoint or credential is embedded, and network access occurs only for an explicit invocation argument."
+    },
+    {
+      "id": "NDT-QAT-012",
+      "key": "validate-render-webdeck",
+      "name": "Web Deck 验证与渲染器",
+      "category": "tools",
+      "routes": ["ppt"],
+      "status": "bundled_public_tool",
+      "rights": "NDT-native-public",
+      "purpose": "组合执行 Web Deck 合同验证和投影字号审计。",
+      "use_for": ["HTML 演示生产"],
+      "source_ref": "scripts/validate-and-render-webdeck.mjs",
+      "source_boundary": "Bundled public source; package root is derived from the script location or an explicit absolute NERO_DESIGN_TEAM_HOME value, and missing QA helpers fail closed."
     },
     {
       "id": "NDT-QAT-013",
@@ -1514,6 +1843,19 @@
         "生产准备度审查"
       ],
       "source_ref": "scorecards/visual-scorecard.json"
+    },
+    {
+      "id": "NDT-QAT-015",
+      "key": "test-high-resolution-raster-report-figure",
+      "name": "高分辨率 PNG 报告图聚焦测试",
+      "category": "tools",
+      "routes": ["image-report"],
+      "status": "bundled_public_tool",
+      "rights": "NDT-native-public",
+      "purpose": "通过公开生成器入口验证高分辨率 RGB PNG 输出和溢出失败关闭。",
+      "use_for": ["PNG 报告图模板维护", "文字溢出门禁"],
+      "source_ref": "scripts/test-high-resolution-raster-report-figure.py",
+      "source_boundary": "Bundled public source; Pillow is optional, never installed automatically, and absence returns an explicit unavailable status."
     },
     {
       "id": "NDT-QAT-016",

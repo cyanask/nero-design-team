@@ -133,6 +133,21 @@ Taste-style rules must be shared from one source, not copied into divergent tool
 - Claude Code, Cursor, or other tools may reference the same NDT prompt snippet or the upstream `taste-skill` install command only when NERO explicitly wants cross-tool sharing.
 - If an external tool installs upstream `taste-skill`, map its output back into NDT dials and QA gates; do not let upstream defaults override NERO tokens, business readability, or formal delivery boundaries.
 
+## Scope-Aware Workflow Graph Pattern
+
+Use this pattern when an interface renders structured workflow dependencies, `dependsOn`, a governance DAG, or a projection of a runtime state machine.
+
+- Read topology, node identity, scope, verifier state, and edge semantics from the authoritative provider contract. Do not infer dependencies from array order, labels, card positions, or screenshots.
+- Use visible group containers only when more than one real scope exists. Name the scope in text; color is reinforcement only.
+- Render one ordinary DAG when all nodes share one scope; omit decorative group shells and redundant legends.
+- Preserve stable node IDs, status, verifier/gate identity, and cross-scope handoffs.
+- Use adaptive wrapping or a readable snake/grid for wide graphs, with stable directional flow.
+- Route connectors around cards and containers; avoid ambiguous joins, collisions, and crossings that obscure prerequisites.
+- Cycles, rollback, retry, reopen, and OR joins require explicit projection semantics rather than a fabricated forward AND chain.
+- Validate mixed-scope and single-scope fixtures, then inspect the installed/live surface at a realistic minimum width.
+
+Handoff: `Graph Read: authority=<source>, projection=<kind>, scopes=<values>, grouping=<mixed-only|none>, compatibility=<stable IDs>, live QA=<surface/viewport>.`
+
 ## Deterministic Review Checklist
 
 Before calling a frontend UI done, check these mechanical issues:

@@ -27,7 +27,7 @@
       "id": "photo-derived-editorial-diptych",
       "name": "摄影抽象双联画",
       "path": "$NERO_DESIGN_TEAM_HOME/assets/style-references/photo-derived-editorial-diptych/manifest.json",
-      "status": "nero_native_reusable",
+      "status": "method_only_public_contract",
       "rights_status": "NERO-native method-only adaptation; upstream license unknown; no upstream assets copied",
       "use_for": [
         "photo-led editorial covers",

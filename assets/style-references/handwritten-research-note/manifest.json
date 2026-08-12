@@ -159,8 +159,8 @@
       "NDT-TOK-008",
       "NDT-RUL-007",
       "NDT-STY-007",
-      "NDT-CAS-019"
-      ,"NDT-TPL-009"
+      "NDT-CAS-019",
+      "NDT-QAT-005"
     ],
     "base_templates": ["NDT-TPL-002", "NDT-TPL-003"],
     "visual_baseline": "pending representative image-report, web-html, and editable-pptx samples",
