@@ -1,126 +1,173 @@
 # NERO Design Team
 
-Agent-native design system for Codex-style coding agents.
+<p align="center">
+  <img src="docs/assets/ndt-hero.svg" width="100%" alt="NERO Design Team: route, reuse, render, and verify design work for coding agents">
+</p>
 
-NERO Design Team is a lightweight design operating system for frontend UI, image-style reports, deterministic report figures, PPT/PPTX decks, web PPT/HTML decks, short videos, AI-image briefs, visual QA, visual scoring, and production checks.
+<p align="center">
+  <strong>A governed design operating system for coding agents.</strong><br>
+  Turn one-off AI visual work into routed, reusable, and verifiable delivery.
+</p>
 
-It is not a component library alone. It combines:
+<p align="center">
+  English · <a href="README.zh-CN.md">简体中文</a>
+</p>
 
-- Codex Skill routing rules
-- design tokens
-- reusable templates
-- GitHub case snapshots
-- local MCP-lite tool schemas
-- a read-only React browser for the bundled public Registry
-- generator, QA, score, and production-check scripts
-- open-source-safe profile and brand examples
+<p align="center">
+  <code>Apache-2.0</code> · <code>79 public assets</code> · <code>15 recipes</code> · <code>12 local MCP-lite tools</code>
+</p>
 
-## What It Is For
+NERO Design Team (NDT) gives a coding agent more than a visual prompt. It routes the task, selects reusable design assets, runs deterministic local tools where possible, and keeps QA and promotion states explicit.
 
-- Turn a phrase like `设计团队` or `design team` into a structured design workflow.
-- Keep design decisions grounded in tokens, templates, cases, QA gates, and output checks.
-- Give AI agents a stable local reference layer instead of repeatedly opening large repositories.
-- Separate public reusable design-system logic from private client, brand, or project material.
+The package covers frontend UI, research images, deterministic report figures, presentation workflows and downstream handoffs, web decks, short video, AI-image briefs, visual review, scoring, and production checks.
 
-## Install
+> **Public boundary:** this repository is a public-safe, non-authoritative derivative. Client material, private identities, official brand assets, private preview media, and restricted third-party assets are deliberately excluded.
 
-Clone the repository, then run:
+## Why NDT
+
+Coding agents can generate a screen or slide quickly. The hard part is making the next output consistent with the last one, using known assets, respecting evidence boundaries, and proving that the result passed the right checks.
+
+NDT makes that path explicit:
+
+- **Route:** classify the deliverable before choosing tools.
+- **Reuse:** select registered rules, tokens, templates, cases, and recipes.
+- **Render:** prefer deterministic local runtimes for exact text, data, and geometry.
+- **Verify:** run visual QA, scoring, and production gates before promotion.
+
+| Capability | Component library | Prompt collection | NERO Design Team |
+|---|---:|---:|---:|
+| UI components | Primary focus | No | Optional input |
+| Design-task routing | No | Informal | Yes |
+| Reusable asset Registry | No | No | 79 public assets / 15 recipes |
+| Deterministic local runtimes | No | No | Yes |
+| Explicit QA and candidate state | No | No | Yes |
+| Public/private asset boundary | Project-specific | Rarely | Built into the package |
+
+## Quick Start
+
+### 1. Install the Codex Skill
 
 ```bash
+git clone https://github.com/cyanask/nero-design-team.git
+cd nero-design-team
 node install.mjs
+node doctor.mjs
 ```
 
-The installer copies the Skill to:
+The installer copies the Skill to `$CODEX_HOME/skills/nero-design-team/` (or `~/.codex/skills/nero-design-team/` when `CODEX_HOME` is unset). Add the routing snippet from [`AGENTS.template.md`](AGENTS.template.md) to your global or project `AGENTS.md`.
+
+Then ask your coding agent in natural language:
 
 ```text
-$CODEX_HOME/skills/nero-design-team/
+Use NERO Design Team to design a compact research dashboard.
+Keep the evidence hierarchy explicit and run visual QA before calling it ready.
 ```
 
-If `CODEX_HOME` is not set, it defaults to `~/.codex`.
-
-After installation, add the snippet from `AGENTS.template.md` to your global or project `AGENTS.md` so Codex can route design-related requests to this Skill.
-
-## Quick Check
+### 2. Explore without installing
 
 ```bash
-node doctor.mjs
-node scripts/build-tokens.mjs
 node scripts/nero-design.mjs list
 node mcp-lite/server.mjs --list-tools
-node mcp-lite/smoke-test.mjs
-node mcp-lite/report-figure-compiler-test.mjs
-node frontend/scripts/check-public-projection.mjs --package-root .
-node release-check.mjs
 ```
+
+### 3. Run the public Registry browser
+
+```bash
+cd frontend
+npm ci
+npm run demo
+```
+
+Demo mode uses a synthetic fixture. It is not observed project data, a hosted live demo, or production evidence. See [`frontend/README.md`](frontend/README.md) for the public-Registry and test commands.
+
+## How It Works
+
+```mermaid
+flowchart LR
+    A[Design request] --> B[Skill router]
+    B --> C[Public Registry]
+    C --> D[Rules, tokens, templates, cases]
+    D --> E[Local runtimes and generators]
+    E --> F[Visual QA, score, production gate]
+    F --> G[Candidate deliverable]
+```
+
+The public frontend is a read-only projection of this flow. It exposes application-scenario routing, solution pages, an asset directory, source-state envelopes, and explicit adoption receipts. It does not infer that an asset was adopted merely because a project references NDT.
 
 ## Core Routes
 
-- `frontend-ui`
-- `image-report`
-- `ppt`
-- `short-video`
-- `ai-image-generation`
-- `case-library`
-- `visual-audit`
-- `visual-score`
-- `production-check`
+| Route | Typical work |
+|---|---|
+| `frontend-ui` | Dashboards, workbenches, responsive UI, interaction review |
+| `image-report` | Research cards, long images, embedded explanatory figures |
+| `ppt` | PPT/PPTX direction, web decks, production handoff contracts |
+| `short-video` | Storyboards, motion systems, frame-level QA |
+| `ai-image-generation` | Art-direction briefs and non-evidence visual material |
+| `case-library` | Public-safe reusable design contracts and snapshots |
+| `visual-audit` | Findings-first design review |
+| `visual-score` | Structured readiness scoring |
+| `production-check` | Final format, boundary, and delivery gates |
 
-## Figure Compiler v0.2
+## Deterministic Figure Compiler
 
-The `image-report` route includes a deterministic Figure Compiler for one evidence-bearing explanatory figure. It supports:
+The `image-report` route includes Figure Compiler v0.2 for a single evidence-bearing explanatory figure:
 
-- nine figure types: flow, hierarchy, timeline, funnel, bar, line, participant map, matrix, and value chain;
+- nine types: flow, hierarchy, timeline, funnel, bar, line, participant map, matrix, and value chain;
 - `report-a4`, `wechat-inline`, and `ppt-16x9` profiles;
-- SVG output without Pillow;
-- high-resolution PNG output when Python and Pillow are available;
-- project-local Figure Specs and compile receipts, without a database or job service.
+- SVG output without Pillow, plus high-resolution PNG when Python and Pillow are available;
+- project-local Figure Specs and compile receipts, with no database or job service.
 
-The compiler creates a candidate only. It does not promote, embed, commit, or publish a figure, and it does not replace native Office objects when true editability is required.
+Compiler output remains a candidate. It does not automatically promote, embed, commit, or publish a figure, and it does not replace native Office objects when true editability is required.
 
-## Repository Layout
+## Validate the Package
 
-```text
-skills/nero-design-team/      Codex Skill entrypoint and references
-mcp-lite/                     local MCP-lite server and dry-run examples
-rules/                        route rules and QA rules
-tokens/                       design-token source files
-templates/                    minimal project templates
-scripts/                      generator, importer, QA, score, checks
-tools/runtime/                deterministic local runtimes, including Figure Compiler
-registry/                     machine-readable role and route index
-frontend/                     public-safe Registry browser source
-case-library/snapshots/       lightweight GitHub reference snapshots
-brand/                        open-source-safe default profile assets
-profiles/                     profile examples and overlay guidance
-docs/                         packaging and boundary docs
+```bash
+npm run registry:check
+npm run test:mcp
+npm run test:figure-compiler
+npm run frontend:projection
+npm run release:check
 ```
 
-## Public Frontend
+The validation set above combines an exact file allowlist, license checks, Registry and reference closure, frontend projection checks, protocol smokes, and scans for private paths, credentials, restricted directories, unsupported binaries, and symlink escapes.
 
-`frontend/` contains the current public-safe application-scenario browser, solution and asset views, source-state contracts, and explicit project-observation adapter. It reads this repository's public Registry (79 assets and 15 recipes at this release candidate) and keeps Registry media metadata-only.
-
-The private preview pack, client or identity media, native desktop wrapper, build history, screenshots, and project manifests are not bundled. See `frontend/README.md` for demo, snapshot, and validation commands.
-
-## Private Overlay Pattern
-
-Keep private or client-specific material out of the public repository.
-
-Recommended private overlay:
+## Repository Map
 
 ```text
-nero-design-team-private/
-  profiles/<your-profile>/
-  assets/private/
-  case-library/assets/
-  validation/private/
+skills/nero-design-team/      Skill entrypoint and references
+registry/                     Public asset and route contracts
+frontend/                     Read-only public Registry browser
+rules/                        Route, design, and QA rules
+tokens/ and build/            Token sources and deterministic outputs
+templates/                    Minimal project templates and presets
+tools/runtime/                Local runtimes, including Figure Compiler
+mcp-lite/                     Local tool server and protocol checks
+scripts/                      Generators, validators, scoring, release gates
+case-library/                 Public-safe contracts and metadata snapshots
+brand/ and profiles/          Explicit placeholder profile assets
+docs/                         Packaging and public-boundary documentation
 ```
 
-Public snapshots should store summaries, license notes, file paths, and image URLs only. Do not store full cloned repositories, client evidence, credentials, private screenshots, private identity references, or third-party restricted assets.
+## Public and Private Material
 
-## AI Image Boundary
+Keep private or client-specific material in a separate overlay. Do not add client evidence, screenshots, credentials, official identity assets, private validation history, or restricted third-party files to this repository.
 
-Use AI image generation as an art-direction tool for visual material only. Exact body text, financial figures, tables, chart labels, source notes, and formal conclusions must be layered and verified outside the image model.
+The bundled logos are explicit placeholders, not official NERO or client identities. Public Registry media stays metadata-only unless redistribution rights and the public boundary are both established.
+
+Read [`docs/oss-boundary.md`](docs/oss-boundary.md), [`docs/private-overlay.md`](docs/private-overlay.md), and [`LICENSE-NOTES.md`](LICENSE-NOTES.md) before adding assets.
+
+## Current Limits
+
+- The installer currently targets the Codex Skill directory.
+- The Registry browser is local and read-only; no hosted service or telemetry is bundled.
+- The public distribution is derived and non-authoritative by design.
+- Private previews, native desktop packaging, and project-specific manifests are not bundled.
+- Formal editable Office deliverables still require an explicit downstream handoff and format-specific QA.
+
+## Contributing
+
+Bug reports, documentation improvements, public-safe rules, deterministic runtime tests, and synthetic fixtures are welcome. Start with [`CONTRIBUTING.md`](CONTRIBUTING.md), and never include client or restricted material in an issue or pull request.
 
 ## License
 
-This project is released under the Apache License 2.0. See `LICENSE` and `LICENSE-NOTES.md`.
+Apache License 2.0. See [`LICENSE`](LICENSE) and [`LICENSE-NOTES.md`](LICENSE-NOTES.md).
