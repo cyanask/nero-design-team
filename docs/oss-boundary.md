@@ -13,6 +13,7 @@ The public package should stay portable, reusable, and free of private material.
 - deterministic local runtimes and source-free examples
 - lightweight case snapshots
 - open-source-safe profile examples
+- public-safe frontend source and synthetic demo fixture
 - NERO-native style contracts without external fonts, identity assets, or project facts
 
 ## Private Overlay
@@ -26,6 +27,7 @@ Keep these in a separate private repository or local-only directory:
 - paid templates
 - restricted third-party visual assets
 - machine-specific validation history
+- native desktop wrappers, private preview media, and project-specific frontend manifests
 
 ## Release Gate
 

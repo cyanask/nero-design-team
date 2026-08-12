@@ -1,0 +1,7 @@
+@import "./styles/base.css";
+@import "./styles/shell.css";
+@import "./styles/projects.css";
+@import "./styles/capability-board.css";
+@import "./styles/capability-flow.css";
+@import "./styles/scenario-browser.css";
+@import "./styles/scenario-solution.css";

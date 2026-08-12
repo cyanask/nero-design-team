@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="NERO Design Team app icon">
+  <path d="M300 300V710" fill="none" stroke="#C85F48" stroke-width="80" stroke-linecap="round"/>
+  <path d="M300 710L615 395" fill="none" stroke="#E28758" stroke-width="80" stroke-linecap="round"/>
+  <circle cx="704" cy="270" r="80" fill="#D9A23D"/>
+  <rect x="640" y="640" width="136" height="136" rx="34" fill="#E56F52"/>
+</svg>

@@ -8,6 +8,7 @@ This repository is intended to contain only open-source-safe design-system logic
 - NERO Figure Compiler source, schemas, source-free examples, and deterministic SVG runtime: Apache-2.0.
 - Lightweight GitHub case snapshots: summaries, source URLs, license summaries, file-path indexes, and image URLs only.
 - Default brand/profile assets: example placeholders for local use.
+- Public frontend source and its synthetic demo fixture: Apache-2.0.
 
 ## Not Included
 

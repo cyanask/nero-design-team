@@ -1,0 +1,5 @@
+node_modules/
+.local/
+dist-public/
+dist-demo/
+coverage/

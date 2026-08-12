@@ -14,7 +14,7 @@ const allowedExecutables = new Set(manifest.allowed_executable_files || []);
 const allowedSymlinks = new Set(manifest.allowed_symlinks || []);
 const errors = [];
 const actualFiles = new Set();
-const textExtensions = new Set(["", ".md", ".json", ".mjs", ".js", ".cjs", ".ts", ".tsx", ".py", ".sh", ".css", ".html", ".svg", ".xml", ".yaml", ".yml", ".txt", ".toml", ".csv"]);
+const textExtensions = new Set(["", ".md", ".json", ".mjs", ".mts", ".js", ".cjs", ".ts", ".tsx", ".py", ".sh", ".css", ".html", ".svg", ".xml", ".yaml", ".yml", ".txt", ".toml", ".csv"]);
 
 const relativeFile = (target) => path.relative(root, target).split(path.sep).join("/");
 
@@ -75,7 +75,7 @@ for (const file of allowedFiles) {
 
 const packageDocument = JSON.parse(await fs.readFile(path.join(root, "package.json"), "utf8"));
 const packageFiles = new Set(packageDocument.files || []);
-for (const required of ["assets", "brand", "build", "case-library", "docs", "examples", "generators", "mcp-lite", "profiles", "registry", "rules", "scorecards", "scripts", "skills", "templates", "tokens", "tools", "release-check.mjs", "release-manifest.json", "third-party-metadata.json"]) {
+for (const required of ["assets", "brand", "build", "case-library", "docs", "examples", "frontend", "generators", "mcp-lite", "profiles", "registry", "rules", "scorecards", "scripts", "skills", "templates", "tokens", "tools", "release-check.mjs", "release-manifest.json", "third-party-metadata.json"]) {
   if (!packageFiles.has(required)) errors.push({ type: "package-files-missing", entry: required });
 }
 

@@ -15,6 +15,7 @@
     "docs",
     "doctor.mjs",
     "examples",
+    "frontend",
     "generators",
     "install.mjs",
     "mcp-lite",
@@ -44,6 +45,7 @@
     "test:release-gates": "node scripts/test-release-gates.mjs",
     "license:check": "node scripts/check-license-policy.mjs",
     "release:allowlist": "node scripts/check-release-allowlist.mjs",
+    "frontend:projection": "node frontend/scripts/check-public-projection.mjs --package-root .",
     "release:check": "node release-check.mjs --strict && node scripts/check-license-policy.mjs && node scripts/check-release-allowlist.mjs"
   },
   "keywords": [

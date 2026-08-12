@@ -11,6 +11,7 @@ It is not a component library alone. It combines:
 - reusable templates
 - GitHub case snapshots
 - local MCP-lite tool schemas
+- a read-only React browser for the bundled public Registry
 - generator, QA, score, and production-check scripts
 - open-source-safe profile and brand examples
 
@@ -48,6 +49,7 @@ node scripts/nero-design.mjs list
 node mcp-lite/server.mjs --list-tools
 node mcp-lite/smoke-test.mjs
 node mcp-lite/report-figure-compiler-test.mjs
+node frontend/scripts/check-public-projection.mjs --package-root .
 node release-check.mjs
 ```
 
@@ -86,11 +88,18 @@ templates/                    minimal project templates
 scripts/                      generator, importer, QA, score, checks
 tools/runtime/                deterministic local runtimes, including Figure Compiler
 registry/                     machine-readable role and route index
+frontend/                     public-safe Registry browser source
 case-library/snapshots/       lightweight GitHub reference snapshots
 brand/                        open-source-safe default profile assets
 profiles/                     profile examples and overlay guidance
 docs/                         packaging and boundary docs
 ```
+
+## Public Frontend
+
+`frontend/` contains the current public-safe application-scenario browser, solution and asset views, source-state contracts, and explicit project-observation adapter. It reads this repository's public Registry (79 assets and 15 recipes at this release candidate) and keeps Registry media metadata-only.
+
+The private preview pack, client or identity media, native desktop wrapper, build history, screenshots, and project manifests are not bundled. See `frontend/README.md` for demo, snapshot, and validation commands.
 
 ## Private Overlay Pattern
 

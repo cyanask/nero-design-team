@@ -214,6 +214,8 @@ async function validateLocalReferenceClosure({ allowPrivateOverlayReferences = f
   const candidates = allFiles.filter((filePath) => {
     const relativePath = path.relative(root, filePath);
     const extension = path.extname(filePath).toLowerCase();
+    if (relativePath === path.join("frontend", "public-projection.json")) return false;
+    if (relativePath === path.join("frontend", "public", "demo", "snapshot.json")) return false;
     if (relativePath.startsWith(`case-library${path.sep}snapshots${path.sep}`) && path.basename(filePath) !== "snapshot.json") return false;
     return extension === ".md" || extension === ".json" || (relativePath.startsWith(`templates${path.sep}`) && [".mjs", ".js", ".ts", ".tsx", ".css", ".html", ".svg", ".xml"].includes(extension));
   });

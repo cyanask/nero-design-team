@@ -1,0 +1,129 @@
+:root {
+  color-scheme: light;
+  font-family: var(
+    --ndt-font-cn-body,
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Noto Sans SC",
+    sans-serif
+  );
+  background: var(--ndt-color-surface-canvas, #f5f7f8);
+  color: var(--ndt-color-text-primary, #1d252c);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--ndt-color-surface-canvas, #f5f7f8);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+a,
+input,
+select {
+  outline: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  box-shadow: var(--ndt-shadow-focus, 0 0 0 3px rgba(31, 78, 95, 0.22));
+  outline: 2px solid var(--ndt-color-brand-primary, #1f4e5f);
+  outline-offset: 2px;
+}
+
+/* Route changes move screen-reader focus to the new page title. The title is
+   not an interactive control, so do not draw a control-sized focus rectangle. */
+.workspace h1[tabindex="-1"]:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+p,
+dl,
+dd {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(24px, 2.4vw, var(--ndt-type-display-size, 32px));
+  line-height: var(--ndt-type-display-lineHeight, 1.16);
+  margin-bottom: 8px;
+  letter-spacing: -0.025em;
+}
+
+h2 {
+  font-size: var(--ndt-type-title-size, 22px);
+  line-height: var(--ndt-type-title-lineHeight, 1.22);
+}
+
+.mono {
+  font-family: var(
+    --ndt-font-en-mono,
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace
+  );
+}
+
+.sr-only {
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.section-label,
+.eyebrow {
+  color: var(--ndt-color-text-muted, #667680);
+  font-family: var(
+    --ndt-font-en-mono,
+    "SFMono-Regular",
+    Consolas,
+    monospace
+  );
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  margin-bottom: 7px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

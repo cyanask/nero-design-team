@@ -13,7 +13,7 @@ const rootStat = await fs.stat(root);
 if (!rootStat.isDirectory()) throw new Error(`Release root is not a directory: ${root}`);
 
 const textExtensions = new Set([
-  "", ".md", ".json", ".mjs", ".js", ".cjs", ".ts", ".tsx", ".py", ".sh",
+  "", ".md", ".json", ".mjs", ".mts", ".js", ".cjs", ".ts", ".tsx", ".py", ".sh",
   ".css", ".html", ".svg", ".xml", ".yaml", ".yml", ".txt", ".toml", ".csv"
 ]);
 const privateDirectories = new Set([

@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "workbench.snapshot.v1",
+  "snapshotId": "demo-snapshot-v1",
+  "snapshotFingerprint": "demo-fixture-not-a-source-fingerprint",
+  "catalog": {
+    "contractVersion": "workbench.read.v1",
+    "adapterVersion": "0.1.0",
+    "observedAt": "2026-01-01T00:00:00.000Z",
+    "source": {
+      "id": "synthetic-demo",
+      "sourceSchemaVersion": "1.0.0",
+      "sourceVersion": "demo",
+      "fingerprint": null
+    },
+    "state": {
+      "upstreamAuthority": "reference",
+      "availability": "observed_available",
+      "configuration": "not_applicable",
+      "runtime": "not_applicable",
+      "freshnessAtObservation": "unknown",
+      "projection": "demo_fixture"
+    },
+    "data": {
+      "categories": [
+        {
+          "id": "demo-foundations",
+          "label": "示例能力",
+          "assetIds": ["DEMO-001"]
+        }
+      ],
+      "recipes": [
+        {
+          "id": "demo-readonly-catalog",
+          "label": "只读目录示例",
+          "assetIds": ["DEMO-001"]
+        }
+      ],
+      "assets": [
+        {
+          "id": "DEMO-001",
+          "key": "synthetic-capability",
+          "categoryId": "demo-foundations",
+          "name": "合成示例能力",
+          "purpose": "验证目录、筛选和详情交互，不代表任何真实 NDT 资产。",
+          "useFor": ["公开安全的界面演示"],
+          "routes": ["frontend-ui"],
+          "knownRoutes": ["frontend-ui"],
+          "rawStatus": "demo_only",
+          "rights": "synthetic",
+          "sourceRef": null,
+          "members": [],
+          "notes": ["此数据不可用于业务判断。"],
+          "preview": {
+            "state": "resolved",
+            "url": "./app-icon.svg",
+            "kind": "synthetic-demo",
+            "label": "合成演示预览",
+            "boundary": "仅用于公开安全的界面演示，不代表真实 NDT 资产。",
+            "fit": "contain",
+            "variants": []
+          },
+          "issueCodes": []
+        }
+      ],
+      "domainRecords": [
+        {
+          "domain": "tokens",
+          "sourceId": "demo/tokens",
+          "registryAssetId": null,
+          "label": "demo-token-set",
+          "sourceVersion": "demo",
+          "rawStatus": "demo_only",
+          "rights": "synthetic",
+          "facts": [
+            { "key": "/color/brand/primary", "value": "#365d66" },
+            { "key": "/color/surface/canvas", "value": "#f5f7f8" },
+            { "key": "/color/surface/paper", "value": "#ffffff" },
+            { "key": "/color/text/primary", "value": "#1d252c" },
+            { "key": "/color/text/muted", "value": "#667680" },
+            { "key": "/color/border/subtle", "value": "#dce4e8" },
+            { "key": "/color/status/warning", "value": "#b7791f" }
+          ],
+          "issueCodes": ["DEMO_FIXTURE"]
+        }
+      ],
+      "integrityIssues": [],
+      "unboundDomainRecords": []
+    },
+    "issues": [
+      {
+        "code": "DEMO_FIXTURE",
+        "severity": "info",
+        "message": "Synthetic demo data; not an observed business source.",
+        "sourceId": "synthetic-demo"
+      }
+    ]
+  },
+  "projects": {
+    "contractVersion": "workbench.read.v1",
+    "adapterVersion": "0.1.0",
+    "observedAt": "2026-01-01T00:00:00.000Z",
+    "source": {
+      "id": "synthetic-projects",
+      "sourceSchemaVersion": "1.0.0",
+      "sourceVersion": "demo",
+      "fingerprint": null
+    },
+    "state": {
+      "upstreamAuthority": "reference",
+      "availability": "not_checked",
+      "configuration": "not_configured",
+      "runtime": "not_applicable",
+      "freshnessAtObservation": "unknown",
+      "projection": "demo_fixture"
+    },
+    "data": {
+      "index": {
+        "discovery": "not_configured",
+        "projects": []
+      },
+      "detailsById": {}
+    },
+    "issues": [
+      {
+        "code": "ROOT_NOT_CONFIGURED",
+        "severity": "info",
+        "message": "Demo mode does not configure project roots.",
+        "sourceId": "synthetic-projects"
+      }
+    ]
+  }
+}

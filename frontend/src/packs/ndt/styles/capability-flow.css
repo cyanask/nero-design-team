@@ -1,0 +1,135 @@
+.capability-experience {
+  background: var(--ui-paper);
+  display: grid;
+  grid-template-rows: 58px minmax(0, 1fr);
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.capability-view-nav {
+  align-items: stretch;
+  background: var(--ui-ivory);
+  border-bottom: 1px solid var(--ui-line-dark);
+  display: flex;
+  min-width: 0;
+  padding: 0 24px;
+}
+
+.capability-view-nav a {
+  border-bottom: 3px solid transparent;
+  color: var(--ui-muted);
+  display: grid;
+  min-width: 170px;
+  padding: 10px 16px 8px;
+  text-decoration: none;
+}
+
+.capability-view-nav a:hover {
+  background: var(--ui-paper);
+  color: var(--ui-ink);
+}
+
+.capability-view-nav a.active {
+  border-bottom-color: var(--ui-coral);
+  color: var(--ui-ink);
+}
+
+.capability-view-nav span {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.capability-view-nav small {
+  color: var(--ui-muted);
+  font-size: 9px;
+  margin-top: 3px;
+}
+
+.capability-view-body {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.project-capability-links {
+  align-items: start;
+  background: var(--ui-ivory);
+  border: 1px solid var(--ui-line);
+  border-left: 3px solid var(--ui-coral);
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(190px, 0.7fr) minmax(260px, 1.3fr);
+  padding: 15px 16px;
+}
+
+.project-capability-links h3 {
+  font-family: var(--ndt-font-cn-display, "Source Han Serif SC", serif);
+  font-size: 15px;
+  margin: 5px 0 4px;
+}
+
+.project-capability-links p,
+.project-capability-links > strong {
+  color: var(--ui-muted);
+  font-size: 10px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.project-capability-link-list,
+.adoption-project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.project-capability-link-list a,
+.adoption-project-links a {
+  background: var(--ui-paper);
+  border: 1px solid var(--ui-line-dark);
+  color: var(--ui-blue);
+  font: 700 9px/1.3 var(--ndt-font-en-mono, monospace);
+  min-height: 32px;
+  padding: 9px 10px;
+  text-decoration: none;
+}
+
+.project-capability-link-list a:hover,
+.project-capability-link-list a:focus-visible,
+.adoption-project-links a:hover,
+.adoption-project-links a:focus-visible {
+  border-color: var(--ui-coral);
+  color: var(--ui-coral);
+  outline: none;
+}
+
+.adoption-project-links a {
+  background: var(--ui-ivory);
+  font-family: inherit;
+}
+
+@media (max-width: 700px) {
+  .capability-experience {
+    grid-template-rows: 54px minmax(0, 1fr);
+  }
+
+  .capability-view-nav {
+    padding: 0 8px;
+  }
+
+  .capability-view-nav a {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 9px 10px 7px;
+  }
+
+  .capability-view-nav small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .project-capability-links {
+    grid-template-columns: 1fr;
+  }
+}
