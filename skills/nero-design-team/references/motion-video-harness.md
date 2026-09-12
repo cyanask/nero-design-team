@@ -28,7 +28,7 @@ Use this rule when a NERO design task needs motion thinking, short video, animat
 ## Motion Defaults
 
 - Motion should reveal hierarchy, not decorate.
-- Captions are primary communication for social/mobile viewing.
+- Captions are primary communication for silent-feed and social viewing.
 - Keep scene density lower than PPT and image reports.
 - Use slower, cleaner transitions for charts and financial data.
 - Preserve reduced-motion fallback when the same component is reused in UI or HTML.

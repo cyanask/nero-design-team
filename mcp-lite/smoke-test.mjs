@@ -242,6 +242,11 @@ function assertDesignRegistry(response, label) {
   assert.equal(result.asset_catalog?.open_integrity_issues, expectedOpenIntegrityIssues, `${label} should retain the active Registry integrity issues`);
 }
 
+function assertMobileRejected(response, label) {
+  assert.equal(response?.error?.code, -32000, `${label} should fail closed`);
+  assert.match(response?.error?.message || "", /does not support mobile\/tablet software UI/);
+}
+
 async function runContentLengthSmoke() {
   const { child, getStderr } = spawnServer();
   const state = { buffer: Buffer.alloc(0) };
@@ -316,6 +321,8 @@ async function runContentLengthSmoke() {
       const source = activeAssets.styles.find(item => item.id === style.id).versions.find(item => item.version === selected.version);
       assert.deepEqual(selected.manifest.prompts, source.manifest.prompts, "MCP must preserve exact version prompts");
     }
+    sendContentLength(child.stdin, { jsonrpc: "2.0", id: 9, method: "tools/call", params: { name: "nero_design_route", arguments: { task: "Create a mobile dashboard" } } });
+    assertMobileRejected(await readContentLengthMessage(child.stdout, state, getStderr, "content-length mobile rejection"), "content-length mobile rejection");
     console.log("content-length smoke ok");
   } finally {
     child.stdin.end();
@@ -398,6 +405,8 @@ async function runNdjsonSmoke() {
       const source = activeAssets.styles.find(item => item.id === style.id).versions.find(item => item.version === selected.version);
       assert.deepEqual(selected.manifest.prompts, source.manifest.prompts, "MCP must preserve exact version prompts");
     }
+    sendNdjson(child.stdin, { jsonrpc: "2.0", id: 9, method: "tools/call", params: { name: "nero_design_route", arguments: { task: "设计一个移动端 App" } } });
+    assertMobileRejected(await readNdjsonMessage(child.stdout, state, getStderr, "ndjson mobile rejection"), "ndjson mobile rejection");
     console.log("ndjson smoke ok");
   } finally {
     child.stdin.end();

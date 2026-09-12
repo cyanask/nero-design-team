@@ -6,7 +6,7 @@ Select the requested operation and then read [PPT rules](ppt.md) and [business d
 |---|---|
 | New formal editable PPTX | Caller resolves the current project's operation registry; [production harness](ppt-production-harness.md) for substantial work |
 | Current/template PPTX | Preserve the current deck and manual edits; use the project's template/edit route and before/after comparison |
-| HTML/web deck | [web PPT](web-ppt.md), [style discovery](html-deck-style-discovery.md), [multi-device QA](web-ppt-multidevice-qa.md) |
+| Desktop HTML/web deck | [web PPT](web-ppt.md), [style discovery](html-deck-style-discovery.md), desktop browser QA |
 | Explicit lightweight local sample | Legacy PptxGenJS only when selected; never a silent formal fallback |
 
 Load [image generation](ai-image-generation.md) only when imagery is needed. External engines and references retain their registered version, rights and execution boundaries. Source metadata lives in the Registry; upstream template/media packs are not automatically reusable assets.

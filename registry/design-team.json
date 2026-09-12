@@ -123,10 +123,10 @@
     "maturity_boundary": "A complete Registry is catalog evidence only. Runtime health, evaluation evidence, and production readiness require separate verifiers."
   },
   "name": "NERO Design Team",
-  "version": "2.11.0",
+  "version": "3.0.0",
   "owner": "NERO",
   "updated_at": "2026-09-12",
-  "purpose": "Public-safe derivative of NERO Design Team 2.10.0 for frontend UI, AI App UI, interaction motion, architecture-diagram design and draw.io/Mermaid redraw, image reports, Figure Compiler v0.2 with nine unchanged structural figure types, PPT/web-PPT, short video, AI-image briefs, generic style packs, visual QA, route-specific scoring, and production checks. Private authority, client/project evidence, restricted packs, local validation history, and external governance schemas are not bundled.",
+  "purpose": "Public-safe derivative of NERO Design Team 3.0.0 for desktop frontend UI, desktop AI App UI, interaction motion, architecture-diagram design and draw.io/Mermaid redraw, image reports, Figure Compiler v0.2 with nine unchanged structural figure types, PPT/desktop web-PPT, short video, AI-image briefs, generic style packs, visual QA, route-specific scoring, and production checks. Mobile/tablet software and web interfaces are unsupported. Private authority, client/project evidence, restricted packs, local validation history, and external governance schemas are not bundled.",
   "global_trigger_route": {
     "status": "enabled",
     "source": "$CODEX_HOME/AGENTS.md",
@@ -270,7 +270,7 @@
     }
   },
   "oss_distribution": {
-    "version": "2.11.0",
+    "version": "3.0.0",
     "status": "published",
     "repository": "cyanask/nero-design-team",
     "url": "https://github.com/cyanask/nero-design-team",
@@ -468,7 +468,7 @@
         "$NERO_DESIGN_TEAM_HOME/tokens/motion.json"
       ],
       "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/emilkowalski__skills/snapshot.json",
-      "use_for": "Responsive and interruptible interaction motion, direct manipulation, gesture velocity and momentum, restraint-first motion decisions, focused reviews, codebase-wide motion audits, self-contained repair plans, and motion vocabulary.",
+      "use_for": "Desktop interruptible interaction motion, direct manipulation, pointer velocity and momentum, restraint-first motion decisions, focused reviews, codebase-wide motion audits, self-contained repair plans, and motion vocabulary.",
       "avoid_for": "Independent default routing, installing upstream Skills as parallel controllers, copying Apple identity/SF Symbols/WWDC slides/course content, decorative motion in dense work tools, or freezing upstream duration/performance heuristics without stack and browser verification.",
       "technical_corrections": [
         "Physics-based springs or inertia are required when live gesture velocity must be inherited; duration-plus-bounce springs do not carry existing velocity in Motion.",

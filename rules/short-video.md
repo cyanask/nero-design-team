@@ -17,7 +17,7 @@ Use this rule for future short videos, animated research cards, data explainers,
 - Build tokens first with `$NERO_DESIGN_TEAM_HOME/scripts/build-tokens.mjs` when using local templates.
 - Start with a clear claim, question, or key number.
 - Use a storyboard before coding: scene, duration, visual, text, data source.
-- Keep each scene visually simple enough for mobile viewing.
+- Keep each scene visually simple enough for the declared output canvas.
 - Use captions as primary communication, not afterthoughts.
 - Use motion to reveal hierarchy, not to decorate.
 
@@ -28,7 +28,7 @@ Use this rule for future short videos, animated research cards, data explainers,
 - No generated image text, numbers, subtitles, chart labels, or source notes as final video content.
 - No data video without source and metric definitions.
 - No fast transitions that make charts unreadable.
-- No long subtitle lines that exceed mobile-safe width.
+- No long subtitle lines that exceed the declared frame safe area.
 - No auto-generated visuals without frame-level QA.
 
 ## Deliverable Requirements

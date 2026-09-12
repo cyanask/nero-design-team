@@ -50,7 +50,7 @@
       "repository": "ant-design/ant-design-pro",
       "source_url": "https://github.com/ant-design/ant-design-pro",
       "route": "frontend-ui",
-      "purpose": "Reference enterprise admin dashboard structure, responsive layouts, page templates, tables, forms, and Ant Design workflow density.",
+      "purpose": "Reference enterprise admin dashboard structure, desktop layouts, page templates, tables, forms, and Ant Design workflow density.",
       "style": "enterprise admin, Ant Design, structured page templates, dense but orderly business UI",
       "tokens": [
         "color.brand.primary",
@@ -134,7 +134,7 @@
         "shadcn dashboard starters",
         "admin layout inspiration",
         "theme preset comparison",
-        "responsive sidebar design"
+        "desktop sidebar design"
       ],
       "disabled_when": [
         "copying decorative theme presets directly",
@@ -187,7 +187,7 @@
       "source_url": "https://github.com/emilkowalski/skills",
       "route": "frontend-ui",
       "purpose": "Reference fluid interaction design, gesture physics, restrained motion decisions, animation review standards, codebase-wide motion audits, implementation-plan structure, and precise animation vocabulary.",
-      "style": "responsive and interruptible interaction motion, gesture physics, restrained design engineering, animation audit discipline",
+      "style": "direct and interruptible desktop interaction motion, gesture physics, restrained design engineering, animation audit discipline",
       "tokens": [
         "motion.duration.press",
         "motion.duration.control",
@@ -206,7 +206,7 @@
         "drawers, sheets, carousels, drag and swipe behavior",
         "frontend motion review and codebase-wide audits",
         "interaction QA, reduced-motion review, and motion terminology",
-        "NERO work-tool interfaces that need responsive feedback without decorative over-animation"
+        "NERO work-tool interfaces that need immediate feedback without decorative over-animation"
       ],
       "disabled_when": [
         "installing the upstream skills as independent NDT entrypoints",

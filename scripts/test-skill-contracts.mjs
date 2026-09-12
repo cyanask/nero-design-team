@@ -73,6 +73,20 @@ try {
     assert.ok(result.rules.includes("references/frontend-motion.md"));
     assert.equal(result.rules.includes("references/motion-video-harness.md"), false);
   });
+  await check("mobile software and web targets fail closed while portrait media remains available", async () => {
+    for (const task of ["设计一个移动端 App", "Create a mobile dashboard", "审阅手机版 PitchBook"]) {
+      await assert.rejects(routeTool({ task }), error => error.code === "MOBILE_UI_UNSUPPORTED");
+    }
+    assert.equal((await routeTool({ task: "制作一张微信公众号竖版报告图" })).route, "image-report");
+    assert.equal((await routeTool({ task: "制作一个 9:16 竖版短视频" })).route, "short-video");
+    for (const retired of [
+      "skills/nero-design-team/references/web-ppt-multidevice-qa.md",
+      "rules/web-ppt-multidevice-qa.md",
+      "scripts/audit-web-ppt-multidevice.mjs"
+    ]) {
+      await assert.rejects(fs.access(path.join(root, retired)));
+    }
+  });
   await check("AI UI audits keep the relevant frontend profile", async () => {
     const result = await routeTool({ task: "审查这个 AI 软件前端的人工确认界面" });
     assert.equal(result.task_mode, "audit");

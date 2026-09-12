@@ -50,7 +50,7 @@
       "mode": "rewrite",
       "source": "skill-source/nero-design-team/**",
       "destination": "skills/nero-design-team/**",
-      "expected_source_count": 54,
+      "expected_source_count": 53,
       "required": true
     },
     {
@@ -58,7 +58,7 @@
       "mode": "rewrite",
       "source": "rules/**",
       "destination": "rules/**",
-      "expected_source_count": 33,
+      "expected_source_count": 32,
       "required": true
     },
     {

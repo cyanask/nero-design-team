@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <code>NDT 2.11.0</code> · <code>12 bundled assets</code> · <code>16 recipes</code> · <code>MCP 2.5.0</code> · <code>Apache-2.0</code>
+  <code>NDT 3.0.0</code> · <code>12 bundled assets</code> · <code>16 recipes</code> · <code>MCP 2.5.0</code> · <code>Apache-2.0</code>
 </p>
 
 NERO Design Team (NDT) gives a coding agent more than a visual prompt. It routes the task, selects reusable design assets, runs deterministic local tools where possible, and keeps QA and promotion states explicit.
@@ -43,17 +43,18 @@ NDT makes that path explicit:
 | Explicit QA and candidate state | No | No | Yes |
 | Public/private asset boundary | Project-specific | Rarely | Built into the package |
 
-## What's New in 2.11.0
+## What's New in 3.0
 
-This release aligns the public package version and NDT architecture baseline at `2.11.0`.
+This release aligns the public package version and NDT architecture baseline at `3.0.0` and makes desktop-only software/web support a hard boundary.
 
 - A method-first design contract scales from small repairs to reference exploration, direction comparison, representative trials, render-based refinement, and candidate retention.
 - The stable MCP bridge `2.5.0` keeps its tool contract fixed while loading compatible NDT rules, code, and catalogs per call.
 - The asset Registry now distinguishes reusable assets, complete cases, supporting references, maturity, reuse state, ten visual-tag dimensions, versioned styles, and revision-checked maintenance seams.
-- New `ai-app-ui` and architecture/redraw contracts cover agent states, trust boundaries, responsive behavior, semantic diagram selection, and meaning-preserving Mermaid/draw.io redraw.
+- New `ai-app-ui` and architecture/redraw contracts cover agent states, trust boundaries, desktop-window behavior, semantic diagram selection, and meaning-preserving Mermaid/draw.io redraw.
+- Mobile/tablet UI, phone-specific web companions, responsive mobile breakpoints, and the former multi-device QA tool are removed. Mobile UI requests now fail closed before code or asset generation.
 - Visual scoring and production checks share criterion applicability and current-file evidence rules, so an aggregate score cannot waive missing output, preview, content, or accessibility evidence.
 
-The public catalog contains 12 distributable reusable assets, 9 public-safe cases, 59 supporting references, and 16 recipes. Rules, tools, snapshots, and compatibility IDs remain separately classified instead of being counted as reusable visual assets.
+The public catalog contains 12 distributable reusable assets, 9 public-safe cases, 58 supporting references, and 16 recipes. Rules, tools, snapshots, and compatibility IDs remain separately classified instead of being counted as reusable visual assets.
 
 ## Quick Start
 
@@ -110,7 +111,7 @@ The public frontend is a read-only projection of this flow. It exposes applicati
 
 | Route | Typical work |
 |---|---|
-| `frontend-ui` | Dashboards, workbenches, responsive UI, interaction review |
+| `frontend-ui` | Desktop dashboards, workbenches, software UI, interaction review |
 | `image-report` | Research cards, long images, embedded explanatory figures |
 | `ppt` | PPT/PPTX direction, web decks, production handoff contracts |
 | `short-video` | Storyboards, motion systems, frame-level QA |
@@ -176,7 +177,8 @@ Read [`docs/oss-boundary.md`](docs/oss-boundary.md), [`docs/private-overlay.md`]
 
 - The installer currently targets the Codex Skill directory.
 - The Registry browser is local and read-only; no hosted service or telemetry is bundled.
-- The bundled public frontend is `0.4.3`, reviewed against the private `0.5.11` source baseline. Private desktop packaging, Registry mutation UI, private preview media, and its local visual shell are excluded.
+- The bundled public frontend is `0.5.0`, reviewed against the private `0.5.11` source baseline. It requires a 900px desktop canvas; mobile/tablet adaptation, private desktop packaging, Registry mutation UI, private preview media, and the local visual shell are excluded.
+- Mobile/tablet software UI, phone-specific web companions, and responsive mobile adaptation are unsupported. Portrait editorial graphics, WeChat images, and vertical videos remain media outputs, not mobile UI.
 - The public distribution is derived and non-authoritative by design.
 - Private previews, native desktop packaging, and project-specific manifests are not bundled.
 - Formal editable Office deliverables still require an explicit downstream handoff and format-specific QA.
@@ -191,7 +193,7 @@ Apache License 2.0. See [`LICENSE`](LICENSE) and [`LICENSE-NOTES.md`](LICENSE-NO
 
 ## Skill maintenance
 
-The source separates task mode from output medium and applies KAT gates only to selected contracts. See the [maintenance contract](docs/skill-maintenance.md). This contract is included in NDT `2.11.0`.
+The source separates task mode from output medium and applies KAT gates only to selected contracts. See the [maintenance contract](docs/skill-maintenance.md). The desktop-only contract is included in NDT `3.0.0`.
 
 ## Stable MCP bridge
 

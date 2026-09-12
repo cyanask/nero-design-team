@@ -8,7 +8,7 @@
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; }
+body { margin: 0; min-width: 900px; }
 button { font: inherit; }
 
 .agent-shell {
@@ -139,21 +139,4 @@ h2 { font-size: 17px; line-height: 1.35; margin-bottom: 0; }
   .workspace-grid { grid-template-columns: 1fr; }
   .evidence-column { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .boundary-panel { grid-column: 1 / -1; }
-}
-
-@media (max-width: 680px) {
-  .agent-shell { grid-template-columns: 1fr; }
-  .state-rail { padding: 14px; }
-  .brand-block { margin-bottom: 14px; }
-  .state-rail nav { display: flex; overflow-x: auto; padding-bottom: 4px; }
-  .state-link { flex: 0 0 auto; width: auto; }
-  .agent-workspace { padding: 16px; }
-  .workspace-header { align-items: flex-start; flex-direction: column; }
-  h1 { font-size: 23px; }
-  .approval-box dl, .evidence-column { grid-template-columns: 1fr; }
-  .button-row { align-items: stretch; flex-direction: column-reverse; }
-  .primary-button, .secondary-button { justify-content: center; }
-  .failure-box { grid-template-columns: auto minmax(0, 1fr); }
-  .failure-box button { grid-column: 1 / -1; justify-content: center; }
-  .boundary-panel { grid-column: auto; }
 }

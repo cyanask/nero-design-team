@@ -10,8 +10,11 @@
 | 留白杂志风 / 留白杂志风格 | `ai-image-generation` + `minimal-zine-editorial`; [zine entry](minimal-zine-entry.md) |
 | 摄影抽象双联画 / 照片抽象双联画 | `ai-image-generation` + `photo-derived-editorial-diptych`; [diptych](photo-derived-editorial-diptych.md) |
 | 架构脉络图 / 深色节点网络架构图 | `frontend-ui` + [effective HTML](effective-html.md); use `not-bundled-prompts-effective-html-architecture-map.md` |
+| 移动端 / 手机端 / 平板 App、网页或适配 | Unsupported in NDT 3.0; return without generation or QA |
 
 A named style selects the route, not approval of the style version. Exact content remains governed by the target medium.
+
+The mobile prohibition applies to software and web interfaces, including audits and previews. It does not prohibit portrait editorial graphics, WeChat images or vertical video canvases, which remain media outputs under their own routes.
 
 ## Mixed and specialized requests
 

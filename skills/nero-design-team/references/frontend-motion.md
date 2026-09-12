@@ -12,7 +12,7 @@ This rule does not govern Remotion or short-video scene design. Use
 NERO Design Team remains the only visual entrypoint. The following
 `emilkowalski/skills` materials are fused references, not installed Skills:
 
-- `apple-design`: responsive, direct, interruptible, velocity-aware interaction.
+- `apple-design`: direct, interruptible, velocity-aware desktop interaction.
 - `emil-design-eng`: detailed motion and component craft heuristics.
 - `review-animations`: focused diff review and explicit approval criteria.
 - `improve-animations`: codebase-wide audit and self-contained repair plans.
@@ -104,12 +104,11 @@ Record whether the action comes from:
 
 - keyboard;
 - mouse/trackpad;
-- direct touch;
 - stylus;
 - programmatic state change.
 
-The same control may need different motion strength for direct touch and precise
-pointer or keyboard input.
+The same control may need different motion strength for precise pointer,
+stylus or keyboard input.
 
 ### 4. Business And Accessibility Risk
 
@@ -142,7 +141,6 @@ Reduce or remove motion when it can interfere with:
 - Use pointer capture when appropriate so tracking survives leaving the
   element bounds.
 - Apply a small intent threshold before locking a drag direction.
-- Protect active gestures from extra touch points that would cause a jump.
 
 ### Interruptibility
 
@@ -186,7 +184,7 @@ Reduce or remove motion when it can interfere with:
 - Translucent material is a functional floating layer, not a page-wide style.
 - Never stack translucent surfaces when contrast becomes ambiguous.
 - Provide an opaque or higher-contrast fallback.
-- Use responsive type scale, line-height, and tracking deliberately; do not
+- Use the selected desktop type scale, line-height, and tracking deliberately; do not
   copy Apple typography or identity assets.
 - Exact Chinese labels, figures, table content, and source notes remain stable
   DOM text during motion.
@@ -220,8 +218,8 @@ drop-in API for Motion, CSS, Remotion, or another library.
   categorically hardware-accelerated or unaccelerated.
 - Use slow-motion and frame-by-frame inspection for timing, origin, and
   coordinated-property defects.
-- Test drag and touch behavior on a real device when the interaction is
-  material to acceptance.
+- Test drag behavior with the supported desktop pointer, trackpad or stylus when
+  the interaction is material to acceptance.
 
 ## Accessibility And Browser Support
 
@@ -233,8 +231,8 @@ drop-in API for Motion, CSS, Remotion, or another library.
 - `prefers-contrast`: keep boundaries and text legible when contrast is raised.
 - Web vibration and haptics are optional enhancements with limited support.
   Never depend on them for confirmation or warning.
-- Gate hover-only motion behind input capability checks when touch devices are
-  in scope.
+- Gate hover-only motion behind input-capability checks when a non-hovering
+  desktop input is in scope.
 
 ## Audit Modes
 
@@ -290,7 +288,7 @@ A motion-bearing frontend is not complete until:
 - velocity-bearing gestures use an appropriate physics/inertia model;
 - reduced-motion behavior is verified;
 - text, data, controls, errors, and source notes remain readable;
-- desktop and relevant touch/mobile behavior are inspected;
+- desktop pointer, keyboard, trackpad and declared stylus behavior are inspected;
 - slow-motion or frame-level review covers high-risk interactions;
 - upstream references, license, and extracted patterns are reported;
 - no Apple or third-party identity/design asset is presented as NERO-owned.

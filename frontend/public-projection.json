@@ -3,9 +3,9 @@
   "sourceBoundary": "maintainer-supplied private frontend root; never bundled",
   "sourceBaseline": {
     "version": "0.5.11",
-    "commit": "547c011",
-    "publicDerivativeVersion": "0.4.3",
-    "boundary": "Shared public-safe files are copied or rewritten; native packaging, Registry mutation UI, private preview media, and local maintenance bridges remain excluded."
+    "commit": "4628b68",
+    "publicDerivativeVersion": "0.5.0",
+    "boundary": "Desktop-only shared files are copied or rewritten; mobile/tablet adaptation, native packaging, Registry mutation UI, private preview media, and local maintenance bridges remain excluded."
   },
   "copiedFiles": [
     "index.html",

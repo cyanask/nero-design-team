@@ -11,7 +11,7 @@ Read [reference exploration](reference-exploration.md) for local-first continuit
 ## Choose a method
 
 - Use M01 in [method cards](design-methods.md) for competing headings, images, data and actions.
-- Use M02 for semantic grouping, spacing, responsive layout and task-appropriate density.
+- Use M02 for semantic grouping, spacing, desktop layout and task-appropriate density.
 - Use M03 for typography roles, language coverage, long labels and source-note legibility.
 - Use M04 when combining independently selected components, illustrations or styles.
 - Use M05 when candidates are repetitive or repairs stop improving the result.
@@ -33,7 +33,7 @@ Before a large set, build the smallest slice that exercises the chosen layout, c
 
 Inspect the actual rendered surface. First identify the largest obstacle to the reading/action goal; change a relevant parameter or arrangement, then compare before/after. Keep strengths and protected manual edits. If the tactic is not improving the result, change the hypothesis or search rather than adding arbitrary decoration.
 
-For a maintained app, a mockup cannot establish live behavior. Check the actual approved running surface, applicable wide/narrow widths, scrolling, controls and data-source identity. If that inspection is unavailable, report the gap and keep rendered/live/human acceptance separate.
+For a maintained app, a mockup cannot establish live behavior. Check the actual approved desktop surface, declared desktop window sizes, scrolling, controls and data-source identity. If that inspection is unavailable, report the gap and keep rendered/live/human acceptance separate.
 
 ## Scope-Aware Workflow Graph Pattern
 
@@ -53,7 +53,7 @@ Handoff: `Graph Read: authority=<source>, projection=<kind>, scopes=<values>, gr
 ## Functional and evidence checks
 
 - Preserve accurate, readable content and sources. Do not hide essential qualifications, clip table content or silently rewrite frozen wording to fit.
-- Check long labels, intentional wrapping, zoom, contrast, heading order, focus visibility and touch targets where applicable.
+- Check long labels, intentional wrapping, zoom, contrast, heading order, focus visibility and desktop pointer/keyboard targets where applicable.
 - Preserve reading and keyboard order when the layout changes; controls and table scrolling must remain usable at target sizes.
 - Represent loading, empty, error, selected, disabled, active and other relevant states truthfully. AI state contracts apply only where those states exist.
 - Meaningful motion retains necessary feedback, interruption and reduced-motion behavior; inspect real gestures when implemented.

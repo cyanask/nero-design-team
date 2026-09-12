@@ -46,7 +46,7 @@ Brand work is not screenshot tracing. First identify the source-of-truth geometr
 - Render the real output, not just the source asset.
 - Confirm exactly one visible logo instance unless the layout intentionally needs more.
 - Confirm no duplicated `.wordmark`, `.brand-wordmark`, or equivalent text appears beside a full lockup asset.
-- Confirm desktop and mobile dimensions are explicit and do not overlap status chips, toggles, or primary controls.
+- Confirm desktop dimensions are explicit and do not overlap status chips, toggles, or primary controls.
 - Search generated HTML/CSS for old dimensions after resizing.
 - Compare visual weight against the nearest approved sibling product.
 - If published, verify the live page after the deployment status is built, not only the local package.

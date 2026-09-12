@@ -1,6 +1,6 @@
 # Investment Banking Pitchbook Design Rule
 
-Use this rule when `nero-design-team` is asked to design, audit, or produce formal investment-banking pitchbooks, broker department introductions, IPO advisory materials, client coverage decks, refinancing/M&A case books, and web/mobile pitchbook companions.
+Use this rule when `nero-design-team` is asked to design, audit, or produce formal investment-banking pitchbooks, broker department introductions, IPO advisory materials, client coverage decks, refinancing/M&A case books, and desktop web pitchbooks.
 
 ## Design Positioning
 
@@ -46,15 +46,6 @@ Use this rule when `nero-design-team` is asked to design, audit, or produce form
 - Keep right-side panels meaningfully loaded; do not let decorative background or empty panels carry the page.
 - For MacBook 13 and small desktop heights, add compact horizontal rules rather than relying on a 1920x1080-only layout.
 
-## Mobile Companion Rules
-
-- Treat mobile as a curated roadshow companion.
-- Do not mirror every desktop card into mobile pages.
-- Keep one screen per page where possible; avoid long-scroll image-like pages for pitchbooks.
-- Use mobile case-ledgers for representative cases.
-- Give major cases one or two dedicated mobile pages instead of compressing all text into one small card.
-- Never use `overflow:hidden`, ellipsis, or tiny font sizes to hide body content.
-
 ## Typography And Contrast
 
 - Dense body text should remain readable in projected desktop and phone viewports.
@@ -67,8 +58,7 @@ Use this rule when `nero-design-team` is asked to design, audit, or produce form
 - No body text overlaps, is clipped, or becomes low-contrast.
 - No high-value case loses its status boundary.
 - Client coverage has visible grouping and hierarchy.
-- Mobile page count is intentionally curated, not an automatic explosion of desktop fragments.
-- Desktop, MacBook 13, phone portrait, and phone landscape states are checked before delivery.
+- Desktop and MacBook 13 states are checked before delivery. Mobile/tablet companions are unsupported in NDT 3.0.
 
 ## Regulatory Evidence Swiss HTML PitchBook Addendum
 

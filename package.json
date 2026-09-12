@@ -1,6 +1,6 @@
 {
   "name": "nero-design-team",
-  "version": "2.11.0",
+  "version": "3.0.0",
   "private": false,
   "type": "module",
   "description": "Local design operating system for Codex with public-safe assets, deterministic runtimes, and explicit delivery gates.",
@@ -32,7 +32,16 @@
     "templates",
     "third-party-metadata.json",
     "tokens",
-    "tools"
+    "tools",
+    "!case-library/assets",
+    "!assets/private",
+    "!assets/external",
+    "!**/__pycache__",
+    "!**/*.pyc",
+    "!frontend/.playwright-cli",
+    "!frontend/node_modules",
+    "!frontend/.local",
+    "!frontend/dist-*"
   ],
   "scripts": {
     "doctor": "node doctor.mjs",

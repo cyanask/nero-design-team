@@ -19,7 +19,7 @@ This is a cross-format editorial notation system. It may change expression and v
 
 - `response`: short clauses, deliberate line breaks, sparse annotation syntax, explicit uncertainty and next step. The chat renderer may not expose custom font or marker backgrounds.
 - `image-report`: HTML/CSS/SVG or programmatic layers; text and numerals use the registered handwritten treatment, while bars, axes, and curves use deterministic hand-drawn vector geometry. Marker, circle, underline, and strike-through remain separate annotation overlays.
-- `web-ppt-html`: NERO-native CSS variables and inline SVG; recompose the conclusion and chart on mobile.
+- `web-ppt-html`: NERO-native CSS variables and inline SVG for the declared desktop stage.
 - `ppt`: the current project's operation route owns formal editable PPTX production; use native text, chart, and vector annotation objects. NERO Principal routes new formal production to `ppt-master-native-pptx` and existing/template work to Presentations.
 - `frontend-ui`: use the style for explanations, guided evidence reading, or empty states, not dense operational chrome.
 
@@ -28,7 +28,7 @@ This is a cross-format editorial notation system. It may change expression and v
 - Do not use for formal regulatory filing pages, dense banker appendices, or audit schedules unless the project explicitly approves a restrained annotation derivative.
 - Do not let generated raster carry exact text, financial figures, tables, chart axes, source notes, or regulatory wording.
 - Do not bundle external fonts or source images into NDT.
-- Do not call a project `visual_ready` until its own visual, responsive, font, and output-engine QA passes.
+- Do not call a project `visual_ready` until its own visual, declared desktop-size, font, and output-engine QA passes.
 
 ## Required reference
 

@@ -126,9 +126,9 @@ Not allowed by default:
 - No placeholder title, `[必填]`, sample conclusion, or fake data remains.
 - All slide classes used by generated sections exist in the chosen template or local CSS.
 - Typography, spacing, and theme rhythm are consistent.
-- Text does not overflow at desktop and mobile preview sizes where applicable.
+- Text does not overflow at the declared desktop presentation sizes.
 - Images are not stretched, blurred, or cropped in a way that blocks inspection.
-- Navigation works with keyboard and touch where the deck provides it.
+- Navigation works with keyboard and desktop pointer input where the deck provides it.
 - Browser screenshot/contact-sheet review passes before final delivery.
 - Self-contained HTML pages open without a build step when that is the intended delivery mode.
 - Dark mode, if included, uses CSS variables and does not break SVG/text contrast.

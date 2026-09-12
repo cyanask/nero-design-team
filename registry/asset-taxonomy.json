@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "visual_dimensions": [
     {
       "id": "composition",
@@ -21,7 +21,6 @@
         "垂直堆叠",
         "紧凑布局",
         "悬浮层",
-        "响应式布局",
         "全幅背景",
         "叠层",
         "对称",

@@ -71,8 +71,8 @@
         "required": ["label", "width", "height"],
         "properties": {
           "label": { "type": "string", "minLength": 1 },
-          "width": { "type": "integer", "minimum": 320 },
-          "height": { "type": "integer", "minimum": 480 }
+          "width": { "type": "integer", "minimum": 900 },
+          "height": { "type": "integer", "minimum": 600 }
         }
       },
       "minItems": 1

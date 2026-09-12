@@ -25,7 +25,7 @@ Consult a matching card when diagnosis is unclear, a new method is useful or rep
 - **Problem:** the page feels crowded, scattered, or makes it unclear which labels, values and controls belong together.
 - **Evidence:** trace the task sequence and real semantic groups. Look for equal gaps separating both related and unrelated items, accidental alignment and hidden scroll/overflow.
 - **Action:** tighten spacing inside a group and separate groups, align useful reading axes, rebalance columns or use a divider/container where it clarifies membership. Adjust density to the task; add no arbitrary whitespace target.
-- **Effect check:** at the actual narrow and wide sizes, can readers match related items and reach required content without losing reading order? Retain all necessary information.
+- **Effect check:** at the declared desktop sizes, can readers match related items and reach required content without losing reading order? Retain all necessary information.
 - **Do not apply mechanically:** a time-critical monitoring screen may need dense adjacency; a narrative cover may use open space. Neither is a universal model for the other.
 - [View the grouping comparison](../assets/methods/grouping.png).
 

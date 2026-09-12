@@ -24,7 +24,15 @@ describe("public frontend package", () => {
       fs.readFile("src/packs/ndt/styles/base.css", "utf8"),
       fs.readFile("src/packs/ndt/styles/shell.css", "utf8")
     ]);
-    expect(baseCss).not.toContain("min-width: 900px");
-    expect(shellCss).toMatch(/@media \(max-width: 720px\)[\s\S]*grid-template-rows: auto minmax\(0, 1fr\)/);
+    expect(baseCss).toContain("min-width: 900px");
+    expect(shellCss).not.toMatch(/@media \(max-width: (?:[0-8]\d\d|\d{1,2})px\)/);
+    const styleRoot = path.resolve("src/packs/ndt/styles");
+    for (const file of await fs.readdir(styleRoot)) {
+      if (!file.endsWith(".css")) continue;
+      const css = await fs.readFile(path.join(styleRoot, file), "utf8");
+      for (const match of css.matchAll(/@media\s*\(max-width:\s*(\d+)px\)/g)) {
+        expect(Number(match[1]), `${file} contains a mobile breakpoint`).toBeGreaterThanOrEqual(900);
+      }
+    }
   });
 });

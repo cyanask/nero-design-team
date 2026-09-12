@@ -27,6 +27,18 @@ export const allowedRoutes = [
 
 export const taskModes = ["create", "revise", "audit"];
 
+function assertDesktopOnlyTask(task) {
+  const text = String(task || "").toLowerCase();
+  const mobileTarget = /mobile(?:-first)?|phone|iphone|ipad|\bios\b|android|tablet|手机端|移动端|移动版|手机版|平板|小程序/.test(text);
+  const softwareOrWebWork = /\b(?:ui|ux|frontend|web|website|page|app|application|dashboard|deck|ppt|pitchbook|qa|audit|review)\b|界面|前端|网页|网站|页面|应用|软件|工作台|演示|适配|开发|设计|审查|审阅|检查|预览/.test(text);
+  if (mobileTarget && softwareOrWebWork) {
+    throw Object.assign(
+      new Error("NDT 3.0 does not support mobile/tablet software UI, phone-specific web companions, or responsive mobile adaptation."),
+      { code: "MOBILE_UI_UNSUPPORTED" }
+    );
+  }
+}
+
 function inferTaskMode(task, requested) {
   if (requested !== undefined) {
     if (!taskModes.includes(requested)) throw new Error(`Unknown task_mode: ${requested}`);
@@ -630,6 +642,7 @@ function inferFigureCompiler(task, route, architectureDiagram) {
 }
 
 export async function routeTool(args) {
+  assertDesktopOnlyTask(args.task);
   const taskMode = inferTaskMode(args.task, args.task_mode);
   const route = inferRoute(args.task, args.preferred_route, taskMode);
   const text = String(args.task || "").toLowerCase();
