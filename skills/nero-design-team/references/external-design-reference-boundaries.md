@@ -19,9 +19,11 @@ They are not:
 - factual evidence;
 - license/legal clearance;
 - replacements for NERO Design Team routing;
-- replacements for Presentations in formal Office output.
+- replacements for the current project's PPTX engine registry or its selected formal Office route.
 
 ## Allowed By Default
+
+Read-only public web/image discovery and source viewing follow the task-dependent exploration branch. References need not already appear in the local Registry. Keep search separate from downloading, copying, installation, provider activation and publication.
 
 - Store repository URL, route, purpose, license conclusion, README summary, small image URL list, and key file path index.
 - Extract rules, constraints, workflow ideas, page taxonomy, QA gates, and prompt structure.
@@ -34,7 +36,7 @@ They are not:
 - Install global dependencies.
 - Copy source code, templates, SVG/PPTX examples, media, audio, logos, screenshots, or design assets wholesale.
 - Write `.env`, API keys, provider configs, cookies, tokens, or credentials.
-- Enable external TTS, image search, watermark removal, deployment, analytics, or background services.
+- Enable external TTS, paid/provider-specific image-search services, watermark removal, deployment, analytics, or background services. This does not prohibit ordinary read-only web/image reference search through an already available tool.
 - Treat upstream sample copy, generated data, or demo visuals as NERO facts.
 
 ## License Handling
@@ -55,7 +57,7 @@ Snapshot license status is a lightweight signal, not a legal opinion.
 
 Promote only reusable, NERO-native abstractions back into:
 
-- `rules/`
+- the upstream canonical Skill references (public `skills/nero-design-team/references/` and `rules/` remain derived)
 - `tokens/`
 - `templates/`
 - `prompts/`

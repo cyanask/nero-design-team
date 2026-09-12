@@ -29,6 +29,9 @@ The project manifest records:
 
 - route: `frontend-ui`, `image-report`, `ppt`, `short-video`, or `ai-image-generation`
 - template used or intended
+- selected frontend profile when the route is `frontend-ui`; `ai-app-ui`
+  additionally records the NDT rule, design-intent schema, state catalog and
+  route-specific scorecard paths
 - NERO Design Team root and version
 - token build outputs used
 - brand assets referenced
@@ -55,14 +58,17 @@ NERO Design Team is the exclusive writer of `.nero-design/manifest.json`. KAT an
 
 - GPT Work is the only cross-system controller; NERO Design Team controls the visual route only.
 - Route through the NERO Design Team Skill before using MCP-lite or local scripts.
-- NERO Design Team must return control to GPT Work after visual generation, QA, score, or production-check instead of calling KAT or Presentations directly.
+- NERO Design Team must return control to GPT Work after visual generation, QA, score, or production-check instead of calling KAT or a downstream PPTX engine directly.
 - Treat `control/production-ledger.json` as GPT Work owned and `.nero-design/manifest.json` as NERO Design Team owned. Neither file replaces the other.
 - Keep generated project artifacts in the project directory.
 - Keep reusable system rules, tokens, and templates in `design-team/`.
 - Do not move client data, project evidence, or final delivery packages into `design-team/`.
 - Do not copy restricted external assets into client-facing deliverables without license review.
 - Mature outputs can be summarized into `case-library/` as lightweight snapshots.
-- Reusable patterns can be promoted back to `templates/`, `rules/`, or `tokens/` only after review.
+- Reusable patterns can be promoted back to `templates/`, the upstream Skill references, or `tokens/` only after review; `rules/` is a generated compatibility view.
+- For `frontend_profile: ai-app-ui`, a generated project manifest or static
+  template proves design-system binding only. Record rendered QA, live behavior
+  and human acceptance separately.
 
 ## Completion Report
 

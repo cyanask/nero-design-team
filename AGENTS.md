@@ -20,3 +20,7 @@ This repository is the public derivative of NERO Design Team, not the canonical 
 - Do not leave stale references. If `skills/nero-design-team/SKILL.md` names a reference, the file must exist under `skills/nero-design-team/references/` or the reference must be rewritten.
 - Before publish or packaging work, run the repository release gate when available.
 - Do not publish private overlays, client assets, local validation history, credentials, or restricted third-party assets.
+
+## Generated rule view
+
+Generic changes still begin upstream. Public `rules/*.md` files are generated from matching `skills/nero-design-team/references/` files. Use `node scripts/sync-skill.mjs` to check parity; an authorized write requires `--write --backup <new-directory>`. Keep local maintenance-app details out of the common Skill.

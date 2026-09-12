@@ -18,17 +18,6 @@ function contrastRatio(foreground, background) {
   return (lighter + 0.05) / (darker + 0.05);
 }
 
-function hue(hex) {
-  const [r, g, b] = hex.replace("#", "").match(/.{1,2}/g).map((part) => parseInt(part, 16) / 255);
-  const max = Math.max(r, g, b);
-  const min = Math.min(r, g, b);
-  if (max === min) return 0;
-  const delta = max - min;
-  if (max === r) return ((g - b) / delta + (g < b ? 6 : 0)) * 60;
-  if (max === g) return ((b - r) / delta + 2) * 60;
-  return ((r - g) / delta + 4) * 60;
-}
-
 function estimateTextCapacity(block) {
   const lineHeight = block.lineHeight || 1.35;
   const fontSize = block.fontSize || 14;
@@ -39,6 +28,73 @@ function estimateTextCapacity(block) {
 
 function within(value, min, max) {
   return Number.isFinite(value) && value >= min && value <= max;
+}
+
+function evaluateArchitectureDiagram(manifest, push) {
+  if (manifest.route !== "architecture-diagram-redraw") return;
+
+  const spec = manifest.architectureDiagram || {};
+  const evidenceStatuses = new Set(["verified", "partial", "unknown"]);
+  const detailPostures = new Set(["faithful", "balanced", "simplified"]);
+  const audiences = new Set(["engineer", "mixed", "executive"]);
+  const complexityDecisions = new Set(["within_budget", "split", "exception_justified"]);
+  const perceptualStatuses = new Set(["pass", "not_run", "failed"]);
+  const semanticPatterns = new Set([
+    "fan_in_queue",
+    "stage_semantic_slots",
+    "unstructured_to_structured",
+    "paired_policy_traces",
+    "secure_paved_road",
+    "governance_control_catalog",
+    "compensating_security_layers"
+  ]);
+
+  push(Boolean(spec.question), "architecture question is explicit", spec.question || "missing");
+  push(Boolean(spec.authoritySource), "architecture authority source is explicit", spec.authoritySource || "missing");
+  push(evidenceStatuses.has(spec.evidenceStatus), "architecture evidence status is registered", spec.evidenceStatus || "missing");
+  push(Boolean(spec.asOf), "architecture as-of boundary is explicit", spec.asOf || "missing");
+  push(Boolean(spec.selectedGrammar), "architecture grammar is selected", spec.selectedGrammar || "missing");
+  push(audiences.has(spec.audience), "architecture audience is registered", spec.audience || "missing");
+  push(detailPostures.has(spec.detailPosture), "architecture detail posture is registered", spec.detailPosture || "missing");
+  push(complexityDecisions.has(spec.complexityDecision), "architecture complexity decision is recorded", spec.complexityDecision || "missing");
+  push(typeof spec.behaviorLoadBearing === "boolean", "architecture behavior-first decision is recorded", String(spec.behaviorLoadBearing ?? "missing"));
+  if (spec.behaviorLoadBearing === true) {
+    push(semanticPatterns.has(spec.semanticPattern), "architecture semantic pattern is registered", spec.semanticPattern || "missing");
+  } else if (spec.semanticPattern !== undefined && spec.semanticPattern !== null) {
+    push(semanticPatterns.has(spec.semanticPattern), "architecture semantic pattern is registered", spec.semanticPattern || "missing");
+  }
+  push(spec.stableIdsVerified === true, "architecture stable ids are verified");
+  push(spec.connectorDirectionVerified === true, "architecture connector direction is verified");
+  push(spec.localCjkFontResolved === true, "architecture local CJK font resolves");
+  push(spec.noTextOrConnectorCollisions === true, "architecture text and connector collisions are absent");
+  push(spec.criticalMeaningNotColorOnly === true, "architecture meaning does not depend on color alone");
+  push(spec.staticQaStatus === "pass", "architecture static QA passes", spec.staticQaStatus || "missing");
+  push(perceptualStatuses.has(spec.perceptualReviewStatus), "architecture perceptual-review status is explicit", spec.perceptualReviewStatus || "missing");
+
+  if (spec.outputCarrier === "svg" || spec.outputCarrier === "html+svg") {
+    push(spec.svgAccessibleNameResolved === true, "architecture SVG accessible name resolves");
+    push(spec.svgDescriptionPresent === true, "architecture SVG description is present");
+  }
+
+  if (spec.sourceKind === "fresh") return;
+
+  push(new Set(["drawio", "mermaid"]).has(spec.sourceKind), "redraw source kind is supported", spec.sourceKind || "missing");
+  push(/^[a-f0-9]{64}$/i.test(spec.sourceSha256 || ""), "redraw source SHA-256 is recorded", spec.sourceSha256 || "missing");
+  push(spec.untrustedInertSource === true, "redraw source is handled as untrusted inert content");
+  push(spec.sourceExecuted === false, "redraw source was not executed");
+  push(spec.sourceLinksFollowed === false, "redraw source links were not followed");
+
+  const ledger = spec.fidelityLedger || {};
+  const sourceCounts = ledger.sourceCounts || {};
+  const accountedCounts = ledger.accountedCounts || {};
+  push(Number.isInteger(sourceCounts.nodes) && sourceCounts.nodes >= 0, "redraw source node count is recorded", String(sourceCounts.nodes ?? "missing"));
+  push(Number.isInteger(sourceCounts.edges) && sourceCounts.edges >= 0, "redraw source edge count is recorded", String(sourceCounts.edges ?? "missing"));
+  push(accountedCounts.nodes === sourceCounts.nodes, "redraw fidelity ledger accounts for every source node", `${accountedCounts.nodes ?? "?"}/${sourceCounts.nodes ?? "?"}`);
+  push(accountedCounts.edges === sourceCounts.edges, "redraw fidelity ledger accounts for every source edge", `${accountedCounts.edges ?? "?"}/${sourceCounts.edges ?? "?"}`);
+  for (const field of ["kept", "merged", "dropped", "relabelled", "correctedRelationships", "unresolved"]) {
+    push(Array.isArray(ledger[field]), `redraw fidelity ledger field is present: ${field}`);
+  }
+  push(ledger.authorityBackedCorrections === true, "redraw relationship corrections are authority-backed");
 }
 
 function evaluatePhotoDerivedEditorial(manifest, push) {
@@ -63,7 +119,11 @@ function evaluatePhotoDerivedEditorial(manifest, push) {
   push(Boolean(photoRanges[orientation]), "photo-derived source orientation is registered", orientation || "missing");
   push(within(photoAreaRatio, photoMin, photoMax), "photo-derived photo area matches source orientation", String(photoAreaRatio ?? "missing"));
   push(within(panelAreaRatio, 0.24, 0.62), "photo-derived panel area is explicit", String(panelAreaRatio ?? "missing"));
-  push(Number.isFinite(photoAreaRatio) && Number.isFinite(panelAreaRatio) && Math.abs(photoAreaRatio + panelAreaRatio - 1) <= 0.01, "photo-derived photo and panel ratios sum to one", `${photoAreaRatio ?? "?"}+${panelAreaRatio ?? "?"}`);
+  push(
+    Number.isFinite(photoAreaRatio) && Number.isFinite(panelAreaRatio) && Math.abs(photoAreaRatio + panelAreaRatio - 1) <= 0.01,
+    "photo-derived photo and panel ratios sum to one",
+    `${photoAreaRatio ?? "?"}+${panelAreaRatio ?? "?"}`
+  );
   push(within(spec.motifWidthRatio, 0.30, 0.68), "photo-derived motif width is restrained", String(spec.motifWidthRatio ?? "missing"));
   push(within(spec.cleanSpaceRatio, 0.65, 0.80), "photo-derived clean space", String(spec.cleanSpaceRatio ?? "missing"));
   push(spec.photoPixelsPreserved === true, "photo-derived original photo layer is preserved");
@@ -78,7 +138,10 @@ function evaluatePhotoDerivedEditorial(manifest, push) {
   push(Array.isArray(spec.supportingMarkFamilies) && spec.supportingMarkFamilies.length <= 2, "photo-derived supporting mark family limit", String(spec.supportingMarkFamilies?.length ?? "missing"));
   push(trace.length >= 3 && trace.length <= 6, "photo-derived relation trace has 3-6 facts", String(trace.length));
   for (const [index, fact] of trace.entries()) {
-    push(Boolean(fact.id && fact.sourceFact && fact.photoRegion && fact.relationType && fact.preservedAs && fact.markFamily), `photo-derived relation trace is complete: ${fact.id || `fact-${index + 1}`}`);
+    push(
+      Boolean(fact.id && fact.sourceFact && fact.photoRegion && fact.relationType && fact.preservedAs && fact.markFamily),
+      `photo-derived relation trace is complete: ${fact.id || `fact-${index + 1}`}`
+    );
   }
   push(titleWords.length >= 2 && titleWords.length <= 5, "photo-derived title has 2-5 words", String(titleWords.length));
   push(Number.isInteger(retry.attempts) && retry.attempts >= 0 && retry.attempts <= 1, "photo-derived automatic regeneration limit", String(retry.attempts ?? "missing"));
@@ -141,13 +204,9 @@ function evaluate(manifest) {
     push(length <= capacity, `text fits: ${block.id || "unnamed"}`, `${length}/${capacity} estimated chars`);
   }
 
-  const colors = [...new Set((manifest.colors || []).filter((value) => /^#[0-9a-f]{6}$/i.test(value)))];
-  if (colors.length > 1) {
-    const hues = colors.map(hue);
-    const spread = Math.max(...hues) - Math.min(...hues);
-    push(spread >= 24 || colors.length <= 2, "color palette is not one-note", `${Math.round(spread)}deg hue spread`);
-  } else {
-    push(false, "color palette is not one-note", "fewer than two valid colors supplied");
+  if (Array.isArray(manifest.colors) && manifest.colors.length) {
+    push(manifest.colors.every(value => /^#[0-9a-f]{6}$/i.test(value)),
+      "declared color values use valid hex syntax", `${manifest.colors.length} supplied colors`);
   }
 
   for (const pair of manifest.contrastPairs || []) {
@@ -163,6 +222,7 @@ function evaluate(manifest) {
 
   evaluatePhotoDerivedEditorial(manifest, push);
   evaluateMinimalZine(manifest, push);
+  evaluateArchitectureDiagram(manifest, push);
 
   return results;
 }
@@ -177,6 +237,18 @@ async function main() {
   for (const result of results) {
     console.log(`${result.ok ? "PASS" : "FAIL"} ${result.label}${result.detail ? ` - ${result.detail}` : ""}`);
   }
+  const notChecked = [
+    ...(!manifest.colors?.length ? ["color_syntax"] : []),
+    ...(!manifest.textBlocks?.length ? ["text_fit"] : []),
+    ...(!manifest.contrastPairs?.length ? ["contrast"] : []),
+    ...(!manifest.charts?.length ? ["chart_labels"] : []),
+    "rendered_layout", "live_behavior", "human_acceptance"
+  ];
+  console.log(`QA result: ${JSON.stringify({
+    status: results.some(result => !result.ok) ? "fail" : "pass",
+    evidence_kind: "manifest_checks", checked: results, not_checked: notChecked,
+    rendered_qa_passed: false, live_behavior_observed: false, human_accepted: false
+  })}`);
   if (results.some((result) => !result.ok)) {
     process.exit(1);
   }

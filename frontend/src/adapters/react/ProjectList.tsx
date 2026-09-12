@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FileQuestion, FolderOpen, ShieldCheck } from "lucide-react";
 import type { ProjectCatalogSnapshotVM, ReadEnvelope } from "../../core/contracts";
 import { projectHash } from "../../core/routes";
@@ -17,8 +18,10 @@ type Props = {
 };
 
 export function ProjectList({ envelope, requestedProjectId, tab }: Props) {
+  const [query, setQuery] = useState("");
   const catalog = envelope.data;
   const index = catalog?.index;
+  const visibleProjects = (index?.projects ?? []).filter((project) => `${project.name} ${project.id}`.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()));
   const requestedProject = requestedProjectId
     ? index?.projects.find((project) => project.id === requestedProjectId) ?? null
     : null;
@@ -36,7 +39,7 @@ export function ProjectList({ envelope, requestedProjectId, tab }: Props) {
     <section className="projects-space" aria-label="我的项目与图稿">
       <header className="projects-head">
         <div>
-          <p className="eyebrow">MY PROJECTS</p>
+          <p className="eyebrow">项目工作空间</p>
           <h1>我的项目与图稿</h1>
           <p>选择一个项目，查看图稿文件和检查记录。</p>
         </div>
@@ -97,8 +100,9 @@ export function ProjectList({ envelope, requestedProjectId, tab }: Props) {
       ) : (
         <section className="project-layout">
           <aside className="project-list" aria-label="项目列表">
-            <span className="section-label">已授权项目</span>
-            {index.projects.map((project) => (
+            <label className="project-search"><span className="sr-only">查找项目</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="查找项目" /></label>
+            {!visibleProjects.length && <p className="project-filter-empty">没有匹配的项目</p>}
+            {visibleProjects.map((project) => (
               <a
                 className={selectedSummary?.id === project.id ? "active" : ""}
                 href={projectHash(project.id, tab)}
@@ -111,7 +115,7 @@ export function ProjectList({ envelope, requestedProjectId, tab }: Props) {
               </a>
             ))}
           </aside>
-          <ProjectDetail detail={detail} tab={tab} />
+          <div className="project-detail-pane"><ProjectDetail detail={detail} tab={tab} /></div>
         </section>
       )}
     </section>

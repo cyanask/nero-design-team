@@ -1,3 +1,5 @@
+import type { StudioSelection } from "./StudioHome";
+import { useState } from "react";
 import type {
   CapabilityLibraryVM,
   ProjectCatalogSnapshotVM,
@@ -5,7 +7,7 @@ import type {
 } from "../../core/contracts";
 import type { ApplicationScenarioCatalog } from "../../core/application-scenarios";
 import type { WorkbenchRoute } from "../../core/routes";
-import { capabilityDirectoryHash, scenarioHash } from "../../core/routes";
+import { capabilityDirectoryHash, scenarioHash, solutionHash, projectHash } from "../../core/routes";
 import { ApplicationScenarioBrowser } from "./ApplicationScenarioBrowser";
 import { CapabilityLibrary } from "./CapabilityLibrary";
 import type { AssetProjectUsage } from "./CapabilityInspector";
@@ -17,48 +19,48 @@ type Props = {
   projects: ReadEnvelope<ProjectCatalogSnapshotVM>;
   route: CapabilityRoute;
   scenarioCatalog: ApplicationScenarioCatalog;
+  assetOrigin?: WorkbenchRoute | null;
+  studioSelection?: StudioSelection;
 };
 
-export function CapabilitySpace({ catalog, projects, route, scenarioCatalog }: Props) {
+export function CapabilitySpace({ catalog, projects, route, scenarioCatalog, assetOrigin, studioSelection }: Props) {
+  const [studioQuery, setStudioQuery] = useState("");
   const library = catalog.data;
   if (!library) {
     return <section className="fatal-panel">能力快照不可用。</section>;
   }
 
   const usageByAssetId = collectProjectUsage(projects.data);
-  const scenariosActive = route.page !== "assets";
+  const hasPath = route.page === "solution" || (route.page === "scenarios" && !!route.scenarioId);
+  const solution = scenarioCatalog.solutions.find((item) => item.recipeId === (route.page === "solution" ? route.recipeId : null));
+  const scenarioId = route.page === "scenarios" ? route.scenarioId : solution?.primaryScenarioId;
+  const scenario = scenarioCatalog.scenarios.find((item) => item.id === scenarioId);
+  let backTo = { href: capabilityDirectoryHash(), label: "资产库" };
+  if (assetOrigin?.space === "projects") backTo = { href: projectHash(assetOrigin.projectId, assetOrigin.tab), label: "返回项目" };
+  if (assetOrigin?.space === "capabilities" && assetOrigin.page === "scenarios") backTo = { href: scenarioHash(assetOrigin.scenarioId), label: assetOrigin.scenarioId ? "返回场景" : "工作室" };
+  if (assetOrigin?.space === "capabilities" && assetOrigin.page === "solution" && assetOrigin.recipeId) backTo = { href: solutionHash(assetOrigin.recipeId), label: "返回方案" };
 
   return (
-    <section className="capability-experience" aria-label="设计能力">
-      <nav className="capability-view-nav" aria-label="设计能力浏览方式">
-        <a
-          className={scenariosActive ? "active" : ""}
-          href={scenarioHash()}
-          aria-current={scenariosActive ? "page" : undefined}
-        >
-          <span>按应用场景</span>
-          <small>先确定要交付什么</small>
-        </a>
-        <a
-          className={route.page === "assets" ? "active" : ""}
-          href={capabilityDirectoryHash()}
-          aria-current={route.page === "assets" ? "page" : undefined}
-        >
-          <span>资产目录</span>
-          <small>按稳定 ID 浏览目录</small>
-        </a>
-      </nav>
-
+    <section className={`capability-experience${hasPath ? " with-path" : ""}${route.page === "assets" ? " asset-route" : ""}`} aria-label="设计能力">
+      {hasPath && <nav className="capability-breadcrumb" aria-label="当前位置">
+        <a href={scenarioHash()}>工作室</a>
+        {(route.page === "solution" || route.page === "scenarios" && route.scenarioId) && scenario && <a href={scenarioHash(scenario.id)}>{scenario.label}</a>}
+        {route.page === "solution" && <span aria-current="page">{solution?.label ?? "方案未找到"}</span>}
+      </nav>}
       <div className="capability-view-body">
         {route.page === "assets" ? (
           <CapabilityLibrary
             envelope={catalog}
             requestedAssetId={route.assetId}
+            backTo={backTo}
             usageByAssetId={usageByAssetId}
           />
         ) : (
           <ApplicationScenarioBrowser
             catalog={scenarioCatalog}
+            studioSelection={studioSelection}
+            studioQuery={studioQuery}
+            onStudioQueryChange={setStudioQuery}
             library={library}
             mode={route.page === "solution" ? "solution" : route.scenarioId ? "scenario" : "index"}
             scenarioId={route.page === "scenarios" ? route.scenarioId : null}

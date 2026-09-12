@@ -3,20 +3,40 @@
   "$id": "workbench.snapshot.v1",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "snapshotId", "snapshotFingerprint", "catalog", "projects"],
+  "required": [
+    "schemaVersion",
+    "snapshotId",
+    "snapshotFingerprint",
+    "catalog",
+    "projects"
+  ],
   "properties": {
-    "schemaVersion": { "const": "workbench.snapshot.v1" },
-    "snapshotId": { "type": "string", "minLength": 1 },
-    "snapshotFingerprint": { "type": "string", "minLength": 1 },
+    "schemaVersion": {
+      "const": "workbench.snapshot.v1"
+    },
+    "snapshotId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "snapshotFingerprint": {
+      "type": "string",
+      "minLength": 1
+    },
     "catalog": {
       "allOf": [
-        { "$ref": "#/$defs/envelope" },
+        {
+          "$ref": "#/$defs/envelope"
+        },
         {
           "properties": {
             "data": {
               "oneOf": [
-                { "type": "null" },
-                { "$ref": "#/$defs/capabilityLibrary" }
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/capabilityLibrary"
+                }
               ]
             }
           }
@@ -25,13 +45,19 @@
     },
     "projects": {
       "allOf": [
-        { "$ref": "#/$defs/envelope" },
+        {
+          "$ref": "#/$defs/envelope"
+        },
         {
           "properties": {
             "data": {
               "oneOf": [
-                { "type": "null" },
-                { "$ref": "#/$defs/projectCatalog" }
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/projectCatalog"
+                }
               ]
             }
           }
@@ -41,33 +67,74 @@
   },
   "$defs": {
     "nullableString": {
-      "oneOf": [{ "type": "string" }, { "type": "null" }]
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "stringArray": {
       "type": "array",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "issue": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["code", "severity", "message"],
+      "required": [
+        "code",
+        "severity",
+        "message"
+      ],
       "properties": {
-        "code": { "type": "string" },
-        "severity": { "enum": ["info", "warning", "error", "blocked"] },
-        "message": { "type": "string" },
-        "sourceId": { "type": "string" },
-        "subjectId": { "type": "string" }
+        "code": {
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "info",
+            "warning",
+            "error",
+            "blocked"
+          ]
+        },
+        "message": {
+          "type": "string"
+        },
+        "sourceId": {
+          "type": "string"
+        },
+        "subjectId": {
+          "type": "string"
+        }
       }
     },
     "source": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "sourceSchemaVersion", "sourceVersion", "fingerprint"],
+      "required": [
+        "id",
+        "sourceSchemaVersion",
+        "sourceVersion",
+        "fingerprint"
+      ],
       "properties": {
-        "id": { "type": "string" },
-        "sourceSchemaVersion": { "$ref": "#/$defs/nullableString" },
-        "sourceVersion": { "$ref": "#/$defs/nullableString" },
-        "fingerprint": { "$ref": "#/$defs/nullableString" }
+        "id": {
+          "type": "string"
+        },
+        "sourceSchemaVersion": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "sourceVersion": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "fingerprint": {
+          "$ref": "#/$defs/nullableString"
+        }
       }
     },
     "sourceState": {
@@ -83,7 +150,13 @@
       ],
       "properties": {
         "upstreamAuthority": {
-          "enum": ["canonical", "project_local", "derived", "reference", "unknown"]
+          "enum": [
+            "canonical",
+            "project_local",
+            "derived",
+            "reference",
+            "unknown"
+          ]
         },
         "availability": {
           "enum": [
@@ -95,10 +168,20 @@
           ]
         },
         "configuration": {
-          "enum": ["configured", "not_configured", "not_applicable", "unknown"]
+          "enum": [
+            "configured",
+            "not_configured",
+            "not_applicable",
+            "unknown"
+          ]
         },
         "runtime": {
-          "enum": ["observed_live", "observed_offline", "not_observed", "not_applicable"]
+          "enum": [
+            "observed_live",
+            "observed_offline",
+            "not_observed",
+            "not_applicable"
+          ]
         },
         "freshnessAtObservation": {
           "enum": [
@@ -109,7 +192,11 @@
           ]
         },
         "projection": {
-          "enum": ["sanitized_snapshot", "project_manifest_snapshot", "demo_fixture"]
+          "enum": [
+            "sanitized_snapshot",
+            "project_manifest_snapshot",
+            "demo_fixture"
+          ]
         }
       }
     },
@@ -126,50 +213,109 @@
         "issues"
       ],
       "properties": {
-        "contractVersion": { "const": "workbench.read.v1" },
-        "adapterVersion": { "type": "string" },
-        "observedAt": { "type": "string" },
-        "source": { "$ref": "#/$defs/source" },
-        "state": { "$ref": "#/$defs/sourceState" },
+        "contractVersion": {
+          "const": "workbench.read.v1"
+        },
+        "adapterVersion": {
+          "type": "string"
+        },
+        "observedAt": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "state": {
+          "$ref": "#/$defs/sourceState"
+        },
         "data": {},
         "issues": {
           "type": "array",
-          "items": { "$ref": "#/$defs/issue" }
+          "items": {
+            "$ref": "#/$defs/issue"
+          }
         }
       }
     },
     "preview": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["state", "url", "kind", "label", "boundary", "fit", "variants"],
+      "required": [
+        "state",
+        "url",
+        "kind",
+        "label",
+        "boundary",
+        "fit",
+        "variants"
+      ],
       "properties": {
-        "state": { "enum": ["resolved", "unresolved", "not_declared"] },
-        "url": { "$ref": "#/$defs/nullableString" },
-        "kind": { "$ref": "#/$defs/nullableString" },
-        "label": { "$ref": "#/$defs/nullableString" },
-        "boundary": { "$ref": "#/$defs/nullableString" },
+        "state": {
+          "enum": [
+            "resolved",
+            "unresolved",
+            "not_declared"
+          ]
+        },
+        "url": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "kind": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "label": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "boundary": {
+          "$ref": "#/$defs/nullableString"
+        },
         "fit": {
           "oneOf": [
-            { "enum": ["cover", "contain"] },
-            { "type": "null" }
+            {
+              "enum": [
+                "cover",
+                "contain"
+              ]
+            },
+            {
+              "type": "null"
+            }
           ]
         },
         "variants": {
           "type": "array",
-          "items": { "$ref": "#/$defs/previewVariant" }
+          "items": {
+            "$ref": "#/$defs/previewVariant"
+          }
         }
       }
     },
     "previewVariant": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "label", "purpose", "url", "boundary"],
+      "required": [
+        "id",
+        "label",
+        "purpose",
+        "url",
+        "boundary"
+      ],
       "properties": {
-        "id": { "type": "string" },
-        "label": { "type": "string" },
-        "purpose": { "type": "string" },
-        "url": { "type": "string" },
-        "boundary": { "type": "string" }
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "boundary": {
+          "type": "string"
+        }
       }
     },
     "asset": {
@@ -193,55 +339,139 @@
         "issueCodes"
       ],
       "properties": {
-        "id": { "type": "string" },
-        "key": { "type": "string" },
-        "categoryId": { "type": "string" },
-        "name": { "type": "string" },
-        "purpose": { "type": "string" },
-        "useFor": { "$ref": "#/$defs/stringArray" },
-        "routes": { "$ref": "#/$defs/stringArray" },
-        "knownRoutes": { "$ref": "#/$defs/stringArray" },
-        "rawStatus": { "$ref": "#/$defs/nullableString" },
-        "rights": { "$ref": "#/$defs/nullableString" },
-        "sourceRef": { "$ref": "#/$defs/nullableString" },
-        "members": { "$ref": "#/$defs/stringArray" },
-        "notes": { "$ref": "#/$defs/stringArray" },
-        "preview": { "$ref": "#/$defs/preview" },
-        "issueCodes": { "$ref": "#/$defs/stringArray" }
+        "id": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "categoryId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "useFor": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "routes": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "knownRoutes": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "rawStatus": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "rights": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "sourceRef": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "members": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "preview": {
+          "$ref": "#/$defs/preview"
+        },
+        "issueCodes": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "aliases": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "maturity": {
+          "enum": [
+            "registered",
+            "reference",
+            "candidate",
+            "unknown"
+          ]
+        },
+        "reuseState": {
+          "enum": [
+            "reusable",
+            "conditional",
+            "reference_only",
+            "placeholder",
+            "quarantined",
+            "unknown"
+          ]
+        }
       }
     },
     "category": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "label", "assetIds"],
+      "required": [
+        "id",
+        "label",
+        "assetIds"
+      ],
       "properties": {
-        "id": { "type": "string" },
-        "label": { "type": "string" },
-        "assetIds": { "$ref": "#/$defs/stringArray" }
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "assetIds": {
+          "$ref": "#/$defs/stringArray"
+        }
       }
     },
     "recipe": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "label", "assetIds"],
+      "required": [
+        "id",
+        "label",
+        "assetIds"
+      ],
       "properties": {
-        "id": { "type": "string" },
-        "label": { "type": "string" },
-        "assetIds": { "$ref": "#/$defs/stringArray" }
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "assetIds": {
+          "$ref": "#/$defs/stringArray"
+        }
       }
     },
     "fact": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["key", "value"],
+      "required": [
+        "key",
+        "value"
+      ],
       "properties": {
-        "key": { "type": "string" },
+        "key": {
+          "type": "string"
+        },
         "value": {
           "oneOf": [
-            { "type": "string" },
-            { "type": "number" },
-            { "type": "boolean" },
-            { "type": "null" }
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
           ]
         }
       }
@@ -261,38 +491,76 @@
         "issueCodes"
       ],
       "properties": {
-        "domain": { "type": "string" },
-        "sourceId": { "type": "string" },
-        "registryAssetId": { "$ref": "#/$defs/nullableString" },
-        "label": { "type": "string" },
-        "sourceVersion": { "$ref": "#/$defs/nullableString" },
-        "rawStatus": { "$ref": "#/$defs/nullableString" },
-        "rights": { "$ref": "#/$defs/nullableString" },
+        "domain": {
+          "type": "string"
+        },
+        "sourceId": {
+          "type": "string"
+        },
+        "registryAssetId": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "label": {
+          "type": "string"
+        },
+        "sourceVersion": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "rawStatus": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "rights": {
+          "$ref": "#/$defs/nullableString"
+        },
         "facts": {
           "type": "array",
-          "items": { "$ref": "#/$defs/fact" }
+          "items": {
+            "$ref": "#/$defs/fact"
+          }
         },
-        "issueCodes": { "$ref": "#/$defs/stringArray" }
+        "issueCodes": {
+          "$ref": "#/$defs/stringArray"
+        }
       }
     },
     "integrityIssue": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "severity", "assetIds"],
+      "required": [
+        "id",
+        "severity",
+        "assetIds"
+      ],
       "properties": {
-        "id": { "type": "string" },
-        "severity": { "type": "string" },
-        "assetIds": { "$ref": "#/$defs/stringArray" }
+        "id": {
+          "type": "string"
+        },
+        "severity": {
+          "type": "string"
+        },
+        "assetIds": {
+          "$ref": "#/$defs/stringArray"
+        }
       }
     },
     "unboundRecord": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["domain", "sourceId", "issueCode"],
+      "required": [
+        "domain",
+        "sourceId",
+        "issueCode"
+      ],
       "properties": {
-        "domain": { "type": "string" },
-        "sourceId": { "type": "string" },
-        "issueCode": { "type": "string" }
+        "domain": {
+          "type": "string"
+        },
+        "sourceId": {
+          "type": "string"
+        },
+        "issueCode": {
+          "type": "string"
+        }
       }
     },
     "capabilityLibrary": {
@@ -309,39 +577,64 @@
       "properties": {
         "categories": {
           "type": "array",
-          "items": { "$ref": "#/$defs/category" }
+          "items": {
+            "$ref": "#/$defs/category"
+          }
         },
         "recipes": {
           "type": "array",
-          "items": { "$ref": "#/$defs/recipe" }
+          "items": {
+            "$ref": "#/$defs/recipe"
+          }
         },
         "assets": {
           "type": "array",
-          "items": { "$ref": "#/$defs/asset" }
+          "items": {
+            "$ref": "#/$defs/asset"
+          }
         },
         "domainRecords": {
           "type": "array",
-          "items": { "$ref": "#/$defs/domainRecord" }
+          "items": {
+            "$ref": "#/$defs/domainRecord"
+          }
         },
         "integrityIssues": {
           "type": "array",
-          "items": { "$ref": "#/$defs/integrityIssue" }
+          "items": {
+            "$ref": "#/$defs/integrityIssue"
+          }
         },
         "unboundDomainRecords": {
           "type": "array",
-          "items": { "$ref": "#/$defs/unboundRecord" }
+          "items": {
+            "$ref": "#/$defs/unboundRecord"
+          }
         }
       }
     },
     "projectSummary": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "name", "route", "manifestState"],
+      "required": [
+        "id",
+        "name",
+        "route",
+        "manifestState"
+      ],
       "properties": {
-        "id": { "type": "string" },
-        "name": { "type": "string" },
-        "route": { "$ref": "#/$defs/nullableString" },
-        "manifestState": { "type": "string" }
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "route": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "manifestState": {
+          "type": "string"
+        }
       }
     },
     "artifact": {
@@ -358,20 +651,51 @@
         "readiness"
       ],
       "properties": {
-        "id": { "type": "string" },
-        "relativePath": { "type": "string" },
-        "mediaType": { "$ref": "#/$defs/nullableString" },
-        "size": { "oneOf": [{ "type": "number" }, { "type": "null" }] },
-        "modifiedAt": { "$ref": "#/$defs/nullableString" },
-        "declaration": { "enum": ["explicit_output", "observed_file_candidate"] },
-        "explicitVersion": { "$ref": "#/$defs/nullableString" },
-        "readiness": { "$ref": "#/$defs/nullableString" }
+        "id": {
+          "type": "string"
+        },
+        "relativePath": {
+          "type": "string"
+        },
+        "mediaType": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "size": {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "modifiedAt": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "declaration": {
+          "enum": [
+            "explicit_output",
+            "observed_file_candidate"
+          ]
+        },
+        "explicitVersion": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "readiness": {
+          "$ref": "#/$defs/nullableString"
+        }
       }
     },
     "qaEvidence": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["kind", "state", "relativeSource", "reportedStatus"],
+      "required": [
+        "kind",
+        "state",
+        "relativeSource",
+        "reportedStatus"
+      ],
       "properties": {
         "kind": {
           "enum": [
@@ -382,10 +706,20 @@
           ]
         },
         "state": {
-          "enum": ["not_declared", "observed", "broken_reference", "stale", "unknown"]
+          "enum": [
+            "not_declared",
+            "observed",
+            "broken_reference",
+            "stale",
+            "unknown"
+          ]
         },
-        "relativeSource": { "$ref": "#/$defs/nullableString" },
-        "reportedStatus": { "$ref": "#/$defs/nullableString" }
+        "relativeSource": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "reportedStatus": {
+          "$ref": "#/$defs/nullableString"
+        }
       }
     },
     "projectDetail": {
@@ -406,71 +740,138 @@
         "qaEvidence"
       ],
       "properties": {
-        "id": { "type": "string" },
-        "name": { "type": "string" },
-        "manifestVersion": { "$ref": "#/$defs/nullableString" },
-        "route": { "$ref": "#/$defs/nullableString" },
-        "template": { "$ref": "#/$defs/nullableString" },
-        "preset": { "$ref": "#/$defs/nullableString" },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "manifestVersion": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "route": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "template": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "preset": {
+          "$ref": "#/$defs/nullableString"
+        },
         "ndtIntegration": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["state", "role", "declaredVersion"],
+          "required": [
+            "state",
+            "role",
+            "declaredVersion"
+          ],
           "properties": {
-            "state": { "enum": ["declared", "not_declared"] },
-            "role": { "$ref": "#/$defs/nullableString" },
-            "declaredVersion": { "$ref": "#/$defs/nullableString" }
+            "state": {
+              "enum": [
+                "declared",
+                "not_declared"
+              ]
+            },
+            "role": {
+              "$ref": "#/$defs/nullableString"
+            },
+            "declaredVersion": {
+              "$ref": "#/$defs/nullableString"
+            }
           }
         },
-        "declaredAssetIds": { "$ref": "#/$defs/stringArray" },
+        "declaredAssetIds": {
+          "$ref": "#/$defs/stringArray"
+        },
         "adoptionReceipts": {
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["assetId", "artifactId", "state", "source"],
+            "required": [
+              "assetId",
+              "artifactId",
+              "state",
+              "source"
+            ],
             "properties": {
-              "assetId": { "type": "string" },
-              "artifactId": { "$ref": "#/$defs/nullableString" },
-              "state": { "enum": ["declared_unverified", "verified", "invalid"] },
-              "source": { "$ref": "#/$defs/nullableString" }
+              "assetId": {
+                "type": "string"
+              },
+              "artifactId": {
+                "$ref": "#/$defs/nullableString"
+              },
+              "state": {
+                "enum": [
+                  "declared_unverified",
+                  "verified",
+                  "invalid"
+                ]
+              },
+              "source": {
+                "$ref": "#/$defs/nullableString"
+              }
             }
           }
         },
-        "caseReferences": { "$ref": "#/$defs/stringArray" },
+        "caseReferences": {
+          "$ref": "#/$defs/stringArray"
+        },
         "artifacts": {
           "type": "array",
-          "items": { "$ref": "#/$defs/artifact" }
+          "items": {
+            "$ref": "#/$defs/artifact"
+          }
         },
         "qaEvidence": {
           "type": "array",
-          "items": { "$ref": "#/$defs/qaEvidence" }
+          "items": {
+            "$ref": "#/$defs/qaEvidence"
+          }
         }
       }
     },
     "projectIndex": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["discovery", "projects"],
+      "required": [
+        "discovery",
+        "projects"
+      ],
       "properties": {
         "discovery": {
-          "enum": ["not_configured", "observed_empty", "observed", "unavailable"]
+          "enum": [
+            "not_configured",
+            "observed_empty",
+            "observed",
+            "unavailable"
+          ]
         },
         "projects": {
           "type": "array",
-          "items": { "$ref": "#/$defs/projectSummary" }
+          "items": {
+            "$ref": "#/$defs/projectSummary"
+          }
         }
       }
     },
     "projectCatalog": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["index", "detailsById"],
+      "required": [
+        "index",
+        "detailsById"
+      ],
       "properties": {
-        "index": { "$ref": "#/$defs/projectIndex" },
+        "index": {
+          "$ref": "#/$defs/projectIndex"
+        },
         "detailsById": {
           "type": "object",
-          "additionalProperties": { "$ref": "#/$defs/projectDetail" }
+          "additionalProperties": {
+            "$ref": "#/$defs/projectDetail"
+          }
         }
       }
     }

@@ -28,7 +28,7 @@ export function ProjectDetail({ detail, tab }: Props) {
     <section className="project-detail">
       <header>
         <div>
-          <span className="section-label">PROJECT / 项目</span>
+          <span className="section-label">项目详情</span>
           <h2>{detail.name}</h2>
         </div>
       </header>
@@ -63,7 +63,6 @@ export function ProjectDetail({ detail, tab }: Props) {
           </dl>
           <section className="project-capability-links" aria-label="项目声明的设计能力">
             <div>
-              <span className="section-label">DECLARED DESIGN CAPABILITIES</span>
               <h3>本项目声明的设计能力</h3>
               <p>以下记录来自项目 Manifest 中显式声明的 NDT Asset ID。</p>
             </div>
@@ -79,7 +78,6 @@ export function ProjectDetail({ detail, tab }: Props) {
           </section>
           <section className="project-adoption-receipts" aria-label="项目采用收据">
             <div>
-              <span className="section-label">ADOPTION RECEIPTS</span>
               <h3>项目采用收据</h3>
               <p>收据必须经过已登记的校验器，才会计入“有效采用收据”。</p>
             </div>

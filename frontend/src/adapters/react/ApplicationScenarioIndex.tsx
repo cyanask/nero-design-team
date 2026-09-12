@@ -1,100 +1,26 @@
+import { StudioHome, type StudioSelection } from "./StudioHome";
 import { ArrowRight } from "lucide-react";
 import type { JSX } from "react";
 import type {
   ApplicationScenarioCatalog,
   ApplicationSolution
 } from "../../core/application-scenarios";
-import type { CapabilityAssetVM, CapabilityLibraryVM } from "../../core/contracts";
+import type { CapabilityLibraryVM } from "../../core/contracts";
 import { scenarioHash, solutionHash } from "../../core/routes";
-import { CapabilityPreview } from "./CapabilityPreview";
 import type { ApplicationScenarioBrowserProps } from "./ApplicationScenarioBrowser";
 
 type Props = Pick<ApplicationScenarioBrowserProps, "catalog" | "library" | "mode" | "scenarioId"> & {
   mode: "index" | "scenario";
+  studioSelection?: StudioSelection;
+  query?: string;
+  onQueryChange?: (value: string) => void;
 };
 
-export function ApplicationScenarioIndex({ catalog, library, mode, scenarioId }: Props): JSX.Element {
+export function ApplicationScenarioIndex({ catalog, library, mode, scenarioId, query, onQueryChange, studioSelection }: Props): JSX.Element {
   return mode === "index" ? (
-    <ScenarioIndex catalog={catalog} library={library} />
+    <StudioHome features={studioSelection} catalog={catalog} library={library} query={query} onQueryChange={onQueryChange} />
   ) : (
     <ScenarioDetail catalog={catalog} library={library} scenarioId={scenarioId} />
-  );
-}
-
-function ScenarioIndex({
-  catalog,
-  library
-}: {
-  catalog: ApplicationScenarioCatalog;
-  library: CapabilityLibraryVM;
-}): JSX.Element {
-  return (
-    <div className="scenario-browser-page scenario-index">
-      <header className="scenario-page-head">
-        <div>
-          <span className="section-label">
-            APPLICATION SCENARIOS / {String(catalog.scenarios.length).padStart(2, "0")}
-          </span>
-          <h1>先说你要做什么，再选怎么做</h1>
-          <p>
-            应用场景是入口，不要求你先分辨 Skill、模板、风格和设计资产。选择目标后，NDT 会把一套可复用方案拆给你。
-          </p>
-        </div>
-        <div className="scenario-head-note">
-          <span>能力构成</span>
-          <strong>做法 → 起始结构 → 视觉语言 → 资产 → 检查</strong>
-        </div>
-      </header>
-      <div className="scenario-index-grid">
-        {catalog.scenarios.map((scenario, index) => {
-          const primary = catalog.solutions.filter(
-            (solution) => solution.primaryScenarioId === scenario.id
-          );
-          const supporting = catalog.solutions.filter((solution) =>
-            new Set<string>(solution.supportingScenarioIds).has(scenario.id)
-          );
-          const representative = findScenarioRepresentativeAsset(library, scenario.representativeAssetId, [
-            ...primary,
-            ...supporting
-          ]);
-          return (
-            <a
-              className="scenario-card"
-              data-preview-asset-id={representative?.id}
-              data-scenario={scenario.id}
-              href={scenarioHash(scenario.id)}
-              key={scenario.id}
-            >
-              <div className="scenario-card-topline">
-                <span className="scenario-index-number">0{index + 1}</span>
-                <span className="scenario-card-count">
-                  {primary.length} 主方案 · {supporting.length} 协作
-                </span>
-              </div>
-              <div className="scenario-card-preview">
-                {representative ? (
-                  <>
-                    <CapabilityPreview asset={representative} compact />
-                    <span className="scenario-card-preview-name">{representative.name}</span>
-                  </>
-                ) : (
-                  <span className="scenario-card-no-preview">暂无已登记的真实预览</span>
-                )}
-              </div>
-              <h2>{scenario.label}</h2>
-              <p>{scenario.description}</p>
-              <div className="scenario-card-style">
-                <span>STYLE INTENT</span>
-                <strong>{scenario.styleIntent}</strong>
-              </div>
-              <span className="scenario-card-link">
-                查看适用方案 <ArrowRight size={15} aria-hidden="true" />
-              </span>
-            </a>
-          );
-        })}
-      </div>
-    </div>
   );
 }
 
@@ -129,24 +55,24 @@ function ScenarioDetail({
     <div className="scenario-browser-page scenario-detail-page">
       <header className="scenario-detail-head">
         <div>
-          <span className="section-label">SCENARIO / {scenario.id}</span>
+          <span className="section-label">设计方案</span>
           <h1>{scenario.label}</h1>
           <p>{scenario.description}</p>
         </div>
         <div className="scenario-detail-intent">
-          <span>STYLE INTENT</span>
+          <span>风格方向</span>
           <strong>{scenario.styleIntent}</strong>
         </div>
       </header>
       <section className="scenario-boundary" aria-label="场景边界">
-        <span className="section-label">BOUNDARY</span>
+        <span className="section-label">使用边界</span>
         <p>{scenario.boundary}</p>
       </section>
-      <SolutionSection library={library} title="优先从这些方案开始" label="PRIMARY SOLUTIONS" solutions={primary} primary />
+      <SolutionSection library={library} title="选择适合的方案" label="" solutions={primary} primary />
       <SolutionSection
         library={library}
-        title="可以协作，但不是默认入口"
-        label="SUPPORTING SOLUTIONS"
+        title="相关方案"
+        label="协作方案"
         solutions={supporting}
       />
     </div>
@@ -182,7 +108,7 @@ function SolutionSection({
     <section className={primary ? "solution-section" : "solution-section supporting-section"}>
       <div className="solution-section-head">
         <div>
-          <span className="section-label">{label}</span>
+          {label && <span className="section-label">{label}</span>}
           <h2>{title}</h2>
         </div>
         <span className="solution-count">{solutions.length} 个方案</span>
@@ -211,8 +137,8 @@ function SolutionCard({
     return (
       <article className="solution-card unavailable" aria-disabled="true">
         <div className="solution-card-topline">
-          <span className="mono">{solution.recipeId}</span>
-          <span>当前快照未提供 Recipe</span>
+          <span>{primary ? "适用方案" : "相关方案"}</span>
+          <span>当前快照缺少方案组合</span>
         </div>
         <h3>{solution.label}</h3>
         <p>{solution.summary}</p>
@@ -227,7 +153,7 @@ function SolutionCard({
   return (
     <a className={primary ? "solution-card primary" : "solution-card"} href={solutionHash(solution.recipeId)}>
       <div className="solution-card-topline">
-        <span className="mono">{solution.recipeId}</span>
+        <span>{primary ? "适用方案" : "相关方案"}</span>
         <span>{recipe.assetIds.length} 项关联资产</span>
       </div>
       <h3>{solution.label}</h3>
@@ -237,7 +163,7 @@ function SolutionCard({
         <strong>{solution.directDeliverables.join(" · ")}</strong>
       </div>
       <span className="solution-card-link">
-        查看方案构成 <ArrowRight size={14} aria-hidden="true" />
+        查看方案 <ArrowRight size={14} aria-hidden="true" />
       </span>
     </a>
   );
@@ -264,26 +190,4 @@ export function ScenarioEmptyState({
       </div>
     </div>
   );
-}
-
-function findScenarioRepresentativeAsset(
-  library: CapabilityLibraryVM,
-  representativeAssetId: string | undefined,
-  solutions: readonly ApplicationSolution[]
-): CapabilityAssetVM | null {
-  if (representativeAssetId) {
-    const representative = library.assets.find((item) => item.id === representativeAssetId);
-    if (representative?.preview.state === "resolved" && representative.preview.url) {
-      return representative;
-    }
-  }
-  for (const solution of solutions) {
-    const recipe = library.recipes.find((item) => item.id === solution.recipeId);
-    if (!recipe) continue;
-    for (const assetId of recipe.assetIds) {
-      const asset = library.assets.find((item) => item.id === assetId);
-      if (asset?.preview.state === "resolved" && asset.preview.url) return asset;
-    }
-  }
-  return null;
 }

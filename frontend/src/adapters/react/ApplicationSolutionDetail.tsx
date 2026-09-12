@@ -3,6 +3,7 @@ import type { JSX } from "react";
 import type { ApplicationScenarioCatalog } from "../../core/application-scenarios";
 import type { CapabilityAssetVM, CapabilityLibraryVM } from "../../core/contracts";
 import { capabilityHash, scenarioHash } from "../../core/routes";
+import { capabilityTone, maturityLabel, reuseStateLabel } from "../../packs/ndt/pack";
 import { CapabilityPreview } from "./CapabilityPreview";
 import { ScenarioEmptyState } from "./ApplicationScenarioIndex";
 
@@ -44,7 +45,7 @@ export function ApplicationSolutionDetail({
     <div className="scenario-browser-page solution-detail-page">
       <header className="solution-detail-head">
         <div>
-          <span className="section-label">SOLUTION / {solution.recipeId}</span>
+          <span className="section-label">方案详情</span>
           <h1>{solution.label}</h1>
           <p>{solution.summary}</p>
           <div className="solution-context-links">
@@ -58,19 +59,19 @@ export function ApplicationSolutionDetail({
           </div>
         </div>
         <div className="solution-deliverables">
-          <DeliverableList label="直接产物" items={solution.directDeliverables} />
-          <DeliverableList label="下游目标" items={solution.downstreamTargets} downstream />
+          <DeliverableList label="直接提供" items={solution.directDeliverables} />
+          <DeliverableList label="后续可形成" items={solution.downstreamTargets} downstream />
         </div>
       </header>
       <section className="solution-boundary" aria-label="方案边界">
-        <span className="section-label">BOUNDARY</span>
+        <span className="section-label">使用边界</span>
         <p>{solution.boundary}</p>
       </section>
       {grouped.missingAssetIds.length ? (
         <div className="scenario-warning" role="alert">
           <TriangleAlert size={17} aria-hidden="true" />
           <span>
-            有 {grouped.missingAssetIds.length} 项 Recipe 资产未出现在当前能力快照：{grouped.missingAssetIds.join("、")}。它们没有被静默忽略，请先补齐来源或重新读取快照。
+            有 {grouped.missingAssetIds.length} 项关联资产未出现在当前能力快照：{grouped.missingAssetIds.join("、")}。它们没有被静默忽略，请先补齐来源或重新读取快照。
           </span>
         </div>
       ) : null}
@@ -85,11 +86,12 @@ export function ApplicationSolutionDetail({
       <section className="role-section" aria-labelledby="role-section-heading">
         <div className="role-section-head">
           <div>
-            <span className="section-label">SOLUTION BUILD</span>
+            <span className="section-label">方案构成</span>
             <h2 id="role-section-heading">这套方案由什么组成</h2>
           </div>
-          <span className="role-section-note"><Layers3 size={15} aria-hidden="true" /> {recipe.assetIds.length} 项 Recipe 资产</span>
+          <span className="role-section-note"><Layers3 size={15} aria-hidden="true" /> {recipe.assetIds.length} 项关联资产</span>
         </div>
+        <p className="unused-role-summary">复用前核查登记边界；登记不等于成品验收。</p>
         <div className="role-groups">
           {populatedRoles.map((role) => (
             <RoleGroup
@@ -151,13 +153,11 @@ function RoleGroup({
     <section className={`role-group ${unmapped ? "unmapped-role" : roleTone(roleId)}`}>
       <div className="role-group-head">
         <div>
-          <span className="role-kicker">{unmapped ? "UNMAPPED" : roleId.toUpperCase()}</span>
           <h3>{label}</h3>
         </div>
         <span>{assets.length} 项</span>
       </div>
-      <p className="role-description">{description}</p>
-      <p className="role-guidance">{guidance}</p>
+      <details className="role-help"><summary>使用说明</summary><p className="role-description">{description}</p><p className="role-guidance">{guidance}</p></details>
       {assets.length ? (
         <div className="role-assets">{assets.map((asset) => <AssetReference asset={asset} key={asset.id} />)}</div>
       ) : (
@@ -169,12 +169,14 @@ function RoleGroup({
 
 function AssetReference({ asset }: { asset: CapabilityAssetVM }): JSX.Element {
   return (
-    <a className="scenario-asset" href={capabilityHash(asset.id)}>
-      <CapabilityPreview asset={asset} compact />
+    <a className={`scenario-asset ${capabilityTone(asset)}${asset.preview.state !== "resolved" ? " metadata-card" : ""}`} href={capabilityHash(asset.id)}>
+      {asset.preview.state === "resolved" && <CapabilityPreview asset={asset} compact />}
       <div className="scenario-asset-copy">
         <span className="mono">{asset.id}</span>
         <strong>{asset.name}</strong>
+        <small>{reuseStateLabel(asset)} · {maturityLabel(asset)}</small>
         <p>{asset.purpose || asset.useFor.join("；") || "用途未登记"}</p>
+        {asset.issueCodes.length > 0 && <small className="warning">待核查问题：{asset.issueCodes.join("、")}</small>}
         <span className="scenario-asset-link">打开资产 <ExternalLink size={12} aria-hidden="true" /></span>
       </div>
     </a>

@@ -54,6 +54,17 @@ export const ndtApplicationScenarioCatalog = {
   ],
   solutions: [
     {
+      recipeId: "ai-app-workbench",
+      label: "AI 应用工作台",
+      summary: "为 AI 应用组织任务状态、人工控制、来源证据和失败恢复入口。",
+      primaryScenarioId: "product-ui",
+      supportingScenarioIds: ["web-html"],
+      avoidScenarioIds: ["business-document", "presentation", "visual-communication", "motion-video"],
+      directDeliverables: ["AI 界面设计合同", "状态目录与前端起始模板"],
+      downstreamTargets: ["接入真实服务的应用界面"],
+      boundary: "沿用 frontend-ui 下的 ai-app-ui 规则；设计状态与示例不证明后端已接通，也不代表真实任务或交付已完成。"
+    },
+    {
       recipeId: "internal-workbench",
       label: "内部工作台与分析后台",
       summary: "为复杂业务流程组织导航、状态、数据操作和复核入口。",

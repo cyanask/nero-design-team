@@ -30,8 +30,9 @@
   "brand_assets": {
     "profile": "$NERO_DESIGN_TEAM_HOME/brand/brand-profile.json",
     "layouts": "$NERO_DESIGN_TEAM_HOME/brand/master-layouts.json",
-    "mark": "$NERO_DESIGN_TEAM_HOME/brand/assets/nero-mark.svg",
-    "wordmark": "$NERO_DESIGN_TEAM_HOME/brand/assets/nero-wordmark.svg"
+    "mark": null,
+    "wordmark": "$NERO_DESIGN_TEAM_HOME/brand/assets/nero-wordmark.svg",
+    "mark_status": "resolve_from_asset_registry"
   },
   "case_references": [],
   "qa": {

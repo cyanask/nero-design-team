@@ -41,3 +41,24 @@ describe("snapshot contract", () => {
     expect(validateWorkbenchSnapshot(invalid).some((issue) => issue.message.includes("unknown field"))).toBe(true);
   });
 });
+
+
+describe("additive asset state fields", () => {
+  it("accepts normalized state and aliases while preserving old snapshots", () => {
+    const current = structuredClone(demoSnapshot) as any;
+    Object.assign(current.catalog.data.assets[0], { maturity: "candidate", reuseState: "reference_only", aliases: ["别名"] });
+    const validateSchema = new Ajv2020({ allErrors: true, strict: false }).compile(schema);
+    expect(validateWorkbenchSnapshot(current)).toEqual([]);
+    expect(validateSchema(current)).toBe(true);
+    expect(validateWorkbenchSnapshot(demoSnapshot)).toEqual([]);
+  });
+  it("does not accept invented acceptance states", () => {
+    for (const field of ["maturity", "reuseState"]) {
+      const current = structuredClone(demoSnapshot) as any;
+      current.catalog.data.assets[0][field] = "human_accepted";
+      const validateSchema = new Ajv2020({ allErrors: true, strict: false }).compile(schema);
+      expect(validateWorkbenchSnapshot(current).length).toBeGreaterThan(0);
+      expect(validateSchema(current)).toBe(false);
+    }
+  });
+});

@@ -12,7 +12,7 @@ Use this rule for HTML web PPT style exploration, fixed-stage slide prototypes, 
 
 - Primary NERO route: `ppt` with subroute `web-ppt-html`.
 - Use this rule only for HTML/web PPT discovery and preview.
-- If final editable PPTX, Google Slides, board deck, banker deck, or client-deliverable PPTX is required, route back to `formal-pptx` or `template-following` and use the Presentations plugin.
+- If final editable PPTX, Google Slides, board deck, banker deck, or client-deliverable PPTX is required, route back to `formal-pptx` or `template-following`. Resolve new formal PPTX through the current project registry; use Presentations for existing/template work and Google Slides.
 
 ## Fixed Stage Standard
 
@@ -26,10 +26,7 @@ Use this rule for HTML web PPT style exploration, fixed-stage slide prototypes, 
 
 1. Read `web-ppt.md`, `visual-qa.md`, and this rule.
 2. Define audience, speaking context, route, deliverable status, and evidence constraints.
-3. Generate three preview directions only when style is not locked:
-   - `banker-swiss`: strict grid, high density, quiet contrast.
-   - `editorial-research`: stronger image/caption rhythm, restrained magazine composition.
-   - `technical-product`: diagram-forward, code/system visual logic, low ornament.
+3. For important new designs, compare two or three materially different directions using inspected local and online references. In open exploration, include a direction independent of existing presets within the task constraints; do not prescribe a fixed trio.
 4. Compare the same 2-3 representative slides across styles.
 5. Select one style before full deck production.
 6. Archive the selected direction in project-local notes or a NERO case snapshot only after review.
@@ -55,7 +52,7 @@ Use this rule for HTML web PPT style exploration, fixed-stage slide prototypes, 
 - Do not deploy to Vercel, GitHub Pages, or any public URL by default.
 - Do not copy upstream `bold-template` code, screenshots, or template packs as NERO production assets.
 - Do not convert exact financial facts into raster images if they need later editing or review.
-- Do not use web PPT as a substitute for Presentations when the required output is a formal editable PPTX.
+- Do not use web PPT as a substitute for the current project's selected engine when the required output is a formal editable PPTX.
 
 ## QA Gate
 

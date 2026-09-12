@@ -35,9 +35,9 @@ export function CapabilityPreview({ asset, compact = false, variant = null }: Pr
       <span className="preview-caption">
         {resolvedUrl
           ? variant
-            ? "REFERENCE VARIANT"
-            : "VISUAL PREVIEW"
-          : "METADATA ONLY"}
+            ? "参考变体"
+            : "资产预览"
+          : "登记资料"}
       </span>
     </div>
   );

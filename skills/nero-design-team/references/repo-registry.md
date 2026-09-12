@@ -1,51 +1,30 @@
-# Repository Registry
+# Asset, style and case library
 
-This page is only the external-repository selection view. The authoritative machine-readable NERO Design Team Registry lives at `$NERO_DESIGN_TEAM_HOME/registry/design-team.json`; its asset subregistry lives at `$NERO_DESIGN_TEAM_HOME/registry/design-assets.json`.
+The machine-readable sources are `$NERO_DESIGN_TEAM_HOME/registry/design-team.json`, `registry/design-assets.json` and `registry/asset-taxonomy.json`. Use `nero_design_get_registry` for live reads. Catalog completeness does not prove runtime, visual quality or human acceptance.
 
-Use `nero_design_get_registry` or run `node $NERO_DESIGN_TEAM_HOME/scripts/validate-registry.mjs` when the question is about NDT truth domains, source/runtime/OSS boundaries, asset coverage, or Registry integrity. Do not infer runtime or production maturity from Registry completeness.
+## Distinct records
 
-Use the repository list below only to choose references without loading entire external repositories.
+- Assets are independently reusable visual units: marks, palettes, typography, geometry, motion, components and executable templates. Whole styles/cases, prompts, tools, rules, repositories and placeholders are not active visual assets.
+- Styles are versioned combinations of exact asset references, purposes, combination rules, parameters, optional templates, prompts and previews. Cases are complete examples and link separately. Existing non-visual dependencies retain their IDs in supporting resources.
+- Asset taxonomy has ten visual dimensions: composition, typography, color, material, geometry, image-treatment, motion, mood, component and method. Usage tags separately identify frontend, poster, GUI, PPT, report, social or video. Unasserted dimensions stay empty; do not duplicate assets to classify them across media.
 
-## Design Direction
+## Style lifecycle
 
-- `alexpate/awesome-design-systems`: mature design systems, governance, component taxonomy, token discipline.
-- `bradtraversy/design-resources-for-developers`: fonts, colors, icons, and candidate design resources.
+- States remain `candidate`, `approved` and `disabled`. Only explicit NERO confirmation of the exact version permits approval and mature-style recommendation. Legacy registration, scores or preview labels do not establish approval; selecting a preset does not approve it.
+- Editing appends a candidate version and preserves approved and historical manifests. Prompt changes belong to the new version.
+- Deletion withdraws display/recommendation while preserving stable IDs, historical manifests and underlying sources. Retired assets leave new selectors; historical styles retain their exact references. New versions cannot add retired assets.
+- The frontend and MCP read the same Registry. The canonical style service uses current-revision checks, an exclusive lock, exact-byte backups and atomic replacement. A stale lock requires inspection. Snapshot/demo modes remain read-only.
 
-## Frontend UI
+## Intake and lookup
 
-- `shadcn-ui/ui`: default React UI baseline and accessible component composition.
-- `carbon-design-system/carbon`: dense analytical tools and enterprise information hierarchy.
-- `ant-design/ant-design`: complex tables, forms, filters, validation, modals, date controls, and admin workflows.
-- `birobirobiro/awesome-shadcn-ui`: shadcn ecosystem index for blocks, registries, dashboards, and extensions.
-- `magicuidesign/magicui`: restrained accent only; do not use for dense core workflows.
-- `pbakaus/impeccable`: fused reference for detector-style frontend design review, anti-pattern checks, and final UI polish. Do not install hooks, live mode, or npm packages by default.
-- `Leonxlnx/taste-skill`: fused reference for four targeted frontend upgrades: anti-slop rules, `DESIGN_VARIANCE` / `MOTION_INTENSITY` / `VISUAL_DENSITY`, brief inference before code, and shared configuration discipline. Use only NERO-calibrated excerpts, not a standalone default route.
-- `plannotator/effective-html`: fused reference for self-contained HTML artifacts, SVG-first architecture diagrams, visual plan pages, and single-file HTML explainers. Do not install as an independent default Skill or copy upstream examples directly.
-- `emilkowalski/skills`: fused reference for responsive and interruptible interaction motion, gesture physics, restraint-first motion decisions, animation audits, repair-plan structure, and motion vocabulary. Use `frontend-motion.md`; do not install the upstream skills as parallel NDT entrypoints or copy Apple/third-party identity assets.
+Read the canonical `registry/README.md` for `ndt.asset-intake.v1` and `scripts/asset-library-cli.mjs check|register`. Validate source containment, independent reuse, rights, tags, a real local preview and duplicates before registering against the checked revision. A batch supports 1–1000 records; the catalog may be larger. Intake does not approve style or visual readiness.
 
-## Charts
+Missing case images remain explicitly missing. Method references must not be presented as completed cases. Project photos and client material remain project-local.
 
-- `apache/echarts`: production Chinese/business charting and interactive dashboards.
-- `antvis/G2`: visualization grammar and data storytelling.
-- `observablehq/plot`: concise exploratory charts.
+Use `include_library: true` for the live catalog, `recommended_only: true` for approved recommendations, or `style_id` plus `style_version` for historical lookup. Asset filters and pagination do not silently filter style versions. Public packages may omit private style records and previews.
 
-## Image Reports
+## External method selection
 
-- `vercel/satori`: JSX/HTML-like static layout to SVG.
-- `thx/resvg-js`: SVG to PNG rendering with font support.
-- `lovell/sharp`: image resize, crop, composite, compression, and format conversion.
-- `puppeteer/puppeteer`: browser screenshots and visual QA when CSS fidelity matters.
+Use the relevant Registry entries for known references and search outside the catalog when the director exploration branch calls for it. Inspect actual previews and record source, version, purpose, rights and exclusions; the catalog is not a reference whitelist. Apply [external boundaries](external-design-reference-boundaries.md). Upstream methods do not become independent controllers or override the project's engine registry.
 
-## PPT And Video
-
-- `gitbrent/PptxGenJS`: native PPTX generation for formal editable decks.
-- `slidevjs/slidev`: Markdown/web slide decks.
-- `plannotator/effective-html`: reference for HTML/web PPT diagram pages, no-build single-file artifacts, SVG stages, and dark-mode-aware CSS variable patterns.
-- `remotion-dev/remotion`: React-based programmatic video generation. Check license before commercial use.
-
-## AI Image Generation
-
-- `OpenAI gpt-image-2`: generate high-quality visual素材 for covers, backgrounds, chapter visuals, video scenes, and style exploration.
-- `LiamGvchi/gc-minimal-zine-poster`: fused reference for minimal paper-zine prompt grammar, quantitative negative-space composition, variation recipes, thumbnail review, and one-retry color-anchor correction. Use the NERO-native `留白杂志风` alias backed by canonical preset `minimal-zine-editorial`; do not install the upstream Skill as a parallel entrypoint or copy its JPEG examples into NDT.
-- Boundary: never use generated text, numbers, tables, chart labels, regulatory wording, or source notes as final evidence.
-- Required handoff: create a brief first, then add exact content through Satori/Sharp, PptxGenJS, or Remotion, then run visual QA.
+Use the existing chart, renderer or video tools selected by the medium. Formal PPTX follows the current project's engine registry; PptxGenJS remains an explicitly selected legacy option.

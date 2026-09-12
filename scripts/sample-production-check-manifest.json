@@ -6,5 +6,7 @@
   "visual_score_manifest": "../scorecards/sample-score-manifest.json",
   "expected_outputs": [],
   "case_library_record": "../case-library/image-report.json",
-  "gpt_image_2_used": false
+  "gpt_image_2_used": false,
+  "is_example": true,
+  "stage": "design_contract"
 }

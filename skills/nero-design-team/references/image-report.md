@@ -10,7 +10,7 @@ Use this rule for research cards, WeChat long images, industry-report visuals, f
 
 ## Routing
 
-- Layout and design direction: Carbon-style information density plus NERO report tone.
+- Layout and design direction: select from the audience, reading goal and inspected local/web references; density and tone are task choices.
 - Charts: ECharts for production Chinese/business charts; G2 for data storytelling; Observable Plot for quick exploratory visuals.
 - Static rendering: Satori plus resvg-js when SVG/PNG card output is enough.
 - Browser rendering: Puppeteer when CSS fidelity, complex layout, or real browser screenshots matter.
@@ -18,12 +18,12 @@ Use this rule for research cards, WeChat long images, industry-report visuals, f
 - Use `ai-image-generation.md` only for cover/background/concept visuals; exact text, numbers, tables, and charts stay in Satori/Sharp or browser-rendered code.
 - Use `留白杂志风` (`minimal-zine-editorial.md`) only for sparse covers or section dividers. Do not apply its poster density to evidence-bearing report-card bodies.
 - Use `photo-derived-editorial-diptych.md` only for photo-led covers, section dividers, social cards, or other non-evidence editorial visuals. Keep the source photo independent, require a `relation_trace`, and layer exact text deterministically.
-- Use NERO design tokens for report theme, chart palette, typography, and export geometry.
+- Record the selected project theme, chart palette, typography and export geometry; local NERO tokens are candidate resources.
 
 ## Design Standard
 
 - Build tokens first with `$NERO_DESIGN_TEAM_HOME/scripts/build-tokens.mjs` when using local templates.
-- Treat the image as a compact research artifact, not a poster.
+- Compose for the actual information and reading context; do not delete necessary research content to force a sparse poster treatment.
 - Put the conclusion or key number near the top.
 - Keep chart titles explicit and metrics traceable.
 - Use consistent margins, section rhythm, and numeric alignment.
@@ -49,4 +49,4 @@ Use this rule for research cards, WeChat long images, industry-report visuals, f
 
 ## Prompt Snippet
 
-Use the NERO Design Team image-report route: Carbon-style information density, ECharts/G2 for charts, Satori/resvg-js or Puppeteer for rendering, and Sharp for final image processing. Output must be a professional Chinese research visual with traceable metrics, readable labels, and verified export size.
+Use the NERO Design Team image-report route: task-led reference exploration and composition, available ECharts/G2 for charts, the appropriate deterministic or browser renderer, and image post-processing where needed. Output must be a professional Chinese research visual with traceable metrics, readable labels, and verified export size.

@@ -23,12 +23,13 @@ html {
 
 body {
   margin: 0;
-  min-width: 320px;
+  min-width: 0;
 }
 
 button,
 input,
-select {
+select,
+textarea {
   font: inherit;
 }
 
@@ -42,7 +43,9 @@ select {
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
-select:focus-visible {
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
   box-shadow: var(--ndt-shadow-focus, 0 0 0 3px rgba(31, 78, 95, 0.22));
   outline: 2px solid var(--ndt-color-brand-primary, #1f4e5f);
   outline-offset: 2px;
@@ -50,6 +53,7 @@ select:focus-visible {
 
 /* Route changes move screen-reader focus to the new page title. The title is
    not an interactive control, so do not draw a control-sized focus rectangle. */
+
 .workspace h1[tabindex="-1"]:focus {
   box-shadow: none;
   outline: none;
@@ -108,7 +112,7 @@ h2 {
     Consolas,
     monospace
   );
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
   line-height: 1.4;
@@ -120,10 +124,20 @@ h2 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+:where(p, dd, li, strong, h1, h2, h3, small, summary) {
+  overflow-wrap: anywhere;
+}
+
+.workspace h2[tabindex="-1"]:focus {
+  box-shadow: none;
+  outline: none;
 }

@@ -15,5 +15,6 @@
   },
   "notes": [
     "Sample only. Replace with real reviewer notes for production artifacts."
-  ]
+  ],
+  "is_example": true
 }

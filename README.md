@@ -14,12 +14,12 @@
 </p>
 
 <p align="center">
-  <code>Apache-2.0</code> · <code>79 public assets</code> · <code>15 recipes</code> · <code>12 local MCP-lite tools</code>
+  <code>NDT 2.11.0</code> · <code>12 bundled assets</code> · <code>16 recipes</code> · <code>MCP 2.5.0</code> · <code>Apache-2.0</code>
 </p>
 
 NERO Design Team (NDT) gives a coding agent more than a visual prompt. It routes the task, selects reusable design assets, runs deterministic local tools where possible, and keeps QA and promotion states explicit.
 
-The package covers frontend UI, research images, deterministic report figures, presentation workflows and downstream handoffs, web decks, short video, AI-image briefs, visual review, scoring, and production checks.
+The package covers frontend UI, AI-application interfaces, architecture redraw, research images, deterministic report figures, presentation workflows and downstream handoffs, web decks, short video, AI-image briefs, visual review, scoring, and production checks.
 
 > **Public boundary:** this repository is a public-safe, non-authoritative derivative. Client material, private identities, official brand assets, private preview media, and restricted third-party assets are deliberately excluded.
 
@@ -38,10 +38,22 @@ NDT makes that path explicit:
 |---|---:|---:|---:|
 | UI components | Primary focus | No | Optional input |
 | Design-task routing | No | Informal | Yes |
-| Reusable asset Registry | No | No | 79 public assets / 15 recipes |
+| Reusable asset Registry | No | No | 12 bundled assets / 16 recipes |
 | Deterministic local runtimes | No | No | Yes |
 | Explicit QA and candidate state | No | No | Yes |
 | Public/private asset boundary | Project-specific | Rarely | Built into the package |
+
+## What's New in 2.11.0
+
+This release aligns the public package version and NDT architecture baseline at `2.11.0`.
+
+- A method-first design contract scales from small repairs to reference exploration, direction comparison, representative trials, render-based refinement, and candidate retention.
+- The stable MCP bridge `2.5.0` keeps its tool contract fixed while loading compatible NDT rules, code, and catalogs per call.
+- The asset Registry now distinguishes reusable assets, complete cases, supporting references, maturity, reuse state, ten visual-tag dimensions, versioned styles, and revision-checked maintenance seams.
+- New `ai-app-ui` and architecture/redraw contracts cover agent states, trust boundaries, responsive behavior, semantic diagram selection, and meaning-preserving Mermaid/draw.io redraw.
+- Visual scoring and production checks share criterion applicability and current-file evidence rules, so an aggregate score cannot waive missing output, preview, content, or accessibility evidence.
+
+The public catalog contains 12 distributable reusable assets, 9 public-safe cases, 59 supporting references, and 16 recipes. Rules, tools, snapshots, and compatibility IDs remain separately classified instead of being counted as reusable visual assets.
 
 ## Quick Start
 
@@ -125,6 +137,10 @@ Compiler output remains a candidate. It does not automatically promote, embed, c
 npm run registry:check
 npm run test:mcp
 npm run test:figure-compiler
+npm run test:stable-bridge
+npm run test:skill-contracts
+npm run test:asset-library
+npm run test:style-library
 npm run frontend:projection
 npm run release:check
 ```
@@ -160,6 +176,7 @@ Read [`docs/oss-boundary.md`](docs/oss-boundary.md), [`docs/private-overlay.md`]
 
 - The installer currently targets the Codex Skill directory.
 - The Registry browser is local and read-only; no hosted service or telemetry is bundled.
+- The bundled public frontend is `0.4.3`, reviewed against the private `0.5.11` source baseline. Private desktop packaging, Registry mutation UI, private preview media, and its local visual shell are excluded.
 - The public distribution is derived and non-authoritative by design.
 - Private previews, native desktop packaging, and project-specific manifests are not bundled.
 - Formal editable Office deliverables still require an explicit downstream handoff and format-specific QA.
@@ -171,3 +188,11 @@ Bug reports, documentation improvements, public-safe rules, deterministic runtim
 ## License
 
 Apache License 2.0. See [`LICENSE`](LICENSE) and [`LICENSE-NOTES.md`](LICENSE-NOTES.md).
+
+## Skill maintenance
+
+The source separates task mode from output medium and applies KAT gates only to selected contracts. See the [maintenance contract](docs/skill-maintenance.md). This contract is included in NDT `2.11.0`.
+
+## Stable MCP bridge
+
+The MCP interface is `2.5.0`. Its fixed protocol/tool contract forwards each call to the current NDT worker/runtime. Compatible rule, code, and catalog updates no longer require a reconnect after the initial bridge migration. See [MCP maintenance](mcp-lite/README.md) and [Skill maintenance](docs/skill-maintenance.md).

@@ -1,72 +1,87 @@
 # Investment Banking Pitchbook Design Rule
 
-Use this rule for formal investment-banking pitchbooks, broker introductions, IPO advisory materials, client coverage decks, refinancing/M&A case books, and web/mobile pitchbook companions.
+Use this rule when `nero-design-team` is asked to design, audit, or produce formal investment-banking pitchbooks, broker department introductions, IPO advisory materials, client coverage decks, refinancing/M&A case books, and web/mobile pitchbook companions.
 
 ## Design Positioning
 
-- Default to a restrained, evidence-first, high-density banker book.
-- Prefer deep navy, restrained gold, and white information pages.
-- Prove capability through transactions, coverage, execution mechanism, complexity, and capital-market outcomes.
-- Do not make a marketing landing page, design portfolio, or internal redesign report.
+- Determine the audience, meeting purpose and explicit brand requirements. Accuracy, legibility and useful evidence remain task requirements; tone and density follow the chosen direction.
+- Deep navy, gold and white are one local candidate system. Consider other inspected directions when the task calls for exploration.
+- Use visual hierarchy to prove capability: transaction evidence, client coverage, execution mechanism, case complexity, and capital market outcomes.
+- Do not make the deck feel like a marketing landing page, design portfolio, or internal redesign report.
 
 ## Page Patterns
 
-- Cover: strong visual, official title, brand, and date; no process tags or draft labels.
-- Core positioning: one decisive claim plus proof blocks.
-- Service chain: lifecycle from pre-listing through IPO and post-listing/refinancing/M&A.
-- Client coverage: grouped industry map, selected logos, or standardized chips; no equal-weight raw logo screenshots.
-- Case: tombstone, facts, timeline, execution difficulty, and client value.
-- Transaction ledger: compact rows or tombstone matrix.
-- Mechanism: execution organization, checklist, feedback loop, and decision chain.
-- Appendix: source and caliber boundaries, not design-process notes.
+- Cover: strong visual but clean official title, brand, and month/date. Avoid process tags and draft labels.
+- Core positioning: one decisive claim plus proof blocks, not empty slogan cards.
+- Service chain: use lifecycle maps from pre-listing to IPO to post-listing service to refinancing/M&A.
+- Client coverage: industry map, selected logos or standardized chips, grouping and hierarchy, not equal-weight raw logo screenshots.
+- Case page: tombstone + facts + timeline + execution difficulty + client value.
+- Transaction ledger: compact rows or tombstone matrix; avoid sparse large tables.
+- Mechanism page: execution organization, delivery checklist, feedback loop, and decision chain.
+- Source appendix: factual source and caliber boundaries, not design-process notes.
 
-## Senior Client Covers And Dividers
+## Senior Client Cover And Divider Rules
 
-- Prioritize thesis, decision context, and the background subject over bank/team logo display.
-- Avoid large boxed logos and heavy dark masks that hide financial or industry imagery.
-- Do not repeat the broker/team logo on every divider. If required, use a small unframed mark away from title and imagery.
-- Allow only a few decision-critical KPI chips, subordinate to the title and scene.
-- Compare the full contact sheet before delivery; cover/dividers must not be darker, more boxed, or more logo-heavy than the approved current source.
+- For refinancing, IPO, client coverage, or M&A pitchbooks to client leadership, cover and chapter pages should prioritize thesis, decision context, and the background subject over bank or team logo display.
+- Avoid the logo-plus-heavy-overlay template pattern: large boxed logos and around 60% dark masks read as production draft residue and hide the image. Use only enough overlay for legibility, especially when the right side contains the financial or industry visual subject.
+- Do not repeat the broker or team logo on every chapter divider. If compliance or branding requires it, place a small no-frame mark in a corner away from title and imagery; otherwise omit it.
+- Cover KPI chips are allowed only for decision-critical numbers. Keep them few, large, aligned, and subordinate to the main title and background scene.
+- QA before delivery: compare the full deck contact sheet. Cover and dividers must not look darker, more boxed, or more logo-heavy than the approved current source deck.
+
 
 ## Anti-Patterns
 
-- Blank columns caused by short text in wide tables.
-- One repeated layout for every case.
-- Off-style raw logo screenshots.
+- Large blank right columns caused by short text inside wide tables.
+- Repeated slide templates for every case.
+- Raw logo screenshots that do not match the deck style.
 - Card-inside-card decoration and rounded template look.
-- Pink/purple off-brand accents.
-- Auto-generated section labels that read as source residue.
-- Visible process language such as redesign, design principle, adjustment logic, or retained original content.
+- Colors that contradict the explicitly selected brand or obscure readable information.
+- Auto-generated section labels such as 3-2, 3-8, 3-10 when they read as source-deck residue.
+- Visible strings such as redesign, NERO redesign, design principle, adjustment logic, source of client logos, or retained original content.
 
-## Desktop And Mobile
+## Desktop Layout Rules
 
-- Use a 16:9 banker grid with at least two information zones on most body pages.
-- Prefer tombstone matrices, ledgers, timelines, transaction boards, or architecture diagrams for case-heavy pages.
-- Keep right panels meaningfully loaded and verify compact desktop heights.
-- Treat mobile as a curated roadshow companion, not a mirror of every desktop card.
-- Prefer one screen per page; use case ledgers and dedicated major-case pages.
-- Never hide body content with clipping, ellipsis, or tiny type.
+- Use the specified delivery canvas; organize information zones around the page purpose rather than a fixed zone count.
+- For case-heavy pages, prefer tombstone matrix, ledger, transaction board, timeline, or architecture diagram.
+- Keep right-side panels meaningfully loaded; do not let decorative background or empty panels carry the page.
+- For MacBook 13 and small desktop heights, add compact horizontal rules rather than relying on a 1920x1080-only layout.
+
+## Mobile Companion Rules
+
+- Treat mobile as a curated roadshow companion.
+- Do not mirror every desktop card into mobile pages.
+- Keep one screen per page where possible; avoid long-scroll image-like pages for pitchbooks.
+- Use mobile case-ledgers for representative cases.
+- Give major cases one or two dedicated mobile pages instead of compressing all text into one small card.
+- Never use `overflow:hidden`, ellipsis, or tiny font sizes to hide body content.
 
 ## Typography And Contrast
 
-- Dense text remains readable in projection and phone viewports.
-- Company names, amounts, status, and regulatory boundaries outrank decorative labels.
-- Navy blocks use explicit high-contrast text; light cards use dark ink/navy text.
+- Dense body text should remain readable in projected desktop and phone viewports.
+- Key company names, amounts, transaction status, and regulatory boundaries need stronger hierarchy than decorative labels.
+- Deep navy blocks must explicitly set white or high-contrast text; do not rely on inherited colors.
+- Light cards must use dark navy/ink body text.
 
 ## Acceptance Criteria
 
-- No overlap, clipping, low contrast, or lost case-status boundaries.
-- Client coverage has visible hierarchy.
-- Mobile pagination is intentionally curated.
-- Desktop, compact desktop, phone portrait, and phone landscape are checked.
+- No body text overlaps, is clipped, or becomes low-contrast.
+- No high-value case loses its status boundary.
+- Client coverage has visible grouping and hierarchy.
+- Mobile page count is intentionally curated, not an automatic explosion of desktop fragments.
+- Desktop, MacBook 13, phone portrait, and phone landscape states are checked before delivery.
 
-## Regulatory Evidence Swiss HTML Addendum
+## Regulatory Evidence Swiss HTML PitchBook Addendum
 
-- Use a fixed 16:9 stage scaled as one unit.
-- Keep exact title, page number, source, and logo in HTML/CSS/vector layers.
-- Reserve divider hierarchy for real chapter transitions; use statement pages intentionally.
-- Keep the left two-thirds of dividers as a safe text zone and the right third as a non-evidence visual zone.
-- Generated imagery supports atmosphere only and never carries exact text, numbers, conclusions, sources, or logos.
-- Structure case review around issue, response logic, procedures, and current-project evidence needs.
-- Run visual QA, visual score, projection typography audit, contact-sheet inspection, and publish assertions only when their corresponding delivery scope is approved.
-- Keep project-specific facts and evidence out of the global case library.
+Use this addendum only when the task selects the Regulatory Evidence Swiss HTML treatment. An IPO or regulatory subject alone does not select this visual style.
+
+- Use `regulatory-evidence-swiss`: Swiss grid discipline, evidence-led hierarchy, sector-specific abstract imagery, and controlled institutional contrast.
+- Use a fixed 16:9 stage for HTML decks and scale the stage as a whole; do not reflow projection slides into unstable responsive layouts.
+- Keep title, page number, source note, and logo as HTML/CSS text or vector assets, not raster screenshots.
+- Use section dividers only where they create real narrative hierarchy; body pages should not share the exact same dark treatment as chapter pages unless they act as statement pages.
+- On chapter divider pages, reserve the left two-thirds as a safe text zone and the right third as a non-evidence visual zone.
+- Do not place thick vertical divider lines between text and imagery; if a divider is needed, use a quiet horizontal rule or a low-contrast grid line.
+- Generated or adapted imagery may support cover, chapter, or transition atmosphere, but must never carry exact text, numbers, regulatory conclusions, source notes, or logos.
+- For case-review pages, prefer the structure: original inquiry issue, issuer/intermediary response logic, procedures, and current-project evidence requirements.
+- For major-customer pages, separate equity, transaction, personnel, funds, SKU/license, terminal channel, and page-compliance evidence layers.
+- Run visual QA, visual score, projection typography audit, contact-sheet inspection, and online-publish assertions when a public HTML deck is published.
+- Store only lightweight design references in the global case library; do not preserve project-specific company facts, amounts, rankings, regulatory status, team names, source links, or private evidence.

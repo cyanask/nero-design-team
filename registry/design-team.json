@@ -11,7 +11,7 @@
     "truth_domains": {
       "system_contract": "registry/design-team.json",
       "design_asset_catalog": "registry/design-assets.json",
-      "design_rules": "rules",
+      "design_rules": "skills/nero-design-team/references",
       "skill_source": "skills/nero-design-team",
       "brand": "brand",
       "design_tokens": "tokens",
@@ -58,7 +58,13 @@
       "Omit or rewrite private examples, screenshots, validation history, and local-only prompt packs."
     ],
     "validation_policy": "Run scripts/validate-registry.mjs after public Registry changes; validate every changed Skill package with quick_validate.py when its PyYAML runtime is available.",
-    "public_skill": "skills/nero-design-team"
+    "public_skill": "skills/nero-design-team",
+    "rule_view": {
+      "path": "rules/",
+      "source": "skills/nero-design-team/references",
+      "policy": "existing_filenames_exact_match",
+      "check_command": "node scripts/sync-skill.mjs"
+    }
   },
   "asset_catalog": {
     "path": "registry/design-assets.json",
@@ -117,14 +123,13 @@
     "maturity_boundary": "A complete Registry is catalog evidence only. Runtime health, evaluation evidence, and production readiness require separate verifiers."
   },
   "name": "NERO Design Team",
-  "version": "2.8.0",
+  "version": "2.11.0",
   "owner": "NERO",
-  "updated_at": "2026-08-12",
-  "purpose": "Public-safe derivative of NERO Design Team 2.8.0 for frontend UI, interaction motion, image reports, Figure Compiler v0.2 with nine structural figure types, PPT/web-PPT, short video, AI-image briefs, generic style packs, visual QA, scoring, and production checks. Private authority, client/project evidence, restricted packs, local validation history, and external governance schemas are not bundled.",
+  "updated_at": "2026-09-12",
+  "purpose": "Public-safe derivative of NERO Design Team 2.10.0 for frontend UI, AI App UI, interaction motion, architecture-diagram design and draw.io/Mermaid redraw, image reports, Figure Compiler v0.2 with nine unchanged structural figure types, PPT/web-PPT, short video, AI-image briefs, generic style packs, visual QA, route-specific scoring, and production checks. Private authority, client/project evidence, restricted packs, local validation history, and external governance schemas are not bundled.",
   "global_trigger_route": {
     "status": "enabled",
     "source": "$CODEX_HOME/AGENTS.md",
-    "source_section": "## 6. 专项工作路由",
     "trigger_phrases": [
       "设计团队",
       "NERO Design Team",
@@ -154,7 +159,8 @@
       "The task is purely factual, legal, financial, database, evidence, or code-only work with no visual design surface."
     ],
     "routing_rule": "When a design-related request names NERO Design Team, standalone ndt/NDT, or 手写风格, route through $CODEX_HOME/skills/nero-design-team/SKILL.md. This public package does not install or modify global rules automatically.",
-    "boundary": "This is a global Codex cooperation rule, not an OS-level keyword listener. Skill and MCP remain model/tool-mediated."
+    "boundary": "This is a global Codex cooperation rule, not an OS-level keyword listener. Skill and MCP remain model/tool-mediated.",
+    "source_skill_id": "nero-design-team"
   },
   "brand_root": "$NERO_DESIGN_TEAM_HOME/brand",
   "token_root": "$NERO_DESIGN_TEAM_HOME/tokens",
@@ -182,7 +188,7 @@
     "version": "1.9.0",
     "kat_role": "Content Director",
     "nero_role": "Visual Director",
-    "formal_output_engine": "Presentations",
+    "formal_output_engine": "project_registry",
     "kat_schema": "not-bundled-kat-schemas/presentation_handoff_contract.schema.json",
     "kat_sample": "not-bundled-kat-samples/presentation_handoff_contract.json",
     "kat_docs": "not-bundled-kat-docs/PRESENTATION_HANDOFF_CONTRACT.md",
@@ -193,7 +199,7 @@
       "KAT owns story, evidence, claims, slide intent, exact data/text boundaries, and return-to-KAT conditions.",
       "NERO owns visual route, layout system, typography, chart treatment, image direction, visual QA, visual score, and production-check readiness.",
       "NERO must return content issues to KAT instead of silently changing conclusions, exact figures, source notes, regulatory wording, or must-preserve action titles.",
-      "Presentations remains the default formal editable PPTX engine."
+      "The current project registry selects the engine for each PPTX operation."
     ],
     "external_schema_status": "not_bundled_optional_integration"
   },
@@ -203,13 +209,13 @@
   "validation_root": "not-bundled-validation",
   "production_check": "$NERO_DESIGN_TEAM_HOME/scripts/production-check.mjs",
   "mcp_lite": {
-    "version": "2.3.0",
+    "version": "2.5.0",
     "server": "$NERO_DESIGN_TEAM_HOME/mcp-lite/server.mjs",
     "readme": "$NERO_DESIGN_TEAM_HOME/mcp-lite/README.md",
     "dry_run_examples": "$NERO_DESIGN_TEAM_HOME/mcp-lite/dry-run-examples.json",
     "registered_in_codex": false,
-    "registration_note": "The public package does not edit Codex configuration. Register the local server explicitly after installation if desired.",
-    "role": "Local tool execution layer. Skill remains the routing and design-judgment layer.",
+    "registration_note": "Entrypoint unchanged. Initial migration to stable bridge 2.5.0 requires a reconnect; compatible NDT changes load per call afterward.",
+    "role": "Stable protocol/tool-contract bridge forwarding each call to current NDT runtime; no cached design or routing policy.",
     "tools": [
       "nero_design_route",
       "nero_design_get_registry",
@@ -249,10 +255,22 @@
       "office_native_status": "handoff-only",
       "natural_language_contract": "nero_design_route returns figure_compiler with recommendation, reason, business family, figure type, profile, renderer, missing inputs, tool, and alternative route.",
       "false_positive_boundary": "Covers, photography, illustration, backgrounds, and concept visuals route to ai-image-generation instead of Figure Compiler."
+    },
+    "update_policy": {
+      "bridge_files": [
+        "mcp-lite/server.mjs",
+        "mcp-lite/tool-contract.mjs"
+      ],
+      "ndt_entry": "mcp-lite/ndt-worker.mjs",
+      "ndt_runtime": "mcp-lite/ndt-runtime.mjs",
+      "result_revision": "ndt_revision",
+      "routine_update": "Keep bridge files/version stable; update and validate NDT core files and catalogs.",
+      "limits_reference": "mcp-lite/README.md",
+      "acceptance_command": "node mcp-lite/stable-update-test.mjs"
     }
   },
   "oss_distribution": {
-    "version": "2.0.0",
+    "version": "2.11.0",
     "status": "published",
     "repository": "cyanask/nero-design-team",
     "url": "https://github.com/cyanask/nero-design-team",
@@ -264,7 +282,98 @@
       "Installers rewrite $NERO_DESIGN_TEAM_HOME and $CODEX_HOME placeholders at install time."
     ]
   },
+  "ai_app_ui_profile": {
+    "id": "ai-app-ui",
+    "status": "candidate_v0_1",
+    "route": "frontend-ui",
+    "top_level_route_added": false,
+    "independent_skill_added": false,
+    "rule": "$NERO_DESIGN_TEAM_HOME/rules/ai-app-ui.md",
+    "skill_reference": "$NERO_DESIGN_TEAM_HOME/skills/nero-design-team/references/ai-app-ui.md",
+    "template_preset": "$NERO_DESIGN_TEAM_HOME/templates/frontend-dashboard/presets/ai-app-ui",
+    "design_intent_schema": "$NERO_DESIGN_TEAM_HOME/templates/frontend-dashboard/presets/ai-app-ui/design-intent.schema.json",
+    "state_catalog": "$NERO_DESIGN_TEAM_HOME/templates/frontend-dashboard/presets/ai-app-ui/state-catalog.json",
+    "scorecard": "$NERO_DESIGN_TEAM_HOME/scorecards/ai-app-ui-scorecard.json",
+    "project_manifest_binding": "frontend_profile",
+    "fused_sources": [
+      "outshift-open/hax",
+      "microsoft/HAXPlaybook",
+      "google-labs-code/design.md",
+      "aa-on-ai/agentic-design-system"
+    ],
+    "protocol_boundary": "AG-UI, A2UI and MCP Apps may inform visible state and containment patterns; NDT does not install or own their transports, runtimes, schemas or host security.",
+    "acceptance_boundary": [
+      "design_contract_passed",
+      "rendered_qa_passed",
+      "live_behavior_observed",
+      "human_accepted"
+    ],
+    "maturity_boundary": "Source, route, generator and score seams can be verified structurally. Browser rendering, real product behavior and human interaction acceptance require separate evidence."
+  },
   "fused_reference_skills": [
+    {
+      "name": "outshift-hax",
+      "status": "fused_into_nero_ai_app_ui_profile_v0_1",
+      "source_repo": "outshift-open/hax",
+      "source_url": "https://github.com/outshift-open/hax",
+      "license": "Apache-2.0",
+      "reviewed_at": "2026-09-07",
+      "fused_rules": [
+        "$NERO_DESIGN_TEAM_HOME/rules/ai-app-ui.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/visual-qa.md"
+      ],
+      "use_for": "Human control, clarity, recovery, collaboration, traceability and human-in-the-loop interface patterns.",
+      "avoid_for": "Installing its SDK, CLI, component library, deployment or agent controller.",
+      "deletion_policy": "No local upstream install or asset copy. Keep attributed method metadata and NDT-native rules only."
+    },
+    {
+      "name": "microsoft-hax-playbook",
+      "status": "fused_into_nero_ai_app_ui_profile_v0_1",
+      "source_repo": "microsoft/HAXPlaybook",
+      "source_url": "https://github.com/microsoft/HAXPlaybook",
+      "license": "MIT",
+      "source_status": "archived_read_only_2026_06_11",
+      "reviewed_at": "2026-09-07",
+      "fused_rules": [
+        "$NERO_DESIGN_TEAM_HOME/rules/ai-app-ui.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/visual-qa.md"
+      ],
+      "use_for": "Failure-scenario planning and human-AI interaction review.",
+      "avoid_for": "Installing the archived application runtime or copying Microsoft branding.",
+      "deletion_policy": "Keep as an attributed theory and review reference only."
+    },
+    {
+      "name": "google-design-md",
+      "status": "fused_into_nero_ai_app_ui_profile_v0_1",
+      "source_repo": "google-labs-code/design.md",
+      "source_url": "https://github.com/google-labs-code/design.md",
+      "license": "Apache-2.0",
+      "source_status": "alpha",
+      "reviewed_at": "2026-09-07",
+      "fused_rules": [
+        "$NERO_DESIGN_TEAM_HOME/rules/ai-app-ui.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/project-integration.md"
+      ],
+      "use_for": "Structured design intent, normative tokens, human-readable rationale and a diffable coding-agent projection.",
+      "avoid_for": "Creating an independent token truth or adding the upstream CLI as an NDT dependency.",
+      "deletion_policy": "NDT tokens and rules remain canonical; any DESIGN.md is a rebuildable project projection."
+    },
+    {
+      "name": "agentic-design-system",
+      "status": "fused_into_nero_ai_app_ui_profile_v0_1",
+      "source_repo": "aa-on-ai/agentic-design-system",
+      "source_url": "https://github.com/aa-on-ai/agentic-design-system",
+      "license": "MIT",
+      "source_status": "early_public_package",
+      "reviewed_at": "2026-09-07",
+      "fused_rules": [
+        "$NERO_DESIGN_TEAM_HOME/rules/ai-app-ui.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/visual-qa.md"
+      ],
+      "use_for": "Intent, baseline, task rubric, rendered evidence, review and revision discipline.",
+      "avoid_for": "Installing its Skill pack, MCP server, grader, workflows or templates as a parallel NDT controller.",
+      "deletion_policy": "Keep the review-loop method as NDT-native guidance; no upstream runtime install."
+    },
     {
       "name": "impeccable",
       "status": "fused_into_nero_frontend_rules",
@@ -276,7 +385,7 @@
         "$NERO_DESIGN_TEAM_HOME/skills/nero-design-team/references/visual-qa.md",
         "$NERO_DESIGN_TEAM_HOME/skills/nero-design-team/references/repo-registry.md"
       ],
-      "use_for": "Detector-style frontend design review, anti-pattern checklist, deterministic UI QA, and final polish.",
+      "use_for": "Problem-specific diagnosis, hierarchy, grouping, typesetting and prioritized render-based refinement. Upstream style preferences remain candidates rather than general prohibitions.",
       "avoid_for": "Default npm install, hooks, live mode, browser injection, or replacing NERO visual judgment.",
       "deletion_policy": "No local install is created in v1.3. Keep this as an attributed fused reference only."
     },
@@ -291,9 +400,10 @@
         "$NERO_DESIGN_TEAM_HOME/skills/nero-design-team/references/visual-qa.md",
         "$NERO_DESIGN_TEAM_HOME/skills/nero-design-team/references/repo-registry.md"
       ],
-      "use_for": "Brief inference, anti-default discipline, visual-strength calibration, and redesign pre-flight checks.",
+      "use_for": "Task-specific brief inference, optional descriptive dials and rendered refinement; aesthetic bans and industry-based numeric defaults are not adopted.",
       "avoid_for": "Standalone default routing, full skill transplant, or pushing NERO dashboards toward marketing or portfolio aesthetics by default.",
-      "deletion_policy": "No local install is created in v1.3. Keep this as an attributed fused reference only."
+      "deletion_policy": "No local install is created in v1.3. Keep this as an attributed fused reference only.",
+      "nero_dial_defaults": {}
     },
     {
       "name": "effective-html",
@@ -313,6 +423,28 @@
       "use_for": "Self-contained HTML artifacts, SVG-first architecture diagrams, visual plan pages, single-file explainers, and HTML web PPT diagram pages.",
       "avoid_for": "Independent default routing, full skill installation by default, direct upstream example copying, or replacing NERO tokens and QA gates.",
       "deletion_policy": "No standalone skill install is created in v1.6. Keep as an attributed fused reference only."
+    },
+    {
+      "name": "diagram-design",
+      "status": "fused_into_ndt_architecture_diagram_redraw_v2_9",
+      "source_repo": "cathrynlavery/diagram-design",
+      "source_url": "https://github.com/cathrynlavery/diagram-design",
+      "reviewed_commit": "e48df3fb1e0008f14d792afa6a8a1cb7421b785f",
+      "reviewed_plugin_version": "2.4.3",
+      "license": "MIT",
+      "license_status": "permissive",
+      "fused_rules": [
+        "$NERO_DESIGN_TEAM_HOME/rules/architecture-diagram-redraw.md",
+        "$NERO_DESIGN_TEAM_HOME/rules/visual-qa.md",
+        "$NERO_DESIGN_TEAM_HOME/skills/nero-design-team/references/architecture-diagram-redraw.md"
+      ],
+      "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/cathrynlavery__diagram-design/snapshot.json",
+      "local_extractor": "$NERO_DESIGN_TEAM_HOME/scripts/extract-architecture-source.py",
+      "use_for": "Behavior-first semantic-pattern selection, architecture-diagram grammar, meaning-preserving draw.io/Mermaid redraw, destination-aware detail selection, fidelity ledgers, complexity discipline, accessible SVG contracts, and architecture-specific QA.",
+      "avoid_for": "Adding technical diagram types to Figure Compiler, parallel Skill/plugin routing, copying the upstream default skin/templates/examples/fonts/icons/profile store/motion controller, importing its self-check unchanged, or treating old diagrams as current authority without reconciliation.",
+      "figure_compiler_boundary": "Figure Compiler remains exactly nine report-figure types: flow, hierarchy, timeline, funnel, bar, line, participant_map, matrix, and value_chain.",
+      "ai_builder_boundary": "AI Native System Builder owns fact modeling and projection contracts only; it does not absorb diagram-design visual templates or NDT QA.",
+      "deletion_policy": "No standalone upstream Skill/plugin install, repository clone, profile store, motion controller, self-check copy, visual template pack, icon pack, or font pack is created. Keep as an attributed fused reference plus NDT-native read-only extractor and QA gate."
     },
     {
       "name": "emilkowalski-design-engineering",
@@ -364,7 +496,7 @@
       "use_for": "HTML-native multi-format design harness ideas, design variants, brand asset protocol, visual QA, editable deck thinking, and motion/video pipeline planning.",
       "avoid_for": "Default TTS, audio asset copying, watermarks, provider/API key setup, full upstream asset migration, or replacing NERO route control.",
       "gpt_image_2_boundary": "May inform visual素材 briefs and style exploration; generated images cannot carry exact text, figures, tables, chart labels, source notes, or regulatory conclusions.",
-      "formal_ppt_boundary": "Does not replace Presentations. Formal editable PPTX remains Presentations-first.",
+      "formal_ppt_boundary": "Does not replace the current project PPTX operation registry.",
       "deletion_policy": "No standalone skill install or upstream asset migration is created in v1.8. Keep as an attributed fused reference only."
     },
     {
@@ -385,7 +517,7 @@
       "use_for": "1920x1080 fixed-stage HTML deck production, three-style previews, web PPT style discovery, lightweight template indexing, and browser-first QA.",
       "avoid_for": "Formal PPTX replacement, default Vercel/GitHub Pages deployment, copying bold-template code wholesale, or dense banker appendix production.",
       "gpt_image_2_boundary": "Can provide art-direction context for web deck imagery only; exact slide text and data remain HTML/PPT layers.",
-      "formal_ppt_boundary": "Style-discovery output can inform a formal deck, but final formal PPTX still routes to Presentations.",
+      "formal_ppt_boundary": "Style-discovery output can inform a formal deck; the current project registry selects its output engine.",
       "deletion_policy": "No full template pack copy or deployment configuration is created in v1.8. Keep as an attributed fused reference only."
     },
     {
@@ -404,9 +536,9 @@
       ],
       "local_snapshot": "not-bundled-case-library/snapshots/hugohe3__ppt-master/snapshot.json",
       "use_for": "Design spec/spec lock discipline, PPT production pipeline, SVG QA, native editability checks, and AI image style-lock boundaries.",
-      "avoid_for": "Replacing Presentations as formal PPTX primary route, installing heavy dependencies, running image generation/TTS/image search/watermark removal by default, or copying large SVG/PPTX examples.",
+      "avoid_for": "Overriding the current project PPTX operation registry, installing heavy dependencies, running image generation/TTS/image search/watermark removal by default, or copying large SVG/PPTX examples.",
       "gpt_image_2_boundary": "May inform style-lock briefs for covers, sections, and scene素材 only; generated images cannot contain final text, numbers, tables, chart labels, or conclusions.",
-      "formal_ppt_boundary": "Formal editable PPTX remains Presentations-first; PptxGenJS remains legacy fallback only.",
+      "formal_ppt_boundary": "The project registry selects formal PPTX engines; PptxGenJS is an explicit-only legacy sample route.",
       "deletion_policy": "No standalone runtime install, dependency install, or example pack copy is created in v1.8. Keep as an attributed fused reference only."
     },
     {
@@ -465,7 +597,7 @@
     }
   ],
   "global_style": {
-    "positioning": "restrained, professional, evidence-first, high information density",
+    "positioning": "task-led visual direction; explicit content, usability, readability and selected brand constraints",
     "primary_contexts": [
       "investment banking",
       "A-share IPO advisory",
@@ -474,13 +606,12 @@
       "internal analytical tools"
     ],
     "avoid": [
-      "marketing-style hero pages unless explicitly requested",
-      "random purple-blue gradients",
-      "oversized rounded cards",
-      "cards inside cards",
-      "decorative images that do not carry information",
-      "generated text or generated numbers treated as evidence"
-    ]
+      "fabricated facts, sources, statuses or functions",
+      "unreadable necessary content or unusable controls",
+      "violating explicit task brand/template/output requirements",
+      "uninspected references presented as visually reviewed"
+    ],
+    "policy": "Task requirements are binding; design methods are conditional; local and external styles/assets are candidates. No house skin, numeric dial default or local reuse quota."
   },
   "token_outputs": {
     "css_variables": "$NERO_DESIGN_TEAM_HOME/build/css/nero-tokens.css",
@@ -516,8 +647,8 @@
         "small mechanical UI patch that already has a clear local pattern"
       ],
       "call_rules": [
-        "Start from NERO tokens and audience before selecting components or visual effects.",
-        "Reject generic marketing layouts for work tools.",
+        "Start from the audience, goal and explicit constraints, then inspect local and outside candidate references.",
+        "Make the first screen serve the actual task; choose its visual organization from the brief.",
         "Preserve evidence hierarchy over decoration."
       ],
       "gpt_image_2_boundary": "May approve gpt-image-2 style direction for covers/backgrounds, but never accepts generated text, numbers, tables, or charts as evidence."
@@ -570,8 +701,8 @@
         "native PPTX or static image report is the primary deliverable"
       ],
       "call_rules": [
-        "Use CSS variables or Tailwind values generated from NERO tokens.",
-        "Use shadcn/ui for base controls and layout primitives.",
+        "Use a coherent project parameter system; NERO token outputs are candidates unless explicitly required.",
+        "Consider compatible available component systems for the task; do not impose a house visual identity.",
         "Apply fused Impeccable/Taste checks for frontend-ui and frontend-oriented visual-audit tasks.",
         "Apply fused effective-html checks when a one-file HTML artifact, architecture diagram, visual plan, or design-review page is the right deliverable.",
         "Add visual enhancement only where it improves workflow comprehension."
@@ -605,7 +736,7 @@
         "single static report card"
       ],
       "call_rules": [
-        "Use Carbon for density and hierarchy.",
+        "Consider Carbon methods when they help grouping, hierarchy or repeated workflows.",
         "Use Ant Design only when enterprise controls justify the dependency or pattern.",
         "Keep controls scannable and repeated actions ergonomic."
       ],
@@ -690,7 +821,7 @@
         "editable PPTX is required as the primary output"
       ],
       "call_rules": [
-        "Use `report-theme.mjs` from NERO tokens.",
+        "Use the selected project report theme; `report-theme.mjs` is one local candidate.",
         "Keep exact text, numbers, source notes, and charts in code.",
         "Use gpt-image-2 only for background or cover素材 when the brief calls for it."
       ],
@@ -702,7 +833,7 @@
         {
           "name": "Presentations plugin",
           "url": "local Codex Presentations plugin",
-          "use_for": "Default formal editable PPTX production, template-following decks, source-deck editing, rendered preview QA, and artifact-tool export.",
+          "use_for": "Project-selected specialized operations including template-following, source-deck editing, inspection and repair.",
           "avoid_for": "HTML-only web PPT or quick local dry-run when a native artifact is not required."
         },
         {
@@ -733,7 +864,7 @@
         {
           "name": "gitbrent/PptxGenJS",
           "url": "https://github.com/gitbrent/PptxGenJS",
-          "use_for": "Legacy local fallback for lightweight samples, local template verification, MCP dry-run, or cases where Presentations is unavailable.",
+          "use_for": "Explicitly selected lightweight samples, local template verification and MCP dry-run; never an automatic fallback.",
           "avoid_for": "Default formal PPTX production."
         },
         {
@@ -758,13 +889,13 @@
       "call_rules": [
         "NERO Design Team is the PPT entrypoint and controller.",
         "Choose one PPT subroute before production: formal-pptx, template-following, ppt-design-audit, web-ppt-html, or legacy-local-pptx.",
-        "Default formal PPTX to Presentations artifact-tool.",
+        "Resolve the current project registry operation before formal PPTX production; missing context remains pending.",
         "Use `ppt-business-design.md` for commercial deck direction and quality gates.",
         "Use `web-ppt.md` for HTML/web PPT decks, especially Guizang-inspired editorial and Swiss-style decks.",
         "Use `effective-html.md` when an HTML/web PPT deck needs a self-contained diagram, visual plan, SVG-first architecture page, or no-build single-file artifact.",
         "For Swiss-style web PPT, run `scripts/validate-web-ppt.mjs <index.html> --mode swiss` before delivery.",
         "Read external asset manifest before using any local third-party design asset.",
-        "Use PptxGenJS only as a legacy local fallback.",
+        "Use PptxGenJS only as an explicitly selected legacy local sample route.",
         "Place exact text, figures, charts, tables, and source notes by code."
       ],
       "gpt_image_2_boundary": "Generated visuals can support covers and section dividers but never replace PPTX text, tables, charts, or financial figures."
@@ -789,7 +920,7 @@
         "static PPTX or image report is sufficient"
       ],
       "call_rules": [
-        "Use `remotion-theme.ts` from NERO tokens.",
+        "Use motion and visual parameters selected for the project; the local Remotion theme is a candidate.",
         "Storyboard before coding scenes.",
         "Frame-check captions, charts, and motion readability."
       ],
@@ -819,7 +950,7 @@
       ],
       "call_rules": [
         "Create a gpt-image-2 brief before generation.",
-        "Reference NERO design tokens and safe overlay areas.",
+        "Define the selected project visual parameters and safe areas for exact content.",
         "Use Satori/Sharp, PptxGenJS, or Remotion after generation to add exact content.",
         "Run visual QA on the final composite."
       ],
@@ -873,23 +1004,10 @@
     ]
   },
   "default_process": [
-    "Classify route.",
-    "For PPT route, choose subroute: formal-pptx, template-following, ppt-design-audit, web-ppt-html, or legacy-local-pptx.",
-    "For frontend-ui or frontend-oriented visual-audit, apply fused Impeccable/Taste design read, anti-slop checks, deterministic pre-flight review, and frontend-motion purpose/interruptibility/accessibility gates when interaction motion is material.",
-    "Load NERO brand profile and master layout guidance when creating or revising a full artifact.",
-    "Build or load NERO tokens.",
-    "Select local template or create a project with scripts/nero-design.mjs.",
-    "Consult the case library for suitable style and workflow precedents.",
-    "For a single structural report figure, run Figure Compiler semantic routing, then compile only a project-local candidate through nero_design_compile_report_figure when recommended and authorized.",
-    "Use repository references only for patterns and implementation guidance.",
-    "If high-quality visual素材 is needed, create a gpt-image-2 brief.",
-    "Place exact text, numbers, charts, and source notes with code.",
-    "Generate or validate export outputs when dependencies are available; otherwise record blocked export reasons.",
-    "Run visual QA.",
-    "Run visual scoring when judging readiness.",
-    "Run production-check.mjs before calling a complete artifact delivery-ready.",
-    "Archive or reference the case-library record when a reusable pattern is created.",
-    "Report brand, tokens, template, gpt-image-2 usage, export files, QA, score, and case-library status."
+    "Use the canonical nero-design-team SKILL.md six-step design method and its task-dependent exploration branch.",
+    "Load method cards and medium-specific contracts only for the current problem.",
+    "Keep local search, web discovery, actual image viewing and rendering as distinct tool actions with honest evidence.",
+    "Apply existing content, output, style-version and human-acceptance gates at the selected task stage."
   ],
   "presentation_production_chain": {
     "status": "enabled",
@@ -897,7 +1015,7 @@
     "name": "KAT x NDT Presentation Production Chain",
     "kat_role": "Content Director",
     "nero_role": "Visual Director",
-    "formal_output_engine": "Presentations",
+    "formal_output_engine": "project_registry",
     "kat_artifacts": {
       "presentation_handoff_contract": "not-bundled-kat-schemas/presentation_handoff_contract.schema.json",
       "slide_claim_map": "not-bundled-kat-schemas/slide_claim_map.schema.json",
@@ -922,7 +1040,7 @@
     "boundary": [
       "KAT owns content, claims, evidence, exact text/data, source notes, and freeze gates.",
       "NERO Design Team owns visual route, design spec, style lock, image direction, QA, scoring, production-check, and case archive readiness.",
-      "Presentations remains the formal editable PPTX output engine.",
+      "The current project registry selects the formal editable PPTX output engine.",
       "gpt-image-2 may create visual素材 only and cannot carry exact text, numbers, tables, chart labels, source notes, or regulatory conclusions."
     ],
     "kat_artifacts_status": "not_bundled_optional_integration"
@@ -935,5 +1053,31 @@
       "high-resolution-raster-report-figure",
       "report-figure-compiler"
     ]
-  }
+  },
+  "design_method_sources": [
+    {
+      "url": "https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/SKILL.md",
+      "checked_at": "2026-09-12",
+      "adopted": "Subject/audience-specific direction and review against the actual brief",
+      "excluded": "Blanket aesthetic bans, mandatory hero treatment and upstream approval defaults"
+    },
+    {
+      "url": "https://impeccable.style/docs/",
+      "checked_at": "2026-09-12",
+      "adopted": "Problem-specific diagnosis and actionable layout/type/refinement methods",
+      "excluded": "Independent runtime/controllers, all-tool installation and universal style bans"
+    },
+    {
+      "url": "https://developers.openai.com/codex/skills/",
+      "checked_at": "2026-09-12",
+      "adopted": "Thin director instructions with on-demand references and optional scripts",
+      "excluded": "Treating package validity as design quality"
+    },
+    {
+      "url": "https://developers.openai.com/codex/mcp/",
+      "checked_at": "2026-09-12",
+      "adopted": "Separate tool/context access from design judgment and actual execution",
+      "excluded": "Assuming local MCP performs web search or visual inspection"
+    }
+  ]
 }

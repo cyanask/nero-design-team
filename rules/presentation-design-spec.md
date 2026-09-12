@@ -37,11 +37,7 @@ Use style lock after the visual direction is selected. Do not lock style before 
 
 ## Three-Direction Exploration
 
-For important decks, create three visual directions before final production:
-
-1. Conservative banker: restrained, dense, evidence-first.
-2. Editorial strategy: stronger hierarchy and narrative pages.
-3. Modern technical: architecture/data/product-forward, still professional.
+For important new decks, propose two or three directions with substantive differences in information organization, image/type relationships or experience. Use the director's exploration branch; an open exploration includes one direction independent of existing presets while preserving task constraints. No fixed banker/editorial/technical trio is required.
 
 Each direction must include:
 

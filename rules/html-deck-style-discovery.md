@@ -1,60 +1,63 @@
 # HTML Deck Style Discovery Rule
 
-Use this rule for HTML web-PPT style exploration, fixed-stage slide prototypes, visual-direction previews, and browser-first presentation drafts.
+Use this rule for HTML web PPT style exploration, fixed-stage slide prototypes, visual direction previews, and browser-first presentation drafts.
 
 ## Fused Reference
 
-- Source: `zarazhangrui/frontend-slides`.
-- Public snapshot: `not-bundled-snapshots/zarazhangrui__frontend-slides`.
-- License status: permissive; upstream templates and screenshots remain external references.
+- Source: `zarazhangrui/frontend-slides`
+- Public snapshot status: not bundled (`not-bundled-snapshots/zarazhangrui__frontend-slides`).
+- License status: permissive, but upstream templates and screenshots remain external references.
 
 ## Route
 
-- Primary route: `ppt`, subroute `web-ppt-html`.
-- Use only for HTML/web-PPT discovery and preview.
-- Formal editable PPTX, Google Slides, board, banker, or client-deliverable PPTX returns to `formal-pptx` or `template-following` and Presentations.
+- Primary NERO route: `ppt` with subroute `web-ppt-html`.
+- Use this rule only for HTML/web PPT discovery and preview.
+- If final editable PPTX, Google Slides, board deck, banker deck, or client-deliverable PPTX is required, route back to `formal-pptx` or `template-following`. Resolve new formal PPTX through the current project registry; use Presentations for existing/template work and Google Slides.
 
 ## Fixed Stage Standard
 
-- Default to `1920x1080` and scale the whole 16:9 stage in the viewport.
-- Do not independently reflow body cards as a dashboard.
-- Preserve selectable HTML text for exact titles, figures, sources, and visible labels.
-- Use browser screenshots and contact sheets before treating a deck as ready.
+- Default slide stage: `1920x1080`.
+- Compose the slide as a fixed 16:9 stage and scale the whole stage in the viewport.
+- Do not let body cards reflow independently as if this were a dashboard.
+- Preserve selectable HTML text for exact titles, figures, sources, and speaker-visible labels.
+- Use browser screenshots/contact sheets for QA before treating a deck as ready.
 
 ## Style Discovery Workflow
 
 1. Read `web-ppt.md`, `visual-qa.md`, and this rule.
-2. Define audience, speaking context, route, delivery state, and evidence constraints.
-3. When style is unlocked, compare at most three directions: `banker-swiss`, `editorial-research`, and `technical-product`.
-4. Use the same two or three representative slides across directions.
-5. Lock one style before full production.
-6. Archive the direction only after review and within the approved project-local or case-snapshot boundary.
+2. Define audience, speaking context, route, deliverable status, and evidence constraints.
+3. For important new designs, compare two or three materially different directions using inspected local and online references. In open exploration, include a direction independent of existing presets within the task constraints; do not prescribe a fixed trio.
+4. Compare the same 2-3 representative slides across styles.
+5. Select one style before full deck production.
+6. Archive the selected direction in project-local notes or a NERO case snapshot only after review.
 
 ## Use For
 
-- Web-PPT style discovery and contact-sheet comparisons.
-- Fast browser talk-deck prototypes.
-- Screenshot-led/product-demo presentations.
-- A visual direction brief for later formal PPTX.
+- Web PPT / HTML deck style discovery.
+- Contact-sheet comparison before making a long deck.
+- Fast browser-based talk deck prototypes.
+- Screenshot-led or product-demo presentations.
+- Translating a visual direction into a later formal PPTX brief.
 
 ## Avoid For
 
-- Formal PPTX editing fidelity or source-template following.
+- Formal PPTX editing fidelity.
+- Template-following from a source PPTX.
 - Dense legal, financial, or banker appendices.
 - Default public deployment.
-- Wholesale copying of upstream templates.
+- Copying upstream bold templates wholesale.
 
 ## Hard Bans
 
-- Do not deploy by default.
-- Do not copy upstream code, screenshots, or template packs as NERO assets.
-- Do not rasterize exact financial facts that need editing or review.
-- Do not substitute web-PPT for Presentations when editable PPTX is required.
+- Do not deploy to Vercel, GitHub Pages, or any public URL by default.
+- Do not copy upstream `bold-template` code, screenshots, or template packs as NERO production assets.
+- Do not convert exact financial facts into raster images if they need later editing or review.
+- Do not use web PPT as a substitute for the current project's selected engine when the required output is a formal editable PPTX.
 
 ## QA Gate
 
-- Stage is 1920x1080 or explicitly overridden.
-- Intended no-build browser preview opens.
-- Contact sheet has coherent rhythm without repeated-density fatigue.
-- Text does not overflow at target sizes.
-- Sources, periods, units, and exact numbers remain text layers, not generated-image text.
+- Slide stage is 1920x1080 or explicitly overridden.
+- Browser preview opens without a build step when that is the intended delivery.
+- Contact sheet shows coherent rhythm and no repeated-density fatigue.
+- Text does not overflow at target desktop and presentation sizes.
+- Sources, periods, units, and exact numbers remain HTML/PPT text, not generated image text.

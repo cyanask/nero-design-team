@@ -12,7 +12,7 @@ This rule fuses `plannotator/effective-html` into NERO Design Team as a referenc
 - Local snapshot: `$NERO_DESIGN_TEAM_HOME/case-library/snapshots/plannotator__effective-html/snapshot.json`
 - Local reference pack: `not-bundled-reference: effective-html`
 
-Use the source as reference only. Build NERO-native HTML/CSS/JS with NERO tokens, NERO brand constraints, and task-specific content.
+Use the source as a candidate method reference. Build task-specific HTML/CSS/JS using the selected project visual system and verified content; NERO identity applies only when selected.
 
 ## When To Use
 
@@ -55,6 +55,52 @@ Route selection must remain deterministic for the same task contract. Do not
 change route because an upstream example looks attractive or because a single
 file is easier to generate.
 
+## Concept Explainer Mode
+
+Use `artifact_mode: concept_explainer` inside the existing `frontend-ui` +
+`effective-html` route when NERO asks NDT to make a topic clear, explain a
+mechanism with interactive HTML, or make a process playable step by step. This
+mode is not a new Skill, subroute, controller, or publication path.
+
+The caller or domain/content owner supplies one `explanation_brief` with:
+
+- `audience`
+- `core_question`
+- `one_sentence_answer`
+- `verified_facts`
+- `must_preserve`
+- `allowed_simplifications`
+- `unknowns`
+- `sources`
+- `as_of`
+
+NDT may reorganize verified content into a visual model, but it must return to
+the caller when a required simplification would change wording, meaning,
+figures, source scope, regulatory treatment, or a formal conclusion.
+
+Choose the smallest carrier that improves comprehension:
+
+- structure or relationships: static or clickable SVG;
+- process or change over time: user-controlled step sequence;
+- parameter-to-result sensitivity: interactive simulator;
+- required MP4/video distribution: hand off to the existing `short-video`
+  route;
+- no explanatory gain from interaction or motion: static HTML/SVG.
+
+Every concept explainer must record:
+
+- `compression_ledger`: what was kept, grouped, deferred, or left unresolved;
+- `motion_semantics`: each material motion mapped to a causal step, process
+  step, state change, or parameter change;
+- `static_equivalent`: the same core answer, facts, sources, and state meaning
+  available without motion.
+
+Prefer progressive disclosure: the first viewport gives the one-sentence
+answer and main visual model; detail, assumptions, and sources remain available
+without crowding the primary explanation. When sequencing is material, provide
+play, pause, previous, next, and reset controls. Motion must respect
+`prefers-reduced-motion` and must never be the only carrier of meaning.
+
 ## Core Rules
 
 - Prefer self-contained HTML when the deliverable should be shared, opened, or reviewed without a build step.
@@ -67,7 +113,7 @@ file is easier to generate.
 - Keep exact labels, figures, source notes, and conclusions as verified HTML text.
 - Do not use AI-generated images to carry exact labels, financial numbers, or architecture facts.
 
-## Additional Default Bans
+## Delivery and functional boundaries
 
 - Do not turn an explainer, plan, architecture map, or review artifact into a
   marketing landing page unless that is the requested deliverable.
@@ -83,14 +129,12 @@ file is easier to generate.
 - Do not put design rationale, implementation notes, prompt residue, internal
   paths, or upstream attribution boilerplate into the visible artifact unless
   the requested review surface requires it.
-- Do not use dark mode, animation, decorative grids, glow, glass, or node
-  networks as automatic signals of technical sophistication. They must pass
-  the frontend exception gate and improve the actual explanation.
+- Choose theme, animation, grids, glow, glass or node networks by their contribution to the explanation. Assess the render and function; no visual category needs generic exception approval.
 
 ## NERO Adaptation
 
-- NERO tokens override upstream palettes and typography.
-- NERO information density overrides decorative minimalism when the artifact is for analysts, bankers, or internal workflows.
+- Explicit project/user identity constraints govern palettes and typography; local and external treatments otherwise remain candidates.
+- Choose density for the reading/action goal. Preserve necessary information without prescribing either dense or sparse composition.
 - NERO web PPT rules override upstream deck style when the artifact is a deck.
 - NERO frontend UI rules override upstream single-file examples when the artifact is a reusable app surface.
 - NERO visual QA remains the final gate.
@@ -124,5 +168,9 @@ file is easier to generate.
   named delivery contexts.
 - Facts, assumptions, placeholders, and source notes remain distinguishable in
   both light and dark themes.
+- A `concept_explainer` answers one named core question, preserves the supplied
+  one-sentence answer, and does not silently exceed the `explanation_brief`.
+- Its `compression_ledger`, `motion_semantics`, and `static_equivalent` are
+  complete; any animation is user-controllable when sequence matters.
 - The recorded route outcome still matches the final artifact; an exploration
   page is not reported as a maintained app, formal deck, or published surface.

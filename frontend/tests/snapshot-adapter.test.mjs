@@ -200,7 +200,7 @@ describe("snapshot adapter", () => {
     expect(result.data.detailsById.bounded.artifacts).toEqual([]);
   });
 
-  it("projects the bundled public Registry without private preview media", async () => {
+  it("projects only the explicitly bundled public Registry previews", async () => {
     const ndtHome = path.resolve("..");
     const snapshot = await createSnapshot({ ndtHome, projects: [] });
     const source = JSON.parse(
@@ -215,11 +215,29 @@ describe("snapshot adapter", () => {
     const resolvedPreviews = snapshot.catalog.data.assets.filter(
       (asset) => asset.preview.state === "resolved"
     );
-    expect(resolvedPreviews).toHaveLength(0);
+    expect(resolvedPreviews).toHaveLength(source.assets.length);
+    expect(resolvedPreviews.every((asset) => /^\.\/library-previews\/[a-z0-9-]+\.png$/i.test(asset.preview.url))).toBe(true);
     expect(snapshot.catalog.data.assets.every((asset) => asset.preview.variants.length === 0)).toBe(true);
     expect(snapshot.catalog.data.integrityIssues).toEqual([]);
     expect(snapshot.catalog.state.upstreamAuthority).toBe("derived");
     expect(snapshot.catalog.state.projection).toBe("sanitized_snapshot");
     expect(snapshot.catalog.source.fingerprint).not.toBeNull();
+  });
+});
+
+
+describe("canonical asset state projection", () => {
+  it("carries canonical fields without deriving acceptance from legacy labels", async () => {
+    const { projectAssets } = await import("../scripts/snapshot/catalog-projector.mjs");
+    const registry = { assets: [{ id: "A", status: "approved", maturity: "candidate", reuse_state: "reference_only", aliases: ["中文别名"] }, { id: "B", status: "passed" }] };
+    const projected = projectAssets(registry, []);
+    expect(projected.assets[0]).toMatchObject({ maturity: "candidate", reuseState: "reference_only", aliases: ["中文别名"] });
+    expect(projected.assets[1]).toMatchObject({ maturity: "unknown", reuseState: "unknown", aliases: [] });
+  });
+
+  it("does not resolve preview paths outside the public preview directory", async () => {
+    const { projectAssets } = await import("../scripts/snapshot/catalog-projector.mjs");
+    const registry = { assets: [{ id: "A", preview: { source_ref: "../private/example.png" } }] };
+    expect(projectAssets(registry, []).assets[0].preview).toMatchObject({ state: "unresolved", url: null });
   });
 });

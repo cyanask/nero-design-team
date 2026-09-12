@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "frontend_profile": "ai-app-ui",
+  "states": [
+    { "id": "idle", "meaning": "没有任务正在运行", "minimum_actions": ["start-or-select-task"] },
+    { "id": "planning", "meaning": "计划仍是候选，尚未开始执行", "minimum_actions": ["review", "edit", "start"] },
+    { "id": "running", "meaning": "任务正在执行，完成时间未知时不得虚构进度", "minimum_actions": ["inspect", "cancel-when-supported"] },
+    { "id": "waiting_user", "meaning": "任务等待明确的用户输入", "minimum_actions": ["provide-input", "cancel"] },
+    { "id": "waiting_approval", "meaning": "一个有边界的动作等待确认", "minimum_actions": ["confirm", "reject", "revise"] },
+    { "id": "partial", "meaning": "已有部分可用输出，但任务尚未完成", "minimum_actions": ["inspect", "continue", "stop"] },
+    { "id": "completed", "meaning": "请求的操作已经结束，但不自动代表验证通过", "minimum_actions": ["review-result", "open-history"] },
+    { "id": "verified", "meaning": "独立的适用检查已经通过", "minimum_actions": ["inspect-verification-evidence"] },
+    { "id": "failed", "meaning": "一个已命名的操作失败", "minimum_actions": ["retry", "edit-inputs", "human-takeover"] },
+    { "id": "cancelled", "meaning": "任务已停止，没有被冒充为完成", "minimum_actions": ["resume-or-restart-when-supported"] }
+  ],
+  "cross_state_invariants": [
+    "state meaning is present in text",
+    "partial and final are visually distinct",
+    "completed and verified are separate",
+    "waiting states name the required user action",
+    "error states provide a real recovery action",
+    "color is not the sole state carrier"
+  ]
+}

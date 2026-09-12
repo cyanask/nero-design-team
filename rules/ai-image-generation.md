@@ -27,6 +27,16 @@ Use `minimal-zine-editorial.md` when NERO asks for `留白杂志风` or `留白�
 - Generate visual material only. Exact titles, dates, figures, labels, logos, and source notes remain in the deterministic overlay template.
 - Do not apply this preset to evidence-dense research-card bodies, dashboards, tables, charts, banker appendices, or regulatory pages.
 
+## Photo-Derived Editorial Diptych Registered Preset
+
+Use `photo-derived-editorial-diptych.md` when NERO asks for `摄影抽象双联画` or `照片抽象双联画`, or when a photo should remain intact as the principal layer while a restrained relationship-derived abstract panel is added below it.
+
+- Keep `ai-image-generation` as the route; `photo-derived-editorial-diptych` is a registered method-only style/QA contract. The public generator does not bundle preset files for it.
+- Generate only abstract panel material. Preserve the original photo and add exact title/subtitle text through a deterministic overlay.
+- Require a 3–6 item `relation_trace`, explicit crop contract, source-photo preservation flag, adaptive photo/panel ratio, and one-retry maximum.
+- Do not use it for evidence-dense cards, dashboards, tables, charts, banker appendices, regulatory pages, or a frozen manually revised artifact.
+- Treat `ZzzLc0405/photo-abstract-editorial` as a method-only reference with unknown license; do not copy its Prompt, examples, or source.
+
 ## Hard Bans
 
 - Do not ask `gpt-image-2` to produce exact Chinese body text.
@@ -53,7 +63,7 @@ Every image brief must include:
 - final format and aspect ratio
 - pixel dimensions or slide/video geometry
 - visual style
-- design-token references
+- selected project visual parameters and any applicable brand/token references
 - forbidden elements
 - safe whitespace area
 - post-production text/charts area
@@ -71,7 +81,7 @@ For PPT covers, chapter pages, web PPT visuals, and short-video scene frames:
 
 ## Prompt Snippet
 
-Use the NERO Design Team ai-image-generation route. Treat gpt-image-2 as an AI Image Art Director for visual素材 only. Generate a precise brief with purpose, audience, dimensions, safe text area, design-token references, forbidden elements, and negative constraints. Exact Chinese text, financial figures, tables, charts, source notes, and formal conclusions must be added later by Satori/Sharp, PptxGenJS, or Remotion and then visually QA'd.
+Use the NERO Design Team ai-image-generation route. Treat gpt-image-2 as an AI Image Art Director for visual素材 only. Generate a precise brief with purpose, audience, dimensions, safe text area, selected project visual parameters, task-specific forbidden elements, and negative constraints. Exact Chinese text, financial figures, tables, charts, source notes, and formal conclusions must be added later by Satori/Sharp, PptxGenJS, or Remotion and then visually QA'd.
 
 ## Evidence-Bearing Deck Background Addendum
 

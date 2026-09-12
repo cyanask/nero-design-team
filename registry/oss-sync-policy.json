@@ -18,7 +18,9 @@
     "tools/runtime/report-figure-compiler/**",
     "tokens/**",
     "scripts/**",
-    "registry/oss-sync-policy.json"
+    "registry/oss-sync-policy.json",
+    "registry/asset-taxonomy.json",
+    "registry/asset-intake.example.json"
   ],
   "public_scopes": [
     "skills/nero-design-team/**",
@@ -38,7 +40,9 @@
     "release-check.mjs",
     "release-manifest.json",
     "third-party-metadata.json",
-    ".gitignore"
+    ".gitignore",
+    "registry/asset-taxonomy.json",
+    "registry/asset-intake.example.json"
   ],
   "projections": [
     {
@@ -46,7 +50,7 @@
       "mode": "rewrite",
       "source": "skill-source/nero-design-team/**",
       "destination": "skills/nero-design-team/**",
-      "expected_source_count": 35,
+      "expected_source_count": 54,
       "required": true
     },
     {
@@ -54,7 +58,7 @@
       "mode": "rewrite",
       "source": "rules/**",
       "destination": "rules/**",
-      "expected_source_count": 30,
+      "expected_source_count": 33,
       "required": true
     },
     {
@@ -78,7 +82,7 @@
       "mode": "derivative",
       "source": "mcp-lite/**",
       "destination": "mcp-lite/**",
-      "expected_source_count": 5,
+      "expected_source_count": 10,
       "required": true
     },
     {
@@ -107,7 +111,12 @@
         "scripts/build-tokens.mjs",
         "scripts/check-oss-projection.mjs",
         "scripts/report-figure-compiler.mjs",
-        "scripts/validate-registry.mjs"
+        "scripts/validate-registry.mjs",
+        "scripts/registry-store.mjs",
+        "scripts/asset-library.mjs",
+        "scripts/asset-library-cli.mjs",
+        "scripts/style-library.mjs",
+        "scripts/style-library-cli.mjs"
       ]
     },
     {
@@ -124,19 +133,105 @@
       "destination": "validation/**",
       "required": false
     },
-    { "id": "public-package-files", "mode": "public_only", "destination": "README.md", "required": false },
-    { "id": "public-license", "mode": "public_only", "destination": "LICENSE", "required": false },
-    { "id": "public-license-notes", "mode": "public_only", "destination": "LICENSE-NOTES.md", "required": false },
-    { "id": "public-agents", "mode": "public_only", "destination": "AGENTS.md", "required": false },
-    { "id": "public-agents-template", "mode": "public_only", "destination": "AGENTS.template.md", "required": false },
-    { "id": "public-package-metadata", "mode": "public_only", "destination": "package.json", "required": false },
-    { "id": "public-release-check", "mode": "public_only", "destination": "release-check.mjs", "required": false },
-    { "id": "public-release-manifest", "mode": "public_only", "destination": "release-manifest.json", "required": false },
-    { "id": "public-third-party-metadata", "mode": "public_only", "destination": "third-party-metadata.json", "required": false },
-    { "id": "public-license-gate", "mode": "public_only", "destination": "scripts/check-license-policy.mjs", "required": false },
-    { "id": "public-allowlist-gate", "mode": "public_only", "destination": "scripts/check-release-allowlist.mjs", "required": false },
-    { "id": "public-release-gate-test", "mode": "public_only", "destination": "scripts/test-release-gates.mjs", "required": false },
-    { "id": "public-gitignore", "mode": "public_only", "destination": ".gitignore", "required": false },
-    { "id": "public-docs", "mode": "public_only", "destination": "docs/**", "required": false }
+    {
+      "id": "public-package-files",
+      "mode": "public_only",
+      "destination": "README.md",
+      "required": false
+    },
+    {
+      "id": "public-license",
+      "mode": "public_only",
+      "destination": "LICENSE",
+      "required": false
+    },
+    {
+      "id": "public-license-notes",
+      "mode": "public_only",
+      "destination": "LICENSE-NOTES.md",
+      "required": false
+    },
+    {
+      "id": "public-agents",
+      "mode": "public_only",
+      "destination": "AGENTS.md",
+      "required": false
+    },
+    {
+      "id": "public-agents-template",
+      "mode": "public_only",
+      "destination": "AGENTS.template.md",
+      "required": false
+    },
+    {
+      "id": "public-package-metadata",
+      "mode": "public_only",
+      "destination": "package.json",
+      "required": false
+    },
+    {
+      "id": "public-release-check",
+      "mode": "public_only",
+      "destination": "release-check.mjs",
+      "required": false
+    },
+    {
+      "id": "public-release-manifest",
+      "mode": "public_only",
+      "destination": "release-manifest.json",
+      "required": false
+    },
+    {
+      "id": "public-third-party-metadata",
+      "mode": "public_only",
+      "destination": "third-party-metadata.json",
+      "required": false
+    },
+    {
+      "id": "public-license-gate",
+      "mode": "public_only",
+      "destination": "scripts/check-license-policy.mjs",
+      "required": false
+    },
+    {
+      "id": "public-allowlist-gate",
+      "mode": "public_only",
+      "destination": "scripts/check-release-allowlist.mjs",
+      "required": false
+    },
+    {
+      "id": "public-release-gate-test",
+      "mode": "public_only",
+      "destination": "scripts/test-release-gates.mjs",
+      "required": false
+    },
+    {
+      "id": "public-gitignore",
+      "mode": "public_only",
+      "destination": ".gitignore",
+      "required": false
+    },
+    {
+      "id": "public-docs",
+      "mode": "public_only",
+      "destination": "docs/**",
+      "required": false
+    },
+    {
+      "id": "asset-taxonomy",
+      "mode": "copy",
+      "source": "registry/asset-taxonomy.json",
+      "destination": "registry/asset-taxonomy.json",
+      "expected_source_count": 1,
+      "required": true
+    },
+    {
+      "id": "asset-intake.example",
+      "mode": "copy",
+      "source": "registry/asset-intake.example.json",
+      "destination": "registry/asset-intake.example.json",
+      "expected_source_count": 1,
+      "required": true
+    }
   ]
 }

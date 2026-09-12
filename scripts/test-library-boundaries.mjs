@@ -1,0 +1,82 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import os from 'node:os';
+import { readLibrary, mutateStyle, mutateCase, mutateAsset } from './style-library.mjs';
+import { referenceRecords, prepareAssetBatch } from './asset-library.mjs';
+const root = await fs.mkdtemp(path.join(os.tmpdir(), 'ndt-library-boundaries-'));
+try {
+  await fs.mkdir(path.join(root, 'registry'));
+  const taxonomy = JSON.parse(await fs.readFile(new URL('../registry/asset-taxonomy.json', import.meta.url)));
+  await fs.writeFile(path.join(root, 'registry/asset-taxonomy.json'), JSON.stringify(taxonomy));
+  const asset = {id:'NDT-CMP-001',asset_version:'v1',category:'components',name:'可复用组件'};
+  const example = {id:'NDT-CAS-001',category:'cases',name:'完整作品'};
+  const resource = {id:'NDT-STY-001',category:'style-packs',name:'原始风格资料'};
+  const manifest={name:'风格编排',assets:[{asset_id:asset.id,asset_version:'v1',use:'图形'}],templates:[],rules:['保持留白'],parameters:[],previews:[],case_ids:[example.id],resource_ids:[resource.id],prompts:[{id:'production',name:'制作提示词',text:'原始正文',source_refs:[]}]};
+  const first = {style_id:'style-fixture'};
+  const catalog = {library_contract:{version:'2.0.0'}, assets:[asset],cases:[example],supporting_resources:[resource],categories:[],styles:[{id:first.style_id,deleted_at:null,versions:[{version:1,status:'candidate',approval:null,manifest:structuredClone(manifest)}]}],preview_files:[]};
+  await fs.writeFile(path.join(root,'registry/design-assets.json'),JSON.stringify(catalog));
+  let live = await readLibrary(root);
+  assert.deepEqual(live.assets,[asset]); assert.deepEqual(live.cases,[example]); assert.equal(live.references.length,2); assert.equal(referenceRecords(catalog).length,3);
+  for (const invalid of [{...manifest,prompts:[]},{...manifest,assets:[{asset_id:resource.id,asset_version:'v1',use:'整包'}]},{...manifest,case_ids:[resource.id]},{...manifest,prompts:[{...manifest.prompts[0],source_refs:['../private.md']}]}]) {
+    await assert.rejects(mutateStyle(root,{action:'save',style_id:first.style_id,version:1,expected_revision:live.revision,manifest:invalid}));
+    assert.equal((await readLibrary(root)).revision,live.revision);
+  }
+  await mutateStyle(root,{action:'save',style_id:first.style_id,version:1,expected_revision:live.revision,manifest:{...manifest,prompts:[{...manifest.prompts[0],text:'修改后的正文'}]}});
+  live=await readLibrary(root);assert.equal(live.styles[0].versions[0].manifest.prompts[0].text,'原始正文');assert.equal(live.styles[0].versions[1].manifest.prompts[0].text,'修改后的正文');assert.equal(live.styles[0].versions[1].status,'candidate');
+  const beforeDelete = structuredClone(live);
+  await fs.writeFile(path.join(root,'original.png'),'original unchanged');
+  await assert.rejects(mutateCase(root,{action:'delete-case',case_id:example.id,expected_revision:live.revision}));
+  await assert.rejects(mutateCase(root,{action:'delete-case',case_id:asset.id,confirmed:true,expected_revision:live.revision}), error => error.code === 'NOT_FOUND');
+  await assert.rejects(mutateCase(root,{action:'delete-case',case_id:example.id,confirmed:true,expected_revision:'stale'}), error => error.code === 'CONFLICT');
+  assert.equal((await readLibrary(root)).revision,live.revision);
+  await mutateCase(root,{action:'delete-case',case_id:example.id,confirmed:true,expected_revision:live.revision});
+  live=await readLibrary(root);assert.equal(live.cases.length,0);assert.deepEqual(live.assets,beforeDelete.assets);assert.deepEqual(live.styles,beforeDelete.styles);
+  assert.ok(live.references.find(item=>item.id===example.id).reason.includes('删除'));
+  assert.equal(await fs.readFile(path.join(root,'original.png'),'utf8'),'original unchanged');
+  const backup=JSON.parse(await fs.readFile(path.join(root,'registry/style-history',beforeDelete.revision+'.json'),'utf8'));
+  assert.equal(backup.cases[0].id,example.id);
+  await mutateStyle(root,{action:'save',style_id:first.style_id,version:2,expected_revision:live.revision,manifest});
+  await assert.rejects(mutateCase(root,{action:'delete-case',case_id:example.id,confirmed:true,expected_revision:(await readLibrary(root)).revision}),error=>error.code==='NOT_FOUND');
+  const beforeAssetDelete = await readLibrary(root);
+  const beforeAssetBytes = await fs.readFile(path.join(root,'registry/design-assets.json'));
+  await assert.rejects(mutateAsset(root,{action:'delete-asset',asset_id:asset.id,expected_revision:beforeAssetDelete.revision}));
+  await assert.rejects(mutateAsset(root,{action:'delete-asset',asset_id:example.id,confirmed:true,expected_revision:beforeAssetDelete.revision}),error=>error.code==='NOT_FOUND');
+  await assert.rejects(mutateAsset(root,{action:'delete-asset',asset_id:asset.id,confirmed:true,expected_revision:'stale'}),error=>error.code==='CONFLICT');
+  assert.equal((await readLibrary(root)).revision,beforeAssetDelete.revision);
+  await mutateAsset(root,{action:'delete-asset',asset_id:asset.id,confirmed:true,expected_revision:beforeAssetDelete.revision});
+  live=await readLibrary(root);
+  assert.equal(live.assets.length,0);
+  assert.deepEqual(live.styles,beforeAssetDelete.styles);
+  assert.deepEqual(live.cases,beforeAssetDelete.cases);
+  assert.ok(live.references.find(item=>item.id===asset.id).reason.includes('删除'));
+  assert.equal(await fs.readFile(path.join(root,'original.png'),'utf8'),'original unchanged');
+  assert.deepEqual(await fs.readFile(path.join(root,'registry/style-history',beforeAssetDelete.revision+'.json')),beforeAssetBytes);
+  // Existing versions can retain their exact historical asset; new styles cannot re-add it.
+  await mutateStyle(root,{action:'save',style_id:first.style_id,version:3,expected_revision:live.revision,manifest});
+  live=await readLibrary(root);
+  assert.deepEqual(live.styles[0].versions.slice(0,3),beforeAssetDelete.styles[0].versions);
+  await assert.rejects(mutateStyle(root,{action:'save',expected_revision:live.revision,manifest}));
+  await assert.rejects(mutateStyle(root,{action:'save',style_id:first.style_id,version:3,expected_revision:live.revision,manifest:{...manifest,assets:[{...manifest.assets[0],asset_version:'invented-version'}]}}));
+  await assert.rejects(mutateAsset(root,{action:'delete-asset',asset_id:asset.id,confirmed:true,expected_revision:live.revision}),error=>error.code==='NOT_FOUND');
+  console.log(JSON.stringify({status:'pass',asset_deletion:['confirmation','revision conflict','wrong library and repeat deletion rejected','originals and all style versions preserved','exact rollback bytes','historical edits allowed','new references to retired assets rejected']}));
+  const batchCatalog = JSON.parse(await fs.readFile(path.join(root,'registry/design-assets.json')));
+  batchCatalog.assets = [{...asset,id:'B1'},{...asset,id:'B2'},{...asset,id:'B3'}];
+  batchCatalog.recipes = [{id:'batch-route',asset_ids:['B1','B2','B3'],resource_ids:[]}];
+  await fs.writeFile(path.join(root,'registry/design-assets.json'),JSON.stringify(batchCatalog));
+  const batchBefore = await readLibrary(root), batchBytes = await fs.readFile(path.join(root,'registry/design-assets.json'));
+  const batch = {action:'delete-assets',asset_ids:['B1','B2'],confirmed:true,expected_revision:batchBefore.revision};
+  for (const invalid of [{...batch,confirmed:false},{...batch,asset_ids:[]},{...batch,asset_ids:['B1','B1']},{...batch,asset_ids:['B1','missing']},{...batch,expected_revision:'stale'}]) {
+    await assert.rejects(mutateAsset(root,invalid));
+    assert.deepEqual(await fs.readFile(path.join(root,'registry/design-assets.json')),batchBytes);
+  }
+  const batchResult = await mutateAsset(root,batch);
+  assert.equal(batchResult.count,2);assert.deepEqual(batchResult.asset_ids,['B1','B2']);
+  const batchAfter = await readLibrary(root);
+  assert.deepEqual(batchAfter.assets.map(a=>a.id),['B3']);assert.deepEqual(batchAfter.styles,batchBefore.styles);
+  const batchStored=JSON.parse(await fs.readFile(path.join(root,'registry/design-assets.json')));
+  assert.deepEqual(batchStored.recipes[0].asset_ids,['B3']);assert.deepEqual(batchStored.recipes[0].resource_ids,['B1','B2']);
+  assert.deepEqual(await fs.readFile(path.join(root,'registry/style-history',batchBefore.revision+'.json')),batchBytes);
+  console.log(JSON.stringify({status:'pass',batch_deletion:['multiple selections in one atomic write','all-or-nothing validation','empty and duplicate selection rejected','stale revision rejected','unselected assets and style history retained','exact batch backup and recipe references']}));
+  console.log(JSON.stringify({status:'pass',scenarios:['disjoint asset/case/reference reads','whole-pack reference rejection','typed case closure','required prompt and safe source','invalid mutation leaves revision unchanged','prompt version immutability','case deletion confirmation and revision guard','case deletion retains originals and style history','exact backup retains deleted case','historic case references remain editable']}));
+} finally {await fs.rm(root,{recursive:true});}

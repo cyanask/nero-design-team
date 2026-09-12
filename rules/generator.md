@@ -20,6 +20,8 @@ Create an AI image brief with a registered preset:
 
 The legacy `--preset minimal-zine-editorial` form remains supported and resolves to the same canonical preset.
 
+`photo-derived-editorial-diptych` is a method-only style/QA contract in the public package, not a bundled generator preset. Do not pass it to `nero-design new --preset`; read `photo-derived-editorial-diptych.md` and keep user photos and project composites project-local.
+
 Initialize an existing project without copying a template:
 
 `node $NERO_DESIGN_TEAM_HOME/scripts/nero-design.mjs init <route> --project-root <existing-project-dir>`
@@ -54,3 +56,7 @@ After generation:
 - Replace sample data and placeholder conclusions.
 - Apply brand-system, visual-qa, and visual-score rules before final delivery.
 - Keep project deliverables in the project directory; promote only reusable patterns back to NERO Design Team.
+
+## Available brand assets
+
+Generation resolves the brand profile against current asset/integrity status. Open integrity issues and quarantined, blocked or retired assets are excluded from default brand references. Missing/isolated marks are recorded as `mark: null` with an explicit status; an unbranded layout can proceed. Existing brand files are preserved.

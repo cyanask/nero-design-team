@@ -1,0 +1,37 @@
+{
+  "repo": "cathrynlavery/diagram-design",
+  "source_url": "https://github.com/cathrynlavery/diagram-design",
+  "default_branch": "main",
+  "reviewed_head": "e48df3fb1e0008f14d792afa6a8a1cb7421b785f",
+  "last_reviewed_at": "2026-08-18",
+  "truncated_by_github": false,
+  "files": [
+    { "path": "README.md", "type": "readme", "relevance": 100, "usage": "capability overview and current type inventory" },
+    { "path": "LICENSE", "type": "license", "relevance": 100, "usage": "repository MIT license" },
+    { "path": "THIRD_PARTY_LICENSES.md", "type": "license", "relevance": 98, "usage": "icon source and trademark boundaries" },
+    { "path": "skills/diagram-design/SKILL.md", "type": "skill-rule", "relevance": 100, "usage": "diagram selection, design and complexity grammar" },
+    { "path": "skills/diagram-design/references/import-drawio.md", "type": "workflow-rule", "relevance": 100, "usage": "draw.io redraw and untrusted-input contract" },
+    { "path": "skills/diagram-design/references/import-mermaid.md", "type": "workflow-rule", "relevance": 100, "usage": "Mermaid redraw and inert parser contract" },
+    { "path": "skills/diagram-design/references/output-spec.md", "type": "workflow-rule", "relevance": 98, "usage": "format, size, detail, audience and fidelity ledger" },
+    { "path": "skills/diagram-design/references/semantic-patterns.md", "type": "semantic-rule", "relevance": 100, "usage": "behavior-first semantic pattern routing fused into the NDT architecture rule" },
+    { "path": "skills/diagram-design/references/animation.md", "type": "motion-rule", "relevance": 76, "usage": "method comparison only; NDT frontend-motion and static-first rules remain authority" },
+    { "path": "skills/diagram-design/references/profiles.md", "type": "profile-rule", "relevance": 62, "usage": "method comparison only; NDT tokens, Registry and project manifests remain authority" },
+    { "path": "skills/diagram-design/references/export.md", "type": "workflow-rule", "relevance": 86, "usage": "SVG/PNG carrier boundary reference" },
+    { "path": "skills/diagram-design/scripts/drawio_extract.py", "type": "upstream-script", "relevance": 96, "usage": "method reference only; not copied into NDT" },
+    { "path": "skills/diagram-design/scripts/mermaid_extract.py", "type": "upstream-script", "relevance": 96, "usage": "method reference only; not copied into NDT" },
+    { "path": "skills/diagram-design/scripts/self_check.py", "type": "verifier", "relevance": 92, "usage": "installed-output safety and accessibility method reference; not copied because NDT keeps stricter local HTML and QA authority" },
+    { "path": "scripts/lint-skin.py", "type": "verifier", "relevance": 90, "usage": "architecture visual and accessible-SVG QA reference" },
+    { "path": ".github/workflows/ci.yml", "type": "ci", "relevance": 82, "usage": "upstream validation evidence; not a NDT release claim" },
+    { "path": ".codex-plugin/plugin.json", "type": "plugin-metadata", "relevance": 50, "usage": "version and capability context only; never enabled as NDT entrypoint" }
+  ],
+  "omitted_intentionally": [
+    "upstream HTML templates and examples",
+    "upstream icon pack and build sources",
+    "upstream default fonts and visual skin",
+    "upstream profile store and project marker authority",
+    "upstream optional motion controller",
+    "upstream packaged self-check code",
+    "plugin activation metadata as an executable NDT route",
+    "complete repository clone"
+  ]
+}

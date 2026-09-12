@@ -24,5 +24,6 @@
     "output_root": "<project>/design-output",
     "exports_root": "<project>/exports",
     "screenshots_root": "<project>/screenshots"
-  }
+  },
+  "is_example": true
 }
