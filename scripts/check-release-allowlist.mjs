@@ -13,6 +13,20 @@ const allowedBinaryExtensions = new Set((manifest.allowed_binary_extensions || [
 const allowedExecutables = new Set(manifest.allowed_executable_files || []);
 const allowedSymlinks = new Set(manifest.allowed_symlinks || []);
 const errors = [];
+// System-only releases never carry user library data, even if accidentally allowlisted.
+const catalog = JSON.parse(await fs.readFile(path.join(root, "registry/design-assets.json"), "utf8"));
+for (const field of ["assets", "cases", "styles", "recipes", "supporting_resources"]) {
+  if ((catalog[field] || []).length) errors.push({ type: "library-content-bundled", field });
+}
+const styles = JSON.parse(await fs.readFile(path.join(root, "assets/style-references/index.json"), "utf8"));
+if ((styles.style_reference_packs || []).length) errors.push({ type: "style-library-bundled" });
+for (const entry of manifest.files || []) {
+  if (/^(?:assets\/library-previews\/|frontend\/public\/library-previews\/|assets\/reference-metadata\/|case-library\/snapshots\/[^/]+\/)/.test(entry) || (entry.startsWith("assets/style-references/") && entry !== "assets/style-references/index.json")) errors.push({ type: "library-file-bundled", file: entry });
+  if (entry.startsWith("case-library/") && entry.endsWith(".json")) {
+    const data = JSON.parse(await fs.readFile(path.join(root, entry), "utf8"));
+    for (const [field, value] of Object.entries(data)) if (Array.isArray(value) && field !== "rules" && value.length) errors.push({ type: "case-library-bundled", file: entry, field });
+  }
+}
 const actualFiles = new Set();
 const textExtensions = new Set(["", ".md", ".json", ".mjs", ".mts", ".js", ".cjs", ".ts", ".tsx", ".py", ".sh", ".css", ".html", ".svg", ".xml", ".yaml", ".yml", ".txt", ".toml", ".csv"]);
 

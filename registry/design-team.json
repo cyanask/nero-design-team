@@ -22,10 +22,8 @@
       "verifiers": "scripts"
     },
     "not_bundled_domains": [
-      "private style-reference packs other than explicitly bundled public-safe adaptations",
-      "restricted external reference packs",
-      "local validation history",
-      "private downstream compatibility snapshots"
+      "All asset, case and style library content",
+      "Private identities, client data and validation history"
     ],
     "truth_order": [
       "The private/local NERO Design Team Registry remains the upstream authority.",
@@ -123,10 +121,10 @@
     "maturity_boundary": "A complete Registry is catalog evidence only. Runtime health, evaluation evidence, and production readiness require separate verifiers."
   },
   "name": "NERO Design Team",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "owner": "NERO",
   "updated_at": "2026-09-12",
-  "purpose": "Public-safe derivative of NERO Design Team 3.0.0 for desktop frontend UI, desktop AI App UI, interaction motion, architecture-diagram design and draw.io/Mermaid redraw, image reports, Figure Compiler v0.2 with nine unchanged structural figure types, PPT/desktop web-PPT, short video, AI-image briefs, generic style packs, visual QA, route-specific scoring, and production checks. Mobile/tablet software and web interfaces are unsupported. Private authority, client/project evidence, restricted packs, local validation history, and external governance schemas are not bundled.",
+  "purpose": "NDT 3.0 design asset management system and Skill. Asset, case and style library content is not distributed. Software and web UI are desktop-only.",
   "global_trigger_route": {
     "status": "enabled",
     "source": "$CODEX_HOME/AGENTS.md",
@@ -270,7 +268,7 @@
     }
   },
   "oss_distribution": {
-    "version": "3.0.0",
+    "version": "3.0.1",
     "status": "published",
     "repository": "cyanask/nero-design-team",
     "url": "https://github.com/cyanask/nero-design-team",
@@ -280,7 +278,8 @@
       "Public package contains portable rules, tokens, templates, scripts, MCP-lite, Skill source, and lightweight snapshots.",
       "Private/client assets, restricted external assets, local validation history, and real project deliverables stay outside the public repository.",
       "Installers rewrite $NERO_DESIGN_TEAM_HOME and $CODEX_HOME placeholders at install time."
-    ]
+    ],
+    "library_content": "not-bundled"
   },
   "ai_app_ui_profile": {
     "id": "ai-app-ui",
@@ -418,7 +417,7 @@
         "$NERO_DESIGN_TEAM_HOME/rules/frontend-ui.md",
         "$NERO_DESIGN_TEAM_HOME/rules/web-ppt.md"
       ],
-      "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/plannotator__effective-html/snapshot.json",
+      "local_snapshot": "not-bundled-library/case-library/snapshots/plannotator__effective-html/snapshot.json",
       "local_asset_pack": "not-bundled-assets/external/effective-html/manifest.json",
       "use_for": "Self-contained HTML artifacts, SVG-first architecture diagrams, visual plan pages, single-file explainers, and HTML web PPT diagram pages.",
       "avoid_for": "Independent default routing, full skill installation by default, direct upstream example copying, or replacing NERO tokens and QA gates.",
@@ -438,7 +437,7 @@
         "$NERO_DESIGN_TEAM_HOME/rules/visual-qa.md",
         "$NERO_DESIGN_TEAM_HOME/skills/nero-design-team/references/architecture-diagram-redraw.md"
       ],
-      "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/cathrynlavery__diagram-design/snapshot.json",
+      "local_snapshot": "not-bundled-library/case-library/snapshots/cathrynlavery__diagram-design/snapshot.json",
       "local_extractor": "$NERO_DESIGN_TEAM_HOME/scripts/extract-architecture-source.py",
       "use_for": "Behavior-first semantic-pattern selection, architecture-diagram grammar, meaning-preserving draw.io/Mermaid redraw, destination-aware detail selection, fidelity ledgers, complexity discipline, accessible SVG contracts, and architecture-specific QA.",
       "avoid_for": "Adding technical diagram types to Figure Compiler, parallel Skill/plugin routing, copying the upstream default skin/templates/examples/fonts/icons/profile store/motion controller, importing its self-check unchanged, or treating old diagrams as current authority without reconciliation.",
@@ -467,7 +466,7 @@
         "$NERO_DESIGN_TEAM_HOME/rules/visual-qa.md",
         "$NERO_DESIGN_TEAM_HOME/tokens/motion.json"
       ],
-      "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/emilkowalski__skills/snapshot.json",
+      "local_snapshot": "not-bundled-library/case-library/snapshots/emilkowalski__skills/snapshot.json",
       "use_for": "Desktop interruptible interaction motion, direct manipulation, pointer velocity and momentum, restraint-first motion decisions, focused reviews, codebase-wide motion audits, self-contained repair plans, and motion vocabulary.",
       "avoid_for": "Independent default routing, installing upstream Skills as parallel controllers, copying Apple identity/SF Symbols/WWDC slides/course content, decorative motion in dense work tools, or freezing upstream duration/performance heuristics without stack and browser verification.",
       "technical_corrections": [
@@ -559,8 +558,8 @@
         "$NERO_DESIGN_TEAM_HOME/rules/visual-qa.md",
         "not-bundled-rules/external-design-reference-boundaries.md"
       ],
-      "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/liamgvchi__gc-minimal-zine-poster/snapshot.json",
-      "local_style_pack": "$NERO_DESIGN_TEAM_HOME/assets/style-references/minimal-zine-editorial/manifest.json",
+      "local_snapshot": "not-bundled-library/case-library/snapshots/liamgvchi__gc-minimal-zine-poster/snapshot.json",
+      "local_style_pack": "not-bundled-library/assets/style-references/minimal-zine-editorial/manifest.json",
       "local_template": "$NERO_DESIGN_TEAM_HOME/templates/gpt-image-brief/presets/minimal-zine-editorial",
       "use_for": "Quiet editorial covers, report dividers, PPT chapter visuals, social cards, quantitative negative-space composition, variation recipes, thumbnail anchor review, and one-retry correction.",
       "avoid_for": "Independent Skill installation, evidence-dense pages, accepting exact text or figures from generated raster, overriding approved mature artifacts, or copying upstream JPEG examples into public/client deliverables.",
@@ -589,7 +588,7 @@
         "$NERO_DESIGN_TEAM_HOME/rules/web-ppt.md",
         "$NERO_DESIGN_TEAM_HOME/scripts/validate-web-ppt.mjs"
       ],
-      "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/op7418__guizang-ppt-skill/snapshot.json",
+      "local_snapshot": "not-bundled-library/case-library/snapshots/op7418__guizang-ppt-skill/snapshot.json",
       "local_asset_pack": "not-bundled-assets/external/guizang-ppt-skill/manifest.json",
       "use_for": "Fused web PPT HTML rules for magazine-style and Swiss-style horizontal swipe decks, screenshot adaptation, image-slot discipline, map/location slides, and NERO-native browser QA.",
       "avoid_for": "Formal editable PPTX, dense banker appendix, copying AGPL templates/scripts into NERO production, or using restricted assets in client-facing deliverables without license review.",
@@ -687,7 +686,7 @@
           "avoid_for": "Standalone skill installation, upstream example copying, or replacing maintained app architecture when a real frontend product is needed.",
           "license": "MIT",
           "bundled_examples_license": "Apache-2.0",
-          "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/plannotator__effective-html/snapshot.json",
+          "local_snapshot": "not-bundled-library/case-library/snapshots/plannotator__effective-html/snapshot.json",
           "local_asset_pack": "not-bundled-assets/external/effective-html/manifest.json"
         }
       ],
@@ -848,7 +847,7 @@
           "use_for": "Fused restricted reference for web PPT HTML rules, editorial-magazine decks, Swiss locked layouts, screenshot handling, image slots, map/location slides, and browser QA.",
           "avoid_for": "Formal editable PPTX, dense banker appendix, direct template/script copying, or restricted asset use in client-facing deliverables without license review.",
           "license": "AGPL-3.0",
-          "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/op7418__guizang-ppt-skill/snapshot.json",
+          "local_snapshot": "not-bundled-library/case-library/snapshots/op7418__guizang-ppt-skill/snapshot.json",
           "local_asset_pack": "not-bundled-assets/external/guizang-ppt-skill/manifest.json"
         },
         {
@@ -858,7 +857,7 @@
           "avoid_for": "Formal editable PPTX, direct upstream page copying, or using sample data/copy as evidence.",
           "license": "MIT",
           "bundled_examples_license": "Apache-2.0",
-          "local_snapshot": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/plannotator__effective-html/snapshot.json",
+          "local_snapshot": "not-bundled-library/case-library/snapshots/plannotator__effective-html/snapshot.json",
           "local_asset_pack": "not-bundled-assets/external/effective-html/manifest.json"
         },
         {

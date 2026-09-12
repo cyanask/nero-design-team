@@ -18,7 +18,7 @@ continues to support exactly its current nine report-figure types.
 - License: MIT; bundled third-party icons have separate license and trademark
   boundaries and are not imported by this integration.
 - Local snapshot:
-  `$NERO_DESIGN_TEAM_HOME/case-library/snapshots/cathrynlavery__diagram-design/snapshot.json`
+  `not-bundled-library/case-library/snapshots/cathrynlavery__diagram-design/snapshot.json`
 
 Use the upstream project as an attributed method and QA reference. Do not
 install it as a parallel default Skill, enable its plugin metadata, copy its

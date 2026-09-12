@@ -233,5 +233,25 @@
       "expected_source_count": 1,
       "required": true
     }
-  ]
+  ],
+  "distribution_boundary": {
+    "mode": "system-only",
+    "open_source": [
+      "system code",
+      "Skill",
+      "schemas",
+      "generic software scaffolds",
+      "synthetic tests"
+    ],
+    "excluded": [
+      "asset library contents",
+      "case library contents",
+      "style library contents",
+      "library previews",
+      "case snapshots"
+    ],
+    "catalog_policy": "Empty assets, cases, styles, recipes and supporting_resources; empty style and case indexes.",
+    "release_gate": "npm run release:check",
+    "local_libraries": "Preserve canonical local libraries; never copy their records into a public derivative."
+  }
 }

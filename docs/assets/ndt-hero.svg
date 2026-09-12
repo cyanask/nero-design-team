@@ -28,9 +28,9 @@
       <text x="64" y="19" fill="#1d252c" font-size="16" font-weight="700" letter-spacing="2.6">NERO DESIGN TEAM 3.0</text>
       <text x="64" y="42" fill="#53616b" font-size="12" font-weight="600" letter-spacing="1.8">PUBLIC DERIVATIVE · PLACEHOLDER IDENTITY</text>
 
-      <text x="0" y="142" fill="#1d252c" font-size="56" font-weight="750" letter-spacing="-2.4">Design judgment</text>
-      <text x="0" y="205" fill="#1d252c" font-size="56" font-weight="750" letter-spacing="-2.4">for coding agents.</text>
-      <text x="2" y="252" fill="#53616b" font-size="22" font-weight="450">Route the work. Reuse the system. Verify the result.</text>
+      <text x="0" y="142" fill="#1d252c" font-size="56" font-weight="750" letter-spacing="-2.4">Your design library.</text>
+      <text x="0" y="205" fill="#1d252c" font-size="56" font-weight="750" letter-spacing="-2.4">Your agent's workflow.</text>
+      <text x="2" y="252" fill="#53616b" font-size="22" font-weight="450">Open-source system + Skill. Your libraries stay yours.</text>
 
       <g transform="translate(0 304)">
         <rect width="112" height="40" rx="20" fill="#1f4e5f"/>
@@ -50,14 +50,11 @@
       </g>
 
       <g transform="translate(0 426)">
-        <text x="0" y="0" fill="#1d252c" font-size="27" font-weight="750">12</text>
-        <text x="44" y="0" fill="#53616b" font-size="13" font-weight="650" letter-spacing="1">ASSETS</text>
+        <text x="0" y="0" fill="#1d252c" font-size="22" font-weight="750">ASSETS</text>
         <path d="M178-22v30" stroke="#dce4e8"/>
-        <text x="204" y="0" fill="#1d252c" font-size="27" font-weight="750">16</text>
-        <text x="248" y="0" fill="#53616b" font-size="13" font-weight="650" letter-spacing="1">RECIPES</text>
+        <text x="204" y="0" fill="#1d252c" font-size="22" font-weight="750">CASES</text>
         <path d="M344-22v30" stroke="#dce4e8"/>
-        <text x="370" y="0" fill="#1d252c" font-size="27" font-weight="750">9</text>
-        <text x="414" y="0" fill="#53616b" font-size="13" font-weight="650" letter-spacing="1">PUBLIC CASES</text>
+        <text x="370" y="0" fill="#1d252c" font-size="22" font-weight="750">STYLES</text>
       </g>
     </g>
 

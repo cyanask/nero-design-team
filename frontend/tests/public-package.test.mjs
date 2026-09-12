@@ -3,12 +3,10 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 describe("public frontend package", () => {
-  it("ships synthetic demo media and explicitly public library previews only", async () => {
+  it("ships system icons and synthetic fixtures without library previews", async () => {
     const publicFiles = await fs.readdir(path.resolve("public"));
-    expect(publicFiles.sort()).toEqual(["app-icon.svg", "brand-symbol.svg", "demo", "library-previews"]);
-    const previews = await fs.readdir(path.resolve("public/library-previews"));
-    expect(previews).toHaveLength(12);
-    expect(previews.every((file) => /^ndt-(tok|tpl)-\d{3}\.png$/.test(file))).toBe(true);
+    expect(publicFiles.sort()).toEqual(["app-icon.svg", "brand-symbol.svg", "demo"]);
+    await expect(fs.stat(path.resolve("public/library-previews"))).rejects.toThrow();
 
     for (const privateOnly of ["native", "qa", "design-qa.md", ".nero-design"] ) {
       await expect(fs.stat(path.resolve(privateOnly))).rejects.toThrow();

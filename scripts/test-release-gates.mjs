@@ -58,7 +58,15 @@ try {
   const allowlistTypes = new Set(report(allowlistFail).errors.map((error) => error.type));
   if (!allowlistTypes.has("unknown-release-file")) throw new Error("allowlist did not expose unknown nested file");
 
-  console.log("PASS release gates honor --root, reject env/path/symlink escape, and fail closed on an unknown nested file");
+  await fs.unlink(path.join(copiedExport, "assets", "unlisted-private.txt"));
+  const catalogPath = path.join(copiedExport, "registry", "design-assets.json");
+  const emptyCatalog = JSON.parse(await fs.readFile(catalogPath, "utf8"));
+  for (const field of ["assets", "cases", "styles", "recipes", "supporting_resources"]) {
+    await fs.writeFile(catalogPath, JSON.stringify({ ...emptyCatalog, [field]: [{ id: "synthetic-leak-probe" }] }));
+    const leak = run([allowlistCheck, "--root", copiedExport]);
+    if (leak.status === 0 || !report(leak).errors.some(error => error.type === "library-content-bundled" && error.field === field)) throw new Error(`library boundary did not reject ${field}`);
+  }
+  console.log("PASS release gates: path, allowlist and all system-only catalog boundaries");
 } finally {
   await fs.rm(temp, { recursive: true, force: true });
 }

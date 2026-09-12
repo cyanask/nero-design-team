@@ -262,8 +262,8 @@ describe("React adapter", () => {
     expect(html).not.toContain("设计能力浏览方式");
     expect(html).not.toContain('aria-label="当前位置"');
     expect(html).toContain("工作室");
-    expect(html).toContain("产品界面（App / 软件）");
-    expect(html).toContain('href="#/capabilities/scenarios/product-ui"');
+    expect(html).not.toContain('href="#/capabilities/scenarios/product-ui"');
+    expect(html).toContain("合成示例能力");
   });
 
   it("renders generic reference variants without presenting them as Registry asset IDs", () => {

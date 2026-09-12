@@ -28,7 +28,7 @@ resources.
 
 Local snapshot:
 
-`$NERO_DESIGN_TEAM_HOME/case-library/snapshots/emilkowalski__skills/snapshot.json`
+`not-bundled-library/case-library/snapshots/emilkowalski__skills/snapshot.json`
 
 Primary verification references:
 
