@@ -7,7 +7,7 @@ const rootFlag = process.argv.indexOf("--root");
 if (rootFlag !== -1 && !process.argv[rootFlag + 1]) throw new Error("--root requires a directory");
 const root = await fs.realpath(path.resolve(rootFlag === -1 ? scriptRoot : process.argv[rootFlag + 1]));
 const errors = [];
-const required = ["LICENSE", "LICENSE-NOTES.md", "package.json", "third-party-metadata.json"];
+const required = ["LICENSE", "docs/LICENSE-NOTES.md", "package.json", "docs/third-party-metadata.json"];
 for (const name of required) {
   try { await fs.access(path.join(root, name)); } catch { errors.push({ type: "missing-license-file", file: name }); }
 }
@@ -17,7 +17,7 @@ if (packageDocument.license !== "Apache-2.0") errors.push({ type: "package-licen
 const licenseText = await fs.readFile(path.join(root, "LICENSE"), "utf8");
 if (!/Apache License\s+Version 2\.0/i.test(licenseText)) errors.push({ type: "license-text", detail: "LICENSE is not Apache-2.0" });
 
-const metadata = JSON.parse(await fs.readFile(path.join(root, "third-party-metadata.json"), "utf8"));
+const metadata = JSON.parse(await fs.readFile(path.join(root, "docs/third-party-metadata.json"), "utf8"));
 const metadataByRepo = new Map((metadata.references || []).map((entry) => [entry.repo.toLowerCase(), entry]));
 const snapshotRoot = path.join(root, "case-library", "snapshots");
 for (const entry of await fs.readdir(snapshotRoot, { withFileTypes: true })) {

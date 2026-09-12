@@ -1,7 +1,7 @@
 # NERO Design Team
 
 <p align="center">
-  <img src="docs/assets/ndt-hero.svg" width="100%" alt="NERO Design Team：为 Coding Agent 提供路由、复用、渲染与验证能力">
+  <img src="docs/assets/ndt-hero.svg?v=3.0-refresh" width="100%" alt="NERO Design Team：为 Coding Agent 提供路由、复用、渲染与验证能力">
 </p>
 
 <p align="center">
@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <code>NDT 3.0.0</code> · <code>12 项可分发资产</code> · <code>16 个配方</code> · <code>MCP 2.5.0</code> · <code>Apache-2.0</code>
+  <code>NDT 3.0.0</code> · <code>12 项可分发资产</code> · <code>16 个配方</code> · <code>Apache-2.0</code>
 </p>
 
 NERO Design Team（NDT）给 Coding Agent 的不只是一段视觉提示词。它会先判断任务路由，再选择可复用设计资产；能确定性完成的部分由本地工具执行，并把 QA、候选状态和正式采用边界保持显式。
@@ -48,7 +48,7 @@ NDT 把这条路径变成显式流程：
 本次发布把公开发行包和 NDT 核心架构基线统一为 `3.0.0`，并把“软件与网页界面仅支持桌面端”设为硬边界。
 
 - 新的“方法优先”设计合同会根据任务大小选择路径：小修复可以直接检查、修改、复核；重要新方向再进入参考探索、方向比较、代表性试样、看图改进和候选沉淀。
-- 稳定 MCP Bridge 升级为 `2.5.0`。工具合同保持稳定，兼容的规则、代码和目录更新按调用读取。
+- 稳定 MCP Bridge 工具合同保持稳定，兼容的规则、代码和目录更新按调用读取。
 - 资产 Registry 重新区分可复用资产、完整案例、辅助资料、成熟度、复用状态、十个视觉标签维度、版本化风格和带 revision 的维护入口。
 - 新增 `ai-app-ui` 与架构图/重绘合同，覆盖 Agent 状态、信任边界、桌面窗口行为、语义图型选择以及 Mermaid/draw.io 的保真重绘。
 - 删除移动端/平板端 UI、手机网页伴随版、移动断点以及原多设备 QA 工具；移动端 UI 请求会在生成代码或资产前 fail-closed。
@@ -150,20 +150,13 @@ npm run release:check
 
 ## 仓库结构
 
-```text
-skills/nero-design-team/      Skill 入口与参考规则
-registry/                     公开资产和路由合同
-frontend/                     只读公开 Registry 浏览器
-rules/                        路由、设计与 QA 规则
-tokens/ 和 build/             Token 真源与确定性构建结果
-templates/                    最小项目模板和 preset
-tools/runtime/                本地运行时，包括 Figure Compiler
-mcp-lite/                     本地工具服务与协议检查
-scripts/                      生成器、验证器、评分和发布门禁
-case-library/                 公开安全合同与 metadata 快照
-brand/ 和 profiles/           明示为占位符的公开 profile 资产
-docs/                         打包与公开边界文档
-```
+| 用途 | 目录入口 |
+|---|---|
+| 开始使用 | [Skill](skills/nero-design-team/)、[前端](frontend/)、[示例](docs/examples/) |
+| 设计资源 | [Registry](registry/)、[资产](assets/)、[模板](templates/)、[案例](case-library/) |
+| 设计系统 | [Token](tokens/)、[生成主题](build/)、[品牌](brand/)、[配置](profiles/) |
+| 执行与验收 | [MCP](mcp-lite/)、[运行时](tools/runtime/)、[脚本](scripts/)、[生成器](generators/)、[规则](rules/)、[评分表](scorecards/) |
+| 文档 | [使用说明、许可和公开边界](docs/) |
 
 ## 公开材料与私有材料
 
@@ -171,13 +164,13 @@ docs/                         打包与公开边界文档
 
 仓库内置 Logo 是明示占位符，不代表 NERO 或任何客户的正式身份。公开 Registry 的媒体默认只保留 metadata；只有在再分发权利和公开边界均已确认后，才可打包实体文件。
 
-新增资产前，请阅读 [`docs/oss-boundary.md`](docs/oss-boundary.md)、[`docs/private-overlay.md`](docs/private-overlay.md) 和 [`LICENSE-NOTES.md`](LICENSE-NOTES.md)。
+新增资产前，请阅读 [`docs/oss-boundary.md`](docs/oss-boundary.md)、[`docs/private-overlay.md`](docs/private-overlay.md) 和 [`docs/LICENSE-NOTES.md`](docs/LICENSE-NOTES.md)。
 
 ## 当前边界
 
 - 安装器目前面向 Codex Skill 目录。
 - Registry 浏览器是本地只读工具；仓库不包含托管服务或遥测。
-- 随包公开前端版本为 `0.5.0`，已对照私有前端 `0.5.11` 真源重新核对，并固定 900px 最小桌面画布。移动端/平板端适配、原生桌面封装、Registry 写入界面、私有预览媒体及其本地视觉外壳不进入公开包。
+- 随包公开前端固定 900px 最小桌面画布。移动端/平板端适配、原生桌面封装、Registry 写入界面、私有预览媒体及其本地视觉外壳不进入公开包。
 - NDT 不支持移动端/平板端软件 UI、手机网页伴随版或响应式移动适配。公众号竖图和竖版视频仍属于媒体输出，不构成移动端 UI 能力。
 - 公开发行版有意保持为非权威派生版。
 - 私有预览、原生桌面封装和项目专属 Manifest 不打包。
@@ -189,4 +182,4 @@ docs/                         打包与公开边界文档
 
 ## 许可证
 
-本项目采用 Apache License 2.0。详见 [`LICENSE`](LICENSE) 和 [`LICENSE-NOTES.md`](LICENSE-NOTES.md)。
+本项目采用 Apache License 2.0。详见 [`LICENSE`](LICENSE) 和 [`docs/LICENSE-NOTES.md`](docs/LICENSE-NOTES.md)。

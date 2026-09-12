@@ -33,13 +33,13 @@
     "registry/oss-sync-policy.json",
     "README.md",
     "LICENSE",
-    "LICENSE-NOTES.md",
+    "docs/LICENSE-NOTES.md",
     "AGENTS.md",
     "AGENTS.template.md",
     "package.json",
     "release-check.mjs",
     "release-manifest.json",
-    "third-party-metadata.json",
+    "docs/third-party-metadata.json",
     ".gitignore",
     "registry/asset-taxonomy.json",
     "registry/asset-intake.example.json"
@@ -148,7 +148,7 @@
     {
       "id": "public-license-notes",
       "mode": "public_only",
-      "destination": "LICENSE-NOTES.md",
+      "destination": "docs/LICENSE-NOTES.md",
       "required": false
     },
     {
@@ -184,7 +184,7 @@
     {
       "id": "public-third-party-metadata",
       "mode": "public_only",
-      "destination": "third-party-metadata.json",
+      "destination": "docs/third-party-metadata.json",
       "required": false
     },
     {

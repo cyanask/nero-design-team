@@ -21,7 +21,7 @@ const requiredDirs = [
 const requiredFiles = [
   "README.md",
   "AGENTS.template.md",
-  "LICENSE-NOTES.md",
+  "docs/LICENSE-NOTES.md",
   "skills/nero-design-team/SKILL.md",
   "registry/design-team.json",
   "registry/design-assets.json",
