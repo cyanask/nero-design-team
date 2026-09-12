@@ -15,7 +15,7 @@ export const ndtApplicationScenarioCatalog = {
       id: "web-html",
       label: "网页与 HTML",
       description: "面向可浏览网页、交互说明和结构化线上展示的设计。",
-      styleIntent: "以响应式信息架构组织复杂关系，兼顾屏幕阅读与交互探索。",
+      styleIntent: "以桌面信息架构组织复杂关系，兼顾屏幕阅读与交互探索。",
       boundary: "HTML 是可浏览交付，不自动等同生产部署或正式发布。",
       representativeAssetId: "NDT-EXT-001"
     },
@@ -193,7 +193,7 @@ export const ndtApplicationScenarioCatalog = {
       supportingScenarioIds: ["business-document", "presentation"],
       avoidScenarioIds: ["product-ui", "motion-video"],
       directDeliverables: ["系列封面版式"],
-      downstreamTargets: ["横版封面", "方形裁切", "移动端预览"],
+      downstreamTargets: ["横版封面", "方形裁切", "缩略图预览"],
       boundary: "只复用裁切稳定的版式合同；标题、标识、数据和来源必须由程序化文字层承载。"
     },
     {

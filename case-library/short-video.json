@@ -6,7 +6,7 @@
       "id": "short-video-001-oss-signal-explainer",
       "name": "Signal Explainer Video",
       "purpose": "Reference a short vertical data explainer with captions, metric reveal, evidence card, and chart motion.",
-      "style": "clean mobile-safe composition, restrained motion, exact text overlays, visible source boundary",
+      "style": "clean fixed-canvas composition, restrained motion, exact text overlays, visible source boundary",
       "tokens": [
         "color.brand.primary",
         "color.surface.canvas",

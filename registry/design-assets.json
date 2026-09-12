@@ -3,8 +3,8 @@
   "registry_id": "nero-design-assets",
   "registry_profile": "public_derivative",
   "authoritative": false,
-  "version": "1.17.0",
-  "updated_at": "2026-09-10",
+  "version": "2.0.0",
+  "updated_at": "2026-09-12",
   "source_root": "$NERO_DESIGN_TEAM_HOME",
   "scope": "Bundled public-safe NDT reusable design units only; private canonical assets and not-bundled placeholders are excluded from the asset list.",
   "numbering_rule": "编号按资产类别分配并永久保留；新增资产只追加，不重排既有编号。",
@@ -247,8 +247,7 @@
       "resource_ids": [
         "NDT-RUL-002",
         "NDT-EXT-001",
-        "NDT-QAT-005",
-        "NDT-QAT-009"
+        "NDT-QAT-005"
       ]
     },
     {
@@ -264,8 +263,7 @@
       ],
       "resource_ids": [
         "NDT-RUL-002",
-        "NDT-QAT-005",
-        "NDT-QAT-009"
+        "NDT-QAT-005"
       ]
     },
     {
@@ -337,7 +335,7 @@
         "social",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:beba2005cf8971d94594669bb7890546653d4312f95963d6713c46f2c1127fad",
       "asset_type": "palette"
@@ -393,7 +391,7 @@
         "social",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:581f9d603e8086528ab4da03123b9dcd1e6de9ffaf80d101965d1233525e6dcb",
       "asset_type": "typography"
@@ -442,7 +440,7 @@
         "social",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:285ae6ab66974ff67b3e5b73145b6fb2ba0f00e8f9ee81384be1935c45e4221f",
       "asset_type": "spacing",
@@ -495,7 +493,7 @@
         "social",
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:28ad101ff292794b25af81ccc329a8517a6b0676a351b4e555c92691b6463ccf",
       "asset_type": "geometry",
@@ -545,7 +543,7 @@
         "frontend",
         "GUI"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:adfc31c0b4511c62d0d5f53bf2ed31a72f7e3babd7d8aa1be74f58e850a2fe8a",
       "asset_type": "shadow",
@@ -608,7 +606,7 @@
         "poster",
         "social"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:b93a3f17eeafb8e497b97979e6580aa8e3aa844158d97a0cbf091349026314c8",
       "asset_type": "palette"
@@ -659,7 +657,7 @@
         "PPT",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:043f32fe6413de9fd2a19a44a7b8345ba3da51e7c44e9306c4e8fb3130b6dbc0",
       "asset_type": "motion",
@@ -725,7 +723,7 @@
         "poster",
         "social"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:9a29d9ee1b02e6943b5ceb5c4d02672d42171ba34e51345fcc09ba9f987f2b46",
       "asset_type": "component",
@@ -795,7 +793,7 @@
         "frontend",
         "GUI"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:2abbc9f641c30803a9479078d9f63861d86a04acdc4da14fc9ab4c8678bb0156",
       "asset_type": "template"
@@ -854,7 +852,7 @@
         "poster",
         "social"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:4b71183421e7d02f1adae75c2b5a25124686c6fddc637544b67584f1563b145a",
       "asset_type": "template"
@@ -911,7 +909,7 @@
       "use_case_tags": [
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:7cefce6ef54295ddba2ab65df6acfa7af81c62734d0b8ada2c2c7235a7d5770b",
       "asset_type": "template"
@@ -968,7 +966,7 @@
       "use_case_tags": [
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:f9ff66c527d4eeb54ea3cdaa4d26aa8693ab563028848995ee0a4ff400b8bdc7",
       "asset_type": "template"
@@ -986,7 +984,7 @@
     "component": "可复用视觉组件",
     "method": "设计方法与规则"
   },
-  "taxonomy_version": "1.1.0",
+  "taxonomy_version": "1.2.0",
   "taxonomy_ref": "registry/asset-taxonomy.json",
   "cases": [
     {
@@ -999,7 +997,7 @@
       ],
       "status": "public_sanitized_reference",
       "rights": "NDT-native-public-derivative",
-      "purpose": "用紧凑账本、显式来源状态和移动端压缩呈现研究观察。",
+      "purpose": "用紧凑账本和显式来源状态呈现桌面研究观察。",
       "use_for": [
         "研究雷达",
         "证据账本"
@@ -1029,7 +1027,7 @@
         "frontend",
         "GUI"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:13e80605d2ad7037c2f683e21d47e6a0c782357d8d1bc63696b764257a8a84b8",
       "retired_from_asset_library": {
@@ -1083,7 +1081,7 @@
         "poster",
         "social"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:b695b6de0038637043adc0e3b56c656062edb978ad2ef95aa320c2576874858f",
       "retired_from_asset_library": {
@@ -1102,7 +1100,7 @@
       ],
       "status": "public_sanitized_reference",
       "rights": "NDT-native-public-derivative",
-      "purpose": "为复杂专业材料提供克制、投影可读且移动端可读的演示结构。",
+      "purpose": "为复杂专业材料提供克制、投影与桌面浏览器可读的演示结构。",
       "use_for": [
         "专业顾问材料",
         "交易与资本市场演示"
@@ -1133,7 +1131,7 @@
       "use_case_tags": [
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:936dcbe8415306217f738c7eb968d27d2e29fc6014578486a21d14da39620875",
       "retired_from_asset_library": {
@@ -1184,7 +1182,7 @@
         "PPT",
         "frontend"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:c3107835bfa3222466f1c0bf01f532c7e3f28d70d89fd651a3baea601a166ab1",
       "retired_from_asset_library": {
@@ -1243,7 +1241,7 @@
         "poster",
         "social"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:dd17cb2cf3554a0cc9aaba35212ae479f88312d2b49ce5e356c0393d13b258e5",
       "retired_from_asset_library": {
@@ -1299,7 +1297,7 @@
         "poster",
         "social"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:e250dd15c8b4d1be18b48fead15bb5cc994ae28f1135898bb112181e8e8f7174",
       "retired_from_asset_library": {
@@ -1353,7 +1351,7 @@
         "frontend",
         "GUI"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:137c6d3ad0c239050fc57a4cf4ac4a050d0c9a3ed663b8fe5d8ec925b26647a2",
       "retired_from_asset_library": {
@@ -1407,7 +1405,7 @@
         "poster",
         "social"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:5355a7babaea32250251d4d9988a52d0de72710b7f7d5ab9f0f7117285a5677c",
       "retired_from_asset_library": {
@@ -1475,7 +1473,7 @@
         "social",
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:c01793fe69ea782851f100c1c73c6fd9774c89d889fa0c5e99c1f878e7b8bfe1",
       "retired_from_asset_library": {
@@ -1535,7 +1533,7 @@
         "social",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:04869fe5293bcbba471fd1f57bd85d0e0cb4ba7d47ef2d50f1e6fb6a677f0b4d",
       "retired_from_asset_library": {
@@ -1599,7 +1597,7 @@
         "poster",
         "social"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:eb10e65dbd48246f82f15ab0aec2d02bc80d8cbddf1206d9d2d9c19d65f2030e",
       "retired_from_asset_library": {
@@ -1662,7 +1660,7 @@
         "social",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:34a84d14a9a7568cc9c8d38cb5d053bfeeffc14db2461bd81692775c342b5e8f",
       "retired_from_asset_library": {
@@ -1728,7 +1726,7 @@
         "poster",
         "social"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:7b4c28eb89e3d532479f48ee2327b343a4ca4250d9b031142b46e440fa58837c",
       "retired_from_asset_library": {
@@ -1791,7 +1789,7 @@
         "report",
         "social"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:8f3791ffcc35c9f0bf254e5af06c0fe5d44be0d64ec3b7497ca195240b67ffb0",
       "retired_from_asset_library": {
@@ -1849,7 +1847,7 @@
       "use_case_tags": [
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:e86d4bcee3df6481d7deb4c1222bc3bb9442537010993e72975d45c1cc76d4dc",
       "retired_from_asset_library": {
@@ -1906,7 +1904,7 @@
         "frontend",
         "GUI"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:ae39e02a612f333d06ce9217afcc45cc6e4bdfb9f8e90904d37fcfe38e1786c9",
       "retired_from_asset_library": {
@@ -1968,7 +1966,7 @@
         "frontend",
         "GUI"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:65c52165d804268c1ba7ed463b601ecd63478d7eef1c0f3cbd4fbb14cd937f2b",
       "retired_from_asset_library": {
@@ -2031,7 +2029,7 @@
         "poster",
         "social"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:1eb65d4d80d9b55f4716bb3dda7e032dd7dba24b953dd55b30ae93d7e74bd096",
       "retired_from_asset_library": {
@@ -2089,7 +2087,7 @@
       "use_case_tags": [
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:163dd1845c5cc1371c9df47ae3207753df5617a04651395cc480dde120750bc4",
       "retired_from_asset_library": {
@@ -2153,7 +2151,7 @@
       "use_case_tags": [
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:c188ce8a9d27f95bf9fb5697f2bd7a463e1bb3ca35aa72bee9e6fee5fa20558e",
       "retired_from_asset_library": {
@@ -2210,7 +2208,7 @@
       "use_case_tags": [
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:5955634b5392c230725e521669eeefca32ae404a4b83f9b7ec923c0d91aa1ba9",
       "retired_from_asset_library": {
@@ -2276,7 +2274,7 @@
         "social",
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:56a47ed8039ddd6617309ecac8a0e726a79f6745c243a49ec4dd9278ea82a33f",
       "retired_from_asset_library": {
@@ -2350,7 +2348,7 @@
         "social",
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:84ce2ee644ef8477530e86e1c86bb6f107716ff12c4f3f22c6eddfa33f9bf036",
       "retired_from_asset_library": {
@@ -2426,7 +2424,7 @@
         "social",
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:e8dcab18852ddafc442baad900554f52be666bfc3a0c86fa51339f62787282bd",
       "retired_from_asset_library": {
@@ -2516,7 +2514,7 @@
         "social",
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:357e7ed475a49104457d6c33570bb932b5c590ada828afec355e03a84c6bf5f2",
       "retired_from_asset_library": {
@@ -2582,7 +2580,7 @@
         "social",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:ca37b45e5c4346daa7e6bb6ddcdac028b6e64c286e5c8f2eb3f48eac5d81b71f",
       "retired_from_asset_library": {
@@ -2644,7 +2642,7 @@
         "frontend",
         "GUI"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:79650ae197bdff753c71d8930445d783daad6f675074d98ecc357eaab559c937",
       "retired_from_asset_library": {
@@ -2703,7 +2701,7 @@
         "social",
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:a22365964e978cd6f1cafb2e7325c625c70fdbf9216c4c36a5c4a4bd27109cd2",
       "retired_from_asset_library": {
@@ -2739,7 +2737,6 @@
         "ppt-production-harness.md",
         "web-ppt.md",
         "html-deck-style-discovery.md",
-        "web-ppt-multidevice-qa.md",
         "presentation-design-spec.md",
         "presentation-handoff-contract.md",
         "presentation-production-chain.md"
@@ -2766,7 +2763,7 @@
         "PPT",
         "frontend"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:717bde5665cc7142aabccb9a531f56f5b21ea1fd3fc01867bf9af274c5b91396",
       "retired_from_asset_library": {
@@ -2820,7 +2817,7 @@
       "use_case_tags": [
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:877c275727b74d248ee9a09a510118efdf488cb1a4c31b43c4d4ff40de9a6591",
       "retired_from_asset_library": {
@@ -2879,7 +2876,7 @@
         "social",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:ac501d46ad0271b4713bd567dec238a682c00fbd622366a920176bc1b8cd2300",
       "retired_from_asset_library": {
@@ -2943,7 +2940,7 @@
         "social",
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:aab3f8646a7688d2cc79bb484e908ebe83418e3366ba463006afb5978ad03d5f",
       "retired_from_asset_library": {
@@ -2996,7 +2993,7 @@
         "social",
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:4bd58379b6886d8ab0e4c2fe7031fa6ce651fcbe2f93af1e048a3c56d33f4ea4",
       "retired_from_asset_library": {
@@ -3063,7 +3060,7 @@
         "social",
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:4fc75f5e2cc30f073b7d298ceed13e6534579fe927fd6f4cb8c02afed6bee249",
       "retired_from_asset_library": {
@@ -3135,7 +3132,7 @@
         "social",
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:ff87c733d97035f376331935ccebfed43d496209bfb5bb9566d76034a03c9385",
       "retired_from_asset_library": {
@@ -3205,7 +3202,7 @@
         "PPT",
         "frontend"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:f42246dee19c1789c582d9b70675567ee039b375b79713a7a310e2b9ffbac069",
       "retired_from_asset_library": {
@@ -3274,7 +3271,7 @@
         "report",
         "social"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:d4023bf744f52a79b55ef79143996fa44581597293adbebda4969bde1bfc297d",
       "retired_from_asset_library": {
@@ -3347,7 +3344,7 @@
         "social",
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:33a30e329e3a517931e00626868ad876544b1c2020a88a7ed1f38150e390db4b",
       "retired_from_asset_library": {
@@ -3394,7 +3391,7 @@
         "frontend",
         "GUI"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:09bd0195f003077333b19773e246ccc56eb283d63d5276f2e9c0df58f9966dbd",
       "retired_from_asset_library": {
@@ -3441,7 +3438,7 @@
         "poster",
         "social"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:9714486005d4a7653968a13695f0c251e9eb1c2e486dabe0588f1270f1bbfbf0",
       "retired_from_asset_library": {
@@ -3494,7 +3491,7 @@
         "frontend",
         "GUI"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:038d25c8998d86e3050fd207335ff5664d6a857b50f4d9cc6f259540bd002fe7",
       "retired_from_asset_library": {
@@ -3550,7 +3547,7 @@
         "social",
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:32185b2a596f9e3614d4fba5ac935e9da3e94fcefb4b55ffbbf7557d706d8c7e",
       "retired_from_asset_library": {
@@ -3601,7 +3598,7 @@
         "PPT",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:666ef19bffba32d58eb7e40bac78c6cf021e74bfc975617074d18b57c9ec2368",
       "retired_from_asset_library": {
@@ -3648,7 +3645,7 @@
       "use_case_tags": [
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:9fb82eab86fd391b1bf7c7c1e72079da8270f168409a81ff1f6b964394a87cdb",
       "retired_from_asset_library": {
@@ -3698,7 +3695,7 @@
         "PPT",
         "frontend"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:17f48a30491631cfdda6c765e8e7d27a4c0f4db449f1c27709b7a66042d0b0ba",
       "retired_from_asset_library": {
@@ -3747,7 +3744,7 @@
         "frontend",
         "GUI"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:841ed54cea933de91787ed2f5033bfabd59b929900af3cc30c5e9693f0279816",
       "retired_from_asset_library": {
@@ -3796,7 +3793,7 @@
         "social",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:df294eabd76d5f0feaf33c888dc5c9db67ba6f890f72076cfd0bf0e4f9efff72",
       "retired_from_asset_library": {
@@ -3845,7 +3842,7 @@
         "social",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:59ec9829ba92966e2c2b929f9f89ae61c21f978a2b48307007f62d7f3531c9f7",
       "retired_from_asset_library": {
@@ -3897,7 +3894,7 @@
         "social",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:84f9bcb1ab97c331a8350938f7f64c6102809dbca6d51e2adb1e39ffec0d2e62",
       "retired_from_asset_library": {
@@ -3947,7 +3944,7 @@
         "social",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:6f43c3c54f3c62d6ced897e9bdd53435c1bf023b2f1adaf8c5af47b364819482",
       "retired_from_asset_library": {
@@ -3966,7 +3963,7 @@
       ],
       "status": "工具",
       "rights": "NERO-native",
-      "purpose": "检查尺寸、文字溢出、来源边界、响应式，以及留白杂志风的构图、色锚、缩略图和一次重试合同。",
+      "purpose": "检查尺寸、文字溢出、来源边界，以及留白杂志风的构图、色锚、缩略图和一次重试合同。",
       "use_for": [
         "所有视觉交付前检查"
       ],
@@ -3996,7 +3993,7 @@
         "social",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:73b2beb49d502bdac65676949e47592aeee56339e9485f284873e4285e6dbe2d",
       "retired_from_asset_library": {
@@ -4046,7 +4043,7 @@
         "social",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:7527edc9c6c0b24bdd15f8c49a2e273fa2763014af5b0a41610725763f0cdef4",
       "retired_from_asset_library": {
@@ -4096,7 +4093,7 @@
         "social",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:d42a87b8e0848d423fae10822931aeddde4625e3d0580744ab01fa57a568e18e",
       "retired_from_asset_library": {
@@ -4140,54 +4137,9 @@
         "PPT",
         "frontend"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:c8d4822dbc74968d95e1d9088e26b02e0b577f412a6e8ab1fdd5abd78348153a",
-      "retired_from_asset_library": {
-        "at": "2026-09-10T14:21:22.723523+00:00",
-        "reason": "生产或检查工具留在现有执行路线，不进入设计资产库。",
-        "replacement_ids": []
-      }
-    },
-    {
-      "id": "NDT-QAT-009",
-      "key": "audit-web-ppt-multidevice",
-      "name": "Web PPT 多设备审计",
-      "category": "tools",
-      "routes": [
-        "ppt"
-      ],
-      "status": "bundled_public_tool",
-      "rights": "NDT-native-public",
-      "purpose": "检查桌面、手机和横屏舞台的可读性与溢出。",
-      "use_for": [
-        "Web PPT 响应式 QA"
-      ],
-      "source_ref": "scripts/audit-web-ppt-multidevice.mjs",
-      "source_boundary": "Bundled public source; Playwright is optional, never installed automatically, and absence returns an explicit unavailable status with no audit output.",
-      "maturity": "registered",
-      "reuse_state": "reusable",
-      "tags": {
-        "composition": [],
-        "typography": [],
-        "color": [],
-        "material": [],
-        "geometry": [],
-        "image-treatment": [],
-        "motion": [],
-        "mood": [],
-        "component": [],
-        "method": [
-          "视觉校验"
-        ]
-      },
-      "use_case_tags": [
-        "PPT",
-        "frontend"
-      ],
-      "taxonomy_version": "1.1.0",
-      "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
-      "asset_version": "catalog-sha256:9210c9530aa946a515ad03810407e9d7a29a22b8a6df096dc7d48734747202cb",
       "retired_from_asset_library": {
         "at": "2026-09-10T14:21:22.723523+00:00",
         "reason": "生产或检查工具留在现有执行路线，不进入设计资产库。",
@@ -4232,7 +4184,7 @@
         "PPT",
         "frontend"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:0ea05a0977552e4f83d744811a6189b8187cf67e047fcb5893d79610b85e80cf",
       "retired_from_asset_library": {
@@ -4279,7 +4231,7 @@
         "GUI",
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:1513113783bafb74b3637e206b6e479c1613d20ed0d71f2e5cb312e25829b34a",
       "retired_from_asset_library": {
@@ -4325,7 +4277,7 @@
         "PPT",
         "frontend"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:0bcfa075fa789ea76fa370f37ee5b7d362bb93069853af226b7fbd1c4347488b",
       "retired_from_asset_library": {
@@ -4376,7 +4328,7 @@
         "social",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:2d1d0524720df1261c40fa53584c82cd8bbd22b07cb5706fe80be2cf32f73f1c",
       "retired_from_asset_library": {
@@ -4426,7 +4378,7 @@
         "social",
         "video"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:7c51595446fd660f9104098680e242c306154afcda5e4d97aa88254cbd549965",
       "retired_from_asset_library": {
@@ -4475,7 +4427,7 @@
         "social",
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:78f3b8d4ef128702167db1079e5e01ca437a9a7902ac2465e19d5d6900b3bea1",
       "retired_from_asset_library": {
@@ -4539,7 +4491,7 @@
         "social",
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:ebef87aed864ceb0ed384f54a9a5cc1d04218f1b6277fd3b24f1b8317ed2b594",
       "retired_from_asset_library": {
@@ -4560,8 +4512,8 @@
       ],
       "status": "candidate_v0_1",
       "rights": "NERO-native",
-      "purpose": "按 100 分评价 AI 应用前端的设计意图、控制、状态、依据、恢复、协作、可追溯性、响应式、无障碍和渲染证据边界。",
-      "purpose_en": "Scores AI application UI intent, control, state integrity, evidence, recovery, collaboration, traceability, responsive accessibility and rendered-evidence boundaries.",
+      "purpose": "按 100 分评价 AI 应用前端的设计意图、控制、状态、依据、恢复、协作、可追溯性、桌面布局、无障碍和渲染证据边界。",
+      "purpose_en": "Scores AI application UI intent, control, state integrity, evidence, recovery, collaboration, traceability, desktop accessibility and rendered-evidence boundaries.",
       "use_for": [
         "ai-app-ui profile",
         "Agent 工作台审查",
@@ -4594,7 +4546,7 @@
         "frontend",
         "GUI"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:cefda46eea4be0c1b856cf1ff0b12a2d78cfcc568c3d51992788d6d99db966df",
       "retired_from_asset_library": {
@@ -4643,7 +4595,7 @@
         "frontend",
         "GUI"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:67a1840f69b4645d57a1b6f0112fb892ef23cbb176d9ec89c38945d5b0bab79d",
       "retired_from_asset_library": {
@@ -4697,7 +4649,7 @@
       "use_case_tags": [
         "frontend"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:7283ae2fdd9ce25031a2b86cc0a81810ea34027d1a80e7d77ad0ad15c794d822",
       "retired_from_asset_library": {
@@ -4751,7 +4703,7 @@
         "poster",
         "social"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:769ce1414ac70f5eac80e5791f7991980b78ecb15a875f68a8fa6c8745340861",
       "retired_from_asset_library": {
@@ -4805,7 +4757,7 @@
       "use_case_tags": [
         "PPT"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:48df3a0d20508322de07517acea54b9f8677b0617d146f41c62c2995556f58a0",
       "retired_from_asset_library": {
@@ -4830,7 +4782,7 @@
       "rights": "NDT-native-public-derivative",
       "purpose": "用判断、指标、证据和边界说明的短序列解释一个信号。",
       "use_for": [
-        "移动端数据解释",
+        "竖版视频数据解释",
         "研究短视频"
       ],
       "source_ref": "case-library/public-contracts/contracts.json#public-case-013-data-signal-explainer",
@@ -4861,7 +4813,7 @@
         "video",
         "social"
       ],
-      "taxonomy_version": "1.1.0",
+      "taxonomy_version": "1.2.0",
       "tagging_basis": "Reviewed public catalog purpose and source scope; labels describe documented capabilities, not visual acceptance.",
       "asset_version": "catalog-sha256:4190db8f89cc3dbd03cf5bf8b05e8e08d94a2cda0737d376191e5736af9dec21",
       "retired_from_asset_library": {

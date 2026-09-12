@@ -72,7 +72,7 @@
       "checks": [
         "Output dimensions or slide/video geometry are explicit",
         "Generated file exists when applicable",
-        "Desktop/mobile/frame/slide checks are documented where relevant"
+        "Desktop/frame/slide checks are documented where relevant"
       ]
     },
     {

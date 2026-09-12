@@ -40,7 +40,7 @@ Before selecting layout or components, record:
 - `required_states`: states the interface must render for this task;
 - `recovery_actions`: cancel, edit, retry, undo, reopen or human takeover;
 - `design_dials`: `DESIGN_VARIANCE`, `MOTION_INTENSITY` and `VISUAL_DENSITY`;
-- `acceptance_viewports`: the real desktop and narrow/mobile widths to inspect.
+- `acceptance_viewports`: the real desktop window sizes to inspect; every width is at least 900px.
 
 The project `.nero-design/manifest.json` records the selected profile and paths
 to the project-local design-intent schema, state catalog and scorecard. A
@@ -127,7 +127,7 @@ Do not assume every AI application is a chat product.
 - Use an embedded panel when the host product remains the primary context.
 
 The selected pattern must preserve Chinese-label readability, keyboard and
-focus order, responsive behavior, source visibility and the project's chosen
+focus order, desktop-window behavior, source visibility and the project's chosen
 information density.
 
 ## NDT Production Loop

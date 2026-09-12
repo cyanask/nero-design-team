@@ -163,7 +163,7 @@ play, pause, previous, next, and reset controls. Motion must respect
   artifact contract is primarily explanatory rather than application-like.
 - Meaningful motion respects reduced-motion preferences and does not gate
   navigation, reading, or evidence access.
-- Desktop and narrow-width layouts preserve reading order, source proximity,
+- Declared desktop window sizes preserve reading order, source proximity,
   and connector meaning; projector or print views are checked when those are
   named delivery contexts.
 - Facts, assumptions, placeholders, and source notes remain distinguishable in

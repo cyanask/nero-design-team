@@ -13,6 +13,7 @@
 
 body {
   margin: 0;
+  min-width: 900px;
 }
 
 button,
@@ -201,32 +202,4 @@ td {
 th {
   color: var(--nero-color-text-secondary, #53616b);
   font-weight: 600;
-}
-
-@media (max-width: 760px) {
-  .app-shell {
-    grid-template-columns: 1fr;
-  }
-
-  .sidebar {
-    padding: 16px;
-  }
-
-  .sidebar nav {
-    grid-auto-flow: column;
-    overflow-x: auto;
-  }
-
-  .workspace {
-    padding: 16px;
-  }
-
-  .topbar {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .metrics {
-    grid-template-columns: 1fr;
-  }
 }

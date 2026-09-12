@@ -21,6 +21,11 @@ This repository is the public derivative of NERO Design Team, not the canonical 
 - Before publish or packaging work, run the repository release gate when available.
 - Do not publish private overlays, client assets, local validation history, credentials, or restricted third-party assets.
 
+## Desktop-only boundary
+
+- NDT 3.0 does not create, revise, audit, score or QA mobile/tablet software UI, phone-specific web companions or responsive mobile adaptations.
+- Portrait editorial graphics, WeChat images and vertical videos remain media outputs, not mobile UI capability.
+
 ## Generated rule view
 
 Generic changes still begin upstream. Public `rules/*.md` files are generated from matching `skills/nero-design-team/references/` files. Use `node scripts/sync-skill.mjs` to check parity; an authorized write requires `--write --backup <new-directory>`. Keep local maintenance-app details out of the common Skill.

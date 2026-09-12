@@ -10,11 +10,11 @@ Apply the authority/content, visual-judgment and evidence/delivery requirements 
 
 ## UI Checks
 
-- Desktop and mobile states are inspected when feasible.
+- Declared desktop window sizes are inspected when feasible. Mobile/tablet UI is outside NDT and is not treated as an optional QA viewport.
 - Tables remain readable and controls remain usable.
 - Buttons and icons have stable sizes.
 - Static style previews, screenshots, and `design-output/*.html` do not replace real-app UI QA. For maintained local apps, inspect the actual running app with real/project-native data before calling the UI complete.
-- Real-app QA should include vertical scrolling, table/control horizontal scrolling, desktop and narrow/mobile widths, text overflow, and whether visible values match the active data source.
+- Real-app QA should include vertical scrolling, table/control horizontal scrolling, declared desktop widths, text overflow, and whether visible values match the active data source.
 
 ## AI App UI Gate
 
@@ -29,7 +29,7 @@ Apply this gate when `frontend_profile: ai-app-ui`.
 - Confirm, reject, cancel, retry, edit, undo or human-takeover controls match
   the real product contract; decorative controls do not count.
 - Source, evidence, unknown-state and action-history affordances remain readable
-  at the target desktop and narrow/mobile widths.
+  at the declared desktop window sizes.
 - State meaning does not rely on color alone. Focus order, live-region behavior,
   keyboard use and reduced-motion fallback are checked when applicable.
 - Private chain-of-thought is neither exposed nor simulated. Concise operational
@@ -138,7 +138,7 @@ Use this section for new directions and material visual revisions. The [core con
 - The project style record explains asset roles, combination rules and adjustments. No local asset quota or automatic NERO palette/font/density requirement is applied.
 - A representative trial was inspected before extending the direction to a full set. The before/after comparison preserves the content and relevant viewing conditions.
 - Each criticism names its effect on the goal, readability or function. Gradients, cards, typography families, hue count, glass and whitespace are not automatic failures.
-- The current render preserves necessary information, usable controls, sources, responsive behavior and applicable accessibility/state requirements.
+- The current render preserves necessary information, usable controls, sources, declared desktop behavior and applicable accessibility/state requirements.
 - A passed script or score is not substituted for looking at the design. Repeated changes without improvement trigger a new hypothesis or reference search.
 
 ## Frontend Motion Checks
@@ -148,7 +148,7 @@ Use this gate when `frontend-motion.md` materially influences a `frontend-ui` or
 - Every material animation has an explicit purpose: feedback, spatial consistency, state indication, jarring-change prevention, explanation, or rare delight.
 - Very frequent, keyboard-driven, table, filter, disclosure, and evidence-review actions remain immediate and do not gain decorative travel.
 - Press feedback appears without artificial input delay; continuous gestures update continuously.
-- Dragged content preserves the grab offset, uses pointer capture when needed, and does not jump when another touch point appears.
+- Dragged content preserves the grab offset and uses pointer capture when needed.
 - Rapidly repeated or reversible interactions retarget from the current presented value and do not lock input while motion completes.
 - Gestures that must preserve release velocity use a physics-based spring or inertia model; duration-based spring timing is not mistaken for velocity handoff.
 - Momentum-driven interactions choose their resting target from the projected trajectory rather than release position alone when that behavior is expected.
@@ -157,7 +157,7 @@ Use this gate when `frontend-motion.md` materially influences a `frontend-ui` or
 - Motion parameters come from the selected project system; related interactions use coherent timing/physics unless their functions justify different behavior.
 - `prefers-reduced-motion` behavior is tested; movement, overshoot, and parallax are removed while necessary state feedback remains.
 - Reduced transparency, contrast, sound, vibration, and haptics are progressive enhancements and never the only status or warning channel.
-- High-risk interactions are inspected in slow motion or frame-by-frame; material touch gestures are checked on a real device when feasible.
+- High-risk desktop interactions are inspected in slow motion or frame-by-frame with the actual supported input.
 - Upstream repository, MIT status, extracted patterns, and excluded Apple/third-party assets are reported when the fused reference materially affects the result.
 
 ## Image Report Checks
@@ -223,7 +223,7 @@ Use this gate when `photo-derived-editorial-diptych` materially influences an ou
 
 - Aspect ratio, frame rate, and duration are explicit.
 - Key frames are inspected.
-- Captions fit within mobile-safe boundaries.
+- Captions fit within the declared target-frame safe area.
 - Motion does not hide the data or make charts unreadable.
 - AI-generated scene images are checked after captions, figures, and chart overlays are added.
 

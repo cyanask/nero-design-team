@@ -41,7 +41,15 @@ try {
   }
 
   const copiedExport = path.join(temp, "allowlist-export");
-  await fs.cp(root, copiedExport, { recursive: true, filter: (source) => !source.includes(`${path.sep}.git${path.sep}`) });
+  await fs.mkdir(copiedExport);
+  const releaseManifest = JSON.parse(await fs.readFile(path.join(root, "release-manifest.json"), "utf8"));
+  for (const relative of releaseManifest.files) {
+    const source = path.join(root, relative);
+    const destination = path.join(copiedExport, relative);
+    await fs.mkdir(path.dirname(destination), { recursive: true });
+    await fs.copyFile(source, destination);
+    await fs.chmod(destination, (await fs.stat(source)).mode & 0o777);
+  }
   const allowlistPass = run([allowlistCheck, "--root", copiedExport]);
   if (allowlistPass.status !== 0) throw new Error(`exact allowlist baseline failed:\n${allowlistPass.stdout}\n${allowlistPass.stderr}`);
   await fs.writeFile(path.join(copiedExport, "assets", "unlisted-private.txt"), "private nested fixture\n", "utf8");

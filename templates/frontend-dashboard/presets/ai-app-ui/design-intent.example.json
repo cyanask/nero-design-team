@@ -27,6 +27,6 @@
   },
   "acceptance_viewports": [
     { "label": "desktop", "width": 1440, "height": 900 },
-    { "label": "narrow", "width": 390, "height": 844 }
+    { "label": "compact-desktop", "width": 1280, "height": 800 }
   ]
 }

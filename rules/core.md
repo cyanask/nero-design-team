@@ -6,6 +6,7 @@ Apply this contract across media. Only layer 1 is mandatory by default. A style-
 
 - Preserve accurate content, sources, units, periods, uncertainty and qualifications. Keep facts distinct from assumptions and examples. Do not invent metrics, statuses, source notes or functionality.
 - Respect the user's explicit brand, template, editability, output and accessibility requirements. Current files and manual edits are authoritative for revisions; change protected elements only within the new instruction's scope.
+- Software and web-interface work is desktop-only. Mobile/tablet UI, phone-specific web companions and responsive mobile adaptation are outside NDT; do not generate, revise, audit, score or QA them.
 - Keep text readable at the intended size, meaningful controls usable, and important information available without color, motion, hover or a single input mode. Aesthetic choices cannot remove necessary content or hide failures.
 - The caller owns progression; the current content owner owns facts and wording. NDT owns visual work. Selected KAT contracts retain frozen text, current matching quality receipts and return-to-KAT gates; a visual redesign never waives them.
 - Generated imagery remains visual material. Exact text, financial data, regulatory claims, sources and required editable objects use deterministic layers and the appropriate output engine.

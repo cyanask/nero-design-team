@@ -2,6 +2,8 @@
 
 Read [frontend rules](frontend-ui.md) for the current UI task. Start from the actual user goal and any explicitly selected visual system. Apply the director exploration branch and inspect real reference previews.
 
+This route accepts desktop software and desktop web interfaces only. Mobile/tablet targets, phone-specific companions and responsive mobile adaptation are unsupported and must return without code generation, revision, scoring or QA.
+
 | Condition | Additional rule |
 |---|---|
 | AI application, Agent workbench, tool calling or human confirmation | [AI App UI](ai-app-ui.md), with `frontend_profile: ai-app-ui` |

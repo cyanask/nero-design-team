@@ -22,6 +22,8 @@ These are local contract checks, not App builds, deployment, rendered artifact a
 - The registered scorecard owns criterion applicability and weight. Required checks remain required, omitted checks are reported, and scores normalize over applicable weight. Production supplies its own project/task context, so score manifests cannot opt out of that contract.
 - The three production stages and current-file evidence checks remain intact. QA manifests expose their checked fields and missing coverage; they do not claim actual rendering or live behavior.
 
+NDT 3.0 is desktop-only for software and web interfaces. Mobile/tablet UI, phone-specific web companions and responsive mobile adaptation are removed from the active Skill, templates, scorecards, Registry and QA surface. Portrait graphics and vertical-video canvases remain separate media outputs.
+
 
 ## Method-first design revision (2026-09-12)
 

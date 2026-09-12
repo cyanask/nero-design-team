@@ -16,7 +16,7 @@
       "contract": {
         "layout": ["navigation rail", "metric strip", "filter row", "evidence ledger"],
         "interaction": ["filter state remains visible", "selected record has one detail surface"],
-        "qa": ["desktop and narrow layouts remain readable", "empty and error states are explicit"]
+        "qa": ["declared desktop layouts remain readable", "empty and error states are explicit"]
       },
       "synthetic_fixture": {
         "metrics": ["Signals queued", "Signals reviewed", "Items held"],
@@ -41,7 +41,7 @@
       "route": "frontend-ui",
       "status": "public_sanitized_reference",
       "rights": "NDT-native-public-derivative",
-      "purpose": "Present a compact research ledger with visible provenance state and mobile reading compression.",
+      "purpose": "Present a compact desktop research ledger with visible provenance state.",
       "contract": {
         "layout": ["compact header", "state rail", "ledger rows", "boundary footer"],
         "interaction": ["one filter path per viewport", "record expansion does not hide provenance state"],
@@ -72,8 +72,8 @@
       "purpose": "Organize a bilingual professional portfolio around two evidence-led entry points.",
       "contract": {
         "layout": ["summary header", "two entry panels", "case detail region", "language control"],
-        "interaction": ["language state is stable", "mobile exposes one unambiguous control path"],
-        "qa": ["proof modules remain scannable", "print and narrow states retain hierarchy"]
+        "interaction": ["language state is stable", "desktop exposes one unambiguous control path"],
+        "qa": ["proof modules remain scannable", "print and desktop states retain hierarchy"]
       },
       "synthetic_fixture": {
         "entry_points": ["Analysis", "Delivery"],
@@ -179,8 +179,8 @@
       "purpose": "Provide a restrained, projection-readable advisory deck pattern for complex professional material.",
       "contract": {
         "layout": ["strong title axis", "dense but bounded matrices", "case grid", "source appendix"],
-        "responsive": ["desktop stage stays fixed", "mobile paging remains one screen at a time"],
-        "qa": ["desktop and mobile states are audited", "exact content remains outside decorative material"]
+        "desktop": ["desktop stage stays fixed", "browser paging remains one screen at a time"],
+        "qa": ["declared desktop states are audited", "exact content remains outside decorative material"]
       },
       "synthetic_fixture": {
         "chapters": ["Situation", "Options", "Execution"],
@@ -232,7 +232,7 @@
       "contract": {
         "scenes": ["opening claim", "indicator reveal", "evidence card", "chart motion", "boundary close"],
         "rendering": ["captions and labels are deterministic", "scene material is non-evidence"],
-        "qa": ["mobile safe areas pass", "key frames and reduced motion are inspected"]
+        "qa": ["declared frame safe areas pass", "key frames and reduced motion are inspected"]
       },
       "synthetic_fixture": {
         "claim": "A synthetic signal changed direction",
@@ -311,8 +311,8 @@
       "purpose": "Compare two strategic trajectories through phase bands, complete event nodes and one active evidence inspector.",
       "contract": {
         "layout": ["dual trajectories", "shared phase axis", "compact event nodes", "single evidence inspector"],
-        "interaction": ["stable deep-link state", "desktop side detail", "mobile inline detail"],
-        "qa": ["coverage claims fail closed", "responsive visual baseline is project-specific"]
+        "interaction": ["stable deep-link state", "desktop side detail"],
+        "qa": ["coverage claims fail closed", "desktop visual baseline is project-specific"]
       },
       "synthetic_fixture": {
         "tracks": [
@@ -347,7 +347,7 @@
           "square_output": "500x500"
         },
         "layering": ["identity core is complete on its own", "context field carries atmosphere only", "exact text is deterministic"],
-        "qa": ["crop behavior is deterministic", "mobile title remains readable"]
+        "qa": ["crop behavior is deterministic", "thumbnail title remains readable"]
       },
       "synthetic_fixture": {
         "series_label": "Research Notes",

@@ -76,11 +76,11 @@
       ]
     },
     {
-      "id": "responsive_accessibility",
-      "label": "Responsive and accessibility behavior",
+      "id": "desktop_accessibility",
+      "label": "Desktop and accessibility behavior",
       "weight": 10,
       "checks": [
-        "Desktop and narrow/mobile states remain usable",
+        "Declared desktop window sizes remain usable",
         "State meaning does not rely on color alone",
         "Keyboard focus, live-region and reduced-motion behavior are covered"
       ]

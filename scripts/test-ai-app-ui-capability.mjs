@@ -99,6 +99,13 @@ try {
 
   const appSource = await fs.readFile(path.join(projectRoot, "src", "App.tsx"), "utf8");
   assert.match(appSource, /data-frontend-profile="ai-app-ui"/);
+  const designIntentSchema = JSON.parse(await fs.readFile(path.join(projectRoot, "design-intent.schema.json"), "utf8"));
+  assert.equal(designIntentSchema.properties.acceptance_viewports.items.properties.width.minimum, 900);
+  const designIntentExample = JSON.parse(await fs.readFile(path.join(root, "templates", "frontend-dashboard", "presets", "ai-app-ui", "design-intent.example.json"), "utf8"));
+  assert.ok(designIntentExample.acceptance_viewports.every((viewport) => viewport.width >= 900));
+  const generatedStyles = await fs.readFile(path.join(projectRoot, "src", "styles.css"), "utf8");
+  assert.match(generatedStyles, /min-width:\s*900px/);
+  assert.doesNotMatch(generatedStyles, /@media\s*\(max-width:\s*(?:[0-8]\d\d|\d{1,2})px\)/);
 
   const scoreResult = run([scorer, path.join(projectRoot, "score-manifest.example.json")]);
   assert.equal(scoreResult.status, 0, `${scoreResult.stdout}\n${scoreResult.stderr}`);

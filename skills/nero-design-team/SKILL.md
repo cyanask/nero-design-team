@@ -7,6 +7,8 @@ description: NERO 的视觉设计与验收入口，响应 NDT、设计团队及�
 
 NDT owns visual design and its QA. The caller owns task progression; the current content owner owns facts and wording. Use this Skill for NDT/设计团队 requests in a design context.
 
+NDT 3.0 is desktop-only for software and web interfaces. It does not create, revise, audit, preview, score or QA mobile/tablet apps, phone-specific web companions, responsive mobile breakpoints or mobile interaction adaptations. Return such targets as unsupported without generating code or assets. Portrait report images, WeChat graphics and vertical videos remain media outputs; they do not enable mobile UI development.
+
 ## Design method
 
 Keep the design method stable and the reference sources open. [Core](references/core.md) separates required task constraints, optional problem-solving methods, and candidate styles/assets. The brief decides the appearance; NDT has no mandatory house skin or local-asset quota.

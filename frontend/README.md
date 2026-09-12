@@ -2,7 +2,7 @@
 
 This package is a read-only React browser for the public NERO Design Team Registry bundled in this repository.
 
-Version `0.4.3` is the public-safe derivative reviewed against the accepted private frontend `0.5.11` source baseline. Shared scenario, Registry, source-state, responsive, and accessibility contracts are retained. Native packaging, local Registry mutation UI, private preview media, and the private desktop visual shell are deliberately excluded rather than published as inert controls.
+Version `0.5.0` is the desktop-only public derivative reviewed against the accepted private frontend `0.5.11` source baseline. Shared scenario, Registry, source-state, desktop-window, and accessibility contracts are retained. Mobile/tablet adaptation, native packaging, local Registry mutation UI, private preview media, and the private desktop visual shell are deliberately excluded.
 
 It exposes the current public-safe frontend architecture: application-scenario routing, solution detail pages, an asset directory, source-state envelopes, explicit project declarations, adoption receipts, and fail-closed deep links. It does not bundle private project data, client media, identity assets, native desktop packaging, or a private preview pack.
 
@@ -54,4 +54,4 @@ The application-scenario entry is retained. The asset directory defaults to all 
 
 The same six scenarios now expose sixteen registered solutions, including the AI app workbench under product UI. Solution rows distinguish direct outputs from downstream targets. The directory keeps category, recipe, reuse state and preview filters independent; selection keeps them in place. A solution-to-asset link carries a session-local return context without changing public routes.
 
-The single asset inspector puts purpose and restrictions before its copy action. Copy failures expose the complete text for manual recovery, and late copy completion cannot mark another asset copied. Layout uses existing NDT token variables, readable text and a narrow-screen result/detail switch. Current-file V0/V1 records are maintained separately from browser and installed-app acceptance. Existing local project snapshots are not overwritten by this presentation change.
+The single asset inspector puts purpose and restrictions before its copy action. Copy failures expose the complete text for manual recovery, and late copy completion cannot mark another asset copied. Layout uses existing NDT token variables and a minimum 900px desktop canvas. Current-file validation remains separate from browser and installed-app acceptance. Existing local project snapshots are not overwritten by this presentation change.

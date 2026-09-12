@@ -6,7 +6,7 @@
 - FPS and duration are explicit.
 - Test frame can be exported with `npm run still` after local dependencies are installed.
 - Key frames are inspected before final export.
-- Captions fit within mobile-safe width.
+- Captions fit within the declared frame safe area.
 - Colors are not dominated by a single decorative hue and remain legible in compressed video.
 - Charts remain readable after motion, transition, and final export compression.
 - Any gpt-image-2 background or scene image is frame-checked after exact captions and data overlays are added.
