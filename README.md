@@ -1,7 +1,7 @@
 # NERO Design Team
 
 <p align="center">
-  <img src="docs/assets/ndt-hero.svg" width="100%" alt="NERO Design Team: route, reuse, render, and verify design work for coding agents">
+  <img src="docs/assets/ndt-hero.svg?v=3.0-refresh" width="100%" alt="NERO Design Team: route, reuse, render, and verify design work for coding agents">
 </p>
 
 <p align="center">
@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <code>NDT 3.0.0</code> · <code>12 bundled assets</code> · <code>16 recipes</code> · <code>MCP 2.5.0</code> · <code>Apache-2.0</code>
+  <code>NDT 3.0.0</code> · <code>12 bundled assets</code> · <code>16 recipes</code> · <code>Apache-2.0</code>
 </p>
 
 NERO Design Team (NDT) gives a coding agent more than a visual prompt. It routes the task, selects reusable design assets, runs deterministic local tools where possible, and keeps QA and promotion states explicit.
@@ -48,7 +48,7 @@ NDT makes that path explicit:
 This release aligns the public package version and NDT architecture baseline at `3.0.0` and makes desktop-only software/web support a hard boundary.
 
 - A method-first design contract scales from small repairs to reference exploration, direction comparison, representative trials, render-based refinement, and candidate retention.
-- The stable MCP bridge `2.5.0` keeps its tool contract fixed while loading compatible NDT rules, code, and catalogs per call.
+- The stable MCP bridge keeps its tool contract fixed while loading compatible NDT rules, code, and catalogs per call.
 - The asset Registry now distinguishes reusable assets, complete cases, supporting references, maturity, reuse state, ten visual-tag dimensions, versioned styles, and revision-checked maintenance seams.
 - New `ai-app-ui` and architecture/redraw contracts cover agent states, trust boundaries, desktop-window behavior, semantic diagram selection, and meaning-preserving Mermaid/draw.io redraw.
 - Mobile/tablet UI, phone-specific web companions, responsive mobile breakpoints, and the former multi-device QA tool are removed. Mobile UI requests now fail closed before code or asset generation.
@@ -150,20 +150,13 @@ The validation set above combines an exact file allowlist, license checks, Regis
 
 ## Repository Map
 
-```text
-skills/nero-design-team/      Skill entrypoint and references
-registry/                     Public asset and route contracts
-frontend/                     Read-only public Registry browser
-rules/                        Route, design, and QA rules
-tokens/ and build/            Token sources and deterministic outputs
-templates/                    Minimal project templates and presets
-tools/runtime/                Local runtimes, including Figure Compiler
-mcp-lite/                     Local tool server and protocol checks
-scripts/                      Generators, validators, scoring, release gates
-case-library/                 Public-safe contracts and metadata snapshots
-brand/ and profiles/          Explicit placeholder profile assets
-docs/                         Packaging and public-boundary documentation
-```
+| Purpose | Directories |
+|---|---|
+| Start and explore | [Skill](skills/nero-design-team/), [frontend](frontend/), [examples](docs/examples/) |
+| Design resources | [Registry](registry/), [assets](assets/), [templates](templates/), [cases](case-library/) |
+| Design system | [tokens](tokens/), [generated themes](build/), [brand](brand/), [profiles](profiles/) |
+| Execution and QA | [MCP](mcp-lite/), [runtimes](tools/runtime/), [scripts](scripts/), [generators](generators/), [rules](rules/), [scorecards](scorecards/) |
+| Documentation | [Guides, licensing and public boundaries](docs/) |
 
 ## Public and Private Material
 
@@ -171,13 +164,13 @@ Keep private or client-specific material in a separate overlay. Do not add clien
 
 The bundled logos are explicit placeholders, not official NERO or client identities. Public Registry media stays metadata-only unless redistribution rights and the public boundary are both established.
 
-Read [`docs/oss-boundary.md`](docs/oss-boundary.md), [`docs/private-overlay.md`](docs/private-overlay.md), and [`LICENSE-NOTES.md`](LICENSE-NOTES.md) before adding assets.
+Read [`docs/oss-boundary.md`](docs/oss-boundary.md), [`docs/private-overlay.md`](docs/private-overlay.md), and [`docs/LICENSE-NOTES.md`](docs/LICENSE-NOTES.md) before adding assets.
 
 ## Current Limits
 
 - The installer currently targets the Codex Skill directory.
 - The Registry browser is local and read-only; no hosted service or telemetry is bundled.
-- The bundled public frontend is `0.5.0`, reviewed against the private `0.5.11` source baseline. It requires a 900px desktop canvas; mobile/tablet adaptation, private desktop packaging, Registry mutation UI, private preview media, and the local visual shell are excluded.
+- The bundled public frontend requires a 900px desktop canvas; mobile/tablet adaptation, private desktop packaging, Registry mutation UI, private preview media, and the local visual shell are excluded.
 - Mobile/tablet software UI, phone-specific web companions, and responsive mobile adaptation are unsupported. Portrait editorial graphics, WeChat images, and vertical videos remain media outputs, not mobile UI.
 - The public distribution is derived and non-authoritative by design.
 - Private previews, native desktop packaging, and project-specific manifests are not bundled.
@@ -189,7 +182,7 @@ Bug reports, documentation improvements, public-safe rules, deterministic runtim
 
 ## License
 
-Apache License 2.0. See [`LICENSE`](LICENSE) and [`LICENSE-NOTES.md`](LICENSE-NOTES.md).
+Apache License 2.0. See [`LICENSE`](LICENSE) and [`docs/LICENSE-NOTES.md`](docs/LICENSE-NOTES.md).
 
 ## Skill maintenance
 
@@ -197,4 +190,4 @@ The source separates task mode from output medium and applies KAT gates only to 
 
 ## Stable MCP bridge
 
-The MCP interface is `2.5.0`. Its fixed protocol/tool contract forwards each call to the current NDT worker/runtime. Compatible rule, code, and catalog updates no longer require a reconnect after the initial bridge migration. See [MCP maintenance](mcp-lite/README.md) and [Skill maintenance](docs/skill-maintenance.md).
+The MCP bridge's fixed protocol/tool contract forwards each call to the current NDT worker/runtime. Compatible rule, code, and catalog updates no longer require a reconnect after the initial bridge migration. See [MCP maintenance](mcp-lite/README.md) and [Skill maintenance](docs/skill-maintenance.md).

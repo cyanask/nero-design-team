@@ -76,7 +76,7 @@ for (const file of allowedFiles) {
 
 const packageDocument = JSON.parse(await fs.readFile(path.join(root, "package.json"), "utf8"));
 const packageFiles = new Set(packageDocument.files || []);
-for (const required of ["assets", "brand", "build", "case-library", "docs", "examples", "frontend", "generators", "mcp-lite", "profiles", "registry", "rules", "scorecards", "scripts", "skills", "templates", "tokens", "tools", "release-check.mjs", "release-manifest.json", "third-party-metadata.json"]) {
+for (const required of ["assets", "brand", "build", "case-library", "docs", "frontend", "generators", "mcp-lite", "profiles", "registry", "rules", "scorecards", "scripts", "skills", "templates", "tokens", "tools", "release-check.mjs", "release-manifest.json", "docs/third-party-metadata.json"]) {
   if (!packageFiles.has(required)) errors.push({ type: "package-files-missing", entry: required });
 }
 
