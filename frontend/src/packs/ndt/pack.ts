@@ -1,3 +1,4 @@
+import { effectiveReuseState, hasUnresolvedReuseIssue } from "../../core/compose";
 import type {
   ArtifactVM,
   CapabilityAssetVM,
@@ -118,13 +119,22 @@ export function tokenCssVariables(library: CapabilityLibraryVM): Record<string, 
   return variables;
 }
 
-export function statusTone(status: string | null, issueCodes: string[] = []): string {
-  const normalized = (status || "").toLowerCase();
-  if (issueCodes.length || /quarantine|blocked|mismatch|error|fail/.test(normalized)) {
-    return "warning";
-  }
-  if (/ready|direct|pass|approved|可直接/.test(normalized)) return "positive";
-  return "neutral";
+export const reuseStateLabels = {
+  reusable: "登记可复用", conditional: "按条件复用", reference_only: "仅供参考",
+  placeholder: "占位资产", quarantined: "已隔离", unknown: "复用状态未知"
+} as const;
+
+export function reuseStateLabel(asset: CapabilityAssetVM): string {
+  return reuseStateLabels[effectiveReuseState(asset)];
+}
+
+export function maturityLabel(asset: CapabilityAssetVM): string {
+  return { registered: "已登记", reference: "工作参考", candidate: "候选", unknown: "成熟度未知" }[asset.maturity ?? "unknown"];
+}
+
+export function capabilityTone(asset: CapabilityAssetVM): string {
+  if (hasUnresolvedReuseIssue(asset) || effectiveReuseState(asset) === "quarantined") return "warning";
+  return effectiveReuseState(asset) === "reusable" && asset.maturity === "registered" ? "positive" : "neutral";
 }
 
 export function sourceStateLabel(state: SourceState): string {
@@ -157,7 +167,29 @@ export function authorityLabel(state: SourceState): string {
 
 export function referenceInstruction(asset: CapabilityAssetVM): string {
   const routes = asset.routes.join(" / ") || "未声明";
-  const purpose = asset.useFor.join("；") || asset.purpose || "未声明";
-  const boundary = asset.preview.boundary || asset.rights || "按资产登记边界复核";
-  return `请引用 NDT 设计资产 ${asset.id}（${asset.name}）。用途：${purpose}；适用路由：${routes}；资产键：${asset.key}；使用边界：${boundary}`;
+  const state = effectiveReuseState(asset);
+  const action = {
+    reusable: "请引用 NDT 设计资产",
+    conditional: "请在核对并满足以下条件后引用 NDT 设计资产",
+    reference_only: "请仅将以下 NDT 设计资产作为参考，不直接复用",
+    placeholder: "请核查以下 NDT 占位资产，尚不可作为成品复用",
+    quarantined: "请核查已隔离、不可复用的 NDT 设计资产",
+    unknown: "请先核查以下 NDT 设计资产的复用资格，确认前不复用"
+  }[state];
+  const conditions = [
+    asset.purpose && `用途：${asset.purpose}`,
+    asset.useFor.length && `适用场景：${asset.useFor.join("；")}`,
+    asset.rights && `权利与使用条件：${asset.rights}`,
+    asset.notes.length && `登记备注：${asset.notes.join("；")}`,
+    asset.preview.boundary && `预览边界：${asset.preview.boundary}`,
+    asset.issueCodes.length && `待核查问题：${asset.issueCodes.join("、")}`
+  ].filter(Boolean).join("；") || "使用边界：按资产登记边界复核";
+  return `${action} ${asset.id}（${asset.name}）。${conditions}；适用路由：${routes}；资产键：${asset.key}；复用状态：${reuseStateLabel(asset)}；成熟度：${maturityLabel(asset)}；登记状态不等于成品验收。`;
 }
+
+
+export const studioFeatures = [
+  { assetId: "NDT-STY-003", caption: "大留白、单色锚点与纸媒质感。" },
+  { assetId: "NDT-STY-004", caption: "清晰的证据结构，克制的商业表达。" },
+  { assetId: "NDT-STY-006", caption: "在照片与抽象之间，保留决定性关系。" }
+] as const;

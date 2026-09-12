@@ -4,7 +4,19 @@
     "frontend-ui": {
       "template": "frontend-dashboard",
       "default_name": "nero-frontend-ui",
-      "description": "Frontend dashboard or internal analytical UI using NERO tokens."
+      "description": "Frontend dashboard or internal analytical UI using NERO tokens.",
+      "presets": {
+        "ai-app-ui": {
+          "display_name": "AI App UI",
+          "aliases": ["Agent UI", "智能体界面", "AI 软件前端"],
+          "description": "NDT-native AI application frontend profile with explicit control, state integrity, evidence, recovery, collaboration, traceability and route-specific QA.",
+          "rule_reference": "rules/ai-app-ui.md",
+          "frontend_profile": "ai-app-ui",
+          "design_intent_schema": "templates/frontend-dashboard/presets/ai-app-ui/design-intent.schema.json",
+          "state_catalog": "templates/frontend-dashboard/presets/ai-app-ui/state-catalog.json",
+          "scorecard": "scorecards/ai-app-ui-scorecard.json"
+        }
+      }
     },
     "image-report": {
       "template": "report-card-image",

@@ -1,3 +1,4 @@
+import { resolveBrandAssets } from "./asset-policy.mjs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { spawn } from "node:child_process";
@@ -8,13 +9,14 @@ const templatesRoot = path.join(root, "templates");
 const generatorsRoot = path.join(root, "generators");
 const templateRegistryPath = path.join(generatorsRoot, "templates.json");
 const projectManifestSchemaVersion = "1.0.0";
+const frontendProfiles = new Set(["default", "ai-app-ui"]);
 
 function usage() {
   return [
     "Usage:",
     "  node scripts/nero-design.mjs list",
-    "  node scripts/nero-design.mjs new <route> [--preset <preset-name>] --name <project-name> --out <target-parent-dir>",
-    "  node scripts/nero-design.mjs init <route> --project-root <existing-project-dir> [--name <project-name>]",
+    "  node scripts/nero-design.mjs new <route> [--preset <preset-name>] [--frontend-profile <profile>] --name <project-name> --out <target-parent-dir>",
+    "  node scripts/nero-design.mjs init <route> --project-root <existing-project-dir> [--name <project-name>] [--frontend-profile <profile>]",
     "",
     "Routes: frontend-ui, image-report, ppt, short-video, ai-image-generation"
   ].join("\n");
@@ -37,6 +39,9 @@ function parseArgs(argv) {
       index += 1;
     } else if (key === "--preset") {
       options.preset = value;
+      index += 1;
+    } else if (key === "--frontend-profile") {
+      options.frontendProfile = value;
       index += 1;
     } else if (key === "--help" || key === "-h") {
       options.help = true;
@@ -98,6 +103,21 @@ function resolvePreset(config, presetName) {
   return { canonicalName, preset: presets[canonicalName] };
 }
 
+function resolveFrontendProfile(route, requestedProfile, resolvedPreset) {
+  if (requestedProfile !== undefined && route !== "frontend-ui") {
+    throw new Error("--frontend-profile is only supported for the frontend-ui route");
+  }
+  if (requestedProfile !== undefined && !frontendProfiles.has(requestedProfile)) {
+    throw new Error(`Unsupported frontend profile: ${requestedProfile}; available: ${[...frontendProfiles].join(", ")}`);
+  }
+  const presetProfile = resolvedPreset?.preset?.frontend_profile || null;
+  if (presetProfile && requestedProfile && requestedProfile !== presetProfile) {
+    throw new Error(`Preset ${resolvedPreset.canonicalName} requires frontend profile ${presetProfile}`);
+  }
+  if (route !== "frontend-ui") return null;
+  return presetProfile || requestedProfile || "default";
+}
+
 async function applyPreset(targetDir, config, presetName) {
   if (!presetName) return;
   const sourceDir = path.join(templatesRoot, config.template, "presets", presetName);
@@ -157,7 +177,7 @@ async function createProjectLocalDirs(projectRoot) {
   await fs.mkdir(path.join(projectRoot, "screenshots"), { recursive: true });
 }
 
-async function writeProjectManifest({ projectRoot, projectName, route, config, registry, mode, preset }) {
+async function writeProjectManifest({ projectRoot, projectName, route, config, registry, mode, preset, frontendProfile }) {
   await createProjectLocalDirs(projectRoot);
   const manifestPath = path.join(projectRoot, ".nero-design", "manifest.json");
   if (await pathExists(manifestPath)) {
@@ -195,12 +215,7 @@ async function writeProjectManifest({ projectRoot, projectName, route, config, r
       exports_root: path.join(projectRoot, "exports"),
       screenshots_root: path.join(projectRoot, "screenshots")
     },
-    brand_assets: {
-      profile: path.join(root, "brand", "brand-profile.json"),
-      layouts: path.join(root, "brand", "master-layouts.json"),
-      mark: path.join(root, "brand", "assets", "nero-mark.svg"),
-      wordmark: path.join(root, "brand", "assets", "nero-wordmark.svg")
-    },
+    brand_assets: await resolveBrandAssets(root),
     case_references: [],
     qa: {
       visual_qa_manifest: null,
@@ -225,6 +240,28 @@ async function writeProjectManifest({ projectRoot, projectName, route, config, r
     ]
   };
 
+  if (frontendProfile === "ai-app-ui") {
+    const localDesignIntentSchema = path.join(projectRoot, "design-intent.schema.json");
+    const localStateCatalog = path.join(projectRoot, "state-catalog.json");
+    manifest.frontend_profile = {
+      id: "ai-app-ui",
+      rule: path.join(root, "rules", "ai-app-ui.md"),
+      design_intent_schema: await pathExists(localDesignIntentSchema)
+        ? localDesignIntentSchema
+        : path.join(root, "templates", "frontend-dashboard", "presets", "ai-app-ui", "design-intent.schema.json"),
+      state_catalog: await pathExists(localStateCatalog)
+        ? localStateCatalog
+        : path.join(root, "templates", "frontend-dashboard", "presets", "ai-app-ui", "state-catalog.json"),
+      scorecard: path.join(root, "scorecards", "ai-app-ui-scorecard.json"),
+      evidence_boundary: {
+        design_contract: "candidate_until_checked",
+        rendered_qa: "not_run",
+        live_behavior: "not_observed",
+        human_acceptance: "pending"
+      }
+    };
+  }
+
   await fs.writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
   return manifestPath;
 }
@@ -236,6 +273,10 @@ async function createProject(options) {
     throw new Error(`Unsupported route: ${options.route}\n${usage()}`);
   }
   const resolvedPreset = resolvePreset(config, options.preset);
+  const frontendProfile = resolveFrontendProfile(options.route, options.frontendProfile, resolvedPreset);
+  const effectivePreset = frontendProfile === "ai-app-ui" && !resolvedPreset
+    ? resolvePreset(config, "ai-app-ui")
+    : resolvedPreset;
 
   const projectName = options.name || config.default_name;
   const outParent = path.resolve(options.out || process.cwd());
@@ -252,7 +293,7 @@ async function createProject(options) {
     force: false,
     errorOnExist: true
   });
-  await applyPreset(targetDir, config, resolvedPreset?.canonicalName);
+  await applyPreset(targetDir, config, effectivePreset?.canonicalName);
   await copyThemeAssets(targetDir);
   await localizeTemplateImports(targetDir);
 
@@ -263,7 +304,8 @@ async function createProject(options) {
     config,
     registry,
     mode: "generated-template-project",
-    preset: resolvedPreset?.canonicalName
+    preset: effectivePreset?.canonicalName,
+    frontendProfile
   });
   console.log(`Created ${options.route} project at ${targetDir}`);
   console.log(`NERO design manifest: ${manifestPath}`);
@@ -288,6 +330,7 @@ async function initExistingProject(options) {
   }
 
   const projectName = options.name || path.basename(projectRoot);
+  const frontendProfile = resolveFrontendProfile(options.route, options.frontendProfile, null);
   const manifestPath = await writeProjectManifest({
     projectRoot,
     projectName,
@@ -295,7 +338,8 @@ async function initExistingProject(options) {
     config,
     registry,
     mode: "existing-project-integration",
-    preset: null
+    preset: null,
+    frontendProfile
   });
   console.log(`Initialized NERO design integration at ${projectRoot}`);
   console.log(`NERO design manifest: ${manifestPath}`);

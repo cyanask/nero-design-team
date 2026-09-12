@@ -1,0 +1,64 @@
+{
+  "status": "ready",
+  "repo": "cathrynlavery/diagram-design",
+  "route": "frontend-ui",
+  "subroute": "architecture-diagram-redraw",
+  "source_url": "https://github.com/cathrynlavery/diagram-design",
+  "candidate_id": "github-frontend-007-diagram-design",
+  "last_reviewed_at": "2026-08-18",
+  "remote_state": {
+    "reviewed_head": "e48df3fb1e0008f14d792afa6a8a1cb7421b785f",
+    "reviewed_plugin_version": "2.4.3",
+    "reviewed_commit_date": "2026-08-17",
+    "release_status": "no GitHub releases observed during review",
+    "documentation_drift": "The reviewed README and Skill consistently describe 27 visual types. The seven semantic patterns specialize behavior without increasing that visual-type count."
+  },
+  "purpose": "Reference behavior-first semantic patterns, architecture-diagram grammar, meaning-preserving draw.io and Mermaid redraw, destination-aware detail choices, fidelity ledgers, complexity discipline, accessible SVG contracts, and architecture-specific QA.",
+  "style": "editorial technical diagram, restrained accent, flat SVG hierarchy, explicit diagram grammar, redraw auditability",
+  "tokens": [
+    "color.surface.canvas",
+    "color.text.primary",
+    "color.border.subtle",
+    "font.cn.body",
+    "space.section.gap"
+  ],
+  "template": "frontend-dashboard",
+  "license_status": "permissive",
+  "license_notes": "Repository is MIT. Upstream bundles third-party icon sources under their own licenses and trademark boundaries; NDT does not import the icon pack or upstream visual templates in this integration. This is not a legal opinion.",
+  "applies_to": [
+    "architecture, sequence, state, ER/data-model, swimlane/process, loop, organization/layer, data-flow and access-matrix diagrams",
+    "behavior-heavy queue, stage-slot, policy-trace, trust-boundary, governance and residual-risk diagrams",
+    "draw.io and Mermaid meaning-preserving redraw",
+    "report, deck, document and review-page architecture graphics",
+    "architecture-specific visual and fidelity QA"
+  ],
+  "disabled_when": [
+    "the task is one of the nine existing Figure Compiler report-figure types",
+    "the upstream Skill would become a parallel NDT entrypoint",
+    "copying the upstream default skin, templates, examples, fonts, icon pack, profile store, motion controller or packaged self-check",
+    "an old diagram is treated as current authority without reconciliation",
+    "formal editable PPTX requires Presentations-native objects",
+    "Archify typed validation and atomic delivery are required for a governed AI-native diagram package"
+  ],
+  "notes": "Fuse only behavior-first semantic-pattern methods, grammar, redraw auditability and NDT-native QA. Upstream profiles, motion controller, templates, icons, fonts and packaged self-check code remain reference-only or under existing NDT authority. NDT remains the visual controller; AI Native System Builder owns only AI-native fact and projection contracts. Figure Compiler remains nine types.",
+  "readme_summary": "diagram-design is an Agent Skill for self-contained HTML and inline-SVG technical diagrams. The reviewed version provides seven behavior-first semantic patterns, 27 visual types, optional accessible motion, profile storage, type-specific references, destination/detail/audience selection, draw.io and Mermaid structure extraction, fidelity ledgers, a packaged output self-check, accessible SVG requirements, and CI checks. NDT adopts semantic-pattern routing, the architecture/redraw method and stricter NDT-native QA, not the upstream visual controller, profiles, motion controller, templates, fonts or icon pack.",
+  "key_patterns": [
+    "behavior-first semantic pattern before visual grammar when behavior, state, enforcement or risk is load-bearing",
+    "one primary semantic pattern with at most one supporting primitive",
+    "diagram grammar selected from the question",
+    "draw.io and Mermaid parsed as untrusted structural input",
+    "redraw rather than renderer conversion",
+    "format, size, detail and audience selected before layout",
+    "complete fidelity ledger for kept, merged, dropped, relabelled and corrected relationships",
+    "complexity and accessible-SVG QA",
+    "packaged self-check retained as a safety and accessibility method reference rather than copied"
+  ],
+  "image_refs": [
+    "https://raw.githubusercontent.com/cathrynlavery/diagram-design/e48df3fb1e0008f14d792afa6a8a1cb7421b785f/docs/screenshots/architecture.png",
+    "https://raw.githubusercontent.com/cathrynlavery/diagram-design/e48df3fb1e0008f14d792afa6a8a1cb7421b785f/docs/screenshots/loop.png",
+    "https://raw.githubusercontent.com/cathrynlavery/diagram-design/e48df3fb1e0008f14d792afa6a8a1cb7421b785f/docs/screenshots/swimlane.png"
+  ],
+  "file_index_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/cathrynlavery__diagram-design/file-index.json",
+  "rule_path": "$NERO_DESIGN_TEAM_HOME/rules/architecture-diagram-redraw.md",
+  "extractor_path": "$NERO_DESIGN_TEAM_HOME/scripts/extract-architecture-source.py"
+}

@@ -20,7 +20,7 @@ This is a cross-format editorial notation system. It may change expression and v
 - `response`: short clauses, deliberate line breaks, sparse annotation syntax, explicit uncertainty and next step. The chat renderer may not expose custom font or marker backgrounds.
 - `image-report`: HTML/CSS/SVG or programmatic layers; text and numerals use the registered handwritten treatment, while bars, axes, and curves use deterministic hand-drawn vector geometry. Marker, circle, underline, and strike-through remain separate annotation overlays.
 - `web-ppt-html`: NERO-native CSS variables and inline SVG; recompose the conclusion and chart on mobile.
-- `ppt`: Presentations remains the formal editable PPTX owner; use native text, chart, and vector annotation objects.
+- `ppt`: the current project's operation route owns formal editable PPTX production; use native text, chart, and vector annotation objects. NERO Principal routes new formal production to `ppt-master-native-pptx` and existing/template work to Presentations.
 - `frontend-ui`: use the style for explanations, guided evidence reading, or empty states, not dense operational chrome.
 
 ## Hard boundaries

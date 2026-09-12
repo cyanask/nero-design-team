@@ -1,0 +1,21 @@
+{
+  "artifact": "NDT AI App UI 无业务数据状态模板",
+  "route": "frontend-ui",
+  "frontend_profile": "ai-app-ui",
+  "scorecard": "ai-app-ui-scorecard.json",
+  "scores": {
+    "intent_fit": 10,
+    "control_visibility": 15,
+    "state_integrity": 15,
+    "clarity_evidence": 15,
+    "recovery_collaboration": 12,
+    "traceability": 10,
+    "layout_typography": 8,
+    "responsive_accessibility": 10,
+    "rendered_evidence": 5
+  },
+  "notes": [
+    "This is a structural example score, not rendered, live-behavior or human-acceptance evidence."
+  ],
+  "is_example": true
+}

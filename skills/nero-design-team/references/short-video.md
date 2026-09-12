@@ -10,7 +10,7 @@ Use this rule for future short videos, animated research cards, data explainers,
 - Use Magic UI or motion libraries only when motion communicates structure or emphasis.
 - Convert chart scenes into video using rendered components, SVG, Canvas, or image frames.
 - Use `ai-image-generation.md` for background scenes, storyboard stills, or visual texture only; exact captions, figures, charts, and source notes stay in Remotion/code.
-- Use NERO design tokens for colors, captions, chart palette, safe areas, and motion rhythm.
+- Coordinate colors, captions, chart palette, safe areas and rhythm in the selected project direction; NERO motion/theme tokens are candidates.
 
 ## Design Standard
 

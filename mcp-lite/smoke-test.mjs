@@ -8,11 +8,6 @@ import { fileURLToPath } from "node:url";
 const timeoutMs = 5000;
 const mcpRoot = path.dirname(fileURLToPath(import.meta.url));
 const serverPath = path.join(mcpRoot, "server.mjs");
-const assetCatalog = JSON.parse(fs.readFileSync(path.join(mcpRoot, "..", "registry", "design-assets.json"), "utf8"));
-const expectedAssetCount = Array.isArray(assetCatalog.assets) ? assetCatalog.assets.length : 0;
-const expectedOpenIntegrityIssues = Array.isArray(assetCatalog.integrity_issues)
-  ? assetCatalog.integrity_issues.filter((issue) => issue.status === "open").length
-  : 0;
 const configFlagIndex = process.argv.indexOf("--codex-config");
 const configPath = configFlagIndex === -1 ? null : process.argv[configFlagIndex + 1];
 
@@ -29,6 +24,7 @@ function parseRegisteredLaunch(filePath) {
   const argsMatch = section.match(/^\s*args\s*=\s*(\[[^\n]*\])\s*$/m);
   assert.ok(commandMatch, "nero_design_team command is missing");
   assert.ok(argsMatch, "nero_design_team args are missing");
+  assert.ok(!/^\s*enabled\s*=\s*false\s*(?:#.*)?$/m.test(section), "nero_design_team registration is disabled");
   const command = JSON.parse(commandMatch[1]);
   const args = JSON.parse(argsMatch[1]);
   assert.equal(typeof command, "string");
@@ -39,6 +35,11 @@ function parseRegisteredLaunch(filePath) {
 const launch = configPath
   ? parseRegisteredLaunch(configPath)
   : { command: process.execPath, args: [serverPath], label: `${process.execPath} ${serverPath}` };
+const activeServerPath = launch.args.find((value) => typeof value === "string" && path.basename(value) === "server.mjs") || serverPath;
+const activeRegistryPath = path.join(path.dirname(activeServerPath), "..", "registry", "design-assets.json");
+const activeAssets = JSON.parse(fs.readFileSync(activeRegistryPath, "utf8"));
+const expectedAssetCount = activeAssets.assets?.length || 0;
+const expectedOpenIntegrityIssues = (activeAssets.integrity_issues || []).filter((issue) => issue.status === "open").length;
 
 function withTimeout(promise, label) {
   let timer = null;
@@ -200,6 +201,8 @@ function assertToolList(response, label) {
   assert.ok(Array.isArray(tools), `${label} should return a tools array`);
   assert.equal(tools.length, 12, `${label} should expose 12 tools`);
   const names = tools.map((tool) => tool.name);
+  const registryTool = tools.find(tool => tool.name === "nero_design_get_registry");
+  for (const field of ["include_library", "tags", "use_case_tags", "offset", "limit"]) assert.ok(registryTool.inputSchema.properties[field], label + " " + field);
   assert.ok(names.includes("nero_design_route"), `${label} should include nero_design_route`);
   assert.ok(names.includes("nero_design_get_registry"), `${label} should include nero_design_get_registry`);
   assert.ok(names.includes("nero_design_compile_report_figure"), `${label} should include nero_design_compile_report_figure`);
@@ -211,7 +214,8 @@ function assertPptRoute(response, label) {
   assert.equal(typeof text, "string", `${label} should return JSON text content`);
   const route = JSON.parse(text);
   assert.equal(route.route, "ppt", `${label} should classify the task as ppt`);
-  assert.equal(route.primary_engine, "Presentations", `${label} should route formal PPTX to Presentations`);
+  assert.equal(route.primary_engine, null, `${label} must not guess a project engine`);
+  assert.equal(route.engine_resolution?.status, "pending", `${label} should request the missing project registry`);
   assert.equal(route.routing_order?.[0], "nero-design-team Skill classification", `${label} should keep Skill-first routing`);
   assert.equal(route.controller_boundary?.cross_system_controller, "GPT Work", `${label} should keep GPT Work as cross-system controller`);
   assert.equal(route.controller_boundary?.autonomous_downstream_calls, false, `${label} should block autonomous downstream calls`);
@@ -232,8 +236,10 @@ function assertDesignRegistry(response, label) {
   assert.equal(result.registry_id, "nero-design-team", `${label} should return the NDT Registry`);
   const expectedAuthority = result.registry_profile === "private_canonical";
   assert.equal(result.authoritative, expectedAuthority, `${label} should preserve the Registry profile's authority boundary`);
-  assert.equal(result.asset_catalog?.assets, expectedAssetCount, `${label} should derive the asset count from the active Registry`);
-  assert.equal(result.asset_catalog?.open_integrity_issues, expectedOpenIntegrityIssues, `${label} should derive open integrity issues from the active Registry`);
+  assert.equal(result.asset_catalog?.assets, expectedAssetCount, `${label} should expose the active Registry asset count`);
+  assert.equal(result.mcp_server?.version, "2.5.0", `${label} should report the stable MCP bridge version`);
+  assert.deepEqual(result.library_summary, { assets: expectedAssetCount, styles: (activeAssets.styles || []).filter(style => !style.deleted_at).length, cases: (activeAssets.cases || []).length }, `${label} should report current library counts`);
+  assert.equal(result.asset_catalog?.open_integrity_issues, expectedOpenIntegrityIssues, `${label} should retain the active Registry integrity issues`);
 }
 
 async function runContentLengthSmoke() {
@@ -287,6 +293,29 @@ async function runContentLengthSmoke() {
     });
     const registryResponse = await readContentLengthMessage(child.stdout, state, getStderr, "content-length design registry");
     assertDesignRegistry(registryResponse, "content-length design registry");
+    const first = activeAssets.assets[0];
+    const [dimension, values] = Object.entries(first.tags).find(([, values]) => values.length);
+    const cases = first.use_case_tags.slice(0, 1);
+    const expected = activeAssets.assets.filter(asset => asset.tags?.[dimension]?.includes(values[0]) && cases.every(value => asset.use_case_tags.includes(value)));
+    sendContentLength(child.stdin, { jsonrpc: "2.0", id: 6, method: "tools/call", params: { name: "nero_design_get_registry", arguments: { include_library: true, tags: { [dimension]: [values[0]] }, use_case_tags: cases, offset: 0, limit: 3 } } });
+    const filtered = JSON.parse((await readContentLengthMessage(child.stdout, state, getStderr, "content-length filtered library")).result.content[0].text).library;
+    assert.equal(filtered.taxonomy.visual_dimensions.length, 10);
+    assert.equal(filtered.total, expected.length);
+    assert.deepEqual(filtered.assets.map(a => a.id), expected.slice(0,3).map(a => a.id));
+    sendContentLength(child.stdin, { jsonrpc: "2.0", id: 7, method: "tools/call", params: { name: "nero_design_get_registry", arguments: { include_library: true, search: first.id } } });
+    const searched = JSON.parse((await readContentLengthMessage(child.stdout, state, getStderr, "content-length search")).result.content[0].text).library;
+    assert.ok(searched.assets.some(a => a.id === first.id));
+    sendContentLength(child.stdin, { jsonrpc: "2.0", id: 8, method: "tools/call", params: { name: "nero_design_get_registry", arguments: { recommended_only: true } } });
+    const recommended = JSON.parse((await readContentLengthMessage(child.stdout, state, getStderr, "content-length recommended styles")).result.content[0].text).library;
+    assert.ok(recommended, "recommended_only should itself request the library");
+    const expectedRecommended = (activeAssets.styles || []).filter(style => !style.deleted_at && style.versions.some(item => item.status === 'approved' && item.approval?.by === 'NERO')).map(style => style.id);
+    assert.deepEqual(recommended.styles.map(style => style.id), expectedRecommended);
+    assert.ok(recommended.styles.every(style => style.versions.every(item => item.status === 'approved' && item.approval?.by === 'NERO')));
+    assert.deepEqual(recommended.cases.map(item => item.id), (activeAssets.cases || []).map(item => item.id));
+    for (const style of recommended.styles) for (const selected of style.versions) {
+      const source = activeAssets.styles.find(item => item.id === style.id).versions.find(item => item.version === selected.version);
+      assert.deepEqual(selected.manifest.prompts, source.manifest.prompts, "MCP must preserve exact version prompts");
+    }
     console.log("content-length smoke ok");
   } finally {
     child.stdin.end();
@@ -346,6 +375,29 @@ async function runNdjsonSmoke() {
     });
     const registryResponse = await readNdjsonMessage(child.stdout, state, getStderr, "ndjson design registry");
     assertDesignRegistry(registryResponse, "ndjson design registry");
+    const first = activeAssets.assets[0];
+    const [dimension, values] = Object.entries(first.tags).find(([, values]) => values.length);
+    const cases = first.use_case_tags.slice(0, 1);
+    const expected = activeAssets.assets.filter(asset => asset.tags?.[dimension]?.includes(values[0]) && cases.every(value => asset.use_case_tags.includes(value)));
+    sendNdjson(child.stdin, { jsonrpc: "2.0", id: 6, method: "tools/call", params: { name: "nero_design_get_registry", arguments: { include_library: true, tags: { [dimension]: [values[0]] }, use_case_tags: cases, offset: 0, limit: 3 } } });
+    const filtered = JSON.parse((await readNdjsonMessage(child.stdout, state, getStderr, "ndjson filtered library")).result.content[0].text).library;
+    assert.equal(filtered.taxonomy.visual_dimensions.length, 10);
+    assert.equal(filtered.total, expected.length);
+    assert.deepEqual(filtered.assets.map(a => a.id), expected.slice(0,3).map(a => a.id));
+    sendNdjson(child.stdin, { jsonrpc: "2.0", id: 7, method: "tools/call", params: { name: "nero_design_get_registry", arguments: { include_library: true, search: first.id } } });
+    const searched = JSON.parse((await readNdjsonMessage(child.stdout, state, getStderr, "ndjson search")).result.content[0].text).library;
+    assert.ok(searched.assets.some(a => a.id === first.id));
+    sendNdjson(child.stdin, { jsonrpc: "2.0", id: 8, method: "tools/call", params: { name: "nero_design_get_registry", arguments: { recommended_only: true } } });
+    const recommended = JSON.parse((await readNdjsonMessage(child.stdout, state, getStderr, "ndjson recommended styles")).result.content[0].text).library;
+    assert.ok(recommended, "recommended_only should itself request the library");
+    const expectedRecommended = (activeAssets.styles || []).filter(style => !style.deleted_at && style.versions.some(item => item.status === 'approved' && item.approval?.by === 'NERO')).map(style => style.id);
+    assert.deepEqual(recommended.styles.map(style => style.id), expectedRecommended);
+    assert.ok(recommended.styles.every(style => style.versions.every(item => item.status === 'approved' && item.approval?.by === 'NERO')));
+    assert.deepEqual(recommended.cases.map(item => item.id), (activeAssets.cases || []).map(item => item.id));
+    for (const style of recommended.styles) for (const selected of style.versions) {
+      const source = activeAssets.styles.find(item => item.id === style.id).versions.find(item => item.version === selected.version);
+      assert.deepEqual(selected.manifest.prompts, source.manifest.prompts, "MCP must preserve exact version prompts");
+    }
     console.log("ndjson smoke ok");
   } finally {
     child.stdin.end();

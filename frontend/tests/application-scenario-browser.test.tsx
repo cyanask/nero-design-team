@@ -1,3 +1,4 @@
+import { studioFeatures } from "../src/packs/ndt/pack";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import type { CapabilityAssetVM, CapabilityLibraryVM } from "../src/core/contracts";
@@ -86,68 +87,31 @@ describe("ApplicationScenarioBrowser", () => {
       />
     );
 
-    expect(html).toContain("APPLICATION SCENARIOS / 06");
+    expect(html.match(/href="#\/capabilities\/scenarios\//g)).toHaveLength(6);
     expect(html).toContain("产品界面（App / 软件）");
     expect(html).toContain("网页与 HTML");
     expect(html).toContain("商业报告与文档");
     expect(html).toContain("PPT 与演示汇报");
     expect(html).toContain("图片与视觉传播");
     expect(html).toContain("视频与动态内容");
-    expect((html.match(/查看适用方案/g) ?? []).length).toBe(6);
+    expect((html.match(/个主方案/g) ?? []).length).toBe(6);
     expect(html).toContain('href="#/capabilities/scenarios/product-ui"');
   });
 
-  it("falls back to a supporting solution preview when a primary solution has none", () => {
-    const reportAsset = asset("NDT-REPORT-001", "style-packs", "报告协作预览");
-    const fallbackLibrary: CapabilityLibraryVM = {
-      ...library,
-      assets: [...library.assets, reportAsset],
-      recipes: [
-        { id: "embedded-report-figure", label: "报告与演示结构图", assetIds: [] },
-        { id: "formal-pptx", label: "正式可编辑 PPTX", assetIds: [reportAsset.id] }
-      ]
-    };
-    const html = renderToStaticMarkup(
-      <ApplicationScenarioBrowser
-        catalog={ndtApplicationScenarioCatalog}
-        library={fallbackLibrary}
-        mode="index"
-        scenarioId={null}
-        recipeId={null}
-      />
-    );
-
-    expect(html).toContain('alt="报告协作预览"');
-    expect(html).toContain('src="./assets/NDT-REPORT-001.png"');
+  it("keeps metadata-only assets visible without inventing preview images", () => {
+    const input = { ...library, assets: library.assets.map((item) => ({ ...item, preview: { ...item.preview, state: "not_declared" as const, url: null, variants: [] } })) };
+    const html = renderToStaticMarkup(<ApplicationScenarioBrowser catalog={ndtApplicationScenarioCatalog} library={input} studioSelection={studioFeatures} mode="index" scenarioId={null} recipeId={null} />);
+    expect(html).toContain("此包未提供视觉预览");
+    expect(html).not.toContain("<img");
+    expect(html).toContain('href="#/capabilities/assets/NDT-RUL-001"');
   });
 
-  it("uses the six Pack-selected representative assets when they are available", () => {
-    const representatives = [
-      asset("NDT-TPL-001", "templates", "产品工作台"),
-      asset("NDT-EXT-001", "external-packs", "架构脉络图"),
-      asset("NDT-CAS-008", "cases", "研究备忘录"),
-      asset("NDT-SNP-006", "snapshots", "演示页面"),
-      asset("NDT-CAS-015", "cases", "财经传播组图"),
-      asset("NDT-TPL-005", "templates", "竖屏视频画面")
-    ];
-    const representativeLibrary: CapabilityLibraryVM = {
-      ...library,
-      assets: [...library.assets, ...representatives]
-    };
-    const html = renderToStaticMarkup(
-      <ApplicationScenarioBrowser
-        catalog={ndtApplicationScenarioCatalog}
-        library={representativeLibrary}
-        mode="index"
-        scenarioId={null}
-        recipeId={null}
-      />
-    );
-
-    for (const representative of representatives) {
-      expect(html).toContain(`data-preview-asset-id="${representative.id}"`);
-      expect(html).toContain(`src="./assets/${representative.id}.png"`);
-    }
+  it("uses three registered studio style samples without copying their assets", () => {
+    const ids = ["NDT-STY-003", "NDT-STY-004", "NDT-STY-006"];
+    const input = { ...library, assets: [...library.assets, ...ids.map((id) => asset(id, "style-packs", id))] };
+    const html = renderToStaticMarkup(<ApplicationScenarioBrowser catalog={ndtApplicationScenarioCatalog} library={input} studioSelection={studioFeatures} mode="index" scenarioId={null} recipeId={null} />);
+    for (const id of ids) expect(html).toContain(`href="#/capabilities/assets/${id}"`);
+    expect(html).toContain('aria-label="按任务选择方案"');
   });
 
   it("keeps primary and supporting solutions distinct on a scenario page", () => {
@@ -161,8 +125,8 @@ describe("ApplicationScenarioBrowser", () => {
       />
     );
 
-    expect(html).toContain("PRIMARY SOLUTIONS");
-    expect(html).toContain("SUPPORTING SOLUTIONS");
+    expect(html).toContain("选择适合的方案");
+    expect(html).toContain("协作方案");
     expect(html).toContain("内部工作台与分析后台");
     expect(html).toContain("双轨迹证据图谱");
     expect(html).toContain("编辑式手写研究笔记");
@@ -180,9 +144,9 @@ describe("ApplicationScenarioBrowser", () => {
       />
     );
 
-    expect(html).toContain("直接产物");
+    expect(html).toContain("直接提供");
     expect(html).toContain("可编辑 PPTX");
-    expect(html).toContain("下游目标");
+    expect(html).toContain("后续可形成");
     expect(html).toContain("PDF 汇报版");
     expect(html).toContain("做法与流程");
     expect(html).toContain("起始模板");
@@ -194,7 +158,7 @@ describe("ApplicationScenarioBrowser", () => {
     expect(html).toContain('href="#/capabilities/assets/NDT-STY-001"');
     expect(html).toContain('href="#/capabilities/assets/NDT-CAS-001"');
     expect(html).toContain('src="./assets/NDT-RUL-001.png"');
-    expect(html).not.toContain("METADATA ONLY");
+    expect(html).not.toContain("登记资料");
   });
 
   it("does not silently drop a recipe asset missing from the capability snapshot", () => {
@@ -218,7 +182,7 @@ describe("ApplicationScenarioBrowser", () => {
       />
     );
 
-    expect(html).toContain("Recipe 资产未出现在当前能力快照");
+    expect(html).toContain("关联资产未出现在当前能力快照");
     expect(html).toContain("NDT-MISSING-001");
   });
 
@@ -248,4 +212,29 @@ describe("ApplicationScenarioBrowser", () => {
     expect(solutionHtml).toContain("unknown-recipe");
     expect(solutionHtml).toContain('href="#/capabilities"');
   });
+});
+
+
+describe("scenario asset reuse boundary", () => {
+  it("changes the scenario card when the asset is quarantined", () => {
+    const render = (rawStatus: string) => renderToStaticMarkup(<ApplicationScenarioBrowser catalog={ndtApplicationScenarioCatalog} library={{ ...library, assets: [{ ...allRoleAssets[0], rawStatus, reuseState: "reusable", maturity: "registered", notes: ["具体使用限制"], issueCodes: ["REVIEW_NEEDED"] }] }} mode="solution" scenarioId={null} recipeId="internal-workbench" />);
+    const before = render("ready");
+    const after = render("quarantined");
+    expect(before).toContain("复用状态未知");
+    expect(after).toContain("已隔离");
+    expect(after).toContain("已登记");
+    expect(after).toContain("复用前核查登记边界");
+    expect(after).toContain("REVIEW_NEEDED");
+    expect(after).not.toContain("请引用");
+    expect(after).not.toBe(before);
+  });
+});
+
+
+it("does not feature an isolated or placeholder asset even when selected by the Pack", () => {
+  for (const reuseState of ["quarantined", "placeholder"] as const) {
+    const blocked = { ...asset("NDT-STY-003", "style-packs", "restricted reference"), reuseState };
+    const html = renderToStaticMarkup(<ApplicationScenarioBrowser catalog={ndtApplicationScenarioCatalog} library={{ ...library, assets: [blocked] }} studioSelection={studioFeatures} mode="index" scenarioId={null} recipeId={null} />);
+    expect(html).not.toContain('href="#/capabilities/assets/NDT-STY-003"');
+  }
 });

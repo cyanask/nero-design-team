@@ -63,7 +63,7 @@ Every image brief must include:
 - final format and aspect ratio
 - pixel dimensions or slide/video geometry
 - visual style
-- design-token references
+- selected project visual parameters and any applicable brand/token references
 - forbidden elements
 - safe whitespace area
 - post-production text/charts area
@@ -81,7 +81,7 @@ For PPT covers, chapter pages, web PPT visuals, and short-video scene frames:
 
 ## Prompt Snippet
 
-Use the NERO Design Team ai-image-generation route. Treat gpt-image-2 as an AI Image Art Director for visual素材 only. Generate a precise brief with purpose, audience, dimensions, safe text area, design-token references, forbidden elements, and negative constraints. Exact Chinese text, financial figures, tables, charts, source notes, and formal conclusions must be added later by Satori/Sharp, PptxGenJS, or Remotion and then visually QA'd.
+Use the NERO Design Team ai-image-generation route. Treat gpt-image-2 as an AI Image Art Director for visual素材 only. Generate a precise brief with purpose, audience, dimensions, safe text area, selected project visual parameters, task-specific forbidden elements, and negative constraints. Exact Chinese text, financial figures, tables, charts, source notes, and formal conclusions must be added later by Satori/Sharp, PptxGenJS, or Remotion and then visually QA'd.
 
 ## Evidence-Bearing Deck Background Addendum
 

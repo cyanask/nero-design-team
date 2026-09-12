@@ -243,13 +243,15 @@ async function projectStyles(root, assets) {
 function projectPreview(preview) {
   if (!isRecord(preview)) return null;
   const fit = preview.fit === "contain" || preview.fit === "cover" ? preview.fit : null;
+  const sourceRef = asNullableText(preview.source_ref);
+  const bundled = sourceRef?.match(/^assets\/library-previews\/([a-z0-9-]+\.png)$/i);
   return {
-    state: "unresolved",
-    url: null,
+    state: bundled ? "resolved" : "unresolved",
+    url: bundled ? `./library-previews/${bundled[1]}` : null,
     kind: asNullableText(preview.kind),
     label: asNullableText(preview.label),
     boundary: asNullableText(preview.boundary),
-    fit,
+    fit: fit ?? (bundled ? "contain" : null),
     variants: []
   };
 }
@@ -273,6 +275,9 @@ export function projectAssets(
       routes: asTextList(asset.routes),
       knownRoutes: asTextList(asset.routes).filter((route) => knownRoutes.includes(route)),
       rawStatus: asNullableText(asset.status),
+      aliases: asTextList(asset.aliases),
+      maturity: asText(asset.maturity, "unknown"),
+      reuseState: asText(asset.reuse_state, "unknown"),
       rights: asNullableText(asset.rights),
       sourceRef: asNullableText(asset.source_ref),
       members: asTextList(asset.members),

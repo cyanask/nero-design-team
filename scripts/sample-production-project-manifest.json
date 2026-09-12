@@ -24,5 +24,6 @@
     "output_root": "$NERO_DESIGN_TEAM_HOME/scripts",
     "exports_root": "$NERO_DESIGN_TEAM_HOME/scripts",
     "screenshots_root": "$NERO_DESIGN_TEAM_HOME/scripts"
-  }
+  },
+  "is_example": true
 }

@@ -8,12 +8,84 @@
   },
   "routes": [
     {
-      "route_id": "visual-ready-to-presentations",
+      "route_id": "visual-ready-new-formal-to-ppt-master",
       "handoff_artifact": "design_spec",
       "return_control_to": "caller",
       "when": {
         "handoff_state": "visual_ready",
-        "formal_output_engine": "presentations"
+        "ppt_operation": "new_formal_pptx",
+        "formal_output_engine": "ppt_master_native_pptx",
+        "source_text_owner": "kat",
+        "quality_receipt": "current",
+        "text_changed_by_ndt": "false"
+      },
+      "target": {
+        "skill_id": "ppt-master-native-pptx",
+        "resolution": "caller_catalog"
+      }
+    },
+    {
+      "route_id": "visual-ready-existing-edit-to-presentations",
+      "handoff_artifact": "design_spec",
+      "return_control_to": "caller",
+      "when": {
+        "handoff_state": "visual_ready",
+        "ppt_operation": "existing_pptx_edit",
+        "formal_output_engine": "presentations",
+        "source_text_owner": "kat",
+        "quality_receipt": "current",
+        "text_changed_by_ndt": "false"
+      },
+      "target": {
+        "skill_id": "presentations",
+        "resolution": "host_plugin"
+      }
+    },
+    {
+      "route_id": "visual-ready-template-to-presentations",
+      "handoff_artifact": "design_spec",
+      "return_control_to": "caller",
+      "when": {
+        "handoff_state": "visual_ready",
+        "ppt_operation": "strict_template_following",
+        "formal_output_engine": "presentations",
+        "source_text_owner": "kat",
+        "quality_receipt": "current",
+        "text_changed_by_ndt": "false"
+      },
+      "target": {
+        "skill_id": "presentations",
+        "resolution": "host_plugin"
+      }
+    },
+    {
+      "route_id": "visual-ready-google-slides-to-presentations",
+      "handoff_artifact": "design_spec",
+      "return_control_to": "caller",
+      "when": {
+        "handoff_state": "visual_ready",
+        "ppt_operation": "google_slides",
+        "formal_output_engine": "presentations",
+        "source_text_owner": "kat",
+        "quality_receipt": "current",
+        "text_changed_by_ndt": "false"
+      },
+      "target": {
+        "skill_id": "presentations",
+        "resolution": "host_plugin"
+      }
+    },
+    {
+      "route_id": "visual-ready-inspection-repair-to-presentations",
+      "handoff_artifact": "design_spec",
+      "return_control_to": "caller",
+      "when": {
+        "handoff_state": "visual_ready",
+        "ppt_operation": "inspection_or_repair",
+        "formal_output_engine": "presentations",
+        "source_text_owner": "kat",
+        "quality_receipt": "current",
+        "text_changed_by_ndt": "false"
       },
       "target": {
         "skill_id": "presentations",
@@ -25,7 +97,8 @@
       "handoff_artifact": "return_to_kat_request",
       "return_control_to": "caller",
       "when": {
-        "handoff_state": "returned_for_content_repair"
+        "handoff_state": "returned_for_content_repair",
+        "content_change_required": "true"
       },
       "target": {
         "skill_id": "knowledge-artifact-team",

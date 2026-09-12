@@ -1,8 +1,19 @@
 {
   "version": "1.1.0",
-  "updated_at": "2026-07-28",
+  "updated_at": "2026-08-18",
   "purpose": "Lightweight local snapshots for GitHub design references. No full repository clones, no copied source files.",
   "snapshots": [
+    {
+      "repo": "cathrynlavery/diagram-design",
+      "route": "frontend-ui",
+      "subroute": "architecture-diagram-redraw",
+      "source_url": "https://github.com/cathrynlavery/diagram-design",
+      "snapshot_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/cathrynlavery__diagram-design/snapshot.json",
+      "license_status": "permissive",
+      "token_budget_hint": "Read summary.md first, then snapshot.json; open file-index.json only when upstream paths are needed. No templates or icons are bundled.",
+      "updated_at": "2026-08-18",
+      "status": "ready"
+    },
     {
       "repo": "emilkowalski/skills",
       "route": "frontend-ui",

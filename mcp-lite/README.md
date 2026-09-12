@@ -4,6 +4,23 @@ This directory contains a local, dependency-free MCP server for the NERO Design 
 
 The Skill remains the rule and routing layer. MCP-lite is only the local tool execution layer for structured reads and existing script wrappers.
 
+## Stable bridge (interface 2.5.0)
+
+`server.mjs` owns the long-lived protocol and bounded process forwarding. `tool-contract.mjs` owns the stable twelve-tool names/basic schemas. They do not import NDT routing, catalogs or other business modules.
+
+`ndt-worker.mjs` accepts one JSON request over stdin, dynamically loads `ndt-runtime.mjs` in its fresh process, calls the existing handler and returns one JSON result. The runtime reuses the existing routing, library functions and CLI scripts. Business enums are validated against current NDT code/catalogs rather than cached in the bridge schema. The bridge validates the base argument types/shape first; neither layer grants execution permission.
+
+- **Routine NDT update:** change the canonical rules, methods, business modules or data and sync affected copies. Keep `server.mjs` and `tool-contract.mjs` unchanged. The next call over the same connection loads the updated NDT.
+- **Interface update:** change a tool name, argument structure, bridge behavior or connection configuration only when needed. Bump the bridge interface and refresh/reconnect the host as appropriate.
+- `mcp_server.version` is the bridge version; every successful tool result also carries `ndt_revision` with digest, scope, excluded files and a non-atomic consistency note. The digest does not cover all images, case assets, project data or live model context.
+- Finish source updates between calls. This mechanism reloads code per call; it does not provide an atomic multi-file deployment, roll back side effects or rewrite an active conversation's previously loaded instructions.
+
+Each worker accepts at most 1 MiB input, has a 120-second lifetime and a combined 16 MiB output limit; nested legacy CLI calls are bounded to 110 seconds and 8 MiB output. On POSIX, each worker owns a process group and the bridge clears that group on timeout, overflow, worker exit, disconnect and shutdown. Windows currently terminates the direct worker; descendant-tree cancellation has only been validated on the local POSIX platform. Worker stdout is a single JSON envelope; diagnostic logs use stderr. Invalid JSON, worker failures, missing revision/results and failed production readiness never become success.
+
+stdin EOF means disconnection and cancels in-flight calls. Test/CLI clients must wait for the response before closing the channel; use `--dry-run` for a one-shot read/preview.
+
+Bounded acceptance command: `node mcp-lite/stable-update-test.mjs`. It keeps one server PID/connection for each supported protocol, changes only temporary NDT fixtures, checks that code/rule/catalog/taxonomy updates take effect without changing `tools/list`, and checks rejection, recovery and disconnect cleanup. This does not restart or validate the user's already-running host connection.
+
 ## Server
 
 ```text
@@ -19,9 +36,21 @@ Current Codex / GPT Work stdio MCP uses line-delimited JSON (NDJSON). `server.mj
 
 No tool schema or tool behavior changes are required for either client mode.
 
-The server never edits Codex configuration itself. On this workstation, the approved registration should use `command = "node"` with the server path above; hard-coding an application-bundle Node path is not portable and may point to a file that does not exist. Restart Codex after changing MCP configuration so the app can rediscover the tools.
+The server never edits Codex configuration itself. On this workstation, the approved registration should use `command = "node"` with the server path above; hard-coding an application-bundle Node path is not portable and may point to a file that does not exist. After changing registration or server code, refresh the MCP connection in the host if supported, or reopen the host. A response carrying the expected `mcp_server.version` is the check that the active connection has loaded the new server.
 
 `--list-tools` and `smoke-test.mjs` validate the server source directly. They do not prove that an already-running Codex session has reloaded the registration.
+
+## Route applicability
+
+`nero_design_route` accepts optional `task_mode: create|revise|audit` and `content_contract: standard|kat-presentation`. The caller's explicit fields take precedence over keyword fallback. Read-only audits do not recommend generation/import; interface motion stays on the frontend route. A deck brief, style lock or three-direction exploration alone does not select KAT. Frontend guidance now treats style resources as candidates and leaves numeric dials unset until a task selects them. The Skill owns reference exploration and method-card selection; MCP does not perform web/image inspection by returning metadata. Library behavior below remains compatible.
+
+## Compatible library contract
+
+`nero_design_get_registry({})` returns `mcp_server.version`, the live `library_contract`, and `library_summary` counts for assets, active styles and cases. These counts come from the Registry on each call; the App release, system Registry and MCP server have separate versions.
+
+Use `include_library:true` to read asset records, cases, style manifests, exact-version prompts, previews and the catalog SHA-256 revision. `limit` and `offset` paginate assets and supporting resources; they do not paginate styles or cases. Use `style_id` with `style_version` to pin a reproducible style. `recommended_only:true` alone requests the library and returns only versions explicitly approved by NERO; candidate status is not approval. Search and facet filters apply to assets and resources, not style or case names.
+
+MCP retains all 12 tools and existing input fields. The library tool is read-only. The installed App handles authorized maintenance through the canonical Registry service; no MCP write tool is added.
 
 ## Tool Schemas
 
@@ -88,6 +117,14 @@ node $NERO_DESIGN_TEAM_HOME/mcp-lite/server.mjs --dry-run nero_design_get_tokens
 - `matrix`: 同业画像、指标矩阵
 - `value_chain`: 价值链、利润分布
 
+Architecture, sequence, state-machine, ER/data-model, swimlane, data-flow,
+integration, access-matrix, organization/layer, and loop/flywheel requests are
+not Figure Compiler types. `nero_design_route` returns a separate
+`architecture_diagram_redraw` decision with fresh/redraw mode, source kind,
+grammar, NDT rule, local extractor when applicable, and the explicit
+`unchanged_nine_types` boundary. draw.io and Mermaid sources stay inert and
+untrusted until reconciled with current authority.
+
 Reports, Word/PDF, and diligence use `report-a4`; WeChat/公众号 uses `wechat-inline`; PPT/slide uses `ppt-16x9`. Report and WeChat default to `raster-canvas-png`; PPT defaults to `vector-svg`. Explicit editable/native requests return `office-native` as handoff-only and do not recommend the compiler. Covers, photography, illustration, backgrounds, and concept visuals return `recommended=false` with `ai-image-generation` as the alternative route. When `recommended=true`, `recommended_tools` includes `nero_design_compile_report_figure`.
 
 `nero_design_compile_report_figure` wraps the central `scripts/report-figure-compiler.mjs` CLI. It accepts `action=list|validate|compile`. `list` accepts no paths or compile overrides. `validate` requires `project_root` and `spec_path` and rejects compile-only `profile`/`renderer` overrides. `compile` requires `project_root`, `spec_path`, and `output_path`, with optional `receipt_path`, `profile`, and `renderer`. Relative paths resolve from `project_root`; spec, output, and receipt paths must remain contained there. The project root must exist outside the NDT canonical root, and output or receipt paths may not resolve back into NDT through symlinks. The default `execute=false` returns only a command preview and does not write a figure, receipt, Registry record, or job state.
@@ -100,7 +137,23 @@ node $NERO_DESIGN_TEAM_HOME/mcp-lite/server.mjs --dry-run nero_design_compile_re
 
 `nero_design_generate_project` accepts `preset` when `mode="new"` and forwards it to the registered generator. `mode="init"` rejects `preset` because initialization does not copy template files.
 
-`nero_design_production_check` returns `readiness_status` (`pass`, `review`, or `fail`) and `ready_for_downstream`. A successful process exit with `readiness_status=review` is not permission to invoke a downstream engine.
+For AI application, Agent UI, Copilot, tool-calling, generative UI or
+human-confirmation frontend work, `nero_design_route` keeps the route as
+`frontend-ui` and returns `frontend_profile.id="ai-app-ui"`. The response adds
+`$NERO_DESIGN_TEAM_HOME/skills/nero-design-team/references/ai-app-ui.md`, the registered frontend-dashboard preset,
+design-intent schema, state catalog, route-specific scorecard, fused-source
+metadata and explicit design/rendered/live/human acceptance boundaries.
+
+`nero_design_generate_project` also accepts
+`frontend_profile="ai-app-ui"`. With `mode="new"`, the generator applies the
+registered `ai-app-ui` preset even when `preset` is omitted. With `mode="init"`,
+it records NDT rule, schema, state-catalog and scorecard references in the
+project manifest without copying template files. No new MCP tool or top-level
+route is added.
+
+`nero_design_production_check` consumes the CLI's structured production result and returns `stage`, `readiness_status`, `design_contract_passed`, `ready_for_downstream`, `final_delivery_ready`, and the detailed `readiness` result. Only a passed `downstream_handoff` authorizes a caller handoff; only a passed `final_delivery` indicates final-file readiness. A process exit or design-contract pass alone authorizes neither. See `rules/production-check.md` for current-file review bindings and KAT receipt requirements.
+
+For PPT routing, supply `project_root` or an absolute `engine_registry_path`, and an explicit `ppt_operation` where needed. The operation route is read from the current project registry. A caller's `engine_resolution` may be reused when its operation, engine and registry source digest match. Missing, ambiguous or stale inputs return pending and no primary engine; the tool never invokes an engine.
 
 In v1.8, `nero_design_route` returns PPT-specific `ppt_subroute`, `primary_engine`, and `secondary_rules` for PPT tasks. For `web-ppt-html`, it returns Guizang Refresh metadata plus the v1.8 presentation harness references: Huashu HTML-native harness, Frontend Slides fixed-stage style discovery, and PPT Master production/spec-lock discipline.
 
@@ -123,7 +176,9 @@ For project integration tasks, route to `project-integration` and use `nero_desi
 
 ## Module Health Decision
 
-`module_health_decision=keep_cohesive`. The 800+ line server was reviewed during the Figure Compiler integration. The new capability reuses the existing handler registry, `commandPreview`, and single script-execution seam; project-path helpers only guard that seam. It does not introduce a second execution authority, job queue, database, Registry writer, or background service. Focused MCP protocol tests cover strict execution booleans, dry-run non-execution, project containment and symlink-aware write boundaries, real temporary SVG/receipt compilation, and generator preset propagation. This evidence supports keeping one dependency-free stdio server without an unrelated refactor.
+2026-09-08: routing advice was extracted into `routing.mjs` after repeated route changes and corrections had shared the protocol/execution file. `server.mjs` retains tool schemas, transport, handlers and write-path guards; `routing.mjs` owns task classification, reference metadata and recommendations without executing a downstream tool. The tool surface is unchanged. The extracted recommendation boundary is covered by full before/after response comparison and the existing protocol/figure-routing tests.
+
+Keep the remaining transport/execution code cohesive. File length is a review signal, not a mandate to create more adapters or modules.
 
 ## Fallback
 
@@ -136,3 +191,5 @@ If MCP is unavailable, Codex should read local files directly:
 - Case snapshots: `$NERO_DESIGN_TEAM_HOME/case-library/snapshots/`
 - External restricted assets: not bundled; keep them in an explicitly private overlay
 - Scripts: `$NERO_DESIGN_TEAM_HOME/scripts/`
+
+Asset library v2.4 keeps all twelve tool names and existing Route behavior. With `include_library:true`, `nero_design_get_registry` returns `taxonomy`, `dimensions`, `categories`, `total`, `offset`, `limit`, and the matching live `assets`. Ten visual dimensions are distinct from `use_case_tags`. Pass `tags:{"component":["SVG图形"]}`, `use_case_tags:["frontend","PPT"]`, `search`, `offset`, and `limit` (1–1000). All selected values use AND semantics, including values in the same dimension. Omit pagination to retain the previous full-catalog read. Legacy query keys `graphics`, `imageTreatment`, and `usage` remain readable aliases. Register new assets through the local `ndt.asset-intake.v1` checked-revision workflow in `registry/README.md`; MCP does not gain a write tool.

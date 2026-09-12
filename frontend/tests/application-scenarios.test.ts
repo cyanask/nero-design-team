@@ -13,6 +13,7 @@ const expectedScenarioIds = [
 ];
 
 const expectedRecipeIds = [
+  "ai-app-workbench",
   "ai-image-brief",
   "architecture-map",
   "cold-white-business-editorial",
@@ -92,7 +93,7 @@ describe("NDT application scenario catalog", () => {
     ).toBe(6);
   });
 
-  it("maps exactly the 15 agreed Recipe IDs without copying Recipe assets", () => {
+  it("maps exactly the 16 agreed Recipe IDs without copying Recipe assets", () => {
     expect(
       ndtApplicationScenarioCatalog.solutions.map((solution) => solution.recipeId).sort()
     ).toEqual(expectedRecipeIds);
@@ -233,4 +234,13 @@ describe("NDT application scenario catalog", () => {
       ])
     );
   });
+});
+
+
+it("places the registered AI workbench in the existing product scenario", () => {
+  const solution = ndtApplicationScenarioCatalog.solutions.find((item) => item.recipeId === "ai-app-workbench");
+  expect(solution?.primaryScenarioId).toBe("product-ui");
+  expect(solution?.downstreamTargets).toEqual(["接入真实服务的应用界面"]);
+  expect(solution?.boundary).toContain("不证明后端已接通");
+  expect(ndtApplicationScenarioCatalog.scenarios).toHaveLength(6);
 });

@@ -10,11 +10,12 @@ Use this rule when NERO Design Team needs stricter PPT production discipline: sp
 
 ## Boundary
 
-This rule improves NERO's production harness. It does not replace the formal Office route.
+This rule improves NERO's production harness. It does not select or replace the current project's formal Office route.
 
-- Formal PPTX / Google Slides: Presentations plugin remains primary.
+- New formal PPTX: use the current project registry; NERO Principal routes `new_formal_pptx` to the pinned `ppt-master-native-pptx` adapter.
+- Existing-deck editing, strict template following, Google Slides, inspection, and repair: use `presentations:Presentations`.
 - Local `PptxGenJS`: legacy fallback only.
-- `ppt-master`: reference-only for production discipline, not a default runtime or dependency set.
+- Unpinned upstream `ppt-master`: reference-only for production discipline. A pinned adapter becomes active only through a project registry and its acceptance gates.
 - KAT x NDT production-chain work must use KAT artifacts for content locks and NDT artifacts for design locks; do not collapse them into one uncontrolled prompt.
 
 ## Spec Lock
@@ -63,15 +64,15 @@ Lock this spec before full production. If the user changes the deck direction, u
 - Use `ai-image-generation.md` before any generated image.
 - Lock style words, palette, lens/camera treatment, forbidden elements, and safe text zones.
 - Generated images may supply cover, chapter, background, mood, or scene素材 only.
-- Exact titles, Chinese正文, figures, chart labels, tables, source notes, and conclusions are layered later through Presentations, HTML, Satori/Sharp, or Remotion.
+- Exact titles, Chinese正文, figures, chart labels, tables, source notes, and conclusions are layered later through the project-selected PPTX engine, HTML, Satori/Sharp, or Remotion.
 
 ## Hard Bans
 
 - Do not install heavy dependencies by default.
-- Do not run image search, TTS, watermark removal, or provider-specific generation by default.
+- Use available read-only web/image search when the director selects reference exploration. TTS, watermark removal, provider setup and new paid generation remain separately governed.
 - Do not write `.env`, API keys, tokens, cookies, or provider secrets.
 - Do not copy large SVG/PPTX example folders into NERO.
-- Do not let this rule override Presentations for formal PPTX.
+- Do not let this rule override the current project's operation route or silently switch engines.
 - Do not call a formal deck production-ready until the production packet, design spec, style lock, and required PPTX QA evidence are present or explicitly marked unverified.
 
 ## Completion Gate

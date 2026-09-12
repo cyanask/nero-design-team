@@ -22,8 +22,16 @@ const privateDirectories = new Set([
 const findings = [];
 const warnings = [];
 const jsonFiles = [];
+let allowedBinaryExtensions = new Set();
 let filesScanned = 0;
 let textFilesScanned = 0;
+
+try {
+  const releaseManifest = JSON.parse(await fs.readFile(path.join(root, "release-manifest.json"), "utf8"));
+  allowedBinaryExtensions = new Set((releaseManifest.allowed_binary_extensions || []).map((value) => value.toLowerCase()));
+} catch (error) {
+  if (error.code !== "ENOENT") throw error;
+}
 
 const tokenPatterns = [
   ["github-token", new RegExp(["gh", "p_[A-Za-z0-9]{20,}"].join(""))],
@@ -100,6 +108,7 @@ async function walk(directory) {
   for (const entry of entries.sort((left, right) => left.name.localeCompare(right.name))) {
     const target = path.join(directory, entry.name);
     const targetRelative = relative(target);
+    if (entry.name === ".git") continue;
     if (entry.isSymbolicLink()) {
       let resolved;
       try {
@@ -132,7 +141,7 @@ async function walk(directory) {
     if (await isProbablyText(target)) {
       textFilesScanned += 1;
       scanText(target, await fs.readFile(target, "utf8"));
-    } else {
+    } else if (!allowedBinaryExtensions.has(path.extname(entry.name).toLowerCase())) {
       addWarning(target, "binary-file", "binary or unrecognized file requires allowlist review");
     }
   }

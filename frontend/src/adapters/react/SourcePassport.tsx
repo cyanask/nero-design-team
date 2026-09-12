@@ -13,12 +13,12 @@ export function SourcePassport({ envelope }: Props) {
   return (
     <section className="source-passport" aria-label="来源护照">
       <div>
-        <span className="section-label">SOURCE PASSPORT</span>
+        <span className="section-label">来源与更新时间</span>
         <strong>{authorityLabel(envelope.state)}</strong>
       </div>
       <dl>
         <div>
-          <dt>投影</dt>
+          <dt>数据类型</dt>
           <dd>{projectionLabel(envelope.state)}</dd>
         </div>
         <div>
@@ -26,11 +26,11 @@ export function SourcePassport({ envelope }: Props) {
           <dd>{envelope.source.sourceVersion ?? "unknown"}</dd>
         </div>
         <div>
-          <dt>观测</dt>
+          <dt>读取时状态</dt>
           <dd>{sourceStateLabel(envelope.state)}</dd>
         </div>
         <div>
-          <dt>时间</dt>
+          <dt>读取时间</dt>
           <dd>{new Date(envelope.observedAt).toLocaleString("zh-CN", { hour12: false })}</dd>
         </div>
       </dl>

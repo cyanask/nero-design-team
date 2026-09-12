@@ -1,8 +1,10 @@
+import { readTaxonomy, dimensionLabels, sourceIdentity, validateAssetMetadata, validateAssetSources, referenceRecords } from './asset-library.mjs';
 import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { planSkillSync } from './sync-skill.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const registryPath = path.join(root, "registry", "design-team.json");
@@ -312,6 +314,7 @@ async function validateOssSkill(ossRoot) {
 async function main() {
   const registry = await readJson(registryPath);
   const assets = await readJson(assetCatalogPath);
+  const taxonomy = await readTaxonomy(root);
   const privateCanonical = registry.registry_profile === "private_canonical";
 
   record(registry.schema_version === "1.0.0", "registry-schema", `schema_version=${registry.schema_version}`);
@@ -352,7 +355,19 @@ async function main() {
   record(privateCanonical ? assets.source_root === root : assets.source_root === "$NERO_DESIGN_TEAM_HOME", "asset-source-root", assets.source_root || "missing");
 
   const categoryIds = new Set((assets.categories || []).map((category) => category.id));
+  record(assets.taxonomy_version === taxonomy.version && JSON.stringify(assets.tag_dimensions) === JSON.stringify(dimensionLabels(taxonomy)), 'asset-taxonomy-version', `catalog=${assets.taxonomy_version}; taxonomy=${taxonomy.version}`);
+  const invalidTags = (assets.assets || []).flatMap(asset => validateAssetMetadata(asset, taxonomy, assets.categories || []).map(field => ({ id: asset.id, field })));
+  record(!invalidTags.length, 'asset-ten-dimension-contract', invalidTags.length ? JSON.stringify(invalidTags) : `${assets.assets.length} assets have ten valid dimensions, visual labels, separate use cases and classification evidence`);
+  const seenSources = new Set();
+  const repeatedSources = (assets.assets || []).filter(asset => {
+    if (String(asset.source_ref).startsWith('not-bundled-')) return false;
+    const identity = sourceIdentity(asset);
+    if (seenSources.has(identity)) return true;
+    seenSources.add(identity); return false;
+  }).map(asset => asset.id);
+  record(!repeatedSources.length, 'asset-source-scope-uniqueness', repeatedSources.length ? repeatedSources.join(', ') : 'No identical source and member scopes');
   const assetIds = new Set();
+  const activeIds = new Set(assets.assets.map(asset => asset.id));
   const duplicateIds = [];
   const missingSources = [];
   const invalidCategories = [];
@@ -361,10 +376,10 @@ async function main() {
   const missingFragments = [];
   const missingMembers = [];
   const unsafeMembers = [];
-  for (const asset of assets.assets || []) {
+  for (const asset of referenceRecords(assets)) {
     if (assetIds.has(asset.id)) duplicateIds.push(asset.id);
     assetIds.add(asset.id);
-    if (!categoryIds.has(asset.category)) invalidCategories.push({ id: asset.id, category: asset.category });
+    if (activeIds.has(asset.id) && !categoryIds.has(asset.category)) invalidCategories.push({ id: asset.id, category: asset.category });
     const [sourceRef, fragment] = String(asset.source_ref || "").split("#", 2);
     if (!privateCanonical && sourceRef.startsWith("not-bundled-")) {
       notBundledSources.push({ id: asset.id, source_ref: asset.source_ref });
@@ -418,6 +433,11 @@ async function main() {
       }
     }
   }
+  const invalidStates = (assets.assets || []).filter((asset) =>
+    !["registered", "reference", "candidate", "unknown"].includes(asset.maturity) ||
+    !["reusable", "conditional", "reference_only", "placeholder", "quarantined", "unknown"].includes(asset.reuse_state)
+  ).map((asset) => asset.id);
+  record(!invalidStates.length, "asset-state-contract", invalidStates.length ? invalidStates.join(", ") : "Maturity and reuse state are explicit; neither implies acceptance");
   record(!duplicateIds.length, "asset-id-uniqueness", duplicateIds.length ? duplicateIds.join(", ") : `${assetIds.size} unique ids`);
   record(!invalidCategories.length, "asset-categories", invalidCategories.length ? JSON.stringify(invalidCategories) : `${categoryIds.size} categories resolve`);
   record(!unsafeSources.length, "asset-source-boundary", unsafeSources.length ? JSON.stringify(unsafeSources) : "All source_ref values are relative and contained");
@@ -426,13 +446,16 @@ async function main() {
   record(!unsafeMembers.length, "asset-member-boundary", unsafeMembers.length ? JSON.stringify(unsafeMembers) : "All asset members are relative and contained by their source directory or file parent");
   record(!missingMembers.length, "asset-member-closure", missingMembers.length ? JSON.stringify(missingMembers) : "Directory source_ref members resolve from the directory; file source_ref members resolve from its parent");
 
-  const missingRecipeAssets = [];
+  const invalidRecipeReferences = [];
   for (const recipe of assets.recipes || []) {
-    for (const assetId of recipe.asset_ids || []) {
-      if (!assetIds.has(assetId)) missingRecipeAssets.push({ recipe: recipe.id, asset_id: assetId });
+    for (const [field, records] of [['asset_ids', assets.assets], ['case_ids', assets.cases || []], ['resource_ids', assets.supporting_resources || []]]) {
+      for (const id of recipe[field] || []) if (!records.some(item => item.id === id)) invalidRecipeReferences.push({recipe: recipe.id, field, id});
     }
   }
-  record(!missingRecipeAssets.length, "recipe-asset-closure", missingRecipeAssets.length ? JSON.stringify(missingRecipeAssets) : `${(assets.recipes || []).length} recipes reference bundled assets only`);
+  record(!invalidRecipeReferences.length, 'recipe-asset-closure', invalidRecipeReferences.length ? JSON.stringify(invalidRecipeReferences) : 'All typed recipe references resolve');
+  const previewErrors = [];
+  for (const asset of assets.assets) { try { await validateAssetSources(root, asset); } catch (error) { previewErrors.push({id: asset.id, error: error.message}); } }
+  record(!previewErrors.length, 'asset-real-preview-coverage', previewErrors.length ? JSON.stringify(previewErrors) : 'Every active public asset has a real source preview');
   await validateEmbeddedAssetReferenceClosure(assetIds);
 
   const issueSources = new Set((assets.integrity_issues || []).filter((issue) => issue.status === "open").map((issue) => issue.source_ref));
@@ -445,6 +468,12 @@ async function main() {
   }
 
   const canonicalSkill = privateCanonical ? registry.skill_distribution?.canonical : path.join(root, "skills", "nero-design-team");
+  try {
+    const ruleChanges = await planSkillSync(root);
+    record(ruleChanges.length === 0, "skill-rule-view-parity", ruleChanges.length
+      ? ruleChanges.map(item => path.relative(root, item.destination)).join(", ")
+      : "Compatibility rule files match the authored Skill references");
+  } catch (error) { record(false, "skill-rule-view-parity", error.message); }
   const runtimeSkill = registry.skill_distribution?.runtime;
   if (privateCanonical && canonicalSkill && runtimeSkill && await exists(canonicalSkill) && await exists(runtimeSkill)) {
     const canonical = await treeDigest(canonicalSkill);
@@ -456,12 +485,12 @@ async function main() {
     record(false, "skill-runtime-parity", "Canonical or runtime Skill tree is unavailable");
   }
 
-  if (registry.global_trigger_route?.source && await exists(registry.global_trigger_route.source)) {
-    const globalRules = await fs.readFile(registry.global_trigger_route.source, "utf8");
-    record(globalRules.includes(registry.global_trigger_route.source_section), "global-trigger-source", registry.global_trigger_route.source_section);
-  } else {
-    warn("global-trigger-source", "Global rule source is unavailable in this environment");
-  }
+  const sourceArg = process.argv.indexOf("--global-rules");
+  const trigger = { ...registry.global_trigger_route };
+  if (sourceArg >= 0) trigger.source = process.argv[sourceArg + 1];
+  const triggerCheck = await validateGlobalTrigger(trigger);
+  if (!privateCanonical && triggerCheck.unavailable) warn("global-trigger-source", triggerCheck.detail);
+  else record(triggerCheck.ok, "global-trigger-source", triggerCheck.detail);
 
   await validateOssSkill(privateCanonical ? registry.skill_distribution?.oss : canonicalSkill);
   await validateLocalReferenceClosure({ allowPrivateOverlayReferences: !privateCanonical });
@@ -469,6 +498,8 @@ async function main() {
   if (privateCanonical) {
     const ossProjectRoot = path.resolve(registry.skill_distribution.oss, "..", "..");
     const ossValidator = path.join(ossProjectRoot, "scripts", "validate-registry.mjs");
+    const projection = spawnSync(process.execPath, [path.join(root, "scripts", "check-oss-projection.mjs"), "--public-root", ossProjectRoot], { cwd: root, encoding: "utf8" });
+    record(projection.status === 0, "oss-projection-closure", projection.status === 0 ? "Canonical-to-public projection is complete" : projection.stderr.trim() || projection.stdout.trim());
     if (await exists(ossValidator)) {
       const result = spawnSync(process.execPath, [ossValidator], { cwd: ossProjectRoot, encoding: "utf8" });
       record(result.status === 0, "oss-registry-contract", result.status === 0 ? "Public derivative Registry validates" : result.stderr.trim() || result.stdout.trim());
@@ -483,7 +514,7 @@ async function main() {
     status: errors.length ? "fail" : warnings.length ? "review" : "pass",
     checked_at: new Date().toISOString(),
     registry: { id: registry.registry_id, version: registry.version, profile: registry.registry_profile },
-    summary: { checks: checks.length, passed: checks.filter((item) => item.status === "pass").length, warnings: warnings.length, errors: errors.length, assets: assetIds.size, not_bundled_assets: notBundledSources.length, open_integrity_issues: issueSources.size },
+    summary: { checks: checks.length, passed: checks.filter((item) => item.status === "pass").length, warnings: warnings.length, errors: errors.length, assets: activeIds.size, not_bundled_assets: notBundledSources.length, open_integrity_issues: issueSources.size },
     checks,
     warnings,
     errors
@@ -518,5 +549,19 @@ function runPathBoundarySelfTest() {
   if (failures.length) process.exit(1);
 }
 
-if (process.argv.includes("--self-test-path-boundaries")) runPathBoundarySelfTest();
-else await main();
+export async function validateGlobalTrigger(trigger) {
+  if (!trigger?.source || !(await exists(trigger.source))) return { ok: false, unavailable: true, detail: "Global rule source is unavailable" };
+  const globalRules = await fs.readFile(trigger.source, "utf8");
+  const skillId = trigger.source_skill_id || "nero-design-team";
+  const escapedId = skillId.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const idPattern = new RegExp(`(^|[^a-zA-Z0-9_-])${escapedId}(?=$|[^a-zA-Z0-9_-])`);
+  const activeLine = globalRules.split("\n").some((line) => idPattern.test(line) && /视觉|设计|visual|design/i.test(line.replaceAll(skillId, "")) && !/禁止使用|不再使用|do not use|disabled/i.test(line));
+  const targetPresent = Boolean(trigger.target_skill && await exists(trigger.target_skill));
+  const targetText = targetPresent ? await fs.readFile(trigger.target_skill, "utf8") : "";
+  return { ok: activeLine && targetPresent && new RegExp(`^name:\\s*["']?${escapedId}["']?\\s*$`, "m").test(targetText), detail: `skill=${skillId}; directive=${activeLine}; target=${targetPresent}` };
+}
+
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  if (process.argv.includes("--self-test-path-boundaries")) runPathBoundarySelfTest();
+  else await main();
+}

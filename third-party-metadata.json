@@ -3,6 +3,7 @@
   "policy": "metadata-only for unknown or restricted references",
   "references": [
     { "repo": "alchaincyf/huashu-design", "license_status": "permissive", "license": "MIT", "bundling": "metadata-only", "metadata_status": "metadata_only", "rights": "MIT-metadata-reference" },
+    { "repo": "cathrynlavery/diagram-design", "license_status": "permissive", "license": "MIT", "bundling": "metadata-only", "metadata_status": "metadata_only", "rights": "MIT-metadata-reference; upstream icon licenses and trademarks are not bundled" },
     { "repo": "emilkowalski/skills", "license_status": "permissive", "license": "MIT", "bundling": "metadata-only" },
     { "repo": "LiamGvchi/gc-minimal-zine-poster", "license_status": "permissive", "license": "MIT", "bundling": "metadata-only" },
     { "repo": "hugohe3/ppt-master", "license_status": "permissive", "license": "MIT", "bundling": "metadata-only", "metadata_status": "metadata_only", "rights": "MIT-metadata-reference" },

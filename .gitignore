@@ -11,6 +11,8 @@ temp/
 *.log
 *.tmp
 *.local.json
+__pycache__/
+*.py[cod]
 validation/private/
 case-library/assets/
 assets/private/

@@ -2,14 +2,11 @@
 
 Use this rule for commercial deck design, critique, redesign, quality gates, and the visual system of formal PPTX work. This rule fuses the useful parts of `ppt-design-reference` into NERO Design Team.
 
-## Default Direction
+## Task-driven direction
 
-- Default audience: executive, investor, board, client, or internal leadership.
-- Default tone: institutional, precise, high-trust, restrained, evidence-led.
-- Default visual direction: data-forward business Swiss.
-- Use editorial business only for founder narrative, company introduction, brand strategy, market education, or launch story.
-- Use institutional research for investment memos, industry analysis, due-diligence summaries, policy, science, or finance-heavy decks.
-- Choose one direction per deck. Use section dividers and page rhythm for variety; do not mix unrelated styles.
+Resolve the audience, purpose and explicit identity constraints before choosing style. Business Swiss, editorial, technical, image-led and other treatments are candidates; the audience label does not mandate one of them. Follow the director's local/web exploration branch and inspect actual examples.
+
+For important new work, compare two or three directions with different information organization or visual experience, including one independent of existing presets when exploration is open. Select a coherent direction and test representative pages before producing the full deck.
 
 ## Mandatory Thinking
 
@@ -23,20 +20,20 @@ Use this rule for commercial deck design, critique, redesign, quality gates, and
 
 - When revising a mature deck, current human-approved pages and manually adjusted deliverables outrank generic templates, newly named CSS families, and abstract style descriptions.
 - Before styling each page, register `content intent -> physical page -> approved benchmark page(s) -> layout family -> expected proof object/node count`. Resolve page reordering and runtime mapping before writing CSS.
-- Reuse the benchmark family's grid, title axis, claim band, visual mass, information density, footer system, and bottom closure. Introduce a new body-page family only when the approved families cannot express the content and the user has accepted the new direction.
+- Reuse the benchmark family's grid, title axis, claim band, visual mass, information density, footer system, and bottom closure. For continuity work, keep the selected family where it fits. An authorized new direction may explore other families; user selection is required only when the task makes it an explicit gate.
 - KAT may specify semantic relationships, hierarchy, locks, and return conditions. It must not select the exact composition, component family, or visual treatment; NERO Design Team makes those decisions.
 - Do not call a page mature because its CSS class, manifest, or audit record uses words such as `approved`, `premium`, or `mature`. Maturity must be visible in the final runtime artifact beside the approved benchmark pages.
 - After a page or wave is rejected, do not propagate its layout family to later pages. Repair and obtain human approval on the rejected scope first.
 
 ## Slide System
 
-- Use one primary sans-serif system for Chinese and English body text.
+- Assign typography by reading role and language coverage; preserve explicitly selected brand fonts and coordinate any new families.
 - Keep strong hierarchy: cover title, section marker, slide title, proof object, body, footnote.
 - Use stable margins, page numbers, section labels, and source-note placement.
 - Prefer 12-column or simple 2-column grids for dense business slides.
-- Use full-width bands or clean layouts; avoid nested decorative cards.
+- Choose bands, cards, columns or other groups for the information relationship; check whether the structure clarifies reading.
 - Cards are for repeated comparable items, not every paragraph.
-- Use one neutral base, one primary accent, and at most one alert/highlight color.
+- Assign color roles for the task; the number of accents follows the information and selected identity, not a fixed palette limit.
 - Use color semantically for status, category, emphasis, risk, or action.
 
 ## Executive Cover And Divider Discipline

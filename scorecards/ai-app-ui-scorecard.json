@@ -1,0 +1,104 @@
+{
+  "version": "1.0.0",
+  "profile": "ai-app-ui",
+  "total_points": 100,
+  "pass_threshold": 82,
+  "review_threshold": 68,
+  "criteria": [
+    {
+      "id": "intent_fit",
+      "label": "Task and design-intent fit",
+      "weight": 10,
+      "checks": [
+        "Primary job, user role and assistance mode are explicit",
+        "Capability and action boundaries are represented",
+        "The selected pattern is not chat-first by default"
+      ]
+    },
+    {
+      "id": "control_visibility",
+      "label": "Human control and action visibility",
+      "weight": 15,
+      "checks": [
+        "High-impact actions show target, scope and effect before confirmation",
+        "Confirm, reject, cancel and takeover actions are distinct",
+        "Controls correspond to real product behavior or are explicitly disabled"
+      ]
+    },
+    {
+      "id": "state_integrity",
+      "label": "State integrity",
+      "weight": 15,
+      "checks": [
+        "Applicable states are represented or have a recorded exemption",
+        "Partial, completed and verified meanings are distinct",
+        "Waiting and failure states name the next required action"
+      ]
+    },
+    {
+      "id": "clarity_evidence",
+      "label": "Clarity, sources and unknowns",
+      "weight": 15,
+      "checks": [
+        "Source, evidence and unknown-state affordances are visible when applicable",
+        "Completion is not presented as independent verification",
+        "Operational rationale is concise and private chain-of-thought is not exposed or simulated"
+      ]
+    },
+    {
+      "id": "recovery_collaboration",
+      "label": "Recovery and collaboration",
+      "weight": 12,
+      "checks": [
+        "Failures offer a real retry, edit, undo, reopen or takeover path",
+        "The interface shows whose turn or input is required",
+        "Long-running work is interruptible when supported"
+      ]
+    },
+    {
+      "id": "traceability",
+      "label": "Action history and change traceability",
+      "weight": 10,
+      "checks": [
+        "Consequential actions have visible operational history",
+        "AI changes to user-owned content can show a diff",
+        "Timestamps, versions and source links carry real state"
+      ]
+    },
+    {
+      "id": "layout_typography",
+      "label": "Layout and typography",
+      "weight": 8,
+      "checks": [
+        "Dense information remains readable",
+        "Chinese labels do not overflow or collide",
+        "Task-appropriate hierarchy and the selected project visual system are applied"
+      ]
+    },
+    {
+      "id": "responsive_accessibility",
+      "label": "Responsive and accessibility behavior",
+      "weight": 10,
+      "checks": [
+        "Desktop and narrow/mobile states remain usable",
+        "State meaning does not rely on color alone",
+        "Keyboard focus, live-region and reduced-motion behavior are covered"
+      ]
+    },
+    {
+      "id": "rendered_evidence",
+      "label": "Rendered evidence boundary",
+      "weight": 5,
+      "checks": [
+        "Reviewed states and viewports are named",
+        "Rendered, live-behavior and human-acceptance evidence are reported separately",
+        "A static score is not presented as live runtime acceptance"
+      ]
+    }
+  ],
+  "ratings": {
+    "pass": "The AI App UI design profile is ready or close to ready for the next applicable review boundary.",
+    "review": "The direction is usable, but control, state, evidence, recovery or rendered proof needs repair.",
+    "fail": "Do not treat the AI App UI design as ready until the failed contract is repaired."
+  }
+}

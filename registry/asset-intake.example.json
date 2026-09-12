@@ -1,0 +1,51 @@
+{
+  "schema_version": "ndt.asset-intake.v1",
+  "taxonomy_version": "1.1.0",
+  "assets": [
+    {
+      "id": "NDT-CMP-001",
+      "key": "replace-with-unique-component-key",
+      "name": "待填写的组件名称",
+      "category": "components",
+      "purpose": "待填写：该组件具体解决什么视觉问题。",
+      "source_ref": "not-bundled-example/replace-with-existing-component.svg",
+      "rights": "待核对：来源与允许使用的范围。",
+      "maturity": "candidate",
+      "reuse_state": "conditional",
+      "routes": [
+        "frontend-ui",
+        "ppt"
+      ],
+      "use_for": [
+        "待填写：具体使用方法与限制。"
+      ],
+      "tags": {
+        "composition": [],
+        "typography": [],
+        "color": [],
+        "material": [],
+        "geometry": [],
+        "image-treatment": [],
+        "motion": [],
+        "mood": [],
+        "component": [
+          "SVG图形"
+        ],
+        "method": []
+      },
+      "use_case_tags": [
+        "frontend",
+        "GUI",
+        "PPT"
+      ],
+      "tagging_basis": "待填写：标签对应的来源内容和判断依据。",
+      "asset_type": "component",
+      "preview": {
+        "kind": "source-render",
+        "source_ref": "not-bundled-example/replace-with-actual-preview.png",
+        "label": "待填写：真实组件预览",
+        "boundary": "待填写：内容范围、示例数据和使用边界。"
+      }
+    }
+  ]
+}

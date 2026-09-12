@@ -63,6 +63,7 @@ for (const file of allowedFiles) {
 }
 
 for (const entry of await fs.readdir(root, { withFileTypes: true })) {
+  if (entry.name === ".git") continue;
   if (!allowedRoots.has(entry.name)) errors.push({ type: "unknown-root-entry", entry: entry.name });
 }
 await visit(root);

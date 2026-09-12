@@ -51,5 +51,6 @@
       "unit": "条",
       "minFontSize": 12
     }
-  ]
+  ],
+  "is_example": true
 }

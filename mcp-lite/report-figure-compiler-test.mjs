@@ -109,7 +109,7 @@ function assertToolError(response, pattern) {
 const listed = spawnSync(process.execPath, [serverPath, "--list-tools"], { cwd: root, encoding: "utf8" });
 assert.equal(listed.status, 0, listed.stderr);
 const listedServer = JSON.parse(listed.stdout);
-assert.equal(listedServer.version, "2.3.0");
+assert.equal(listedServer.version, "2.5.0");
 const toolCatalog = listedServer.tools;
 assert.equal(JSON.parse(fs.readFileSync(path.join(root, "generators", "templates.json"), "utf8")).version, "2.3.0");
 for (const toolName of ["nero_design_visual_qa", "nero_design_score", "nero_design_production_check"]) {
@@ -181,6 +181,35 @@ try {
       assert.deepEqual(routed.figure_compiler.conditional_inputs, [], task);
     }
   }
+
+  for (const [task, mode, sourceKind, grammar] of [
+    ["NDT，把这个 Mermaid 系统架构图重绘成汇报用 SVG", "redraw", "mermaid", "architecture"],
+    ["NDT，重绘这个 Mermaid", "redraw", "mermaid", "select-after-structural-extraction"],
+    ["NDT，重新设计旧的 draw.io 泳道图", "redraw", "drawio", "swimlane-process"],
+    ["NDT，画一张系统控制流程图", "fresh", null, "flowchart"],
+    ["NDT，画一张服务之间的时序图", "fresh", null, "sequence"],
+    ["NDT，把订单状态转换画成状态机", "fresh", null, "state-machine"]
+  ]) {
+    const routed = resultBody(await client.call("nero_design_route", { task }));
+    assert.equal(routed.architecture_diagram_redraw.recommended, true, task);
+    assert.equal(routed.architecture_diagram_redraw.subroute, "architecture-diagram-redraw", task);
+    assert.equal(routed.architecture_diagram_redraw.mode, mode, task);
+    assert.equal(routed.architecture_diagram_redraw.source_kind, sourceKind, task);
+    assert.equal(routed.architecture_diagram_redraw.grammar, grammar, task);
+    assert.equal(routed.architecture_diagram_redraw.figure_compiler_boundary, "unchanged_nine_types", task);
+    assert.equal(routed.figure_compiler.recommended, false, task);
+    assert.equal(routed.figure_compiler.alternative_route, "architecture-diagram-redraw", task);
+    assert.equal(routed.recommended_tools.includes("nero_design_compile_report_figure"), false, task);
+    assert.equal(routed.rules.includes("references/architecture-diagram-redraw.md"), true, task);
+    assert.equal(routed.rules.includes("references/report-figure-rendering.md"), false, task);
+  }
+
+  const reportFigureBoundary = resultBody(await client.call("nero_design_route", {
+    task: "NDT，把产业链传导逻辑做成尽调 Word 报告图"
+  }));
+  assert.equal(reportFigureBoundary.architecture_diagram_redraw.recommended, false);
+  assert.equal(reportFigureBoundary.figure_compiler.recommended, true);
+  assert.equal(reportFigureBoundary.figure_compiler.figure_type, "flow");
 
   for (const [task, figureType, businessFamily] of [
     ["NDT，把产能爬坡做成折线图", "line", "timeline-capacity-ramp"],
@@ -259,7 +288,8 @@ try {
   }));
   assert.equal(regenerateAfterCheck.figure_compiler.recommended, true);
   assert.equal(regenerateAfterCheck.figure_compiler.figure_type, "flow");
-  assert.equal(regenerateAfterCheck.route, "visual-audit");
+  assert.equal(regenerateAfterCheck.task_mode, "revise");
+  assert.equal(regenerateAfterCheck.route, "image-report");
   assert.equal(regenerateAfterCheck.recommended_tools.includes("nero_design_compile_report_figure"), true);
   assert.equal(regenerateAfterCheck.rules.includes("references/report-figure-rendering.md"), true);
 

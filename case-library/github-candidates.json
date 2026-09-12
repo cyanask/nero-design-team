@@ -1,7 +1,7 @@
 {
   "route": "case-library",
   "version": "1.1.0",
-  "updated_at": "2026-07-28",
+  "updated_at": "2026-08-18",
   "source": "GitHub public repository search and official GitHub repository pages",
   "policy": [
     "These entries are design references, not factual evidence.",
@@ -217,6 +217,44 @@
       ],
       "notes": "MIT repository. Fuse selected rules into NDT frontend-motion and visual QA; do not install the six upstream skills as parallel controllers. The repository contains text knowledge/process assets rather than a visual media or component asset pack.",
       "snapshot_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/emilkowalski__skills/snapshot.json"
+    },
+    {
+      "id": "github-frontend-007-diagram-design",
+      "name": "cathrynlavery/diagram-design",
+      "repository": "cathrynlavery/diagram-design",
+      "source_url": "https://github.com/cathrynlavery/diagram-design",
+      "route": "frontend-ui",
+      "subroute": "architecture-diagram-redraw",
+      "purpose": "Reference behavior-first semantic patterns, architecture-diagram grammar, meaning-preserving draw.io/Mermaid redraw, fidelity ledgers, complexity discipline, accessible SVG contracts, and architecture-specific QA.",
+      "style": "editorial technical diagrams, restrained focal accent, flat SVG hierarchy, auditable redraw",
+      "tokens": [
+        "color.surface.canvas",
+        "color.text.primary",
+        "color.border.subtle",
+        "font.cn.body",
+        "space.section.gap"
+      ],
+      "template": "frontend-dashboard",
+      "score": {
+        "value": 90,
+        "rating": "candidate",
+        "scorecard": "visual-scorecard.json"
+      },
+      "applies_to": [
+        "architecture and technical system diagrams",
+        "behavior-heavy queue, policy, trust-boundary, governance and residual-risk diagrams",
+        "draw.io and Mermaid redraw",
+        "report, deck, document and review-page diagrams",
+        "architecture-specific visual and fidelity QA"
+      ],
+      "disabled_when": [
+        "adding its technical diagram inventory to Figure Compiler",
+        "installing it as a parallel NDT Skill or plugin",
+        "copying its default skin, templates, examples, remote fonts or icon pack",
+        "treating an old diagram as current authority without reconciliation"
+      ],
+      "notes": "MIT repository reviewed at commit e48df3fb1e0008f14d792afa6a8a1cb7421b785f, plugin metadata 2.4.3. Fuse semantic-pattern methods and NDT-native QA only. Upstream motion, profile storage, templates, icon/font packs and packaged self-check code do not become parallel NDT authorities. NDT remains the visual controller; AI Native System Builder owns only fact/projection contracts; Figure Compiler remains nine types.",
+      "snapshot_path": "$NERO_DESIGN_TEAM_HOME/case-library/snapshots/cathrynlavery__diagram-design/snapshot.json"
     },
     {
       "id": "github-image-001-satori",

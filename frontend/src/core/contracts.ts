@@ -41,7 +41,13 @@ export type ReadEnvelope<T> = {
   issues: ReadIssue[];
 };
 
+export type AssetMaturity = "registered" | "reference" | "candidate" | "unknown";
+export type AssetReuseState = "reusable" | "conditional" | "reference_only" | "placeholder" | "quarantined" | "unknown";
+
 export type CapabilityAssetVM = {
+  aliases?: string[];
+  maturity?: AssetMaturity;
+  reuseState?: AssetReuseState;
   id: string;
   key: string;
   categoryId: string;

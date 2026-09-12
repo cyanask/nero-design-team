@@ -1,3 +1,4 @@
+import type { StudioSelection } from "./StudioHome";
 import type { JSX } from "react";
 import type { CapabilityLibraryVM } from "../../core/contracts";
 import type { ApplicationScenarioCatalog } from "../../core/application-scenarios";
@@ -10,6 +11,9 @@ export type ApplicationScenarioBrowserProps = {
   mode: "index" | "scenario" | "solution";
   scenarioId: string | null;
   recipeId: string | null;
+  studioSelection?: StudioSelection;
+  studioQuery?: string;
+  onStudioQueryChange?: (value: string) => void;
 };
 
 export function ApplicationScenarioBrowser({
@@ -17,7 +21,7 @@ export function ApplicationScenarioBrowser({
   catalog,
   mode,
   scenarioId,
-  recipeId
+  recipeId, studioQuery, onStudioQueryChange, studioSelection
 }: ApplicationScenarioBrowserProps): JSX.Element {
   return (
     <section className="scenario-browser" aria-label="应用场景浏览器">
@@ -29,6 +33,9 @@ export function ApplicationScenarioBrowser({
           library={library}
           mode={mode}
           scenarioId={scenarioId}
+          studioSelection={studioSelection}
+          query={studioQuery}
+          onQueryChange={onStudioQueryChange}
         />
       )}
     </section>

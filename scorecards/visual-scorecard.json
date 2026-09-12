@@ -1,5 +1,5 @@
 {
-  "version": "0.8.0",
+  "version": "0.10.0",
   "total_points": 100,
   "pass_threshold": 82,
   "review_threshold": 68,
@@ -16,12 +16,12 @@
     },
     {
       "id": "brand_tokens",
-      "label": "Brand and token consistency",
+      "label": "Task identity and visual-system fit",
       "weight": 11,
       "checks": [
-        "NERO design tokens applied or deliberate override stated",
-        "Brand tone is restrained, professional, and evidence-first",
-        "Palette is not a random one-hue look"
+        "Explicit user/project brand constraints are honored",
+        "Selected typography, color, spacing and materials work together for the task",
+        "Style suitability is judged from inspected previews and the current render, not local asset count or similarity to NDT"
       ]
     },
     {
@@ -56,6 +56,7 @@
     },
     {
       "id": "chart_quality",
+      "applies_when": "charts_present",
       "label": "Chart quality",
       "weight": 10,
       "checks": [
@@ -76,6 +77,7 @@
     },
     {
       "id": "ai_image_boundary",
+      "applies_when": "ai_image_used",
       "label": "gpt-image-2 boundary",
       "weight": 5,
       "checks": [
@@ -86,6 +88,7 @@
     },
     {
       "id": "handoff_boundary",
+      "applies_when": "kat_presentation",
       "label": "KAT/NERO handoff boundary",
       "weight": 8,
       "checks": [
@@ -96,6 +99,7 @@
     },
     {
       "id": "presentation_chain_readiness",
+      "applies_when": "kat_presentation",
       "label": "Presentation production chain readiness",
       "weight": 9,
       "checks": [

@@ -62,6 +62,9 @@ function validateAsset(value, path, issues) {
     "useFor",
     "routes",
     "knownRoutes",
+    "aliases",
+    "maturity",
+    "reuseState",
     "rawStatus",
     "rights",
     "sourceRef",
@@ -80,6 +83,9 @@ function validateAsset(value, path, issues) {
   for (const key of ["rawStatus", "rights", "sourceRef"]) {
     if (!nullableText(value[key])) issues.push(issue(path + "." + key, "expected string or null"));
   }
+  if (value.aliases !== undefined && !textArray(value.aliases)) issues.push(issue(path + ".aliases", "expected string array"));
+  if (value.maturity !== undefined && !["registered", "reference", "candidate", "unknown"].includes(value.maturity)) issues.push(issue(path + ".maturity", "unknown maturity"));
+  if (value.reuseState !== undefined && !["reusable", "conditional", "reference_only", "placeholder", "quarantined", "unknown"].includes(value.reuseState)) issues.push(issue(path + ".reuseState", "unknown reuse state"));
   if (
     !record(value.preview) ||
     !text(value.preview.state) ||

@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "frontend_profile": "ai-app-ui",
+  "primary_job": "让用户审阅一次示例任务的状态、依据和下一步动作",
+  "user_role": "负责判断是否继续执行的业务用户",
+  "assistance_mode": "workbench",
+  "capability_boundary": {
+    "can": ["生成候选计划", "展示示例状态", "等待用户确认"],
+    "cannot": ["自动执行真实外部动作", "把示例来源当成事实证据"]
+  },
+  "high_impact_actions": [
+    {
+      "action": "执行会改变外部状态的动作",
+      "preview": true,
+      "confirmation": true,
+      "recovery": "按真实产品能力提供撤销或人工处理"
+    }
+  ],
+  "evidence_priority": ["来源", "未知项", "验证状态", "行动历史"],
+  "required_states": ["idle", "planning", "running", "waiting_user", "waiting_approval", "partial", "completed", "verified", "failed", "cancelled"],
+  "state_exemptions": {},
+  "recovery_actions": ["cancel", "edit", "retry", "undo", "human-takeover"],
+  "design_dials": {
+    "DESIGN_VARIANCE": 3,
+    "MOTION_INTENSITY": 1,
+    "VISUAL_DENSITY": 8
+  },
+  "acceptance_viewports": [
+    { "label": "desktop", "width": 1440, "height": 900 },
+    { "label": "narrow", "width": 390, "height": 844 }
+  ]
+}

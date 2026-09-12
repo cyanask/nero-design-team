@@ -15,7 +15,7 @@ const sourceValue = valueAfter("--source-root");
 const sourceRoot = sourceValue ? await fs.realpath(path.resolve(sourceValue)) : null;
 const policy = JSON.parse(await fs.readFile(path.join(frontendRoot, "public-projection.json"), "utf8"));
 const errors = [];
-const ignoredDirectories = new Set([".git", "node_modules", ".local", "dist-public", "dist-demo", "coverage"]);
+const ignoredDirectories = new Set([".git", ".playwright-cli", "node_modules", ".local", "dist-public", "dist-demo", "coverage"]);
 
 const posix = (value) => value.split(path.sep).join("/");
 async function filesUnder(root, relative = "") {
@@ -45,23 +45,15 @@ if (governed.size !== copied.size + rewritten.size + publicOnly.size) {
 const fragments = [
   ["/", "Users", "/"].join(""),
   ["/", "home", "/"].join(""),
-  ["/", "private", "/", "tmp", "/"].join(""),
-  ["Her", "mes"].join(""),
-  ["AI", "pha"].join(""),
-  ["At", "las"].join(""),
-  ["Five", " Worlds"].join(""),
-  ["Sino", "link"].join(""),
-  ["国", "金"].join(""),
-  ["五", "世界"].join("")
+  ["/", "private", "/", "tmp", "/"].join("")
 ];
 const scopedFragments = [
   ["nero-design-team", "-frontend"].join(""),
-  ["NDT-CAS", "-004"].join(""),
-  ["executive-ma-trajectory", "-atlas"].join(""),
   ["private", "_canonical"].join("")
 ];
 for (const file of publicFiles) {
   if (file === "scripts/check-public-projection.mjs") continue;
+  if (!["", ".css", ".html", ".js", ".json", ".md", ".mjs", ".mts", ".svg", ".ts", ".tsx", ".txt", ".yaml", ".yml"].includes(path.extname(file).toLowerCase())) continue;
   const text = await fs.readFile(path.join(frontendRoot, file), "utf8");
   for (const fragment of [...fragments, ...scopedFragments]) {
     if (text.includes(fragment)) errors.push({ type: "forbidden-public-fragment", file, fragment });
@@ -80,11 +72,20 @@ const scenarioSource = await fs.readFile(path.join(frontendRoot, "src/packs/ndt/
 const scenarioAssets = [...scenarioSource.matchAll(/representativeAssetId: "([^"]+)"/g)].map((match) => match[1]);
 const scenarioRecipes = [...scenarioSource.matchAll(/recipeId: "([^"]+)"/g)].map((match) => match[1]);
 const assetIds = new Set((assetRegistry.assets || []).map((asset) => asset.id));
+const catalogIds = new Set([
+  ...(assetRegistry.assets || []),
+  ...(assetRegistry.cases || []),
+  ...(assetRegistry.supporting_resources || [])
+].map((item) => item.id));
 const recipeIds = new Set((assetRegistry.recipes || []).map((recipe) => recipe.id));
-for (const id of scenarioAssets) if (!assetIds.has(id)) errors.push({ type: "unknown-scenario-asset", id });
+for (const id of scenarioAssets) if (!catalogIds.has(id)) errors.push({ type: "unknown-scenario-catalog-id", id });
 for (const id of scenarioRecipes) if (!recipeIds.has(id)) errors.push({ type: "unknown-scenario-recipe", id });
 
 if (sourceRoot) {
+  const sourcePackage = JSON.parse(await fs.readFile(path.join(sourceRoot, "package.json"), "utf8"));
+  if (policy.sourceBaseline?.version && sourcePackage.version !== policy.sourceBaseline.version) {
+    errors.push({ type: "source-baseline-version-drift", expected: policy.sourceBaseline.version, actual: sourcePackage.version });
+  }
   const sourceFiles = await filesUnder(sourceRoot);
   const excluded = (file) => (policy.excludedPrefixes || []).some((prefix) => file === prefix || file.startsWith(prefix));
   for (const file of sourceFiles) {

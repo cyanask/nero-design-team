@@ -56,3 +56,7 @@ After generation:
 - Replace sample data and placeholder conclusions.
 - Apply brand-system, visual-qa, and visual-score rules before final delivery.
 - Keep project deliverables in the project directory; promote only reusable patterns back to NERO Design Team.
+
+## Available brand assets
+
+Generation resolves the brand profile against current asset/integrity status. Open integrity issues and quarantined, blocked or retired assets are excluded from default brand references. Missing/isolated marks are recorded as `mark: null` with an explicit status; an unbranded layout can proceed. Existing brand files are preserved.

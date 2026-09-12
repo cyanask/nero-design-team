@@ -4,8 +4,8 @@ Use this rule when `nero-design-team` is asked to design, audit, or produce form
 
 ## Design Positioning
 
-- Default tone: restrained banker book, evidence-first, high-density, formal external presentation.
-- Preferred system: deep navy + restrained gold + white information pages.
+- Determine the audience, meeting purpose and explicit brand requirements. Accuracy, legibility and useful evidence remain task requirements; tone and density follow the chosen direction.
+- Deep navy, gold and white are one local candidate system. Consider other inspected directions when the task calls for exploration.
 - Use visual hierarchy to prove capability: transaction evidence, client coverage, execution mechanism, case complexity, and capital market outcomes.
 - Do not make the deck feel like a marketing landing page, design portfolio, or internal redesign report.
 
@@ -35,13 +35,13 @@ Use this rule when `nero-design-team` is asked to design, audit, or produce form
 - Repeated slide templates for every case.
 - Raw logo screenshots that do not match the deck style.
 - Card-inside-card decoration and rounded template look.
-- Pink/purple off-brand accents in formal banker materials.
+- Colors that contradict the explicitly selected brand or obscure readable information.
 - Auto-generated section labels such as 3-2, 3-8, 3-10 when they read as source-deck residue.
 - Visible strings such as redesign, NERO redesign, design principle, adjustment logic, source of client logos, or retained original content.
 
 ## Desktop Layout Rules
 
-- Use a 16:9 banker grid with at least two information zones on most body pages.
+- Use the specified delivery canvas; organize information zones around the page purpose rather than a fixed zone count.
 - For case-heavy pages, prefer tombstone matrix, ledger, transaction board, timeline, or architecture diagram.
 - Keep right-side panels meaningfully loaded; do not let decorative background or empty panels carry the page.
 - For MacBook 13 and small desktop heights, add compact horizontal rules rather than relying on a 1920x1080-only layout.
@@ -72,7 +72,7 @@ Use this rule when `nero-design-team` is asked to design, audit, or produce form
 
 ## Regulatory Evidence Swiss HTML PitchBook Addendum
 
-Use this addendum when the investment-banking PitchBook is an A-share IPO diagnostic or regulator-aware HTML deck.
+Use this addendum only when the task selects the Regulatory Evidence Swiss HTML treatment. An IPO or regulatory subject alone does not select this visual style.
 
 - Use `regulatory-evidence-swiss`: Swiss grid discipline, evidence-led hierarchy, sector-specific abstract imagery, and controlled institutional contrast.
 - Use a fixed 16:9 stage for HTML decks and scale the stage as a whole; do not reflow projection slides into unstable responsive layouts.
@@ -85,4 +85,3 @@ Use this addendum when the investment-banking PitchBook is an A-share IPO diagno
 - For major-customer pages, separate equity, transaction, personnel, funds, SKU/license, terminal channel, and page-compliance evidence layers.
 - Run visual QA, visual score, projection typography audit, contact-sheet inspection, and online-publish assertions when a public HTML deck is published.
 - Store only lightweight design references in the global case library; do not preserve project-specific company facts, amounts, rankings, regulatory status, team names, source links, or private evidence.
-

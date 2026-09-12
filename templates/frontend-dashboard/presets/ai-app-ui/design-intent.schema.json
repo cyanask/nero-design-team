@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nero.local/schemas/ai-app-ui-design-intent.schema.json",
+  "title": "NDT AI App UI Design Intent",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "frontend_profile": { "const": "ai-app-ui" },
+    "primary_job": { "type": "string", "minLength": 1 },
+    "user_role": { "type": "string", "minLength": 1 },
+    "assistance_mode": {
+      "enum": ["workbench", "copilot", "document-collaboration", "form-driven", "command-surface", "embedded-panel"]
+    },
+    "capability_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["can", "cannot"],
+      "properties": {
+        "can": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1 },
+        "cannot": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1 }
+      }
+    },
+    "high_impact_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["action", "preview", "confirmation"],
+        "properties": {
+          "action": { "type": "string", "minLength": 1 },
+          "preview": { "type": "boolean" },
+          "confirmation": { "type": "boolean" },
+          "recovery": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "evidence_priority": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "required_states": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": ["idle", "planning", "running", "waiting_user", "waiting_approval", "partial", "completed", "verified", "failed", "cancelled"]
+      },
+      "minItems": 1
+    },
+    "state_exemptions": {
+      "type": "object",
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "recovery_actions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "enum": ["cancel", "edit", "retry", "undo", "reopen", "human-takeover"] }
+    },
+    "design_dials": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["DESIGN_VARIANCE", "MOTION_INTENSITY", "VISUAL_DENSITY"],
+      "properties": {
+        "DESIGN_VARIANCE": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "MOTION_INTENSITY": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "VISUAL_DENSITY": { "type": "integer", "minimum": 1, "maximum": 10 }
+      }
+    },
+    "acceptance_viewports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "width", "height"],
+        "properties": {
+          "label": { "type": "string", "minLength": 1 },
+          "width": { "type": "integer", "minimum": 320 },
+          "height": { "type": "integer", "minimum": 480 }
+        }
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "frontend_profile",
+    "primary_job",
+    "user_role",
+    "assistance_mode",
+    "capability_boundary",
+    "high_impact_actions",
+    "evidence_priority",
+    "required_states",
+    "recovery_actions",
+    "design_dials",
+    "acceptance_viewports"
+  ]
+}

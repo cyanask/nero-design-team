@@ -9,6 +9,7 @@ This repository is intended to contain only open-source-safe design-system logic
 - Lightweight GitHub case snapshots: summaries, source URLs, license summaries, file-path indexes, and image URLs only.
 - Default brand/profile assets: example placeholders for local use.
 - Public frontend source and its synthetic demo fixture: Apache-2.0.
+- Bundled library-preview PNGs and Skill method-comparison PNGs: original NDT-native synthetic renders under Apache-2.0; no client material, upstream screenshots, or external font files are embedded.
 
 ## Not Included
 

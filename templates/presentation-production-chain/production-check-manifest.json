@@ -11,5 +11,10 @@
   "visual_exploration": "$NERO_DESIGN_TEAM_HOME/templates/presentation-production-chain/visual_exploration.json",
   "expected_outputs": [],
   "case_library_record": "$NERO_DESIGN_TEAM_HOME/case-library/ppt.json",
-  "gpt_image_2_used": false
+  "gpt_image_2_used": false,
+  "is_example": true,
+  "stage": "design_contract",
+  "kat_handoff_brief": null,
+  "visual_outputs": [],
+  "rendered_evidence": []
 }
