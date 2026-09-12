@@ -1,6 +1,6 @@
 {
   "name": "nero-design-team",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": false,
   "type": "module",
   "description": "Local design operating system for Codex with public-safe assets, deterministic runtimes, and explicit delivery gates.",

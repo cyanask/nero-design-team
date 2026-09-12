@@ -24,6 +24,7 @@ export function StudioHome({ library, catalog, query, onQueryChange, features = 
       <div><p className="eyebrow">风格、材料与表达</p><h1>设计工作室</h1><p>按任务找到方案，从样本选择表达。</p></div>
       <label className="studio-search"><Search size={16} aria-hidden="true" /><span className="sr-only">查找工作室资产</span><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="查找风格、模板或规则" /></label>
     </header>
+    {!library.assets.length && <section className="empty-result" aria-label="空库说明"><h2>连接你自己的设计资料</h2><p>开源包提供系统和 Skill，不附带资产库、案例库或风格库内容。</p><p>请按 README 接入本地目录；当前浏览器为只读，不会自动导入或发布你的资料。</p></section>}
     {search.trim() ? <section className="studio-results" aria-label="工作室搜索结果">
       <p>{results.length} 项结果</p>
       <div className="asset-grid">{results.map((asset) => <CapabilityCard key={asset.id} asset={asset} active={false} categoryLabel={library.categories.find((category) => category.id === asset.categoryId)?.label ?? asset.categoryId} />)}</div>

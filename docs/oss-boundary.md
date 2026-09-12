@@ -1,42 +1,13 @@
-# OSS Boundary
+# System-only distribution
 
-The public package should stay portable, reusable, and free of private material.
+NDT publishes its system code and Skill, not NERO's asset, case or style libraries.
 
-## Public Core
+All three library indexes must be empty in a release. Personal styles, cases, external snapshots, library metadata and preview media must not be copied from the private workspace, even when an earlier release called them public-safe.
 
-- Skill routing rules
-- MCP-lite tool server
-- route rules and QA rules
-- design tokens
-- minimal templates
-- generator and validation scripts
-- deterministic local runtimes and source-free examples
-- lightweight case snapshots
-- open-source-safe profile examples
-- public-safe frontend source and synthetic demo fixture
-- NERO-native style contracts without external fonts, identity assets, or project facts
+Generic software support remains distributable: schemas, default UI tokens, minimal implementation templates, system icons, Skill instructions, deterministic runtimes and synthetic test fixtures. Fixtures are not library entries or observed user results.
 
-## Private Overlay
+Local library additions remain private. The public frontend is read-only, not a complete editing UI.
 
-Keep these in a separate private repository or local-only directory:
+Run `npm run release:check` against a clean candidate. Preserve this boundary in the canonical OSS projection policy so later syncs cannot restore library content.
 
-- official brand assets
-- client screenshots or delivery files
-- real customer data or evidence
-- private case assets
-- paid templates
-- restricted third-party visual assets
-- machine-specific validation history
-- native desktop wrappers, private preview media, and project-specific frontend manifests
-
-## Release Gate
-
-Before publishing, run:
-
-```bash
-node release-check.mjs
-```
-
-The check scans for absolute local paths, common credential patterns, private environment files, dependency folders, JSON parse errors, and accidental restricted asset directories.
-
-Run the gate against a clean tracked export or release candidate. A private overlay may coexist beside the source checkout, but it must not be copied into the publish candidate.
+This policy governs current and future distributions. Historical commits, tags and downloads require a separate history-removal operation; current-file deletion cannot retract downloaded copies.

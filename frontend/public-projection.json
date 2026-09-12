@@ -15,7 +15,6 @@
     "src/adapters/react/ApplicationScenarioBrowser.tsx",
     "src/adapters/react/ApplicationScenarioIndex.tsx",
     "src/adapters/react/ProjectDetail.tsx",
-    "src/adapters/react/StudioHome.tsx",
     "src/core/application-scenarios.ts",
     "src/core/guards.ts",
     "src/core/snapshot-guard.d.mts",
@@ -67,22 +66,11 @@
     "tests/routes.test.ts",
     "tests/snapshot-adapter.test.mjs",
     "tests/source-passport.test.tsx",
-    "vite.config.mjs"
+    "vite.config.mjs",
+    "src/adapters/react/StudioHome.tsx"
   ],
   "publicOnlyFiles": [
     "public-projection.json",
-    "public/library-previews/ndt-tok-001.png",
-    "public/library-previews/ndt-tok-002.png",
-    "public/library-previews/ndt-tok-003.png",
-    "public/library-previews/ndt-tok-004.png",
-    "public/library-previews/ndt-tok-005.png",
-    "public/library-previews/ndt-tok-006.png",
-    "public/library-previews/ndt-tok-007.png",
-    "public/library-previews/ndt-tok-008.png",
-    "public/library-previews/ndt-tpl-001.png",
-    "public/library-previews/ndt-tpl-002.png",
-    "public/library-previews/ndt-tpl-003.png",
-    "public/library-previews/ndt-tpl-005.png",
     "scripts/check-public-projection.mjs",
     "tests/public-package.test.mjs"
   ],

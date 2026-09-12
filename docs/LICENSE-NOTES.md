@@ -6,10 +6,10 @@ This repository is intended to contain only open-source-safe design-system logic
 
 - NERO Design Team code, rules, docs, and templates: Apache-2.0.
 - NERO Figure Compiler source, schemas, source-free examples, and deterministic SVG runtime: Apache-2.0.
-- Lightweight GitHub case snapshots: summaries, source URLs, license summaries, file-path indexes, and image URLs only.
+- Empty library indexes and management schemas; no NERO library entries.
 - Default brand/profile assets: example placeholders for local use.
 - Public frontend source and its synthetic demo fixture: Apache-2.0.
-- Bundled library-preview PNGs and Skill method-comparison PNGs: original NDT-native synthetic renders under Apache-2.0; no client material, upstream screenshots, or external font files are embedded.
+- Skill method-comparison figures and synthetic test fixtures support the software; library previews are not bundled.
 
 ## Not Included
 

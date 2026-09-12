@@ -61,7 +61,7 @@
           "display_name": "留白杂志风",
           "aliases": ["留白杂志风"],
           "description": "Quiet paper-zine visual preset with quantitative composition, one-retry thumbnail QA, and deterministic exact-text overlays.",
-          "style_reference": "assets/style-references/minimal-zine-editorial/manifest.json"
+          "style_reference": "not-bundled-library/assets/style-references/minimal-zine-editorial/manifest.json"
         }
       }
     }

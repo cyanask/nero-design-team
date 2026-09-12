@@ -62,7 +62,7 @@
     "qa_manifest": "qa-manifest.example.json"
   },
   "provenance": {
-    "style_manifest": "assets/style-references/minimal-zine-editorial/manifest.json",
+    "style_manifest": "not-bundled-library/assets/style-references/minimal-zine-editorial/manifest.json",
     "upstream": "https://github.com/LiamGvchi/gc-minimal-zine-poster",
     "upstream_license": "MIT",
     "upstream_examples_copied": false

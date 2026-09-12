@@ -24,7 +24,7 @@ npm run snapshot:sync -- --ndt-home ..
 npm run dev
 ```
 
-The generated snapshot stays under `.local/` and is never part of the public package. The 12 active public assets resolve only to the explicitly bundled synthetic/source-render previews under `public/library-previews/`; private and restricted previews remain unbundled metadata.
+The generated snapshot stays under `.local/` and is never part of the public package. The system-only distribution starts with empty asset, case and style libraries. No NERO library previews are bundled. Connect your own local catalog to populate the browser.
 
 Project roots are optional and must be explicitly authorized with `--project alias=/absolute/path` or an absolute `--projects-file`. The adapter redacts absolute paths and never promotes self-reported adoption into verified evidence.
 

@@ -9,7 +9,7 @@ This rule fuses `plannotator/effective-html` into NERO Design Team as a referenc
 - Source repository: `https://github.com/plannotator/effective-html`
 - Main repository license: MIT
 - Bundled `html-effectiveness` examples license: Apache-2.0
-- Local snapshot: `$NERO_DESIGN_TEAM_HOME/case-library/snapshots/plannotator__effective-html/snapshot.json`
+- Local snapshot: `not-bundled-library/case-library/snapshots/plannotator__effective-html/snapshot.json`
 - Local reference pack: `not-bundled-reference: effective-html`
 
 Use the source as a candidate method reference. Build task-specific HTML/CSS/JS using the selected project visual system and verified content; NERO identity applies only when selected.
